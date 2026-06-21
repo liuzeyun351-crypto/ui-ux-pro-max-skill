@@ -69,6 +69,21 @@ CSV_CONFIG = {
         "file": "google-fonts.csv",
         "search_cols": ["Family", "Category", "Stroke", "Classifications", "Keywords", "Subsets", "Designers"],
         "output_cols": ["Family", "Category", "Stroke", "Classifications", "Styles", "Variable Axes", "Subsets", "Designers", "Popularity Rank", "Google Fonts URL"]
+    },
+    "antipattern": {
+        "file": "anti-patterns.csv",
+        "search_cols": ["Category", "Anti-Pattern", "Keywords", "Why It's Bad", "How to Detect", "Mode"],
+        "output_cols": ["Category", "Anti-Pattern", "Keywords", "Why It's Bad", "How to Detect", "Better Alternative", "Severity", "Source", "Mode"]
+    },
+    "philosophy": {
+        "file": "design-philosophies.csv",
+        "search_cols": ["Philosophy", "School", "Pitch", "Flagship Examples", "Signature Moves", "Best For", "Pair With Style"],
+        "output_cols": ["Philosophy", "School", "Era", "Pitch", "Flagship Examples", "Signature Moves", "Best For", "Avoid For", "Pair With Style", "Pair With Typography", "Pair With Palette", "Risk Level", "AI Prompt Seed"]
+    },
+    "motion": {
+        "file": "motion-principles.csv",
+        "search_cols": ["Category", "Principle", "Keywords", "Why It Matters", "Do", "Don't"],
+        "output_cols": ["Category", "Principle", "Keywords", "Why It Matters", "Do", "Don't", "Code Good", "Code Bad", "Severity", "Source"]
     }
 }
 
@@ -210,7 +225,10 @@ def detect_domain(query):
         "google-fonts": ["google font", "font family", "font weight", "font style", "variable font", "noto", "font for", "find font", "font subset", "font language", "monospace font", "serif font", "sans serif font", "display font", "handwriting font", "font", "typography", "serif", "sans"],
         "icons": ["icon", "icons", "lucide", "heroicons", "symbol", "glyph", "pictogram", "svg icon"],
         "react": ["react", "next.js", "nextjs", "suspense", "memo", "usecallback", "useeffect", "rerender", "bundle", "waterfall", "barrel", "dynamic import", "rsc", "server component"],
-        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"]
+        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"],
+        "antipattern": ["anti-pattern", "antipattern", "avoid", "don't use", "do not use", "generic", "cliche", "overused", "ai aesthetic", "purple gradient", "stock photo", "nested card", "default shadcn", "default tailwind", "inter everywhere", "geist everywhere", "side stripe", "thick border"],
+        "philosophy": ["philosophy", "direction", "advisor", "swiss", "brutalist", "editorial", "minimalism", "maximalism", "hara", "muji", "retro futuristic", "y2k", "organic", "anti-design", "aurora", "glass", "vibe", "school", "movement"],
+        "motion": ["motion", "animation", "ease", "easing", "cubic-bezier", "spring", "transition", "keyframe", "transform", "translate", "scale on press", "transform-origin", "stagger", "drag", "gesture", "swipe", "framer motion", "waapi", "prefers-reduced-motion", "duration", "raycast", "sonner", "vaul", "drawer", "tooltip delay", "popover origin", "clip-path", "blur transition", "hardware accelerated", "starting-style"]
     }
 
     scores = {domain: sum(1 for kw in keywords if re.search(r'\b' + re.escape(kw) + r'\b', query_lower)) for domain, keywords in domain_keywords.items()}
