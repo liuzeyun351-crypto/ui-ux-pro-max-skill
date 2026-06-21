@@ -1,11 +1,11 @@
 ---
 name: ui-ux-pro-max
-description: "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples."
+description: "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 109 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples."
 ---
 
 # UI/UX Pro Max - Design Intelligence
 
-Comprehensive design guide for web and mobile applications. Contains 50+ styles, 161 color palettes, 57 font pairings, 161 product types with reasoning rules, 99 UX guidelines, and 25 chart types across 10 technology stacks. Searchable database with priority-based recommendations.
+Comprehensive design guide for web and mobile applications. Contains 50+ styles, 161 color palettes, 57 font pairings, 161 product types with reasoning rules, 109 UX guidelines, and 25 chart types across 10 technology stacks. Searchable database with priority-based recommendations.
 
 ## When to Apply
 
@@ -44,6 +44,27 @@ This Skill is not needed in the following situations:
 - Non-visual scripts or automation tasks
 
 **Decision criteria**: If the task will change how a feature **looks, feels, moves, or is interacted with**, this Skill should be used.
+
+## Foundational Design Principles (Apple — WWDC 2017 "Essential Design Principles")
+
+Apply these **first, at the concept stage**, before reaching for the tactical rule categories below. They are the *why* behind the rules — human-centered principles for products that feel intuitive, trustworthy, and beautiful. The overarching goal of all ten is to meet four human needs: **safety, meaning, achievement, and beauty**. Design for the people using the product, not just for a pretty screen.
+
+Query the full do/don't detail anytime: `python3 skills/ui-ux-pro-max/scripts/search.py "apple design principles" --domain ux -n 10`
+
+| # | Principle | Core Idea | Apply It By |
+|---|-----------|-----------|-------------|
+| 1 | **Wayfinding** | Navigation answers: *Where am I? Where can I go? What's there? How do I get out?* Reveal direction progressively, like airport signage. | Every screen has a title, a back path, and clear signposts; no dead-ends. |
+| 2 | **Feedback** | Respond to every action and surface system status — status, completion, warning, error. | Acknowledge input within ~100ms; show success/warning/error states explicitly. |
+| 3 | **Visibility** | Surface critical info and controls without making users dig — balanced against clutter. | Promote key status (unread, recording, syncing) to higher levels of the hierarchy. |
+| 4 | **Consistency** | Similar things look/behave similarly. Follow platform conventions (external) and stay cohesive (internal). | Reuse system icons/patterns; deviate only with strong justification. |
+| 5 | **Mental Models** | Match how users *expect* it to work. Matching feels intuitive; breaking it feels wrong even if "objectively better" (the Morty faucet). | Honor existing expectations; prove redesigns are better via testing before shipping. |
+| 6 | **Proximity & Grouping** | Put controls near what they affect; group related elements to show relationships. | Place a control beside its target; cluster related actions (Gestalt proximity). |
+| 7 | **Mapping** | Controls should resemble and be arranged like the things they affect. Direct manipulation > shape mapping > labels (last resort). | Use natural mapping (vertical slider for a vertical property); prefer direct manipulation. |
+| 8 | **Affordances** | Visual cues that communicate possible actions — the relationship between object and person. Buttons afford tapping, sliders dragging. | Make interactive elements *look* interactive (shape, shadow, elevation, motion). |
+| 9 | **Progressive Disclosure** | Introduce complexity gradually — ~20% of features deliver ~80% of value; keep the rest one step away. | Show essentials first; reveal advanced options on demand (Show Details / More). |
+| 10 | **Symmetry & Balance** | Reflectional/rotational/translational symmetry creates order and harmony; balanced forms read as stable and pleasing. | Compose with intentional balance; avoid purposeless lopsidedness. |
+
+> **How this layers with the rest of the skill:** Use these principles to frame *what* the experience should be, then use the priority-ranked Rule Categories below (Accessibility, Touch, Performance, …) for the *concrete, measurable* implementation checks. Principles set direction; rules enforce quality.
 
 ## Rule Categories by Priority
 
