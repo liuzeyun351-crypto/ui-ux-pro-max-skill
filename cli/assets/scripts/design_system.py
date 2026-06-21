@@ -16,9 +16,39 @@ Usage:
 import csv
 import json
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 from core import search, DATA_DIR
+
+
+# ============ PATH SANITIZATION ============
+def _sanitize_path_component(value: str, label: str = "value") -> str:
+    """Validate and sanitize a string used as a file/directory name component.
+
+    Raises ValueError for path traversal or separator characters so that
+    user-supplied --page / --project-name / --output-dir values cannot escape
+    the intended output directory.
+    """
+    if not value:
+        return "default"
+    if '\x00' in value:
+        raise ValueError(f"Invalid {label}: contains null byte")
+    if '/' in value or '\\' in value:
+        raise ValueError(f"Invalid {label}: must not contain path separators")
+    if '..' in value:
+        raise ValueError(f"Invalid {label}: must not contain '..'")
+    sanitized = re.sub(r'[<>:"|?*]', '-', value).strip()
+    if not sanitized:
+        raise ValueError(f"Invalid {label}: empty after sanitization")
+    return sanitized
+
+
+def _validate_output_dir(output_dir: str) -> Path:
+    """Resolve output directory path and reject null bytes."""
+    if '\x00' in output_dir:
+        raise ValueError("Invalid output directory: contains null byte")
+    return Path(output_dir).resolve()
 
 
 # ============ CONFIGURATION ============
@@ -571,12 +601,13 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
     Returns:
         dict with created file paths and status
     """
-    base_dir = Path(output_dir) if output_dir else Path.cwd()
-    
+    base_dir = _validate_output_dir(output_dir) if output_dir else Path.cwd()
+
     # Use project name for project-specific folder
     project_name = design_system.get("project_name", "default")
-    project_slug = project_name.lower().replace(' ', '-')
-    
+    raw_slug = project_name.lower().replace(' ', '-')
+    project_slug = _sanitize_path_component(raw_slug, "project name")
+
     design_system_dir = base_dir / "design-system" / project_slug
     pages_dir = design_system_dir / "pages"
     
@@ -596,7 +627,8 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
     
     # If page is specified, create page override file with intelligent content
     if page:
-        page_file = pages_dir / f"{page.lower().replace(' ', '-')}.md"
+        sanitized_page = _sanitize_path_component(page.lower().replace(' ', '-'), "page name")
+        page_file = pages_dir / f"{sanitized_page}.md"
         page_content = format_page_override_md(design_system, page, page_query)
         with open(page_file, 'w', encoding='utf-8') as f:
             f.write(page_content)

@@ -27,7 +27,7 @@ if sys.stderr.encoding and sys.stderr.encoding.lower() != 'utf-8':
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 
-def format_output(result):
+def format_output(result, max_length: int = 300):
     """Format results for Claude consumption (token-optimized)"""
     if "error" in result:
         return f"Error: {result['error']}"
@@ -45,8 +45,8 @@ def format_output(result):
         output.append(f"### Result {i}")
         for key, value in row.items():
             value_str = str(value)
-            if len(value_str) > 300:
-                value_str = value_str[:300] + "..."
+            if max_length > 0 and len(value_str) > max_length:
+                value_str = value_str[:max_length] + "..."
             output.append(f"- **{key}:** {value_str}")
         output.append("")
 
@@ -59,6 +59,7 @@ if __name__ == "__main__":
     parser.add_argument("--domain", "-d", choices=list(CSV_CONFIG.keys()), help="Search domain")
     parser.add_argument("--stack", "-s", choices=AVAILABLE_STACKS, help=f"Stack-specific search. Available: {', '.join(AVAILABLE_STACKS)}")
     parser.add_argument("--max-results", "-n", type=int, default=MAX_RESULTS, help="Max results (default: 3)")
+    parser.add_argument("--max-length", "-l", type=int, default=300, help="Max characters per field value (default: 300, 0 = unlimited)")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     # Design system generation
     parser.add_argument("--design-system", "-ds", action="store_true", help="Generate complete design system recommendation")
@@ -73,14 +74,18 @@ if __name__ == "__main__":
 
     # Design system takes priority
     if args.design_system:
-        result = generate_design_system(
-            args.query, 
-            args.project_name, 
-            args.format,
-            persist=args.persist,
-            page=args.page,
-            output_dir=args.output_dir
-        )
+        try:
+            result = generate_design_system(
+                args.query,
+                args.project_name,
+                args.format,
+                persist=args.persist,
+                page=args.page,
+                output_dir=args.output_dir
+            )
+        except ValueError as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
         print(result)
         
         # Print persistence confirmation
@@ -103,7 +108,7 @@ if __name__ == "__main__":
             import json
             print(json.dumps(result, indent=2, ensure_ascii=False))
         else:
-            print(format_output(result))
+            print(format_output(result, args.max_length))
     # Domain search
     else:
         result = search(args.query, args.domain, args.max_results)
@@ -111,4 +116,4 @@ if __name__ == "__main__":
             import json
             print(json.dumps(result, indent=2, ensure_ascii=False))
         else:
-            print(format_output(result))
+            print(format_output(result, args.max_length))

@@ -1,4 +1,5 @@
 import { writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import type { Release } from '../types/index.js';
 
 const REPO_OWNER = 'nextlevelbuilder';
@@ -69,6 +70,18 @@ export async function getLatestRelease(): Promise<Release> {
   return response.json();
 }
 
+function verifyZipMagicBytes(buffer: ArrayBuffer): void {
+  const bytes = new Uint8Array(buffer);
+  // ZIP local file header signature: PK\x03\x04 (0x504B0304)
+  if (bytes.length < 4 || bytes[0] !== 0x50 || bytes[1] !== 0x4B || bytes[2] !== 0x03 || bytes[3] !== 0x04) {
+    throw new GitHubDownloadError('Downloaded file is not a valid ZIP archive (bad magic bytes)');
+  }
+}
+
+function computeSHA256(buffer: ArrayBuffer): string {
+  return createHash('sha256').update(Buffer.from(buffer)).digest('hex');
+}
+
 export async function downloadRelease(url: string, dest: string): Promise<void> {
   const response = await fetch(url, {
     headers: {
@@ -84,6 +97,9 @@ export async function downloadRelease(url: string, dest: string): Promise<void> 
   }
 
   const buffer = await response.arrayBuffer();
+  verifyZipMagicBytes(buffer);
+  const sha256 = computeSHA256(buffer);
+  process.stderr.write(`[uipro] Asset SHA256: ${sha256}\n`);
   await writeFile(dest, Buffer.from(buffer));
 }
 

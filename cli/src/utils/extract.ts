@@ -10,7 +10,20 @@ const execAsync = promisify(exec);
 
 const EXCLUDED_FILES = ['settings.local.json'];
 
+/**
+ * Reject paths containing shell-special characters before they reach execAsync.
+ * All paths used here are system-generated (mkdtemp), but we validate defensively
+ * to prevent injection if the call site ever changes.
+ */
+function assertSafeShellPath(p: string): void {
+  if (/['";`$|&<>\x00]/.test(p)) {
+    throw new Error(`Path contains characters unsafe for shell interpolation: ${p}`);
+  }
+}
+
 export async function extractZip(zipPath: string, destDir: string): Promise<void> {
+  assertSafeShellPath(zipPath);
+  assertSafeShellPath(destDir);
   try {
     const isWindows = process.platform === 'win32';
     if (isWindows) {
