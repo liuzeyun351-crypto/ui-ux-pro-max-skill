@@ -20,6 +20,14 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain <domain> [-n <max
 - `landing` - Page structure and CTA strategies
 - `chart` - Chart types and library recommendations
 - `ux` - Best practices and anti-patterns
+- `antipattern` - Generic AI-aesthetic detector (purple gradients, default shadcn, Inter everywhere, etc.) — ported from impeccable + Anthropic frontend-design
+- `philosophy` - 10 design philosophies across 5 schools (Swiss, Brutalist, Editorial, Hara, Maximalism, Aurora, Y2K, Organic, Anti-Design) for advisor mode on vague briefs
+
+**Process docs (read before designing):**
+- `data/asset-protocol.md` - 5-step Core Asset Protocol for branded work
+- `data/advisor-mode.md` - 3-direction protocol for vague briefs
+- `templates/base/DESIGN.md` - per-project design memory (tokens, rules, locked direction)
+- `templates/base/PRODUCT.md` - per-project product memory (audience, voice, constraints)
 
 **Stack search:**
 ```bash

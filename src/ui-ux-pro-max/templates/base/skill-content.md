@@ -159,6 +159,40 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
 | `web` | App interface guidelines (iOS/Android/React Native) | accessibilityLabel, touch targets, safe areas, Dynamic Type |
 | `prompt` | AI prompts, CSS keywords | (style name) |
+| `antipattern` | What to avoid: generic AI aesthetics, overused patterns | purple gradient, default shadcn, Inter everywhere, stock photo, nested card |
+| `philosophy` | Design directions for advisor mode (vague briefs) | swiss editorial, brutalist, bold maximalism, kenya hara, retro futuristic |
+
+### Advisor Mode (vague briefs)
+
+When the brief is vague ("make it modern", "make it pop"), don't commit to a direction. Run:
+
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "<vibe-words>" --domain philosophy -n 3
+```
+
+Then present the 3 results to the user using the format in `data/advisor-mode.md`. Wait for the user to pick before designing.
+
+### Anti-Pattern Check (before shipping)
+
+Before declaring any design done, run:
+
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "<style-or-stack>" --domain antipattern -n 5
+```
+
+Cross-check the output against your design. Each row tells you what to avoid, why, and the better alternative.
+
+### Brand Work — Core Asset Protocol
+
+For any branded design (marketing, portfolio, editorial, campaign), follow `data/asset-protocol.md` BEFORE picking style/palette/font. Five steps: fact-check → logo → product shots → reference → tokens → brand-spec.md.
+
+### Project Memory — DESIGN.md & PRODUCT.md
+
+For projects that span multiple sessions, copy these into the project root:
+- `templates/base/DESIGN.md` — design tokens, hard rules, locked direction
+- `templates/base/PRODUCT.md` — what we're building, who for, voice rules
+
+Reference them at the start of every design session so context survives across conversations.
 
 ### Available Stacks
 

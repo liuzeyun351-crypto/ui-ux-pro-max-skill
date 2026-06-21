@@ -157,6 +157,40 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
 | `web` | App interface guidelines (iOS/Android/React Native) | accessibilityLabel, touch targets, safe areas, Dynamic Type |
 | `prompt` | AI prompts, CSS keywords | (style name) |
+| `antipattern` | What to avoid: generic AI aesthetics, overused patterns | purple gradient, default shadcn, Inter everywhere, stock photo, nested card |
+| `philosophy` | Design directions for advisor mode (vague briefs) | swiss editorial, brutalist, bold maximalism, kenya hara, retro futuristic |
+
+### Advisor Mode (vague briefs)
+
+When the brief is vague ("make it modern", "make it pop"), don't commit to a direction. Run:
+
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "<vibe-words>" --domain philosophy -n 3
+```
+
+Then present the 3 results to the user using the format in `data/advisor-mode.md`. Wait for the user to pick before designing.
+
+### Anti-Pattern Check (before shipping)
+
+Before declaring any design done, run:
+
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "<style-or-stack>" --domain antipattern -n 5
+```
+
+Cross-check the output against your design. Each row tells you what to avoid, why, and the better alternative.
+
+### Brand Work — Core Asset Protocol
+
+For any branded design (marketing, portfolio, editorial, campaign), follow `data/asset-protocol.md` BEFORE picking style/palette/font. Five steps: fact-check → logo → product shots → reference → tokens → brand-spec.md.
+
+### Project Memory — DESIGN.md & PRODUCT.md
+
+For projects that span multiple sessions, copy these into the project root:
+- `templates/base/DESIGN.md` — design tokens, hard rules, locked direction
+- `templates/base/PRODUCT.md` — what we're building, who for, voice rules
+
+Reference them at the start of every design session so context survives across conversations.
 
 ### Available Stacks
 
@@ -257,9 +291,14 @@ Scope notice: The rules below are for App UI (iOS/Android/React Native/Flutter),
 
 ### Icons & Visual Elements
 
+- 默认图标库使用 **Phosphor (`@phosphor-icons/react`)**。`src/ui-ux-pro-max/data/icons.csv` 中列出的只是常用推荐图标，不是完整集合。
+- 当推荐表中找不到合适的图标时：
+  - **优先继续从 Phosphor 的完整图标集中选择任何语义更贴切的图标**；
+  - 如果 Phosphor 也没有理想选项，可以使用 **Heroicons (`@heroicons/react`)** 作为备选，注意保持风格一致（线性/填充、笔画粗细、圆角风格）。
+
 | Rule | Standard | Avoid | Why It Matters |
 |------|----------|--------|----------------|
-| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Lucide, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
+| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Phosphor `@phosphor-icons/react`, Heroicons `@heroicons/react`, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
 | **Vector-Only Assets** | Use SVG or platform vector icons that scale cleanly and support theming. | Raster PNG icons that blur or pixelate. | Ensures scalability, crisp rendering, and dark/light mode adaptability. |
 | **Stable Interaction States** | Use color, opacity, or elevation transitions for press states without changing layout bounds. | Layout-shifting transforms that move surrounding content or trigger visual jitter. | Prevents unstable interactions and preserves smooth motion/perceived quality on mobile. |
 | **Correct Brand Logos** | Use official brand assets and follow their usage guidelines (spacing, color, clear space). | Guessing logo paths, recoloring unofficially, or modifying proportions. | Prevents brand misuse and ensures legal/platform compliance. |
