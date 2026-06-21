@@ -257,9 +257,14 @@ Scope notice: The rules below are for App UI (iOS/Android/React Native/Flutter),
 
 ### Icons & Visual Elements
 
+- 默认图标库使用 **Phosphor (`@phosphor-icons/react`)**。`src/ui-ux-pro-max/data/icons.csv` 中列出的只是常用推荐图标，不是完整集合。
+- 当推荐表中找不到合适的图标时：
+  - **优先继续从 Phosphor 的完整图标集中选择任何语义更贴切的图标**；
+  - 如果 Phosphor 也没有理想选项，可以使用 **Heroicons (`@heroicons/react`)** 作为备选，注意保持风格一致（线性/填充、笔画粗细、圆角风格）。
+
 | Rule | Standard | Avoid | Why It Matters |
 |------|----------|--------|----------------|
-| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Lucide, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
+| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Phosphor `@phosphor-icons/react`, Heroicons `@heroicons/react`, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
 | **Vector-Only Assets** | Use SVG or platform vector icons that scale cleanly and support theming. | Raster PNG icons that blur or pixelate. | Ensures scalability, crisp rendering, and dark/light mode adaptability. |
 | **Stable Interaction States** | Use color, opacity, or elevation transitions for press states without changing layout bounds. | Layout-shifting transforms that move surrounding content or trigger visual jitter. | Prevents unstable interactions and preserves smooth motion/perceived quality on mobile. |
 | **Correct Brand Logos** | Use official brand assets and follow their usage guidelines (spacing, color, clear space). | Guessing logo paths, recoloring unofficially, or modifying proportions. | Prevents brand misuse and ensures legal/platform compliance. |
@@ -351,3 +356,37 @@ Scope notice: This checklist is for App UI (iOS/Android/React Native/Flutter).
 - [ ] Color is not the only indicator
 - [ ] Reduced motion and dynamic text size are supported without layout breakage
 - [ ] Accessibility traits/roles/states (selected, disabled, expanded) are announced correctly
+
+---
+
+## Cognitive-Law Audit Mode (Human-Centered Review)
+
+When users ask for deep UX diagnosis, friction analysis, or pre-release quality gates, run this mode in addition to standard UI checks.
+
+### Phase 1: Fast Pass (Yes/No Gate)
+
+Any "No" is a required fix item before signoff.
+
+- Targeting: Critical actions are large, reachable, and near task endpoints.
+- Choice load: Screens avoid decision overload and use progressive disclosure.
+- Grouping: Proximity and similarity provide immediate structure.
+- Progress: Multi-step flows expose completion state clearly.
+- Feedback speed: UI acknowledges intent immediately (preferably < 400ms).
+- Input tolerance: Common human input variations are accepted with clear recovery.
+- Priority placement: Critical actions are placed at sequence boundaries, not buried.
+- Closure: End states are explicit and confidence-building.
+- Simplicity: Non-essential elements and branches are removed.
+
+### Phase 2: Theory Diagnosis
+
+For failed areas, map findings to core principles:
+
+- Fitts, Hick, Gestalt family, Von Restorff, Jakob, Miller
+- Goal-Gradient, Zeigarnik, Tesler, Peak-End, Postel
+- Doherty, Serial Position, Occam, Parkinson
+
+Output format for review tasks:
+
+1. Fast-pass failures only.
+2. Principle -> observed issue -> causal explanation.
+3. Fix plan with measurable acceptance criteria.

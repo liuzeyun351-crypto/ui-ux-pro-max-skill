@@ -358,3 +358,37 @@ Scope notice: This checklist is for App UI (iOS/Android/React Native/Flutter).
 - [ ] Color is not the only indicator
 - [ ] Reduced motion and dynamic text size are supported without layout breakage
 - [ ] Accessibility traits/roles/states (selected, disabled, expanded) are announced correctly
+
+---
+
+## Cognitive-Law Audit Mode (Human-Centered Review)
+
+When users ask for deep UX diagnosis, friction analysis, or pre-release quality gates, run this mode in addition to standard UI checks.
+
+### Phase 1: Fast Pass (Yes/No Gate)
+
+Any "No" is a required fix item before signoff.
+
+- Targeting: Critical actions are large, reachable, and near task endpoints.
+- Choice load: Screens avoid decision overload and use progressive disclosure.
+- Grouping: Proximity and similarity provide immediate structure.
+- Progress: Multi-step flows expose completion state clearly.
+- Feedback speed: UI acknowledges intent immediately (preferably < 400ms).
+- Input tolerance: Common human input variations are accepted with clear recovery.
+- Priority placement: Critical actions are placed at sequence boundaries, not buried.
+- Closure: End states are explicit and confidence-building.
+- Simplicity: Non-essential elements and branches are removed.
+
+### Phase 2: Theory Diagnosis
+
+For failed areas, map findings to core principles:
+
+- Fitts, Hick, Gestalt family, Von Restorff, Jakob, Miller
+- Goal-Gradient, Zeigarnik, Tesler, Peak-End, Postel
+- Doherty, Serial Position, Occam, Parkinson
+
+Output format for review tasks:
+
+1. Fast-pass failures only.
+2. Principle -> observed issue -> causal explanation.
+3. Fix plan with measurable acceptance criteria.
