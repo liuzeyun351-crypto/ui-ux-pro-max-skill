@@ -1,12 +1,13 @@
 import { mkdir, rm, access, cp, mkdtemp, readdir } from 'node:fs/promises';
-import { join, basename } from 'node:path';
-import { exec } from 'node:child_process';
+import { join, basename, resolve } from 'node:path';
+import { exec, execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { tmpdir } from 'node:os';
 import type { AIType } from '../types/index.js';
 import { AI_FOLDERS } from '../types/index.js';
 
 const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 const EXCLUDED_FILES = ['settings.local.json'];
 
@@ -14,12 +15,23 @@ export async function extractZip(zipPath: string, destDir: string): Promise<void
   try {
     const isWindows = process.platform === 'win32';
     if (isWindows) {
-      await execAsync(`powershell -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${destDir}' -Force"`);
+      await execFileAsync('powershell', ['-Command', `Expand-Archive -Path '${zipPath}' -DestinationPath '${destDir}' -Force`]);
     } else {
-      await execAsync(`unzip -o "${zipPath}" -d "${destDir}"`);
+      await execFileAsync('unzip', ['-o', zipPath, '-d', destDir]);
     }
   } catch (error) {
     throw new Error(`Failed to extract zip: ${error}`);
+  }
+
+  // Zip Slip protection: verify all extracted paths stay within destDir
+  const realDest = await resolve(destDir);
+  const entries = await readdir(destDir, { withFileTypes: true, recursive: true });
+  for (const entry of entries) {
+    const entryPath = resolve(join(destDir, entry.name));
+    if (!entryPath.startsWith(realDest)) {
+      await rm(destDir, { recursive: true, force: true });
+      throw new Error(`Zip Slip detected: ${entry.name} escapes destination directory`);
+    }
   }
 }
 
@@ -73,9 +85,9 @@ export async function copyFolders(
       // Try shell fallback for older Node versions
       try {
         if (process.platform === 'win32') {
-          await execAsync(`xcopy "${sourcePath}" "${targetPath}" /E /I /Y`);
+          await execFileAsync('xcopy', [sourcePath, targetPath, '/E', '/I', '/Y']);
         } else {
-          await execAsync(`cp -r "${sourcePath}/." "${targetPath}"`);
+          await execFileAsync('cp', ['-r', `${sourcePath}/.`, targetPath]);
         }
         copiedFolders.push(folder);
       } catch {

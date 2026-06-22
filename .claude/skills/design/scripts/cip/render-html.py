@@ -8,6 +8,7 @@ with detailed descriptions, concepts, and brand guidelines.
 """
 
 import argparse
+import html
 import json
 import os
 import sys
@@ -140,13 +141,19 @@ def generate_html(brand_name, industry, images_dir, output_path=None, style=None
     style_info = brief.get("style", {})
     industry_info = brief.get("industry", {})
 
+    # Sanitize user-provided values for safe HTML embedding
+    safe_brand = html.escape(brand_name)
+    safe_industry = html.escape(industry_info.get("Industry", industry.title()))
+    safe_style = html.escape(style_info.get("Style Name", "Corporate"))
+    safe_mood = html.escape(style_info.get("Mood", "Professional"))
+
     # Build HTML
     html_parts = [f'''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{brand_name} - Corporate Identity Program</title>
+    <title>{safe_brand} - Corporate Identity Program</title>
     <style>
         * {{
             margin: 0;
@@ -309,20 +316,20 @@ def generate_html(brand_name, industry, images_dir, output_path=None, style=None
 </head>
 <body>
     <section class="hero">
-        <h1>{brand_name}</h1>
+        <h1>{safe_brand}</h1>
         <p class="subtitle">Corporate Identity Program</p>
         <div class="meta">
             <div class="meta-item">
                 <div class="meta-label">Industry</div>
-                <div class="meta-value">{industry_info.get("Industry", industry.title())}</div>
+                <div class="meta-value">{safe_industry}</div>
             </div>
             <div class="meta-item">
                 <div class="meta-label">Style</div>
-                <div class="meta-value">{style_info.get("Style Name", "Corporate")}</div>
+                <div class="meta-value">{safe_style}</div>
             </div>
             <div class="meta-item">
                 <div class="meta-label">Mood</div>
-                <div class="meta-value">{style_info.get("Mood", "Professional")}</div>
+                <div class="meta-value">{safe_mood}</div>
             </div>
             <div class="meta-item">
                 <div class="meta-label">Deliverables</div>
@@ -352,13 +359,13 @@ def generate_html(brand_name, industry, images_dir, output_path=None, style=None
         html_parts.append(f'''
         <div class="deliverable">
             <div class="deliverable-image">
-                <img src="{img_src}" alt="{info['title']}" loading="lazy">
+                <img src="{img_src}" alt="{html.escape(info['title'])}" loading="lazy">
             </div>
             <div class="deliverable-content">
-                <h3 class="deliverable-title">{info['title']}</h3>
-                <p class="deliverable-concept">{info['concept']}</p>
-                <p class="deliverable-purpose">{info['purpose']}</p>
-                <span class="deliverable-specs">{info['specs']}</span>
+                <h3 class="deliverable-title">{html.escape(info['title'])}</h3>
+                <p class="deliverable-concept">{html.escape(info['concept'])}</p>
+                <p class="deliverable-purpose">{html.escape(info['purpose'])}</p>
+                <span class="deliverable-specs">{html.escape(info['specs'])}</span>
             </div>
         </div>
 ''')
@@ -368,7 +375,7 @@ def generate_html(brand_name, industry, images_dir, output_path=None, style=None
     </section>
 
     <footer class="footer">
-        <p><strong>{brand_name}</strong> Corporate Identity Program</p>
+        <p><strong>{safe_brand}</strong> Corporate Identity Program</p>
         <p>Generated on {datetime.now().strftime("%B %d, %Y")}</p>
         <p style="margin-top: 1rem; font-size: 0.8rem;">Powered by CIP Design Skill</p>
     </footer>

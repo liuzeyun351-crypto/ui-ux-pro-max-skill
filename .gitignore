@@ -47,6 +47,9 @@ out/
 .env.local
 .env.*.local
 
+# Coverage
+.coverage
+
 # Local settings
 .claude/settings.local.json
 .claude/session-state/

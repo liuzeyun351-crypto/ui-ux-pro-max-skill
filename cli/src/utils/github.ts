@@ -69,6 +69,8 @@ export async function getLatestRelease(): Promise<Release> {
   return response.json();
 }
 
+const MAX_DOWNLOAD_SIZE = 50 * 1024 * 1024; // 50MB
+
 export async function downloadRelease(url: string, dest: string): Promise<void> {
   const response = await fetch(url, {
     headers: {
@@ -83,7 +85,16 @@ export async function downloadRelease(url: string, dest: string): Promise<void> 
     throw new GitHubDownloadError(`Failed to download: ${response.status} ${response.statusText}`);
   }
 
+  const contentLength = parseInt(response.headers.get('content-length') || '0');
+  if (contentLength > MAX_DOWNLOAD_SIZE) {
+    throw new GitHubDownloadError(`Download too large: ${contentLength} bytes exceeds ${MAX_DOWNLOAD_SIZE} byte limit`);
+  }
+
   const buffer = await response.arrayBuffer();
+  if (buffer.byteLength > MAX_DOWNLOAD_SIZE) {
+    throw new GitHubDownloadError(`Download too large: ${buffer.byteLength} bytes exceeds ${MAX_DOWNLOAD_SIZE} byte limit`);
+  }
+
   await writeFile(dest, Buffer.from(buffer));
 }
 
@@ -96,7 +107,7 @@ export function getAssetUrl(release: Release): string | null {
 
   // Fall back to GitHub's auto-generated archive
   // Format: https://github.com/{owner}/{repo}/archive/refs/tags/{tag}.zip
-  if (release.tag_name) {
+  if (release.tag_name && /^v?\d+\.\d+\.\d+/.test(release.tag_name)) {
     return `https://github.com/${REPO_OWNER}/${REPO_NAME}/archive/refs/tags/${release.tag_name}.zip`;
   }
 
