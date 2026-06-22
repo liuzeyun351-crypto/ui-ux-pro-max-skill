@@ -38,7 +38,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          registry-url: https://registry.npmjs.org
           cache: npm
           cache-dependency-path: cli/package-lock.json
 
@@ -53,14 +52,12 @@ jobs:
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx --yes \
           -p semantic-release \
           -p @semantic-release/commit-analyzer \
           -p @semantic-release/release-notes-generator \
           -p @semantic-release/changelog \
           -p @semantic-release/exec \
-          -p @semantic-release/npm \
           -p @semantic-release/git \
           -p @semantic-release/github \
           -p conventional-changelog-conventionalcommits \

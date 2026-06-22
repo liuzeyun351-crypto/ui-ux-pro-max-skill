@@ -507,10 +507,10 @@ See [CLAUDE.md](CLAUDE.md) for detailed development guidelines.
 
 ## Automated Releases
 
-This repository uses semantic-release with Conventional Commits to publish releases automatically:
+This repository uses semantic-release with Conventional Commits to create GitHub releases automatically:
 
-- `dev` branch publishes beta prereleases such as `2.6.0-beta.1` on the npm `beta` dist-tag and creates GitHub prereleases.
-- `main` branch publishes official stable releases such as `2.6.0` on the npm `latest` dist-tag and creates GitHub releases.
+- `dev` branch creates beta GitHub prereleases such as `2.6.0-beta.1`.
+- `main` branch creates official stable GitHub releases such as `2.6.0`.
 
 Release notes and `CHANGELOG.md` are generated from Conventional Commit messages. Version numbers are synchronized across `skill.json`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `cli/package.json`, and `cli/package-lock.json` during release preparation.
 
@@ -520,7 +520,7 @@ Use these commit types for correct version bumps:
 - `feat:` -> minor release
 - `feat!:` or `BREAKING CHANGE:` -> major release
 
-The release workflow requires an `NPM_TOKEN` repository secret with publish access to the `uipro-cli` npm package.
+The release workflow only needs the default `GITHUB_TOKEN`; it does not publish to npm.
 
 ## Troubleshooting
 
