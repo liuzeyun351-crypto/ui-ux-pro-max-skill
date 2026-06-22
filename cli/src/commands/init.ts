@@ -13,6 +13,7 @@ import {
   getLatestRelease,
   getAssetUrl,
   downloadRelease,
+  getGitHubTokenGuidance,
   GitHubRateLimitError,
   GitHubDownloadError,
 } from '../utils/github.js';
@@ -27,6 +28,7 @@ interface InitOptions {
   offline?: boolean;
   legacy?: boolean; // Use old ZIP-based install
   global?: boolean; // Install to home directory (global mode)
+  token?: string; // GitHub PAT for higher API rate limits
 }
 
 /**
@@ -36,13 +38,14 @@ interface InitOptions {
 async function tryGitHubInstall(
   targetDir: string,
   aiType: AIType,
-  spinner: ReturnType<typeof ora>
+  spinner: ReturnType<typeof ora>,
+  token?: string
 ): Promise<string[] | null> {
   let tempDir: string | null = null;
 
   try {
     spinner.text = 'Fetching latest release from GitHub...';
-    const release = await getLatestRelease();
+    const release = await getLatestRelease(token);
     const assetUrl = getAssetUrl(release);
 
     if (!assetUrl) {
@@ -53,7 +56,7 @@ async function tryGitHubInstall(
     tempDir = await createTempDir();
     const zipPath = join(tempDir, 'release.zip');
 
-    await downloadRelease(assetUrl, zipPath);
+    await downloadRelease(assetUrl, zipPath, token);
 
     spinner.text = 'Extracting and installing files...';
     const { copiedFolders, tempDir: extractedTempDir } = await installFromZip(
@@ -73,7 +76,7 @@ async function tryGitHubInstall(
     }
 
     if (error instanceof GitHubRateLimitError) {
-      spinner.warn('GitHub rate limit reached, using template generation...');
+      spinner.warn(`GitHub rate limit reached, falling back to bundled assets.\n${getGitHubTokenGuidance()}`);
       return null;
     }
 
@@ -163,7 +166,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
       }
       // Try GitHub download first (unless offline mode)
       if (!options.offline) {
-        const githubResult = await tryGitHubInstall(cwd, aiType, spinner);
+        const githubResult = await tryGitHubInstall(cwd, aiType, spinner, options.token);
         if (githubResult) {
           copiedFolders = githubResult;
           installMethod = 'github';
