@@ -3,27 +3,22 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize, ready_for_review, reopened]
-    # Optional: Only run on specific file changes
-    # paths:
-    #   - "src/**/*.ts"
-    #   - "src/**/*.tsx"
-    #   - "src/**/*.js"
-    #   - "src/**/*.jsx"
 
 jobs:
   claude-review:
-    # Optional: Filter by PR author
-    # if: |
-    #   github.event.pull_request.user.login == 'external-contributor' ||
-    #   github.event.pull_request.user.login == 'new-developer' ||
-    #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+    # HARDENED (Comment and Control vulnerability — 2026-04-21)
+    # Only run for trusted PR authors. Untrusted forks cannot trigger this.
+    if: |
+      github.event.pull_request.user.login == 'zerodarkthirtyhq' ||
+      github.event.pull_request.author_association == 'OWNER' ||
+      github.event.pull_request.author_association == 'MEMBER'
 
     runs-on: ubuntu-latest
+    # Least-privilege permissions — removed id-token:write (not needed)
     permissions:
       contents: read
       pull-requests: read
       issues: read
-      id-token: write
 
     steps:
       - name: Checkout repository
@@ -39,6 +34,5 @@ jobs:
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-
+          # HARDENED: Restrict dangerous tools to prevent prompt injection exploitation
+          claude_args: '--disallowed-tools Bash,Write,WebFetch,Edit,NotebookEdit'
