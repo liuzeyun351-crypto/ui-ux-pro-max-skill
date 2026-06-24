@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import type { Release } from '../types/index.js';
 
@@ -16,6 +17,13 @@ export class GitHubDownloadError extends Error {
   constructor(message: string) {
     super(message);
     this.name = 'GitHubDownloadError';
+  }
+}
+
+export class GitHubChecksumError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'GitHubChecksumError';
   }
 }
 
@@ -69,7 +77,14 @@ export async function getLatestRelease(): Promise<Release> {
   return response.json();
 }
 
-export async function downloadRelease(url: string, dest: string): Promise<void> {
+export function getChecksumUrl(release: Release, assetName: string): string | null {
+  const checksumAsset = release.assets.find(
+    a => a.name === `${assetName}.sha256` || a.name === 'checksums.txt'
+  );
+  return checksumAsset?.browser_download_url ?? null;
+}
+
+export async function downloadRelease(url: string, dest: string, checksumUrl?: string): Promise<void> {
   const response = await fetch(url, {
     headers: {
       'User-Agent': 'uipro-cli',
@@ -84,6 +99,21 @@ export async function downloadRelease(url: string, dest: string): Promise<void> 
   }
 
   const buffer = await response.arrayBuffer();
+
+  if (checksumUrl) {
+    const checksumResponse = await fetch(checksumUrl, { headers: { 'User-Agent': 'uipro-cli' } });
+    if (checksumResponse.ok) {
+      const checksumText = (await checksumResponse.text()).trim();
+      const expectedHash = checksumText.split(/\s+/)[0];
+      const actualHash = createHash('sha256').update(Buffer.from(buffer)).digest('hex');
+      if (actualHash !== expectedHash) {
+        throw new GitHubChecksumError(
+          `Checksum mismatch for downloaded release: expected ${expectedHash}, got ${actualHash}`
+        );
+      }
+    }
+  }
+
   await writeFile(dest, Buffer.from(buffer));
 }
 

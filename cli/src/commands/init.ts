@@ -12,9 +12,11 @@ import { logger } from '../utils/logger.js';
 import {
   getLatestRelease,
   getAssetUrl,
+  getChecksumUrl,
   downloadRelease,
   GitHubRateLimitError,
   GitHubDownloadError,
+  GitHubChecksumError,
 } from '../utils/github.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -52,8 +54,10 @@ async function tryGitHubInstall(
     spinner.text = `Downloading ${release.tag_name}...`;
     tempDir = await createTempDir();
     const zipPath = join(tempDir, 'release.zip');
+    const assetName = assetUrl.split('/').pop() ?? 'release.zip';
+    const checksumUrl = getChecksumUrl(release, assetName) ?? undefined;
 
-    await downloadRelease(assetUrl, zipPath);
+    await downloadRelease(assetUrl, zipPath, checksumUrl);
 
     spinner.text = 'Extracting and installing files...';
     const { copiedFolders, tempDir: extractedTempDir } = await installFromZip(
@@ -70,6 +74,10 @@ async function tryGitHubInstall(
     // Cleanup temp directory on error
     if (tempDir) {
       await cleanup(tempDir);
+    }
+
+    if (error instanceof GitHubChecksumError) {
+      throw error;
     }
 
     if (error instanceof GitHubRateLimitError) {
