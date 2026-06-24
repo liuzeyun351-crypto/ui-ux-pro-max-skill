@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#4b5a69",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0062a0",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline": "#707882",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#637383",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-primary": "#ffffff",
+                        "primary": "#005c97",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed": "#001d35",
+                        "on-secondary-container": "#485f7e",
+                        "surface-dim": "#d8dadb",
+                        "on-background": "#191c1d",
+                        "background": "#f8fafb",
+                        "surface": "#f8fafb",
+                        "surface-container": "#eceeef",
+                        "primary-container": "#0075be",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-surface-variant": "#404751",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "secondary-container": "#c1d9fd",
+                        "inverse-primary": "#9bcaff",
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-primary-container": "#f3f7ff",
+                        "surface-container-low": "#f2f4f5",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#314866",
+                        "tertiary-fixed": "#d4e4f6",
+                        "secondary": "#49607f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8fafb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #eceeef; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #005c97; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white">ANDRITZ PRECISION</span>
+<nav class="hidden md:flex gap-6 h-full items-center">
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] hover:bg-[#eceeef] transition-colors px-3 py-2" href="#">Dashboard</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] hover:bg-[#eceeef] transition-colors px-3 py-2" href="#">Assets</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#0075BE] border-b-2 border-[#0075BE] px-3 py-2" href="#">System Logs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#404751] hover:bg-[#eceeef] transition-colors"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="p-2 text-[#404751] hover:bg-[#eceeef] transition-colors"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+<div class="w-8 h-8 bg-surface-container-highest overflow-hidden">
+<img alt="Operational Supervisor Profile" data-alt="professional portrait of a middle-aged engineering supervisor in a clean workspace with soft industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6-wjelqA7NYbkSADuVsz7Am6BfZZegiO-GscIicD-6c3MV2oI76D5CMMwCemuUefnsInHomT9Yv_w7jgusYvNyn2xOzMyRamcOnFu1LiVN53vpaL4M9fpI96y58jquvsISo6iHZz2NABAGwCuTbV14khhzK90Ag47uQ3GdFBc7CzrpNb4ed_CHSoAf-_vgQJSdTBn_h6qLX54QBQlAkrlVr33WRmb0E_ADedwFdA1aqy0B79f1sLl8AABpWAXFRjDVIAnMrLb16w"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="font-black text-[#001c38] tracking-tight">NODE_A1</span>
+</div>
+<p class="font-['Gilroy-Regular','Inter'] text-[10px] tracking-widest text-[#404751] opacity-70">OPERATIONAL_UNIT_04</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span> Dashboard</a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="factory">factory</span> Assets</a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="sensors">sensors</span> Telemetry</a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="analytics">analytics</span> Analytics</a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="build">build</span> Maintenance</a>
+<a class="flex items-center gap-3 px-6 py-3 font-['Gilroy-Regular','Inter'] text-sm bg-white text-[#001c38] font-semibold transition-all" href="#"><span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span> System Logs</a>
+</nav>
+<div class="mt-auto px-6 space-y-4">
+<button class="w-full bg-gradient-to-br from-[#005c97] to-[#0075be] text-white py-3 px-4 font-bold text-xs tracking-widest uppercase hover:opacity-90 transition-opacity">DEPLOY UPDATE</button>
+<div class="pt-4 space-y-2">
+<a class="flex items-center gap-3 text-xs text-[#404751] hover:text-[#005c97]" href="#"><span class="material-symbols-outlined text-base" data-icon="description">description</span> Documentation</a>
+<a class="flex items-center gap-3 text-xs text-[#404751] hover:text-[#005c97]" href="#"><span class="material-symbols-outlined text-base" data-icon="help">help</span> Support</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-12 max-w-[1600px]">
+<!-- Header & Action Row -->
+<div class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-5xl font-black tracking-tight text-[#001c38] mb-2 uppercase">Identity &amp; Access</h1>
+<p class="text-on-surface-variant font-['Gilroy-Regular'] tracking-wide">Managing 24 active plant operators and system engineers</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high text-on-secondary-fixed-variant px-8 py-3 font-bold text-xs tracking-widest uppercase hover:bg-surface-container-highest transition-colors">
+                    EXPORT DIRECTORY
+                </button>
+<button class="bg-gradient-to-br from-[#005c97] to-[#0075be] text-white px-8 py-3 font-bold text-xs tracking-widest uppercase shadow-[0px_4px_12px_rgba(0,92,151,0.2)]">
+                    ADD NEW USER
+                </button>
+</div>
+</div>
+<!-- Filter & Stats Bar -->
+<div class="bg-surface-container p-1 mb-1 flex items-center justify-between">
+<div class="flex">
+<div class="bg-surface-container-lowest px-6 py-4 flex flex-col min-w-[180px]">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1">Total Users</span>
+<span class="text-3xl font-black text-[#001c38]">42</span>
+</div>
+<div class="px-6 py-4 flex flex-col min-w-[180px]">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-1">Active Now</span>
+<span class="text-3xl font-black text-[#001c38]">12</span>
+</div>
+<div class="px-6 py-4 flex flex-col min-w-[180px]">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-1">Pending Sync</span>
+<span class="text-3xl font-black text-[#001c38]">03</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pr-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="pl-8 pr-4 py-2 bg-transparent border-b-2 border-outline-variant focus:border-primary border-t-0 border-x-0 outline-none text-xs font-bold tracking-widest uppercase placeholder:text-on-surface-variant/50" placeholder="SEARCH OPERATORS..." type="text"/>
+</div>
+<button class="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span> Filter
+                </button>
+</div>
+</div>
+<!-- User Table Component -->
+<div class="bg-surface-container-lowest shadow-[0px_1px_2px_rgba(0,0,0,0.05)] overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/10">
+<th class="px-8 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">User Identity</th>
+<th class="px-8 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Assigned Role</th>
+<th class="px-8 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Security Level</th>
+<th class="px-8 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Last Activity</th>
+<th class="px-8 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center text-primary font-bold">MK</div>
+<div>
+<div class="font-bold text-[#001c38] text-sm uppercase tracking-tight">Marcus Kaelstrom</div>
+<div class="text-xs text-on-surface-variant">m.kaelstrom@andritz-precision.com</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 text-[10px] font-black uppercase tracking-widest">Plant Engineer</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<span class="ml-2 text-xs font-bold text-[#001c38]">LVL_03</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-xs text-[#001c38] font-medium">14:22:05 UTC</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Module A1 Calibration</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase tracking-widest">Edit Permissions</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center text-primary font-bold">SL</div>
+<div>
+<div class="font-bold text-[#001c38] text-sm uppercase tracking-tight">Sarah Linden</div>
+<div class="text-xs text-on-surface-variant">s.linden@andritz-precision.com</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 text-[10px] font-black uppercase tracking-widest">Shift Supervisor</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<span class="ml-2 text-xs font-bold text-[#001c38]">LVL_04</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-xs text-[#001c38] font-medium">08:15:30 UTC</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Login Event: Node_01</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase tracking-widest">Edit Permissions</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container flex items-center justify-center text-primary font-bold">JT</div>
+<div>
+<div class="font-bold text-[#001c38] text-sm uppercase tracking-tight">James Thorne</div>
+<div class="text-xs text-on-surface-variant">j.thorne@andritz-precision.com</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 text-[10px] font-black uppercase tracking-widest">Operator I</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-[#005c97]"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<div class="w-1.5 h-1.5 bg-outline-variant"></div>
+<span class="ml-2 text-xs font-bold text-[#001c38]">LVL_01</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-xs text-[#001c38] font-medium">2 days ago</div>
+<div class="text-[10px] text-on-surface-variant uppercase">Manual Override Exit</div>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="text-primary hover:underline text-[10px] font-bold uppercase tracking-widest">Edit Permissions</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Secondary Content: Permissions Matrix Preview (Bento Style) -->
+<div class="mt-12 grid grid-cols-3 gap-8">
+<div class="col-span-2 bg-surface-container p-8">
+<div class="flex justify-between items-start mb-8">
+<h3 class="text-xl font-black text-[#001c38] uppercase tracking-tighter">Global Security Thresholds</h3>
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/30">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Auth Protocol</span>
+<span class="text-xs font-black text-[#001c38]">2FA / BIOMETRIC</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/30">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Session Timeout</span>
+<span class="text-xs font-black text-[#001c38]">15 MINUTES</span>
+</div>
+<div class="flex justify-between items-center pb-2 border-b border-outline-variant/30">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Node Lockdown</span>
+<span class="text-xs font-black text-error">DISABLED</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em] mb-4">Network Integrity</p>
+<div class="h-24 w-full bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: repeating-linear-gradient(45deg, #005c97, #005c97 10px, transparent 10px, transparent 20px);"></div>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-primary/20 border-t border-primary"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-2xl font-black text-primary">99.9%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#001c38] p-8 text-white flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-black uppercase tracking-tighter mb-4">Critical Alerts</h3>
+<div class="space-y-4">
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<div>
+<p class="text-xs font-bold leading-tight">UNAUTHORIZED ACCESS ATTEMPT</p>
+<p class="text-[10px] opacity-60">Terminal G-42 • 12:04 UTC</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="info">info</span>
+<div>
+<p class="text-xs font-bold leading-tight">CERTIFICATE EXPIRY (12D)</p>
+<p class="text-[10px] opacity-60">Operator: Linden, Sarah</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full border-2 border-white/20 py-3 text-[10px] font-bold tracking-widest uppercase hover:bg-white/10 transition-colors">
+                    VIEW ALL LOGS
+                </button>
+</div>
+</div>
+</main>
+<!-- Permissions Modal (Hidden State Logic - shown for design demonstration) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-8 pointer-events-none">
+<!-- Overlay backdrop is omitted for direct visibility of form design -->
+<div class="bg-white w-full max-w-2xl shadow-[0px_32px_64px_rgba(0,0,0,0.2)] pointer-events-auto border border-outline-variant/20">
+<div class="bg-[#f2f4f5] px-8 py-6 flex justify-between items-center border-b border-outline-variant/10">
+<h2 class="text-2xl font-black text-[#001c38] uppercase tracking-tight">Edit Permissions: Kaelstrom, M.</h2>
+<button class="text-on-surface-variant hover:text-[#001c38]"><span class="material-symbols-outlined" data-icon="close">close</span></button>
+</div>
+<div class="p-8">
+<form class="space-y-8">
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">User Role</label>
+<select class="w-full bg-surface-container-highest border-b-2 border-primary border-t-0 border-x-0 rounded-none focus:ring-0 text-sm font-semibold uppercase py-3">
+<option>Plant Engineer</option>
+<option>Shift Supervisor</option>
+<option>System Architect</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Access Level</label>
+<div class="flex items-center gap-2 h-[46px]">
+<input class="w-full accent-primary" type="range"/>
+<span class="text-sm font-bold text-[#001c38]">LVL_03</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Module Permissions</label>
+<div class="grid grid-cols-3 gap-4">
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Telemetry</span>
+</label>
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Calibration</span>
+</label>
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Shutdown</span>
+</label>
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Override</span>
+</label>
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Log Export</span>
+</label>
+<label class="flex items-center gap-3 p-4 bg-surface-container-low border border-transparent hover:border-primary/30 cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary rounded-none border-outline focus:ring-0" type="checkbox"/>
+<span class="text-xs font-bold uppercase tracking-tight">Analytics</span>
+</label>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10 flex justify-end gap-4">
+<button class="px-8 py-3 text-xs font-bold tracking-widest uppercase text-on-surface-variant hover:text-[#001c38]" type="button">Cancel</button>
+<button class="bg-gradient-to-br from-[#005c97] to-[#0075be] text-white px-12 py-3 font-bold text-xs tracking-widest uppercase shadow-[0px_4px_12px_rgba(0,92,151,0.2)]" type="submit">
+                            Commit Changes
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</body></html>

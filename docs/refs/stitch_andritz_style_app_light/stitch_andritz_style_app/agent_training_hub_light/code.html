@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONOLITH_v1.0 | Digital Employee Training</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-dim": "#d8dadb",
+                        "surface": "#f8fafb",
+                        "secondary-container": "#c1d9fd",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#4b5a69",
+                        "on-primary-fixed": "#001d35",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404751",
+                        "secondary": "#49607f",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "surface-tint": "#0062a0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#485f7e",
+                        "primary-container": "#0075be",
+                        "outline": "#707882",
+                        "surface-container-high": "#e6e8e9",
+                        "background": "#f8fafb",
+                        "surface-bright": "#f8fafb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "on-primary-container": "#f3f7ff",
+                        "tertiary-container": "#637383",
+                        "surface-variant": "#e1e3e4",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eceeef",
+                        "inverse-primary": "#9bcaff",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "inverse-on-surface": "#eff1f2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#191c1d",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0rem",
+                        "lg": "0rem",
+                        "xl": "0rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .monolith-gradient { background: linear-gradient(135deg, #005c97 0%, #0075be 100%); }
+        .sharp-corners { border-radius: 0px !important; }
+        .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-100 dark:bg-slate-900 flex flex-col z-50">
+<div class="p-6">
+<div class="text-lg font-black tracking-tighter text-slate-900 dark:text-white mb-1">Industrial Control</div>
+<div class="text-[11px] uppercase tracking-widest font-bold text-on-surface-variant">Digital Employee Platform</div>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center px-4 py-3 bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400 scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined mr-3">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined mr-3">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined mr-3">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined mr-3">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full monolith-gradient text-white font-bold text-[11px] tracking-widest py-4 transition-transform active:scale-90 sharp-corners">
+                DEPLOY AGENT
+            </button>
+</div>
+<div class="px-4 py-6 space-y-2">
+<a class="flex items-center px-4 py-2 text-slate-500 dark:text-slate-400 text-[11px] uppercase tracking-widest font-bold hover:text-sky-600 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">settings</span> Settings
+            </a>
+<a class="flex items-center px-4 py-2 text-slate-500 dark:text-slate-400 text-[11px] uppercase tracking-widest font-bold hover:text-sky-600 transition-colors" href="#">
+<span class="material-symbols-outlined mr-3 text-sm">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="ml-64 h-screen flex flex-col overflow-hidden bg-surface-container-low">
+<!-- TopAppBar -->
+<header class="h-16 flex justify-between items-center px-8 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl z-40 shadow-sm">
+<div class="flex items-center gap-8">
+<div class="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">MONOLITH_v1.0</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 border-b-2 border-sky-700 dark:border-sky-400 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<input class="bg-surface-container-high border-none text-[10px] font-bold py-2 px-4 w-64 focus:ring-2 focus:ring-primary sharp-corners" placeholder="SYSTEM SEARCH..." type="text"/>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">lan</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">account_tree</span>
+</div>
+<div class="w-8 h-8 bg-surface-container-highest overflow-hidden">
+<img alt="Operator Avatar" class="w-full h-full object-cover grayscale" data-alt="portrait of professional system operator in clinical white lab lighting with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CNruaS1j5GVKyi6yna5VXsXffci3MhUIPmWSrGhV3LIuIaFhn875MwWh3JUz0ZpmlIoqvXHQxjT4JpBnuv2bOpLLFaXB1Zx_rp7OPC45vmwdsp15yjAlNZ2yy4aIpqZZp3M_IF7pOKjQKe-6Fygex7O3stZFBWo6vzsZvVxspogTS4pTAIaxHGiGKAk9EcqJC8NbKjXjWrPYrLQvyH4ZWOyZDuc-hYQwe725b2diZGkSBuKRe43iDU89YY8PjUrnO7h6xfvzsz8"/>
+</div>
+</div>
+</header>
+<!-- Training Canvas -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Page Header (Editorial Anchor) -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-5xl font-extrabold tracking-tighter text-slate-900 uppercase">Training_Module_09</h1>
+<p class="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em] mt-2">Specialized Neural Optimization Environment // Subsystem: Logic_Sets</p>
+</div>
+<div class="flex gap-4">
+<div class="text-right">
+<div class="text-3xl font-black text-primary">98.4<span class="text-sm ml-1">%</span></div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Global Accuracy</div>
+</div>
+<div class="h-12 w-[1px] bg-outline-variant opacity-30"></div>
+<div class="text-right">
+<div class="text-3xl font-black text-error">0.02<span class="text-sm ml-1">%</span></div>
+<div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Critical Errors</div>
+</div>
+</div>
+</div>
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Accuracy Curve -->
+<div class="col-span-8 bg-surface-container-lowest p-6 flex flex-col min-h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest bg-surface-container-high px-2 py-1">Live_Data</span>
+<h2 class="text-xl font-bold mt-2 uppercase tracking-tight">Convergence Analytics</h2>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container text-[10px] font-black px-4 py-2 hover:bg-surface-container-high">DAILY</button>
+<button class="bg-primary text-white text-[10px] font-black px-4 py-2">HISTORICAL</button>
+</div>
+</div>
+<div class="flex-1 relative flex items-end gap-1">
+<!-- Mock Chart Columns -->
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary/20 h-[40%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary/30 h-[45%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary/40 h-[52%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary/50 h-[48%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary h-[65%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary h-[78%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary h-[82%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary h-[94%]"></div>
+</div>
+<div class="flex-1 bg-surface-container flex flex-col justify-end h-full">
+<div class="w-full bg-primary h-[91%]"></div>
+</div>
+</div>
+</div>
+<!-- Error Analysis -->
+<div class="col-span-4 bg-surface-container p-6 flex flex-col">
+<h2 class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-6">Error Rate Analysis</h2>
+<div class="space-y-6">
+<div class="flex flex-col">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase">Semantic Drift</span>
+<span class="text-[11px] font-mono text-error">12% INC.</span>
+</div>
+<div class="h-1 bg-surface-container-highest">
+<div class="h-full bg-error w-[45%]"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase">Logic Hallucination</span>
+<span class="text-[11px] font-mono text-primary">2% DEC.</span>
+</div>
+<div class="h-1 bg-surface-container-highest">
+<div class="h-full bg-primary w-[15%]"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase">Response Latency</span>
+<span class="text-[11px] font-mono text-on-surface-variant">STABLE</span>
+</div>
+<div class="h-1 bg-surface-container-highest">
+<div class="h-full bg-outline w-[30%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-auto bg-surface-container-lowest p-4 flex items-center justify-between">
+<div>
+<div class="text-xs font-bold uppercase">Last Audit</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-wider">04:22:15 UTC</div>
+</div>
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+</div>
+<!-- Sandbox Environment -->
+<div class="col-span-12 grid grid-cols-3 gap-6">
+<div class="col-span-2 bg-slate-900 text-sky-400 p-6 font-mono text-sm min-h-[300px]">
+<div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-amber-500"></div>
+<div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+<span class="ml-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">SANDBOX_ENVIRONMENT_v4</span>
+</div>
+<button class="text-[10px] bg-slate-800 px-3 py-1 text-slate-300 hover:bg-slate-700">RUN_TEST</button>
+</div>
+<div class="space-y-1">
+<p><span class="text-slate-500">01</span> <span class="text-pink-400">import</span> monolith_core</p>
+<p><span class="text-slate-500">02</span> </p>
+<p><span class="text-slate-500">03</span> <span class="text-slate-500">// Initialize synthetic logic set for validation</span></p>
+<p><span class="text-slate-500">04</span> <span class="text-sky-300">const</span> logicSet = <span class="text-amber-200">monolith_core</span>.load(<span class="text-emerald-400">"agent_schema_v2.json"</span>);</p>
+<p><span class="text-slate-500">05</span> </p>
+<p><span class="text-slate-500">06</span> <span class="text-sky-300">function</span> <span class="text-amber-200">validateAgent</span>(params) {</p>
+<p><span class="text-slate-500">07</span>     <span class="text-sky-300">return</span> logicSet.eval(params).then(res =&gt; {</p>
+<p><span class="text-slate-500">08</span>         <span class="text-amber-200">console</span>.log(<span class="text-emerald-400">`AGENT_RES: ${res.accuracy}`</span>);</p>
+<p><span class="text-slate-500">09</span>     });</p>
+<p><span class="text-slate-500">10</span> }</p>
+<p><span class="text-slate-500">11</span> <span class="text-slate-500">_</span></p>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 flex flex-col justify-between">
+<div>
+<h3 class="text-[11px] font-black uppercase tracking-widest mb-4">Training Controls</h3>
+<div class="space-y-4">
+<div>
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block mb-2">Learning Rate (Alpha)</label>
+<input class="w-full h-1 bg-surface-container-highest appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<div>
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant block mb-2">Batch Size</label>
+<select class="w-full bg-surface-container-lowest border-none text-[10px] font-bold tracking-widest py-3 px-4 sharp-corners outline-none focus:ring-2 focus:ring-primary">
+<option>BATCH_128_ULTRA</option>
+<option>BATCH_256_STABLE</option>
+<option>BATCH_512_LEGACY</option>
+</select>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full monolith-gradient text-white text-[11px] font-black tracking-widest py-4 sharp-corners active:opacity-70 transition-opacity">
+                                COMMIT LOGIC SET
+                            </button>
+<button class="w-full border-2 border-outline-variant text-on-surface-variant text-[11px] font-black tracking-widest py-4 sharp-corners hover:bg-surface-container transition-colors">
+                                REVERT TO STABLE
+                            </button>
+</div>
+</div>
+</div>
+<!-- Asset Preview Cards -->
+<div class="col-span-12 grid grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest overflow-hidden group">
+<div class="h-48 overflow-hidden grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="macro circuit board component detail with neon blue glowing accents and sharp focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4TxBJGsgHAt9lARQjP4PRkvR3sEUPchJpFYTMZCstLuAD9NIR0HBe_jywe2jBP_oy2Yk0qd8P1UfMwzyL_WEkhrw8zoI3kjg1tfMPnA-vSwhua6Os3Ei34XoQxAxcODJcEwwdLJ_BcwBNu4iDIuQAAmYGc9TmdWgxPUGdldNeOKZfyXXbXpl2iTo7qwQLK1N3kfB595hwuehzAT0SaJUCbVva11_xk7zLC7lPjB28oDWuz21JPD7XJwK02JzdP_Loy0J4QjLcIxY"/>
+</div>
+<div class="p-4">
+<div class="text-[10px] font-black text-primary uppercase mb-1">Architecture</div>
+<div class="text-sm font-bold uppercase">Quantum_Nodes_v2</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest overflow-hidden group">
+<div class="h-48 overflow-hidden grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="complex digital server room grid with glowing green matrix lights and perspective lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN063pBIjHgH2Jak4y7m3wgfdQBL7VbZfPS6LnIlQGxKArA7ETsSxOF5Y6Kf5RV9y4ffs1Zdo_k8c6bM05uGAavhwMdOx4vksBNKg-3Rb6UKwTRGW_AKFPx3xSixlt5mtm7uMXsPewq1MWxn4_ab2AsjD7cfbHFzuVH7xpAfOa57K72O2ipXhIR3Xz1LrrTKA9EgPYhq_dUwYyveMO2fDwgOHmi_tC0iNweUD1ugxnDUhRzIX_ksPaWwxIeifIqlVtO9HnWSlXYQk"/>
+</div>
+<div class="p-4">
+<div class="text-[10px] font-black text-primary uppercase mb-1">Deployment</div>
+<div class="text-sm font-bold uppercase">Edge_Computing_Pool</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest overflow-hidden group">
+<div class="h-48 overflow-hidden grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="abstract satellite view of global fiber optic network connections glowing in deep space blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByVuoAmx9hkUYnA-WWre_Na-gCsOYE6ZuPuLtwNAKq4g7ICqBKa6Eln9_DszaWVxNilRhzU0sl1MCKlQXn03aB_CJ7QvjY69U-jam4SQKHhklF4JjryQuBJHKRPAIAcPjO8L8Kizr51XmMd-KQ8q_rAU6iH61kjfvnVPhroxAglyEu_EMG4aHrl41SjTiCgONtgXAxo_D7VWgZGzXuOGH_-Rfgi3ZXWfy9oK_wkBHtBzTVtACUVUb89dcZ6w1Nz7cfFKIQncSB0kw"/>
+</div>
+<div class="p-4">
+<div class="text-[10px] font-black text-primary uppercase mb-1">Connectivity</div>
+<div class="text-sm font-bold uppercase">Low_Latency_Sync</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest overflow-hidden group">
+<div class="h-48 overflow-hidden grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="futuristic industrial data center with high-tech cooling systems and white sterile lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtGgt9WEaS7BbCjWRyx5-KX84S5tNoOXx2ScWEPn8aeHbHJ9WCv6HiHNX5CrwuY3hmSb-EMiWwDMicTYXFxTwZ-vzl8mpoP7p3ejqvmbtkfqgK4wdKXJ-yOrLyb0Au5M_Co8r57NvMfYsNkFEUz61W2Miuyrdck-SBdamCNMqt9QK0DfoTveW_HwzXjskUosIeY8_rLSyUEjBMJhVOKNWAil669I8p-_WphC7eUIhX0WD9E3ViT-HBDVjUR7Fw9OAiYg_kyC9gPAo"/>
+</div>
+<div class="p-4">
+<div class="text-[10px] font-black text-primary uppercase mb-1">Compute</div>
+<div class="text-sm font-bold uppercase">Titan_Cluster_Omega</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating System Status (Bottom Right) -->
+<div class="fixed bottom-8 right-8 bg-white shadow-lg border border-outline-variant p-4 flex items-center gap-4 z-50 sharp-corners">
+<div class="relative flex items-center justify-center">
+<div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+<div class="absolute w-5 h-5 border border-emerald-500 rounded-full animate-ping opacity-20"></div>
+</div>
+<div class="text-right">
+<div class="text-[10px] font-black uppercase tracking-widest text-on-surface">System Optimal</div>
+<div class="text-[9px] font-mono text-on-surface-variant">NODE_LATENCY: 4ms</div>
+</div>
+</div>
+</body></html>

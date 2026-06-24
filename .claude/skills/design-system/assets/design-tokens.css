@@ -1,0 +1,180 @@
+/* Andritz Precision — Design Tokens (Auto-generated) */
+/* Do not edit directly — modify design-tokens-starter.json instead */
+
+/* === PRIMITIVES === */
+:root {
+  --primitive-color-andritz-blue-50: #f0f7ff;
+  --primitive-color-andritz-blue-100: #e0efff;
+  --primitive-color-andritz-blue-200: #c6dfff;
+  --primitive-color-andritz-blue-300: #9bcaff;
+  --primitive-color-andritz-blue-400: #4d9fd4;
+  --primitive-color-andritz-blue-500: #0075be;
+  --primitive-color-andritz-blue-600: #005c97;
+  --primitive-color-andritz-blue-700: #004a77;
+  --primitive-color-andritz-blue-800: #003258;
+  --primitive-color-andritz-blue-900: #001c38;
+  --primitive-color-surface-light-lowest: #ffffff;
+  --primitive-color-surface-light-low: #f8fafb;
+  --primitive-color-surface-light-base: #f2f4f5;
+  --primitive-color-surface-light-mid: #eceeef;
+  --primitive-color-surface-light-high: #e6e8e9;
+  --primitive-color-surface-light-highest: #e1e3e4;
+  --primitive-color-surface-dark-lowest: #0a0e14;
+  --primitive-color-surface-dark-low: #10141a;
+  --primitive-color-surface-dark-base: #181c22;
+  --primitive-color-surface-dark-mid: #1c2026;
+  --primitive-color-surface-dark-high: #262a31;
+  --primitive-color-surface-dark-highest: #31353c;
+  --primitive-color-neutral-50: #f5f7fa;
+  --primitive-color-neutral-100: #eef1f6;
+  --primitive-color-neutral-200: #dfe2eb;
+  --primitive-color-neutral-300: #c0c7d2;
+  --primitive-color-neutral-500: #4b5a69;
+  --primitive-color-neutral-600: #49607f;
+  --primitive-color-neutral-700: #404751;
+  --primitive-color-neutral-900: #191c1d;
+  --primitive-color-neutral-950: #001c38;
+  --primitive-color-error-100: #ffdad6;
+  --primitive-color-error-300: #ffb4ab;
+  --primitive-color-error-400: #ff6b6b;
+  --primitive-color-error-600: #ba1a1a;
+  --primitive-color-tertiary-200: #ffe4cc;
+  --primitive-color-tertiary-400: #ffc9a0;
+  --primitive-color-tertiary-500: #ffb781;
+  --primitive-color-success-100: #dcfce7;
+  --primitive-color-success-400: #4ade80;
+  --primitive-color-success-600: #1a8a4a;
+  --primitive-spacing-0: 0;
+  --primitive-spacing-1: 0.25rem;
+  --primitive-spacing-2: 0.5rem;
+  --primitive-spacing-3: 0.75rem;
+  --primitive-spacing-4: 1rem;
+  --primitive-spacing-5: 1.25rem;
+  --primitive-spacing-6: 1.5rem;
+  --primitive-spacing-8: 2rem;
+  --primitive-spacing-10: 2.5rem;
+  --primitive-spacing-12: 3rem;
+  --primitive-spacing-16: 4rem;
+  --primitive-spacing-20: 5rem;
+  --primitive-spacing-24: 6rem;
+  --primitive-spacing-32: 8rem;
+  --primitive-typography-font-family-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --primitive-typography-font-family-premium: 'Gilroy', 'Inter', system-ui, sans-serif;
+  --primitive-typography-font-size-display-lg: 3.5rem;
+  --primitive-typography-font-size-display-md: 2.75rem;
+  --primitive-typography-font-size-display-sm: 2.25rem;
+  --primitive-typography-font-size-headline-lg: 2rem;
+  --primitive-typography-font-size-headline-md: 1.75rem;
+  --primitive-typography-font-size-headline-sm: 1.5rem;
+  --primitive-typography-font-size-title-lg: 1.375rem;
+  --primitive-typography-font-size-title-md: 1.125rem;
+  --primitive-typography-font-size-title-sm: 1rem;
+  --primitive-typography-font-size-body-lg: 1rem;
+  --primitive-typography-font-size-body-md: 0.875rem;
+  --primitive-typography-font-size-body-sm: 0.75rem;
+  --primitive-typography-font-size-label-md: 0.75rem;
+  --primitive-typography-font-size-label-sm: 0.6875rem;
+  --primitive-typography-font-weight-regular: 400;
+  --primitive-typography-font-weight-medium: 500;
+  --primitive-typography-font-weight-semibold: 600;
+  --primitive-typography-font-weight-bold: 700;
+  --primitive-typography-letter-spacing-tight: -0.02em;
+  --primitive-typography-letter-spacing-normal: 0;
+  --primitive-typography-letter-spacing-wide: 0.05em;
+  --primitive-typography-letter-spacing-wider: 0.1em;
+  --primitive-radius-none: 0px;
+  --primitive-radius-full: 9999px;
+  --primitive-shadow-ambient-light: 0px 12px 32px 0px rgba(0, 28, 56, 0.06);
+  --primitive-shadow-ambient-dark: 0px 12px 32px 0px rgba(0, 28, 56, 0.4);
+  --primitive-shadow-glow-primary: 0px 0px 8px #9bcaff;
+  --primitive-duration-fast: 150ms;
+  --primitive-duration-normal: 200ms;
+  --primitive-duration-slow: 300ms;
+}
+
+/* === SEMANTIC (Light Theme) === */
+:root {
+  --surface-default: #f8fafb;
+  --surface-container: #eceeef;
+  --surface-container-low: #f2f4f5;
+  --surface-container-high: #e6e8e9;
+  --surface-container-highest: #e1e3e4;
+  --surface-container-lowest: #ffffff;
+  --on-surface-default: #191c1d;
+  --on-surface-variant: #404751;
+  --primary-default: #0075be;
+  --primary-text: #005c97;
+  --primary-container: #0075be;
+  --primary-on-primary: #ffffff;
+  --primary-fixed-dim: #9bcaff;
+  --error-default: #ba1a1a;
+  --error-container: #ffdad6;
+  --error-on-error: #ffffff;
+  --outline-variant: #c0c7d2;
+  --ghost-border-opacity: 0.15;
+  --border: transparent;
+}
+
+/* === COMPONENTS === */
+:root {
+  --button-primary-bg-gradient: linear-gradient(135deg, #005c97, #0075be);
+  --button-primary-fg: #ffffff;
+  --button-secondary-bg: #e6e8e9;
+  --button-secondary-fg: #005c97;
+  --button-radius: 0px;
+  --button-padding-x: 1.5rem;
+  --button-padding-y: 0.5rem;
+  --button-active-scale: 0.98;
+  --button-text-transform: uppercase;
+  --button-letter-spacing: 0.05em;
+  --input-bg: #e1e3e4;
+  --input-fg: #191c1d;
+  --input-border: none;
+  --input-focus-border-bottom: 2px solid #0075be;
+  --input-error-bg: #ffdad6;
+  --input-radius: 0px;
+  --card-bg: #ffffff;
+  --card-fg: #191c1d;
+  --card-border: none;
+  --card-shadow: none;
+  --card-shadow-elevated: 0px 12px 32px 0px rgba(0, 28, 56, 0.06);
+  --card-radius: 0px;
+  --card-padding: 1.5rem;
+  --card-zone-gap: 2rem;
+  --dialog-overlay-bg: rgba(0, 28, 56, 0.5);
+  --dialog-bg: #ffffff;
+  --dialog-backdrop-blur: 20px;
+  --dialog-surface-opacity: 0.85;
+  --dialog-radius: 0px;
+  --dialog-shadow: 0px 12px 32px 0px rgba(0, 28, 56, 0.06);
+  --badge-radius: 0px;
+  --badge-text-transform: uppercase;
+  --badge-letter-spacing: 0.05em;
+  --table-border: none;
+  --table-header-transform: uppercase;
+  --table-header-tracking: 0.05em;
+  --table-row-separator: 2rem;
+}
+
+/* === SEMANTIC (Dark Theme) === */
+.dark {
+  --surface-default: #10141a;
+  --surface-container: #1c2026;
+  --surface-container-low: #181c22;
+  --surface-container-high: #262a31;
+  --surface-container-highest: #31353c;
+  --surface-container-lowest: #0a0e14;
+  --on-surface-default: #dfe2eb;
+  --on-surface-variant: #c0c7d2;
+  --primary-default: #0075be;
+  --primary-text: #9bcaff;
+  --primary-container: #0075be;
+  --primary-on-primary: #ffffff;
+  --primary-fixed-dim: #9bcaff;
+  --tertiary: #ffb781;
+  --error-default: #ffb4ab;
+  --error-container: #93000a;
+  --error-on-error: #ffdad6;
+  --outline-variant: #404751;
+  --ghost-border-opacity: 0.20;
+}

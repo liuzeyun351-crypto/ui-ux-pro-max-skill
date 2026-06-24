@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ PORTAL | Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "inverse-primary": "#9bcaff",
+                        "surface-container": "#eceeef",
+                        "surface": "#f8fafb",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#f2f7ff",
+                        "on-background": "#191c1d",
+                        "on-surface-variant": "#404751",
+                        "surface-container-low": "#f2f4f5",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-secondary-container": "#485f7e",
+                        "tertiary-container": "#637383",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed": "#001d35",
+                        "on-error-container": "#93000a",
+                        "outline": "#707882",
+                        "error-container": "#ffdad6",
+                        "background": "#f8fafb",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c0c7d2",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "inverse-on-surface": "#eff1f2",
+                        "secondary-container": "#c1d9fd",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "surface-tint": "#0062a0",
+                        "secondary": "#49607f",
+                        "tertiary": "#4b5a69",
+                        "on-secondary-fixed-variant": "#314866",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "primary-container": "#0075be",
+                        "on-primary-container": "#f3f7ff",
+                        "surface-bright": "#f8fafb",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#00497a",
+                        "surface-dim": "#d8dadb",
+                        "surface-container-highest": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #001c38;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .monolithic-anchor {
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+        .blueprint-label {
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        /* Overriding any default border-radius from tailwind */
+        * {
+            border-radius: 0 !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col items-center justify-center overflow-hidden">
+<!-- Decorative Industrial Element (Asymmetric Tonal Block) -->
+<div class="fixed top-0 left-0 w-1/3 h-screen bg-on-secondary-fixed/50 z-0 pointer-events-none"></div>
+<div class="fixed top-12 left-12 z-10">
+<h1 class="text-4xl monolithic-anchor text-white">ANDRITZ</h1>
+<p class="blueprint-label text-[10px] text-primary-fixed-dim mt-1">Industrial Intelligence Portal v4.2</p>
+</div>
+<!-- Main Login Canvas -->
+<main class="relative z-20 w-full max-w-[480px] px-8 py-16">
+<div class="mb-12">
+<h2 class="text-white text-5xl font-black monolithic-anchor mb-2">ACCESS</h2>
+<div class="h-1 w-12 bg-primary-container"></div>
+</div>
+<form class="space-y-8">
+<!-- Input Field 1: Operator ID -->
+<div class="group">
+<label class="block blueprint-label text-[11px] font-bold text-outline-variant mb-3">Operator ID</label>
+<div class="relative">
+<input class="w-full bg-on-secondary-fixed text-white border-none border-b-2 border-outline-variant/30 focus:border-primary-container focus:ring-0 transition-colors py-4 px-0 placeholder:text-outline/40 font-mono text-lg" placeholder="UNIT_OP_000" type="text"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant/50">
+<span class="material-symbols-outlined">badge</span>
+</div>
+</div>
+</div>
+<!-- Input Field 2: Authorization Key -->
+<div class="group">
+<label class="block blueprint-label text-[11px] font-bold text-outline-variant mb-3">Authorization Key</label>
+<div class="relative">
+<input class="w-full bg-on-secondary-fixed text-white border-none border-b-2 border-outline-variant/30 focus:border-primary-container focus:ring-0 transition-colors py-4 px-0 placeholder:text-outline/40 text-lg" placeholder="••••••••••••" type="password"/>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant/50">
+<span class="material-symbols-outlined">key</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-6 space-y-4">
+<button class="w-full py-5 bg-gradient-to-br from-primary to-primary-container text-white font-black blueprint-label text-sm tracking-widest active:scale-[0.98] transition-transform duration-150 shadow-[0px_12px_32px_rgba(0,0,0,0.3)]" type="submit">
+                    AUTHENTICATE
+                </button>
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-outline-variant/20"></div>
+<span class="blueprint-label text-[10px] text-outline-variant">Secure Protocols</span>
+<div class="h-[1px] flex-grow bg-outline-variant/20"></div>
+</div>
+<button class="w-full py-4 bg-on-secondary-fixed-variant/40 hover:bg-on-secondary-fixed-variant/60 text-surface-container-high border-none flex items-center justify-center gap-3 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+<span class="blueprint-label text-[11px] font-bold">Biometric Authorization</span>
+</button>
+</div>
+</form>
+<!-- Secondary Information / Help -->
+<div class="mt-12 flex items-start gap-4 p-6 bg-primary-container/10">
+<span class="material-symbols-outlined text-primary-fixed-dim">info</span>
+<div>
+<p class="text-[12px] text-primary-fixed-dim leading-relaxed">
+                    This terminal is for authorized personnel only. All access attempts are logged and monitored by Unit 4 Security Systems.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full px-12 py-8 flex justify-between items-end z-30">
+<div class="space-y-1">
+<p class="blueprint-label text-[10px] text-outline-variant">System Status</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-green-500"></div>
+<span class="text-[11px] font-bold text-surface">GRID_STABLE_01</span>
+</div>
+</div>
+<nav class="flex gap-8">
+<a class="blueprint-label text-[10px] font-bold text-outline-variant hover:text-white transition-colors" href="#">Legal Documentation</a>
+<a class="blueprint-label text-[10px] font-bold text-outline-variant hover:text-white transition-colors" href="#">Technical Support</a>
+<a class="blueprint-label text-[10px] font-bold text-outline-variant hover:text-white transition-colors" href="#">Global Privacy</a>
+</nav>
+</footer>
+<!-- Background Industrial Pattern -->
+<div class="fixed inset-0 z-[-1] opacity-5 pointer-events-none overflow-hidden">
+<div class="absolute inset-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-dwWITQ1qqbkA4G6PrNr1ExuYyQ4E2MvXc3ciNTrpgTXsnV7WybbTDbKEX-VNmXqY7J5xlrSduCRPDsFmWg4s9sPH-mt-kU4qCkWa9gj4nH8cJ7MIhvYuvCLuYUBDd0O9pZWjcjOeWxPR5h5KiHzB5OS2EOadRFa6XJ3yLKs56N2MdZuHv2DZFaH6zQvC2oZzp8nbCKZGrHI-gG5Af1oJjzzMBeTTok6p9HEgaTM5haZYJDvO_jWzhpSpT3_JZDs5tCPWIpg4NqU');">
+</div>
+<!-- Structural Aesthetic Graphic -->
+<div class="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] border border-outline-variant/20 transform rotate-12"></div>
+<div class="absolute top-[-5%] left-[-2%] w-[400px] h-[400px] border border-outline-variant/10 transform -rotate-12"></div>
+<!-- Large Background Image Overlay -->
+<div class="absolute inset-0 bg-on-secondary-fixed/80"></div>
+<img alt="high-tech industrial machinery with cold blue lighting and massive steel structures in a dark factory setting" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply filter grayscale contrast-150" data-alt="dramatic wide shot of precision industrial turbines and steel piping in a dark factory environment with sharp blue accent lighting and atmospheric steam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaHjnjq5nSBfchonMc82gHh6HTWsr8Oyfl4F2yJlGMdHe2YKlZMkPlgKYeuGye1ArVlTufhluOymzl22bevtz9Y2_BmgsCJTAPyMe1rRzkvX6BlNuBeUnfhNZP4-dIWLFvAyZhnk_wBGzXqGGAM4XgZIjoMVGSd2ZCQadBIUlFnJQoYI3ISRaSkn42MwUbSSwc-_SuY-9mARWefheHY_u39ISu2nO7RmXQlcnveEzhyt-4paag1sx10Mn0I8gsHjJa9qloXg45-wk"/>
+</div>
+</body></html>

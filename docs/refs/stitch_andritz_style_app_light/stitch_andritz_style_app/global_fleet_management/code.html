@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ PRECISION | Fleet Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#4b5a69",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0062a0",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline": "#707882",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#637383",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-primary": "#ffffff",
+                        "primary": "#005c97",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed": "#001d35",
+                        "on-secondary-container": "#485f7e",
+                        "surface-dim": "#d8dadb",
+                        "on-background": "#191c1d",
+                        "background": "#f8fafb",
+                        "surface": "#f8fafb",
+                        "surface-container": "#eceeef",
+                        "primary-container": "#0075be",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-surface-variant": "#404751",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "secondary-container": "#c1d9fd",
+                        "inverse-primary": "#9bcaff",
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-primary-container": "#f3f7ff",
+                        "surface-container-low": "#f2f4f5",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#314866",
+                        "tertiary-fixed": "#d4e4f6",
+                        "secondary": "#49607f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8fafb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<!-- TopAppBar Shell -->
+<nav class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white">ANDRITZ PRECISION</span>
+<div class="hidden md:flex gap-6">
+<a class="text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs h-16 flex items-center" href="#">Fleet Overview</a>
+<a class="text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs h-16 flex items-center px-2" href="#">Operational Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container border-none text-xs font-bold tracking-widest pl-10 pr-4 py-2 w-64 focus:ring-2 focus:ring-primary" placeholder="SEARCH ASSET ID..." type="text"/>
+</div>
+<button class="p-2 hover:bg-[#eceeef] transition-colors"><span class="material-symbols-outlined text-[#404751]">notifications</span></button>
+<button class="p-2 hover:bg-[#eceeef] transition-colors"><span class="material-symbols-outlined text-[#404751]">settings</span></button>
+<div class="ml-2">
+<img class="w-8 h-8 object-cover" data-alt="Close up portrait of a senior industrial operational supervisor in a professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHvMaC1Fkg_aMKLrMFdeYBmUV4bBTTa8ebfR_10PLvWmNM3GkIssjwCkNMIkvItgaHOkXRA8-AbpmEJqIdeYV896roP8GcETgbmKbL0oVHWGe0TIbXA9LKmdi8cPub-edCg36EUBWPhnlYUbkWaq8zzl7CoQchUjQvuSIGnx6eIii1mBEgAUZGHTktywh6JVmf7ZTLQnJ3vglOpLS7Dib39h70GU4SmNu15EkyfyiBVeprvkrr-hqOMAM_SavB4oRkFFKnKEdPhuo"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-white dark:bg-[#f8fafb]/10">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<div>
+<p class="text-[10px] font-bold tracking-tighter text-[#404751]/60 uppercase">System Node Alpha</p>
+<p class="text-sm font-black text-[#001c38] dark:text-white tracking-tighter">NODE_A1</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#f8fafb]/10 text-[#001c38] dark:text-white font-semibold transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-sm tracking-normal uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg">factory</span>
+<span class="text-sm tracking-normal uppercase">Assets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg">sensors</span>
+<span class="text-sm tracking-normal uppercase">Telemetry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="text-sm tracking-normal uppercase">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-lg">build</span>
+<span class="text-sm tracking-normal uppercase">Maintenance</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 font-bold text-xs tracking-widest uppercase">
+                DEPLOY UPDATE
+            </button>
+<div class="pt-4 border-t border-[#c0c7d2]/20">
+<a class="flex items-center gap-3 px-4 py-2 text-xs text-[#404751] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-xs text-[#404751] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 h-[calc(100vh-64px)] overflow-hidden flex flex-col md:flex-row">
+<!-- Left Column: Map Ecosystem -->
+<section class="flex-1 relative bg-surface-container overflow-hidden">
+<!-- Map Background -->
+<div class="absolute inset-0 grayscale opacity-40 mix-blend-multiply bg-no-repeat bg-cover" data-alt="Detailed monochromatic terrain map of northern europe and north america highlighting industrial distribution hubs in soft blue tones" data-location="Global" style="background-image: url('https://placeholder.pics/svg/300')">
+</div>
+<!-- UI Overlay: Top Metrics -->
+<div class="absolute top-8 left-8 right-8 flex justify-between items-start pointer-events-none">
+<div class="pointer-events-auto">
+<div class="bg-surface-container-lowest p-6 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex flex-col gap-1">
+<span class="text-[10px] font-extrabold tracking-[0.2em] text-on-surface-variant uppercase">Fleet Health Score</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black text-primary tracking-tighter">98.2</span>
+<span class="text-sm font-bold text-on-surface-variant uppercase">%</span>
+</div>
+<div class="mt-2 h-1 bg-surface-container w-48 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary w-[98%]"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-4 pointer-events-auto">
+<div class="bg-surface-container-lowest/85 backdrop-blur-xl p-4 border-l-4 border-primary">
+<p class="text-[9px] font-bold text-on-surface-variant tracking-widest uppercase">Operational</p>
+<p class="text-xl font-black">1,242 <span class="text-[10px] text-primary">UNIT</span></p>
+</div>
+<div class="bg-surface-container-lowest/85 backdrop-blur-xl p-4 border-l-4 border-error">
+<p class="text-[9px] font-bold text-on-surface-variant tracking-widest uppercase">Fault State</p>
+<p class="text-xl font-black">14 <span class="text-[10px] text-error">UNIT</span></p>
+</div>
+</div>
+</div>
+<!-- Map Markers (Pseudo-Simulation) -->
+<div class="absolute inset-0 p-24">
+<!-- Unit A -->
+<div class="absolute top-1/4 left-1/3 group cursor-pointer">
+<div class="w-4 h-4 bg-primary ring-8 ring-primary/20 animate-pulse"></div>
+<div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 hidden group-hover:block bg-surface-container-lowest p-3 min-w-[200px] shadow-xl z-10">
+<p class="text-[10px] font-bold text-primary mb-1">ASSET_4492_B</p>
+<p class="text-xs font-bold text-on-surface">HAMBURG TERMINAL</p>
+<div class="mt-2 flex justify-between items-center border-t border-outline-variant/15 pt-2">
+<span class="text-[9px] uppercase font-semibold text-on-surface-variant">Status</span>
+<span class="px-2 py-0.5 bg-green-100 text-green-800 text-[8px] font-bold uppercase">Normal</span>
+</div>
+</div>
+</div>
+<!-- Unit B (Fault) -->
+<div class="absolute top-1/2 left-2/3 group cursor-pointer">
+<div class="w-4 h-4 bg-error ring-8 ring-error/20"></div>
+<div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 block bg-surface-container-lowest p-4 min-w-[220px] shadow-2xl z-10">
+<p class="text-[10px] font-bold text-error mb-1">CRITICAL FAULT</p>
+<p class="text-sm font-black text-on-surface tracking-tight">NODE_ROTTERDAM_09</p>
+<p class="text-xs text-on-surface-variant mt-1">Vibration threshold exceeded in turbine housing B.</p>
+<button class="mt-3 w-full bg-on-surface text-surface text-[9px] font-bold py-2 tracking-widest uppercase">DEPLOY ENGINEER</button>
+</div>
+</div>
+<!-- Unit C (Warning) -->
+<div class="absolute bottom-1/3 left-1/2 group cursor-pointer">
+<div class="w-4 h-4 bg-yellow-500 ring-8 ring-yellow-500/20"></div>
+</div>
+</div>
+<!-- Map Control Floating Panel -->
+<div class="absolute bottom-8 left-8 flex flex-col gap-2">
+<button class="bg-surface-container-lowest p-3 shadow-md hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">add</span></button>
+<button class="bg-surface-container-lowest p-3 shadow-md hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined">remove</span></button>
+<button class="bg-surface-container-lowest p-3 shadow-md hover:bg-surface-container-high transition-colors mt-2"><span class="material-symbols-outlined">layers</span></button>
+</div>
+</section>
+<!-- Right Column: Sidebar Data -->
+<section class="w-full md:w-96 bg-surface-container-low border-l border-outline-variant/10 overflow-y-auto no-scrollbar">
+<div class="p-8 space-y-10">
+<!-- Section 1: KPI Summary -->
+<div class="space-y-6">
+<h2 class="text-[11px] font-black tracking-[0.3em] text-on-surface-variant uppercase">Global Performance</h2>
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<p class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Total Output</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-on-surface tracking-tighter">842.5</span>
+<span class="text-sm font-bold text-on-surface-variant">GWh/d</span>
+</div>
+<div class="flex items-center gap-1 text-green-600">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span class="text-[10px] font-black uppercase">+4.2% VS L-24H</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 flex flex-col gap-2">
+<p class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">Active Fleet %</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-on-surface tracking-tighter">94.1</span>
+<span class="text-sm font-bold text-on-surface-variant">%</span>
+</div>
+<div class="mt-4 flex gap-1 h-2">
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-primary"></div>
+<div class="flex-1 bg-surface-container"></div>
+</div>
+</div>
+</div>
+<!-- Section 2: Maintenance Queue -->
+<div class="space-y-6">
+<div class="flex justify-between items-end">
+<h2 class="text-[11px] font-black tracking-[0.3em] text-on-surface-variant uppercase">Maintenance Queue</h2>
+<span class="text-[10px] font-bold text-primary cursor-pointer hover:underline">VIEW ALL</span>
+</div>
+<div class="space-y-3">
+<!-- Maintenance Item 1 -->
+<div class="group bg-surface-container-high p-4 hover:bg-white transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold tracking-tight text-on-surface">PUMP_STAT_04</span>
+<span class="text-[9px] font-black text-error uppercase">Overdue</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant leading-relaxed">Seal replacement required. Estimated downtime: 4h.</p>
+<div class="mt-3 flex items-center gap-3">
+<img class="w-5 h-5 grayscale" data-alt="Portrait of a mechanical engineer in safety gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWXWOuriWXaj8lWGppxFrT0ntsMqrjk4juhUOKlkW3489RsOYxUafae4LDajHKo8Ssl4739SWoZtqYoilFAzBEmya65LmSsLDgzUiexkLdw_aCxsj5ulQpbuNbWshgeyfISmeDt91evGCfo881drTVUfiobSbrRo4PGZViofz5gaw6qqFQPq4UoCv1saSKzdkPykqq4T2zK_6etd941oxJrcqf_GmVRsj08Vrxjqze3TWIuJESUA-9H3sv_NinKnC_s3TfP2rWM_M"/>
+<span class="text-[9px] font-bold text-on-secondary-fixed-variant uppercase">Assigned: Marcus V.</span>
+</div>
+</div>
+<!-- Maintenance Item 2 -->
+<div class="group bg-surface-container-high p-4 hover:bg-white transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold tracking-tight text-on-surface">GEN_ALPHA_X2</span>
+<span class="text-[9px] font-black text-primary uppercase">Scheduled</span>
+</div>
+<p class="text-xs font-medium text-on-surface-variant leading-relaxed">Systematic fluid analysis and calibration check.</p>
+<div class="mt-3 flex items-center gap-3">
+<div class="w-5 h-5 bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">person_add</span>
+</div>
+<span class="text-[9px] font-bold text-on-secondary-fixed-variant/40 uppercase tracking-tighter">UNASSIGNED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Live Telemetry Feed -->
+<div class="pt-6 border-t border-outline-variant/15">
+<h2 class="text-[11px] font-black tracking-[0.3em] text-on-surface-variant uppercase mb-4">Event Stream</h2>
+<div class="space-y-4">
+<div class="flex gap-3">
+<div class="mt-1 w-1.5 h-1.5 bg-primary"></div>
+<div>
+<p class="text-[10px] font-black text-on-surface uppercase">09:42 UTC</p>
+<p class="text-[11px] text-on-surface-variant leading-tight">NODE_ROTTERDAM_09 reported abnormal vibration levels.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 w-1.5 h-1.5 bg-green-500"></div>
+<div>
+<p class="text-[10px] font-black text-on-surface uppercase">09:38 UTC</p>
+<p class="text-[11px] text-on-surface-variant leading-tight">ASSET_4492_B power output stabilized at 45.2MW.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 w-1.5 h-1.5 bg-on-surface-variant/30"></div>
+<div>
+<p class="text-[10px] font-black text-on-surface uppercase">09:15 UTC</p>
+<p class="text-[11px] text-on-surface-variant leading-tight">Routine diagnostic report generated for SECTOR_G4.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB Suppression: On high-level dash we don't need a specific task FAB unless it's generic asset creation, 
+         but per prompt we focus on overview. If needed, a "Report Incident" FAB could be here -->
+<div class="fixed bottom-8 right-104 z-50 md:right-[416px]">
+<button class="bg-primary text-white p-4 shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_alert</span>
+<span class="text-[10px] font-black tracking-widest uppercase pr-2">Report Incident</span>
+</button>
+</div>
+</body></html>

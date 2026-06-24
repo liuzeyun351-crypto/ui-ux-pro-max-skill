@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONOLITH_v1.0 | Neural Engine Tuning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #10141a;
+            color: #dfe2eb;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for monolithic feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0e14; }
+        ::-webkit-scrollbar-thumb { background: #31353c; border-radius: 3px; }
+        
+        .monolith-gradient {
+            background: linear-gradient(135deg, #0075be 0%, #00497a 100%);
+        }
+        .glass-panel {
+            background: rgba(24, 28, 34, 0.85);
+            backdrop-filter: blur(20px);
+        }
+        .glow-line {
+            box-shadow: 0 0 12px rgba(155, 202, 255, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-surface": "#dfe2eb",
+                        "secondary-container": "#334a68",
+                        "tertiary": "#ffb781",
+                        "surface-container-highest": "#31353c",
+                        "on-primary-fixed": "#001d35",
+                        "on-surface-variant": "#c0c7d2",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ffb4ab",
+                        "secondary": "#b0c8ec",
+                        "surface-tint": "#9bcaff",
+                        "surface-container-lowest": "#0a0e14",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-secondary-container": "#a2badd",
+                        "on-primary": "#003256",
+                        "inverse-surface": "#dfe2eb",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#9bcaff",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-dim": "#10141a",
+                        "surface-container-low": "#181c22",
+                        "surface": "#10141a",
+                        "on-tertiary-container": "#fff5f0",
+                        "on-tertiary": "#4e2600",
+                        "outline-variant": "#404751",
+                        "primary-fixed": "#d0e4ff",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#dfe2eb",
+                        "on-error": "#690005",
+                        "outline": "#8a919c",
+                        "primary-container": "#0075be",
+                        "surface-container-high": "#262a31",
+                        "background": "#10141a",
+                        "surface-bright": "#353940",
+                        "on-secondary": "#19314e",
+                        "tertiary-fixed": "#ffdcc4",
+                        "on-primary-container": "#f3f7ff",
+                        "tertiary-container": "#ae5b01",
+                        "surface-variant": "#31353c",
+                        "surface-container": "#1c2026",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb781",
+                        "inverse-on-surface": "#2d3137",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#0062a0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface select-none">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-900 flex flex-col z-50 border-0">
+<div class="p-6 flex flex-col gap-1">
+<span class="text-lg font-black tracking-tighter text-white">Industrial Control</span>
+<span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Digital Employee Platform</span>
+</div>
+<nav class="flex-1 mt-4">
+<!-- Dashboard Tab (Active) -->
+<div class="flex items-center px-6 py-3 bg-slate-800 text-sky-400 border-r-4 border-sky-400 transition-colors cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="dashboard">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</div>
+<div class="flex items-center px-6 py-3 text-slate-500 hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</div>
+<div class="flex items-center px-6 py-3 text-slate-500 hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="hub">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</div>
+<div class="flex items-center px-6 py-3 text-slate-500 hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="monitoring">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</div>
+<div class="flex items-center px-6 py-3 text-slate-500 hover:bg-slate-800 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="terminal">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</div>
+</nav>
+<div class="p-6">
+<button class="w-full monolith-gradient text-white py-3 rounded-lg text-[11px] font-bold tracking-widest uppercase transition-transform active:scale-95">
+                DEPLOY AGENT
+            </button>
+</div>
+<div class="p-4 border-t border-slate-800/50">
+<div class="flex items-center px-2 py-2 text-slate-500 hover:text-sky-400 cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="settings">settings</span>
+<span class="text-[10px] font-bold uppercase">Settings</span>
+</div>
+<div class="flex items-center px-2 py-2 text-slate-500 hover:text-sky-400 cursor-pointer">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="help">help</span>
+<span class="text-[10px] font-bold uppercase">Support</span>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-slate-950/85 backdrop-blur-xl flex justify-between items-center px-8 z-40">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-white uppercase tracking-tighter">MONOLITH_v1.0</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-400 border-b-2 border-sky-400 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-sky-300 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-400 hover:text-sky-300 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-lowest border-0 text-[10px] font-bold uppercase tracking-widest text-on-surface p-2 px-4 w-64 rounded-md focus:ring-1 focus:ring-primary" placeholder="QUERY ENGINE..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary" data-icon="lan">lan</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary" data-icon="account_tree">account_tree</span>
+</div>
+<img alt="Operator Avatar" class="w-8 h-8 rounded-full border border-slate-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxEzp879EyY9LaiyT0vx7jiYaT6ZypSMUsSI3kP9QORXr2gHXvsWxxMTdj9ECZ6ogjewEMT-7mRJXFgwEDmhQe8wURYjFmRIvt7Mg7cP-KZ8rLhSshv8y6IHVJbRKabDjOwsi2vr1CM7xY1JgsGReDqTJfyUWolMQLvJawLkJaRIR7CrKVf5aEfFKsujM4f5jKNYEth8ruG7UnuiKfts3yh7fFeq9J51YDjiGhdgwnwF0c73FMNPw7z1MHGvlDX2ck1wwvh1Ugas0"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 pt-16 min-h-screen p-8 bg-surface-container-lowest">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex justify-between items-end">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2 block">Core System</span>
+<h1 class="text-5xl font-black tracking-tighter text-on-surface">Neural Engine Tuning</h1>
+</div>
+<div class="flex gap-4">
+<div class="px-6 py-4 bg-surface-container-low rounded-lg text-right">
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Active Gradients</span>
+<span class="text-2xl font-mono font-bold text-tertiary">0.000427_η</span>
+</div>
+<div class="px-6 py-4 bg-surface-container-low rounded-lg text-right">
+<span class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Global Loss</span>
+<span class="text-2xl font-mono font-bold text-primary">0.0128_δ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Activation Visualizer -->
+<div class="col-span-8 bg-surface-container-low p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary/30 text-6xl" data-icon="neurology">neurology</span>
+</div>
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-6">Weight Distribution Heatmap</h3>
+<div class="grid grid-cols-12 gap-1 h-64 items-end">
+<!-- Dynamic Bars Placeholder -->
+<div class="bg-primary/20 hover:bg-primary h-[40%] transition-all duration-300"></div>
+<div class="bg-primary/20 hover:bg-primary h-[65%] transition-all duration-300"></div>
+<div class="bg-primary/20 hover:bg-primary h-[85%] transition-all duration-300"></div>
+<div class="bg-primary/40 hover:bg-primary h-[95%] transition-all duration-300 glow-line"></div>
+<div class="bg-primary/20 hover:bg-primary h-[80%] transition-all duration-300"></div>
+<div class="bg-primary/10 hover:bg-primary h-[60%] transition-all duration-300"></div>
+<div class="bg-primary/20 hover:bg-primary h-[45%] transition-all duration-300"></div>
+<div class="bg-primary/30 hover:bg-primary h-[35%] transition-all duration-300"></div>
+<div class="bg-primary/20 hover:bg-primary h-[55%] transition-all duration-300"></div>
+<div class="bg-primary/50 hover:bg-primary h-[75%] transition-all duration-300 glow-line"></div>
+<div class="bg-primary/20 hover:bg-primary h-[90%] transition-all duration-300"></div>
+<div class="bg-primary/10 hover:bg-primary h-[65%] transition-all duration-300"></div>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<div class="flex gap-8">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Sparsity Index</span>
+<span class="text-xl font-mono text-on-surface">14.2%</span>
+</div>
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Convergence Rate</span>
+<span class="text-xl font-mono text-on-surface">Stable</span>
+</div>
+</div>
+<button class="bg-surface-container-highest px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-primary border border-outline-variant/20 hover:bg-surface-bright transition-colors">
+                        Re-Initialize Tensors
+                    </button>
+</div>
+</div>
+<!-- Tuning Controls -->
+<div class="col-span-4 space-y-6">
+<div class="bg-surface-container-high p-6 rounded-xl">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-4">Hyperparameter Tuning</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant mb-2">
+<span>Learning Rate</span>
+<span class="text-primary">0.001</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-lowest appearance-none cursor-pointer" type="range"/>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant mb-2">
+<span>Dropout Ratio</span>
+<span class="text-primary">0.25</span>
+</div>
+<input class="w-full accent-primary h-1 bg-surface-container-lowest appearance-none cursor-pointer" type="range"/>
+</div>
+<div>
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant mb-2">
+<span>Batch Normalization</span>
+<span class="text-tertiary">ENABLED</span>
+</div>
+<div class="w-12 h-6 bg-primary-container rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full ml-auto"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Activation Status</h3>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded mb-2">
+<span class="text-[11px] font-mono">Softmax_v4</span>
+<span class="w-2 h-2 bg-primary rounded-full glow-line"></span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded">
+<span class="text-[11px] font-mono">ReLU_Inplace</span>
+<span class="w-2 h-2 bg-slate-600 rounded-full"></span>
+</div>
+</div>
+</div>
+<!-- Layer Depth Visualization -->
+<div class="col-span-12 grid grid-cols-4 gap-6">
+<!-- Layer Card -->
+<div class="bg-surface-container-low aspect-video p-6 rounded-xl border-l-4 border-primary">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Input_Layer_01</span>
+<div class="mt-4 flex items-center justify-center">
+<img class="w-full h-24 object-cover rounded-lg opacity-40" data-alt="high-tech neural network nodes abstract blue glowing lines and dark geometric shapes industrial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ATYIUvDT994-apWsy4_iG6nHFRGfnPVYJ-T2bFK_zTDwil_bzNpox6Zb1n9xmK5PTZ5vza96rrPsYs5AQQPdTy0bOkzmwhBx3c9rwZcdNdzBwJJj3TOFJxqNyTMjJg9X5QJL98X5BUZR4784Y2T0TbQgga3Be8rCp_zhNSr-bsbOjwzJ3osihpS6mZiYy1xBXTXWlWci2Ak7musX98hdGuTrBTAxuBZlUFvBkbeQa9VgsHRW536ntwCXSWmpOQGYZyAFXTM1vXg"/>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="text-xs font-mono">1,024 Neurons</span>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container-low aspect-video p-6 rounded-xl border-l-4 border-primary">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Hidden_Dense_02</span>
+<div class="mt-4 flex items-center justify-center">
+<img class="w-full h-24 object-cover rounded-lg opacity-40" data-alt="dense cluster of digital neurons flashing with cyan energy pulses on a dark charcoal background 3d technical style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG6kbvM4K6QbfbDOjHGueu_mZrodEHYyDmEb4NHKaO6sZEVECauXyKZnYF6ZACHTg6al2RlKzZgj7ulBB4k68RM-aqHWpYSulKcQP93YXRKJulzIX8L898sUNaLU4U-aBpd-B7FFkVjAlx2EYW31Jq04UNZ9Z7q9Q644ti_Qvkxbd-1mfdnQhad6Fs6MTtZLIaI67F35Xwieq5Q70CEV8nucZN8zwd1lJzsM3_w8QxFWTswHdZDHiNP0BOVG41Nb7pxZWj1XsSn2E"/>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="text-xs font-mono">4,096 Neurons</span>
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container-low aspect-video p-6 rounded-xl border-l-4 border-tertiary">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Recurrent_Cell_03</span>
+<div class="mt-4 flex items-center justify-center">
+<img class="w-full h-24 object-cover rounded-lg opacity-40" data-alt="recurrent loop visual abstract circuit pattern with orange glow against matte dark metal surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzXevv3hXSgu5Xylxkca_9MPAzld-w9tyS4pXWLShiZGFxu1vM1ThW501xmuWhLwcLlykARHTFSHH7x7dHNPNkAcF5VATwNgSbE87f0eVhXVGR7zcmDwldOralXZvse5-HQ3SLg9GoqB6ruiXZuOMElC14MvYKaUBNEgnPRlXC6kA0I-mdaho54N5H6XejNss7ts87zChTPdNnLcYWSuf_6v3nF4SRjHuZooz9SyAP7aut6XAWmJug7FlmOwnkx8lnwCbpUETXfro"/>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="text-xs font-mono">512 Memory Nodes</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
+</div>
+</div>
+<div class="bg-surface-container-low aspect-video p-6 rounded-xl border-l-4 border-slate-600">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Output_Head_04</span>
+<div class="mt-4 flex items-center justify-center">
+<img class="w-full h-24 object-cover rounded-lg opacity-40" data-alt="final stage output visualization with dispersing data particles fading into deep navy void" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzmXy1koiwyoK-XAYE1GWotgh2GWCiltO68gpr14NVTphp57-Oqd9S1tQ7hGlpSKkIs04bzpK6zQePHlSAJ0TUL70hpcmL2QwKcsGgSgqK8v3RwO_RNy_Va7h-M7ymjCf2GGUrW8aqJw24Vsem2aKWQ75kV4jK2rtsGA9QY38sUy7v7y42SRwfLwtt19BHyvapi6M7eFHnsYRa9q2JYxmn-6ErUiIk6PVFCRPU6tlb2viOgeVbaNk_xlmHpGauyiHnYBl25kOPB2Y"/>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<span class="text-xs font-mono">Pending Compute</span>
+<span class="material-symbols-outlined text-slate-600" data-icon="pending">pending</span>
+</div>
+</div>
+</div>
+<!-- Terminal Area -->
+<div class="col-span-12 bg-surface-container-lowest p-0 rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="bg-surface-container-high px-4 py-2 flex justify-between items-center">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                        Live Optimization Stream
+                    </span>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-slate-600"></div>
+<div class="w-2 h-2 rounded-full bg-slate-600"></div>
+<div class="w-2 h-2 rounded-full bg-slate-600"></div>
+</div>
+</div>
+<div class="p-6 font-mono text-[11px] space-y-1 text-on-surface-variant/80 h-48 overflow-y-auto">
+<p><span class="text-primary">[SYS_CORE]</span> Initializing training epoch 1,284...</p>
+<p><span class="text-primary">[GRAD_SYNC]</span> Synchronizing across 8 GPU nodes...</p>
+<p><span class="text-tertiary">[WARN]</span> Exploding gradient detected in Layer_03 (Recurrent_Cell). Applying clip_norm=1.0.</p>
+<p><span class="text-primary">[SYS_CORE]</span> Backpropagation complete. Delta loss: -0.000014.</p>
+<p><span class="text-sky-400">[DATA]</span> Input vector stream: 12.8 GB/s sustained.</p>
+<p><span class="text-slate-500">_root@monolith:~#</span> optimization_daemon --aggressive --focus=weights</p>
+<p><span class="text-primary">[SYS_CORE]</span> Adjusting momentum parameters to 0.992...</p>
+<p><span class="text-primary">[SYS_CORE]</span> Thermal stability verified at 42°C.</p>
+</div>
+</div>
+</div>
+<footer class="mt-16 pt-8 border-t border-outline-variant/10 text-center">
+<span class="text-[10px] font-bold uppercase tracking-[0.4em] text-on-surface-variant opacity-30">The Monolithic Engine © 2024</span>
+</footer>
+</main>
+</body></html>

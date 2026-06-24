@@ -1,48 +1,45 @@
-# Component Tokens
+# Component Tokens — Andritz Precision
 
-Component-specific tokens referencing semantic layer.
+Component-specific tokens referencing semantic layer. All components enforce 0px radius and the No-Line Rule.
 
 ## Button Tokens
 
 ```css
 :root {
-  /* Default (Primary) */
-  --button-bg: var(--color-primary);
-  --button-fg: var(--color-primary-foreground);
-  --button-hover-bg: var(--color-primary-hover);
-  --button-active-bg: var(--color-primary-active);
+  /* Primary — Gradient fill, industrial weight */
+  --button-bg: linear-gradient(135deg, var(--color-primary-text), var(--color-primary));
+  --button-fg: var(--color-on-primary);
+  --button-hover-bg: linear-gradient(135deg, var(--andritz-blue-700), var(--andritz-blue-600));
+  --button-active-scale: 0.98;
 
-  /* Secondary */
-  --button-secondary-bg: var(--color-secondary);
-  --button-secondary-fg: var(--color-secondary-foreground);
-  --button-secondary-hover-bg: var(--color-secondary-hover);
+  /* Secondary — Surface tier, no border */
+  --button-secondary-bg: var(--color-surface-container-high);
+  --button-secondary-fg: var(--color-primary-text);
+  --button-secondary-hover-bg: var(--color-surface-container-highest);
 
-  /* Outline */
-  --button-outline-border: var(--color-border);
-  --button-outline-fg: var(--color-foreground);
-  --button-outline-hover-bg: var(--color-accent);
-
-  /* Ghost */
-  --button-ghost-fg: var(--color-foreground);
-  --button-ghost-hover-bg: var(--color-accent);
+  /* Tertiary — Text only, capitalized, underline hover */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-fg: var(--color-primary-text);
+  --button-tertiary-hover-decoration: 2px solid var(--color-primary);
 
   /* Destructive */
-  --button-destructive-bg: var(--color-destructive);
-  --button-destructive-fg: var(--color-destructive-foreground);
-  --button-destructive-hover-bg: var(--color-destructive-hover);
+  --button-destructive-bg: var(--color-error);
+  --button-destructive-fg: var(--color-on-error);
 
-  /* Sizing */
-  --button-padding-x: var(--space-4);
-  --button-padding-y: var(--space-2);
-  --button-padding-x-sm: var(--space-3);
-  --button-padding-y-sm: var(--space-1-5);
-  --button-padding-x-lg: var(--space-6);
-  --button-padding-y-lg: var(--space-3);
+  /* Sizing — heavy horizontal padding */
+  --button-padding-x: var(--space-6);       /* 24px */
+  --button-padding-y: var(--space-2);       /* 8px */
+  --button-padding-x-sm: var(--space-4);    /* 16px */
+  --button-padding-y-sm: var(--space-1-5);  /* 6px */
+  --button-padding-x-lg: var(--space-8);    /* 32px */
+  --button-padding-y-lg: var(--space-3);    /* 12px */
 
-  /* Shape */
-  --button-radius: var(--radius-md);
-  --button-font-size: var(--font-size-sm);
+  /* Shape — Industrial Precision */
+  --button-radius: 0px;
+  --button-font-size: var(--font-size-label-md);
   --button-font-weight: var(--font-weight-medium);
+  --button-text-transform: uppercase;
+  --button-letter-spacing: var(--tracking-wide);  /* +0.05em */
 }
 ```
 
@@ -50,31 +47,33 @@ Component-specific tokens referencing semantic layer.
 
 ```css
 :root {
-  /* Background & Border */
-  --input-bg: var(--color-background);
-  --input-border: var(--color-input);
-  --input-fg: var(--color-foreground);
+  /* Background — inset surface tier */
+  --input-bg: var(--color-surface-container-highest);
+  --input-border: none;  /* No-Line Rule */
+  --input-fg: var(--color-on-surface);
 
   /* Placeholder */
-  --input-placeholder: var(--color-muted-foreground);
+  --input-placeholder: var(--color-on-surface-variant);
 
-  /* Focus */
-  --input-focus-border: var(--color-ring);
-  --input-focus-ring: var(--color-ring);
+  /* Focus — bottom-border only (ledger/technical form style) */
+  --input-focus-border: none;
+  --input-focus-border-bottom: 2px solid var(--color-primary);
+  --input-focus-ring: none;  /* No ring — bottom border only */
 
   /* Error */
-  --input-error-border: var(--color-error);
-  --input-error-fg: var(--color-error);
+  --input-error-bg: var(--color-error-container);
+  --input-error-fg: var(--color-on-error-container);
+  --input-error-border-bottom: 2px solid var(--color-error);
 
   /* Disabled */
-  --input-disabled-bg: var(--color-muted);
-  --input-disabled-fg: var(--color-muted-foreground);
+  --input-disabled-bg: var(--color-surface-container);
+  --input-disabled-fg: var(--color-on-surface-variant);
 
   /* Sizing */
-  --input-padding-x: var(--space-3);
+  --input-padding-x: var(--space-4);
   --input-padding-y: var(--space-2);
-  --input-radius: var(--radius-md);
-  --input-font-size: var(--font-size-sm);
+  --input-radius: 0px;
+  --input-font-size: var(--font-size-body-md);
 }
 ```
 
@@ -82,50 +81,58 @@ Component-specific tokens referencing semantic layer.
 
 ```css
 :root {
-  /* Background & Border */
-  --card-bg: var(--color-card);
-  --card-fg: var(--color-card-foreground);
-  --card-border: var(--color-border);
+  /* Background — elevated surface for "pop" */
+  --card-bg: var(--color-surface-container-lowest);
+  --card-fg: var(--color-on-surface);
+  --card-border: none;  /* No-Line Rule — no borders */
 
-  /* Shadow */
-  --card-shadow: var(--shadow-default);
-  --card-shadow-hover: var(--shadow-md);
+  /* Shadow — ambient only, when card must float */
+  --card-shadow: none;  /* default: no shadow, use tonal stacking */
+  --card-shadow-elevated: var(--shadow-ambient-light);
 
-  /* Spacing */
-  --card-padding: var(--space-6);
-  --card-padding-sm: var(--space-4);
-  --card-gap: var(--space-4);
+  /* Spacing — generous internal whitespace */
+  --card-padding: var(--space-6);       /* 24px */
+  --card-padding-sm: var(--space-4);    /* 16px */
+  --card-gap: var(--space-4);           /* 16px */
+  --card-zone-gap: var(--space-8);      /* 32px — between data zones */
 
   /* Shape */
-  --card-radius: var(--radius-lg);
+  --card-radius: 0px;
+}
+
+.dark {
+  --card-bg: var(--color-surface-container);
+  --card-shadow-elevated: var(--shadow-ambient-dark);
 }
 ```
 
-## Badge Tokens
+## Badge/Chip Tokens
 
 ```css
 :root {
   /* Default */
   --badge-bg: var(--color-primary);
-  --badge-fg: var(--color-primary-foreground);
+  --badge-fg: var(--color-on-primary);
 
-  /* Secondary */
-  --badge-secondary-bg: var(--color-secondary);
-  --badge-secondary-fg: var(--color-secondary-foreground);
+  /* Secondary — minimalist */
+  --badge-secondary-bg: var(--color-secondary-container);
+  --badge-secondary-fg: var(--color-on-surface);
 
-  /* Outline */
-  --badge-outline-border: var(--color-border);
-  --badge-outline-fg: var(--color-foreground);
-
-  /* Destructive */
-  --badge-destructive-bg: var(--color-destructive);
-  --badge-destructive-fg: var(--color-destructive-foreground);
+  /* Status */
+  --badge-warning-bg: var(--color-tertiary-500);
+  --badge-warning-fg: var(--neutral-950);
+  --badge-error-bg: var(--color-error);
+  --badge-error-fg: var(--color-on-error);
+  --badge-success-bg: var(--color-success-600);
+  --badge-success-fg: #ffffff;
 
   /* Sizing */
-  --badge-padding-x: var(--space-2-5);
+  --badge-padding-x: var(--space-2);
   --badge-padding-y: var(--space-0-5);
-  --badge-radius: var(--radius-full);
-  --badge-font-size: var(--font-size-xs);
+  --badge-radius: 0px;  /* Sharp corners */
+  --badge-font-size: var(--font-size-label-sm);
+  --badge-text-transform: uppercase;
+  --badge-letter-spacing: var(--tracking-wide);
 }
 ```
 
@@ -133,18 +140,18 @@ Component-specific tokens referencing semantic layer.
 
 ```css
 :root {
-  /* Default */
-  --alert-bg: var(--color-background);
-  --alert-fg: var(--color-foreground);
-  --alert-border: var(--color-border);
+  --alert-bg: var(--color-surface-container);
+  --alert-fg: var(--color-on-surface);
+  --alert-border: none;  /* No-Line Rule */
 
-  /* Destructive */
-  --alert-destructive-bg: var(--color-destructive);
-  --alert-destructive-fg: var(--color-destructive-foreground);
+  --alert-destructive-bg: var(--color-error-container);
+  --alert-destructive-fg: var(--color-on-error-container);
 
-  /* Spacing */
+  --alert-warning-bg: rgba(255, 183, 129, 0.15);  /* tertiary at 15% */
+  --alert-warning-fg: var(--color-tertiary);
+
   --alert-padding: var(--space-4);
-  --alert-radius: var(--radius-lg);
+  --alert-radius: 0px;
 }
 ```
 
@@ -152,19 +159,26 @@ Component-specific tokens referencing semantic layer.
 
 ```css
 :root {
-  /* Overlay */
-  --dialog-overlay-bg: rgb(0 0 0 / 0.5);
+  /* Overlay — Industrial Frost (Glassmorphism) */
+  --dialog-overlay-bg: rgba(0, 28, 56, 0.5);  /* navy-tinted, not pure black */
 
-  /* Content */
-  --dialog-bg: var(--color-background);
-  --dialog-fg: var(--color-foreground);
-  --dialog-border: var(--color-border);
-  --dialog-shadow: var(--shadow-lg);
+  /* Content — Glassmorphic surface */
+  --dialog-bg: var(--color-surface-container-lowest);
+  --dialog-fg: var(--color-on-surface);
+  --dialog-border: none;  /* No-Line Rule */
+  --dialog-shadow: var(--shadow-ambient-light);
+  --dialog-backdrop-blur: 20px;  /* Industrial Frost */
+  --dialog-surface-opacity: 0.85;  /* 85% opacity for frost effect */
 
   /* Spacing */
   --dialog-padding: var(--space-6);
-  --dialog-radius: var(--radius-lg);
+  --dialog-radius: 0px;
   --dialog-max-width: 32rem;
+}
+
+.dark {
+  --dialog-overlay-bg: rgba(0, 10, 20, 0.7);
+  --dialog-shadow: var(--shadow-ambient-dark);
 }
 ```
 
@@ -173,16 +187,20 @@ Component-specific tokens referencing semantic layer.
 ```css
 :root {
   /* Header */
-  --table-header-bg: var(--color-muted);
-  --table-header-fg: var(--color-muted-foreground);
+  --table-header-bg: var(--color-surface-container);
+  --table-header-fg: var(--color-on-surface-variant);
+  --table-header-font: var(--font-size-label-md);
+  --table-header-transform: uppercase;
+  --table-header-tracking: var(--tracking-wide);
 
   /* Body */
-  --table-row-bg: var(--color-background);
-  --table-row-hover-bg: var(--color-muted);
-  --table-row-fg: var(--color-foreground);
+  --table-row-bg: var(--color-surface);
+  --table-row-hover-bg: var(--color-surface-container-low);
+  --table-row-fg: var(--color-on-surface);
 
-  /* Border */
-  --table-border: var(--color-border);
+  /* Border — NO divider lines */
+  --table-border: none;
+  --table-row-separator: var(--space-8);  /* 32px whitespace OR tonal shift */
 
   /* Spacing */
   --table-cell-padding-x: var(--space-4);
@@ -190,25 +208,50 @@ Component-specific tokens referencing semantic layer.
 }
 ```
 
+## Navigation Tokens
+
+```css
+:root {
+  /* Floating Nav — Industrial Frost */
+  --nav-bg: rgba(248, 250, 251, 0.85);  /* surface at 85% */
+  --nav-backdrop-blur: 20px;
+  --nav-fg: var(--color-on-surface);
+
+  /* Active indicator */
+  --nav-active-indicator: 2px solid var(--color-primary);
+  --nav-active-fg: var(--color-primary-text);
+
+  /* Sidebar */
+  --nav-sidebar-bg: var(--color-surface-container-low);
+  --nav-sidebar-active-bg: var(--color-surface-container-high);
+}
+
+.dark {
+  --nav-bg: rgba(16, 20, 26, 0.85);  /* dark surface at 85% */
+}
+```
+
 ## Usage Example
 
 ```css
-.button {
+.button-primary {
   background: var(--button-bg);
   color: var(--button-fg);
   padding: var(--button-padding-y) var(--button-padding-x);
-  border-radius: var(--button-radius);
+  border-radius: var(--button-radius);  /* 0px */
+  border: none;  /* No-Line Rule */
   font-size: var(--button-font-size);
   font-weight: var(--button-font-weight);
-  transition: background var(--duration-fast);
+  text-transform: var(--button-text-transform);
+  letter-spacing: var(--button-letter-spacing);
+  transition: background var(--duration-fast), transform var(--duration-fast);
 }
 
-.button:hover {
-  background: var(--button-hover-bg);
+.button-primary:active {
+  transform: scale(var(--button-active-scale));  /* 0.98 press */
 }
 
-.button.secondary {
-  background: var(--button-secondary-bg);
-  color: var(--button-secondary-fg);
+.button-tertiary:hover {
+  border-bottom: var(--button-tertiary-hover-decoration);
 }
 ```

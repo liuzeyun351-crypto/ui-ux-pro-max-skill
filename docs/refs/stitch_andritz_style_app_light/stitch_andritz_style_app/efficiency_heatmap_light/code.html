@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Industrial Control - Operational Efficiency Heatmap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-fixed-variant": "#314866",
+                    "primary-fixed-dim": "#9bcaff",
+                    "primary": "#005c97",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-container-low": "#f2f4f5",
+                    "surface-dim": "#d8dadb",
+                    "surface": "#f8fafb",
+                    "secondary-container": "#c1d9fd",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "on-surface": "#191c1d",
+                    "tertiary": "#4b5a69",
+                    "on-primary-fixed": "#001d35",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed": "#d3e4ff",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#404751",
+                    "secondary": "#49607f",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "surface-tint": "#0062a0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#485f7e",
+                    "primary-container": "#0075be",
+                    "outline": "#707882",
+                    "surface-container-high": "#e6e8e9",
+                    "background": "#f8fafb",
+                    "surface-bright": "#f8fafb",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#d4e4f6",
+                    "on-primary-container": "#f3f7ff",
+                    "tertiary-container": "#637383",
+                    "surface-variant": "#e1e3e4",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#eceeef",
+                    "inverse-primary": "#9bcaff",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "inverse-on-surface": "#eff1f2",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#f2f7ff",
+                    "outline-variant": "#c0c7d2",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "primary-fixed": "#d0e4ff",
+                    "on-primary-fixed-variant": "#00497a",
+                    "on-background": "#191c1d",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .monolithic-header { font-weight: 900; letter-spacing: -0.05em; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col w-64 bg-slate-100 dark:bg-slate-900 z-50">
+<div class="p-8">
+<h1 class="text-lg font-black tracking-tighter text-slate-900 dark:text-white">Industrial Control</h1>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60">Digital Employee Platform</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</a>
+</nav>
+<div class="px-8 mb-8">
+<button class="w-full py-4 bg-primary text-on-primary text-[11px] font-bold tracking-widest uppercase active:scale-95 transition-transform">
+                DEPLOY AGENT
+            </button>
+</div>
+<div class="px-4 pb-8 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex justify-between items-center px-8 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">MONOLITH_v1.0</span>
+<nav class="hidden lg:flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 border-b-2 border-sky-700 dark:border-sky-400 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<input class="bg-surface-container-high border-none text-[10px] font-bold px-4 py-2 w-64 focus:ring-0 border-b-2 border-transparent focus:border-primary transition-all" placeholder="SYSTEM SEARCH..." type="text"/>
+</div>
+<div class="flex gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">lan</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70">account_tree</span>
+</div>
+<div class="h-8 w-8 bg-slate-200">
+<img alt="Operator Avatar" class="w-full h-full object-cover" data-alt="Technical schematic portrait of a system operator with high-contrast lighting and blue color grading" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYgmdktNS8EhIdTdtnZW4QWL-roBTwYxb6RGLCI_d7mKbtC49YI9YA-9bGkDTRVWzYt9ymjPARM-KE9Nmy5yEmCClQZDxJvYvoSPnuV3bxa9xm4CjqOlwwnstKLi24RHXZDw8qR9DYX_5NezaiyH34asawnvFlVTZ86v8_lE3w6QcSZCKVKAV0lXgf4bdGABICudFPlIJa-QIeg5N7LV1OpvDAyP_QRzImQznSSdjQhFLYgAFMUrjzLoC4SqLp_1zXWV7Hv_KzTXU"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-surface-container-low p-8">
+<!-- Header Section -->
+<div class="mb-12 flex justify-between items-end">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">Operational Visualization</p>
+<h2 class="text-5xl monolithic-header uppercase text-slate-900">Efficiency Heatmap</h2>
+<div class="flex gap-4 mt-4">
+<div class="flex items-center gap-2 bg-surface-container-highest px-3 py-1">
+<div class="w-2 h-2 bg-primary"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider">Digital Employee Managed</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-highest px-3 py-1">
+<div class="w-2 h-2 bg-secondary opacity-40"></div>
+<span class="text-[10px] font-bold uppercase tracking-wider">Human Managed</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Global Delta</span>
+<span class="text-4xl font-black text-primary">+24.8%</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Heatmap Visualization (Main Plate) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 flex flex-col gap-8 shadow-sm">
+<div class="flex justify-between items-start">
+<h3 class="text-sm font-black uppercase tracking-tighter">Live Spatial Map <span class="text-primary ml-2">// SECTOR_4</span></h3>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+<button class="p-2 bg-surface-container hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">zoom_out</span></button>
+<button class="p-2 bg-surface-container hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-sm">layers</span></button>
+</div>
+</div>
+<!-- The Heatmap Grid -->
+<div class="relative aspect-video bg-surface-container-low overflow-hidden grid grid-cols-8 grid-rows-5 gap-1">
+<!-- Layered Data Blocks -->
+<div class="bg-primary/20 p-4 border-l-4 border-primary">
+<span class="text-[9px] font-bold uppercase opacity-50 block mb-1">STATION_A1</span>
+<span class="text-xs font-black">98.2%</span>
+</div>
+<div class="bg-primary/40 p-4 border-l-4 border-primary"></div>
+<div class="bg-error/10 p-4 border-l-4 border-error group relative">
+<span class="text-[9px] font-bold uppercase text-error block mb-1">STATION_A3</span>
+<span class="text-xs font-black text-error">BOTTLENECK</span>
+<div class="absolute inset-0 bg-error/10 animate-pulse"></div>
+</div>
+<div class="bg-primary/30 p-4 border-l-4 border-primary"></div>
+<div class="bg-secondary/10 p-4 border-l-4 border-secondary opacity-60">
+<span class="text-[9px] font-bold uppercase block mb-1">H_RESOURCES</span>
+<span class="text-xs font-black">72.4%</span>
+</div>
+<div class="bg-primary/50 p-4 border-l-4 border-primary"></div>
+<div class="bg-primary/15 p-4 border-l-4 border-primary"></div>
+<div class="bg-primary/25 p-4 border-l-4 border-primary"></div>
+<!-- Row 2 -->
+<div class="bg-primary/40 p-4 border-l-4 border-primary"></div>
+<div class="bg-primary/60 p-4 border-l-4 border-primary relative">
+<div class="absolute top-1 right-1"><span class="material-symbols-outlined text-[12px] text-primary">precision_manufacturing</span></div>
+</div>
+<div class="bg-primary/45 p-4 border-l-4 border-primary"></div>
+<div class="col-span-2 bg-primary/10 p-4 border-l-4 border-primary">
+<span class="text-[9px] font-bold uppercase opacity-50 block mb-1">ASSEMBLY_B</span>
+<div class="mt-2 h-1 bg-primary/20 w-full"><div class="h-full bg-primary w-3/4"></div></div>
+</div>
+<div class="bg-secondary/15 p-4 border-l-4 border-secondary opacity-60"></div>
+<div class="bg-primary/40 p-4 border-l-4 border-primary"></div>
+<div class="bg-primary/35 p-4 border-l-4 border-primary"></div>
+<!-- Row 3: The Bottleneck Bridge -->
+<div class="bg-primary/20 p-4 border-l-4 border-primary"></div>
+<div class="bg-primary/10 p-4 border-l-4 border-primary"></div>
+<div class="col-span-3 bg-gradient-to-r from-primary/40 to-error/20 p-4 border-l-4 border-primary">
+<span class="text-[9px] font-bold uppercase opacity-50 block mb-1">TRANSFER_NODE</span>
+</div>
+<div class="bg-secondary/10 p-4 border-l-4 border-secondary opacity-60"></div>
+<div class="bg-secondary/10 p-4 border-l-4 border-secondary opacity-60"></div>
+<div class="bg-primary/50 p-4 border-l-4 border-primary"></div>
+<!-- Fill the rest for visual structure -->
+<div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div><div class="bg-surface-container opacity-30"></div>
+<div class="bg-primary/10 p-4 border-l-4 border-primary"></div><div class="bg-primary/20 p-4 border-l-4 border-primary"></div><div class="bg-primary/30 p-4 border-l-4 border-primary"></div><div class="bg-primary/25 p-4 border-l-4 border-primary"></div><div class="bg-primary/15 p-4 border-l-4 border-primary"></div><div class="bg-primary/10 p-4 border-l-4 border-primary"></div><div class="bg-primary/5 p-4 border-l-4 border-primary"></div><div class="bg-primary/5 p-4 border-l-4 border-primary"></div>
+</div>
+<!-- Time Scrubber Component -->
+<div class="mt-4 pt-8 border-t-2 border-surface-container-high">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">play_arrow</button>
+<span class="text-[11px] font-bold tracking-widest uppercase text-slate-900">08:45:00 UTC</span>
+</div>
+<div class="flex gap-4">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant opacity-50">T-minus 04:00</span>
+<span class="text-[10px] font-bold uppercase text-primary">LIVE TRANSMISSION</span>
+</div>
+</div>
+<div class="relative h-12 flex items-center group">
+<div class="absolute w-full h-[2px] bg-surface-container-high"></div>
+<div class="absolute w-2/3 h-[2px] bg-primary"></div>
+<!-- Scrubbing Markers -->
+<div class="flex justify-between w-full relative">
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-primary h-6 mt-[-6px]"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+<div class="w-[2px] h-3 bg-outline-variant"></div>
+</div>
+<!-- Current Playhead -->
+<div class="absolute left-2/3 top-0 bottom-0 w-32 bg-primary/5 -ml-16 pointer-events-none"></div>
+</div>
+</div>
+</div>
+<!-- Stats & Sidebar Modules -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-8">
+<!-- Efficiency Delta Card -->
+<div class="bg-surface-container-lowest p-8 shadow-sm">
+<h4 class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-6">Efficiency Analytics</h4>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-[11px] font-bold uppercase tracking-tighter">Digital Workforce</span>
+<span class="text-xl font-black text-primary">94.2%</span>
+</div>
+<div class="h-2 bg-surface-container-high w-full">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-[11px] font-bold uppercase tracking-tighter">Human Counterpart</span>
+<span class="text-xl font-black text-secondary">69.4%</span>
+</div>
+<div class="h-2 bg-surface-container-high w-full">
+<div class="h-full bg-secondary w-[69%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t-2 border-surface-container-high">
+<div class="flex items-center gap-4 text-error">
+<span class="material-symbols-outlined">warning</span>
+<div>
+<p class="text-[11px] font-black uppercase">Anomaly Detected</p>
+<p class="text-[10px] uppercase opacity-70">Sector_4 / Station_A3 latency spike</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Digital Employee List (Small modules) -->
+<div class="bg-surface-container p-8 flex-1">
+<h4 class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-6">Active Agents in Sector</h4>
+<div class="space-y-4">
+<!-- Agent Card -->
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container">
+<span class="material-symbols-outlined text-primary group-hover:text-white">smart_toy</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase">Agent_774</p>
+<p class="text-[9px] font-bold uppercase opacity-50">Logistics Routing</p>
+</div>
+</div>
+<span class="text-[11px] font-black">99%</span>
+</div>
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container">
+<span class="material-symbols-outlined text-primary group-hover:text-white">memory</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase">Agent_912</p>
+<p class="text-[9px] font-bold uppercase opacity-50">Quality Control</p>
+</div>
+</div>
+<span class="text-[11px] font-black">100%</span>
+</div>
+<div class="bg-surface-container-lowest p-4 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-200">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-container-high flex items-center justify-center group-hover:bg-primary-container">
+<span class="material-symbols-outlined text-primary group-hover:text-white">account_tree</span>
+</div>
+<div>
+<p class="text-[11px] font-black uppercase">Agent_003</p>
+<p class="text-[9px] font-bold uppercase opacity-50">Conflict Resolution</p>
+</div>
+</div>
+<span class="text-[11px] font-black">92%</span>
+</div>
+</div>
+<button class="mt-8 w-full py-4 border-2 border-primary text-primary text-[10px] font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all">
+                        VIEW FULL WORKFORCE
+                    </button>
+</div>
+</div>
+</div>
+<!-- Secondary Analysis Section (Structural Asymmetry) -->
+<div class="mt-12 grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest p-8 flex flex-col gap-6">
+<h3 class="text-sm font-black uppercase tracking-tighter">Throughput Forecast</h3>
+<div class="h-48 relative overflow-hidden bg-slate-50">
+<!-- Area Chart Simulation -->
+<svg class="absolute inset-0 w-full h-full preserve-3d" viewbox="0 0 400 100">
+<path d="M0 80 Q 50 60, 100 70 T 200 40 T 300 50 T 400 20 L 400 100 L 0 100 Z" fill="url(#grad1)"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(0,92,151,0.2);stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:rgba(0,92,151,0);stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+<path d="M0 80 Q 50 60, 100 70 T 200 40 T 300 50 T 400 20" fill="none" stroke="#005c97" stroke-width="2"></path>
+</svg>
+<!-- Overlay Grid -->
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-4 opacity-10">
+<div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-b border-slate-900"></div>
+<div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-b border-slate-900"></div>
+<div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-r border-b border-slate-900"></div><div class="border-b border-slate-900"></div>
+<div class="border-r border-slate-900"></div><div class="border-r border-slate-900"></div><div class="border-r border-slate-900"></div><div class="border-r border-slate-900"></div><div class="border-r border-slate-900"></div><div></div>
+</div>
+</div>
+<div class="flex justify-between">
+<div>
+<span class="text-[9px] font-bold uppercase block text-on-surface-variant mb-1">Peak Capacity</span>
+<span class="text-xl font-black">4,500 <span class="text-[10px] opacity-40">U/HR</span></span>
+</div>
+<div>
+<span class="text-[9px] font-bold uppercase block text-on-surface-variant mb-1">Estimated Bottleneck</span>
+<span class="text-xl font-black text-error">14:45 <span class="text-[10px] opacity-40">UTC</span></span>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest p-8 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-sm font-black uppercase tracking-tighter">Strategic Impact Report</h3>
+<span class="text-[10px] font-bold uppercase px-3 py-1 bg-surface-container text-on-surface-variant">Confidential - Tier 1</span>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div class="p-4 bg-surface-container-low border-b-2 border-primary">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-4">Cost Reduction</span>
+<span class="text-3xl font-black tracking-tighter">38.2%</span>
+<p class="text-[9px] mt-2 opacity-60 leading-tight">Since agent deployment in Sector 4 logistics nodes.</p>
+</div>
+<div class="p-4 bg-surface-container-low border-b-2 border-primary">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-4">Uptime Delta</span>
+<span class="text-3xl font-black tracking-tighter">+14%</span>
+<p class="text-[9px] mt-2 opacity-60 leading-tight">Shift from manual maintenance cycles to AI-led prediction.</p>
+</div>
+<div class="p-4 bg-surface-container-low border-b-2 border-secondary">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-4">Safety Score</span>
+<span class="text-3xl font-black tracking-tighter">99.9</span>
+<p class="text-[9px] mt-2 opacity-60 leading-tight">Zero incident record since Digital Employee supervision.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on this data-heavy view as per instructions, but placeholder kept for structure) -->
+<footer class="ml-64 p-8 border-t border-surface-container text-[10px] font-bold text-on-surface-variant/40 flex justify-between uppercase tracking-widest">
+<span>© 2024 Monolith Systems Corporation</span>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">Global Protocol</a>
+<a class="hover:text-primary" href="#">Agent Ethics</a>
+<a class="hover:text-primary" href="#">System Health: 100%</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Health Audit Log | ANDRITZ PRECISION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary": "#4b5a69",
+                  "surface-variant": "#e1e3e4",
+                  "on-tertiary": "#ffffff",
+                  "on-error": "#ffffff",
+                  "surface-tint": "#0062a0",
+                  "error": "#ba1a1a",
+                  "surface-container-highest": "#e1e3e4",
+                  "on-tertiary-fixed": "#0d1d2a",
+                  "on-secondary-fixed": "#001c38",
+                  "on-tertiary-container": "#f2f7ff",
+                  "outline": "#707882",
+                  "error-container": "#ffdad6",
+                  "inverse-surface": "#2e3132",
+                  "tertiary-container": "#637383",
+                  "secondary-fixed-dim": "#b0c8ec",
+                  "on-primary": "#ffffff",
+                  "primary": "#005c97",
+                  "tertiary-fixed-dim": "#b8c8da",
+                  "primary-fixed": "#d0e4ff",
+                  "on-primary-fixed": "#001d35",
+                  "on-secondary-container": "#485f7e",
+                  "surface-dim": "#d8dadb",
+                  "on-background": "#191c1d",
+                  "background": "#f8fafb",
+                  "surface": "#f8fafb",
+                  "surface-container": "#eceeef",
+                  "primary-container": "#0075be",
+                  "inverse-on-surface": "#eff1f2",
+                  "on-surface-variant": "#404751",
+                  "on-secondary": "#ffffff",
+                  "surface-container-high": "#e6e8e9",
+                  "secondary-container": "#c1d9fd",
+                  "inverse-primary": "#9bcaff",
+                  "primary-fixed-dim": "#9bcaff",
+                  "on-primary-container": "#f3f7ff",
+                  "surface-container-low": "#f2f4f5",
+                  "on-primary-fixed-variant": "#00497a",
+                  "on-surface": "#191c1d",
+                  "on-secondary-fixed-variant": "#314866",
+                  "tertiary-fixed": "#d4e4f6",
+                  "secondary": "#49607f",
+                  "surface-container-lowest": "#ffffff",
+                  "on-tertiary-fixed-variant": "#394857",
+                  "secondary-fixed": "#d3e4ff",
+                  "outline-variant": "#c0c7d2",
+                  "on-error-container": "#93000a",
+                  "surface-bright": "#f8fafb"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0px",
+                  "lg": "0px",
+                  "xl": "0px",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Inter", "sans-serif"],
+                  "body": ["Inter", "sans-serif"],
+                  "label": ["Inter", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    .monolithic-text { font-weight: 900; letter-spacing: -0.05em; }
+  </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-white">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white monolithic-text">ANDRITZ PRECISION</h1>
+<div class="hidden md:flex items-center space-x-6 h-full">
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] px-3 py-2 transition-colors" href="#">DASHBOARD</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] px-3 py-2 transition-colors" href="#">ASSETS</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] h-16 flex items-center" href="#">SYSTEM LOGS</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#404751] cursor-pointer hover:bg-surface-container p-2">notifications</span>
+</div>
+<span class="material-symbols-outlined text-[#404751] cursor-pointer hover:bg-surface-container p-2">settings</span>
+<div class="h-8 w-8 bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Operational Supervisor Profile" class="w-full h-full object-cover" data-alt="Professional portrait of an industrial operational supervisor in a high-tech control room environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOv_9_Bg2Dn_5Vt6ER512qtCtJB48XutGX52d-vQknq_H-I1VHcT8QWlDqhST-2cpBLAFpRSRjXVf7qoSAKuLQuJq4IaFnZkDbIWuEDa9vYPABiMvLPcw8jUV4dMCPQJP0XbedmGbbhCuyCi0QjSje6L33DRQPjHkpB8Wmm17smNf8fnsdM-2EZnC1RGxxGmPntSrVMGRa61SZyVmq10UEibjjrghUOlaf5D9DmTZnYitipJIyt5Uc2ulk3lzRBIISI_LG8pItplA"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-2 h-8 bg-primary"></div>
+<div>
+<p class="font-black text-[#001c38] dark:text-white text-sm tracking-tight">NODE_A1</p>
+<p class="font-['Gilroy-Regular','Inter'] text-[10px] tracking-widest text-[#404751] dark:text-[#eceeef]/70 opacity-60">OPERATIONAL_UNIT_04</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-lg">factory</span>
+<span>Assets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-lg">sensors</span>
+<span>Telemetry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-lg">build</span>
+<span>Maintenance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#f8fafb]/10 text-[#001c38] dark:text-white font-semibold" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+<span>System Logs</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef]" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef]" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Support</span>
+</a>
+<button class="w-full mt-4 bg-gradient-to-br from-[#005c97] to-[#0075be] text-white py-3 font-bold text-xs uppercase tracking-widest active:opacity-80 scale-[0.99] transition-all">
+        DEPLOY UPDATE
+      </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<div class="p-10 space-y-8 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-['Inter'] text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold">Audit Infrastructure</span>
+<h2 class="text-5xl monolithic-text text-on-secondary-fixed mt-2">SYSTEM_HEALTH_LOG</h2>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-high border-l-4 border-primary">
+<span class="material-symbols-outlined text-sm text-primary" data-weight="fill">verified_user</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Last Compliance Check: 14:00 UTC</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container-high border-l-4 border-green-600">
+<span class="material-symbols-outlined text-sm text-green-600" data-weight="fill">database</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Retention: 365 Days</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high text-on-primary-fixed-variant px-6 py-3 font-bold text-xs uppercase tracking-widest flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+            EXPORT COMPLIANCE PDF
+          </button>
+<button class="bg-gradient-to-br from-[#005c97] to-[#0075be] text-white px-6 py-3 font-bold text-xs uppercase tracking-widest flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-base">share</span>
+            GENERATE API KEY
+          </button>
+</div>
+</section>
+<!-- Advanced Filters Plate -->
+<section class="bg-surface-container p-1 shadow-sm">
+<div class="bg-surface-container-lowest p-6 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-6">
+<div class="space-y-2">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Event Timeframe</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm font-medium p-3 appearance-none cursor-pointer" type="text" value="Last 24 Hours"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_month</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Origin Node</label>
+<select class="w-full bg-surface-container-low border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm font-medium p-3 appearance-none">
+<option>ALL_NODES</option>
+<option>NODE_A1 (ACTIVE)</option>
+<option>NODE_B4 (IDLE)</option>
+<option>GATEWAY_X</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Severity Rank</label>
+<select class="w-full bg-surface-container-low border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm font-medium p-3 appearance-none">
+<option>ALL_LEVELS</option>
+<option class="text-error">CRITICAL (LVL 5)</option>
+<option class="text-amber-600">WARNING (LVL 3)</option>
+<option class="text-primary">INFO (LVL 1)</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Operator UID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm font-medium p-3" placeholder="Search by ID..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">person_search</span>
+</div>
+</div>
+<div class="flex items-end">
+<button class="w-full bg-surface-container-high py-3 px-4 font-bold text-[10px] uppercase tracking-[0.2em] text-on-surface-variant flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list_off</span>
+              RESET_FILTERS
+            </button>
+</div>
+</div>
+</section>
+<!-- Industrial Log Table -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Showing 1,245 Events</p>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-2 bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="w-full overflow-x-auto bg-surface-container shadow-sm border border-outline-variant/10">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead class="bg-surface-container-highest">
+<tr>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-r border-outline-variant/10">Timestamp</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-r border-outline-variant/10">Event_ID</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-r border-outline-variant/10">Type</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-r border-outline-variant/10">Description</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant border-r border-outline-variant/10">Actor</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant text-right">Status</th>
+</tr>
+</thead>
+<tbody class="bg-surface-container-lowest">
+<!-- Row 1: Critical -->
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="p-4 font-mono text-xs text-on-surface-variant">2024-05-20 | 14:22:01.04</td>
+<td class="p-4 font-bold text-xs">EVT_7782_CFG</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-error-container text-on-error-container text-[10px] font-black uppercase">Config_Override</span>
+</td>
+<td class="p-4 text-sm font-medium">Critical safety threshold bypassed on Boiler Unit 4. Overvoltage detected.</td>
+<td class="p-4 text-xs font-bold text-primary">SYS_ADMIN_ROOT</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-error" data-weight="fill">priority_high</span>
+</td>
+</tr>
+<!-- Row 2: API -->
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="p-4 font-mono text-xs text-on-surface-variant">2024-05-20 | 14:18:55.21</td>
+<td class="p-4 font-bold text-xs">EVT_0119_API</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black uppercase">API_CALL</span>
+</td>
+<td class="p-4 text-sm font-medium">Bulk export request initiated for "Weekly_Compliance_Report_v2".</td>
+<td class="p-4 text-xs font-bold text-primary">USER_M_REED_04</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-green-600" data-weight="fill">check_circle</span>
+</td>
+</tr>
+<!-- Row 3: Security -->
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="p-4 font-mono text-xs text-on-surface-variant">2024-05-20 | 14:15:10.88</td>
+<td class="p-4 font-bold text-xs">EVT_9921_SEC</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-black uppercase">System_Login</span>
+</td>
+<td class="p-4 text-sm font-medium">User authentication successful via MFA-HW Key #2291.</td>
+<td class="p-4 text-xs font-bold text-primary">OP_K_CHEN_91</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant opacity-30">verified</span>
+</td>
+</tr>
+<!-- Row 4: Warning -->
+<tr class="group hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+<td class="p-4 font-mono text-xs text-on-surface-variant">2024-05-20 | 14:02:44.33</td>
+<td class="p-4 font-bold text-xs">EVT_4402_WAR</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-amber-100 text-amber-900 text-[10px] font-black uppercase">Threshold_Warn</span>
+</td>
+<td class="p-4 text-sm font-medium">Node_A1 CPU utilization reached 92% for 180 consecutive seconds.</td>
+<td class="p-4 text-xs font-bold text-primary">INTERNAL_KERNEL</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-amber-600" data-weight="fill">warning</span>
+</td>
+</tr>
+<!-- Row 5: Deploy -->
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="p-4 font-mono text-xs text-on-surface-variant">2024-05-20 | 13:58:12.00</td>
+<td class="p-4 font-bold text-xs">EVT_8821_DEP</td>
+<td class="p-4">
+<span class="px-2 py-1 bg-primary-container text-white text-[10px] font-black uppercase">Firmware_Upd</span>
+</td>
+<td class="p-4 text-sm font-medium">Remote firmware patch v2.4.1 applied to Sensor Cluster 08.</td>
+<td class="p-4 text-xs font-bold text-primary">AUTO_UPD_SRV</td>
+<td class="p-4 text-right">
+<span class="material-symbols-outlined text-primary" data-weight="fill">update</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- KPI Summary Cards (Asymmetric Bento) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-8 flex flex-col justify-between border-b-4 border-error">
+<div class="flex justify-between items-start">
+<p class="text-[10px] font-black uppercase tracking-[0.3em] text-on-surface-variant">Security Alerts</p>
+<span class="material-symbols-outlined text-error">lock_open</span>
+</div>
+<div class="mt-8">
+<h3 class="text-6xl monolithic-text leading-none">04</h3>
+<p class="text-xs font-bold text-error mt-2">REQUIRES_IMMEDIATE_ACTION</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-on-secondary-fixed text-white p-8 overflow-hidden relative group">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="text-[10px] font-black uppercase tracking-[0.3em] text-surface-container">Operational Velocity</p>
+<div class="h-2 w-32 bg-surface-container/20 overflow-hidden">
+<div class="h-full bg-primary-container w-2/3"></div>
+</div>
+</div>
+<div class="flex items-end justify-between mt-12">
+<div>
+<h3 class="text-6xl monolithic-text leading-none">89.4<span class="text-2xl font-light opacity-50 ml-2">%</span></h3>
+<p class="text-xs uppercase tracking-widest font-bold opacity-70 mt-2">Global System Integrity Score</p>
+</div>
+<div class="text-right">
+<p class="text-[40px] monolithic-text text-primary leading-none">+1.2%</p>
+<p class="text-[8px] uppercase font-black opacity-40">vs last 24h cycle</p>
+</div>
+</div>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'wght' 700;">analytics</span>
+</div>
+</div>
+</section>
+<!-- System Map / Location Insight -->
+<section class="bg-surface-container p-1">
+<div class="bg-surface-container-lowest grid grid-cols-1 lg:grid-cols-2">
+<div class="p-10 space-y-6">
+<span class="px-3 py-1 bg-primary text-white text-[10px] font-black uppercase tracking-widest">Global Activity Mesh</span>
+<h4 class="text-3xl font-black text-on-secondary-fixed leading-tight">NODE_TRAFFIC_DISTRIBUTION</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed max-w-md">Real-time visualization of system events across global data centers. Density represents the volume of API calls and configuration changes logged in the last session.</p>
+<div class="space-y-4 pt-4">
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Europe / Berlin_Node</span>
+<span class="text-xs font-mono font-bold">452 Events/min</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">North America / Dallas_Hub</span>
+<span class="text-xs font-mono font-bold">811 Events/min</span>
+</div>
+<div class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">Asia / Singapore_A1</span>
+<span class="text-xs font-mono font-bold">209 Events/min</span>
+</div>
+</div>
+</div>
+<div class="h-[400px] bg-surface-container-high relative overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="Stylized high-contrast digital map showing global data center connections with vibrant blue glowing lines on a dark minimal base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAegdqcPHqw1Y4FAXtxucP7WLb8wh6hMPeEAMboooquZl98KQL0HJDsrh4bm0J5wqLTw6y0WmMvuECP_0QoagRcMzh2oOGO05qB4TcfTJjUnGFkEYnnGa2Dq--1Mq4Ww9bNTEjzwSsrSCAoyM4jqOGSkAG8_VuODx8j37wjkfXjGxLVZgFVMkIHBCCc366koW6ZLhoTSb8WcpNchcnLsHDg7PmEKIaAKMqXwqm5kPqRIFCWHtTBXSTxMQzceK_ZIZGSv0VtLIccktM"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<!-- Mock Map Pin -->
+<div class="absolute top-1/2 left-1/3 w-4 h-4 bg-primary ring-4 ring-primary/20"></div>
+<div class="absolute top-1/4 left-2/3 w-4 h-4 bg-primary ring-4 ring-primary/20"></div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Stats -->
+<footer class="ml-64 bg-[#f8fafb] border-t border-[#c0c7d2]/15 px-10 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-8">
+<div class="flex flex-col">
+<span class="text-[8px] font-black text-on-surface-variant uppercase opacity-60">Database Size</span>
+<span class="text-xs font-bold text-on-secondary-fixed">2.4 TB</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] font-black text-on-surface-variant uppercase opacity-60">Indexing Latency</span>
+<span class="text-xs font-bold text-green-600">42ms</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] font-black text-on-surface-variant uppercase opacity-60">Log Stream</span>
+<span class="text-xs font-bold text-primary">LIVE_ACTIVE</span>
+</div>
+</div>
+<div class="text-[10px] font-bold text-on-surface-variant/40 uppercase tracking-[0.2em]">
+      © 2024 ANDRITZ PRECISION INDUSTRIAL GROUP | INTERNAL_USE_ONLY
+    </div>
+</footer>
+</body></html>

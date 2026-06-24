@@ -1,26 +1,34 @@
 ---
-name: ckm:design-system
-description: Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.
+name: andritz-design-system
+description: Andritz Precision industrial design system with dark/light theme variants. Three-layer token architecture (primitive→semantic→component), Material Design surface hierarchy, sharp 0px corners, tonal layering, industrial component specifications, and slide generation.
 argument-hint: "[component or token]"
 license: MIT
 metadata:
   author: claudekit
-  version: "1.0.0"
+  version: "2.0.0"
 ---
 
-# Design System
+# Andritz Design System
 
-Token architecture, component specifications, systematic design, slide generation.
+Industrial precision design system based on the **"Monolithic Engine"** creative north star — solid, authoritative, deeply layered. Supports dark/light theme variants via Material Design surface hierarchy.
 
 ## When to Use
 
-- Design token creation
-- Component state definitions
-- CSS variable systems
-- Spacing/typography scales
-- Design-to-code handoff
-- Tailwind theme configuration
+- Andritz-branded UI development
+- Industrial dashboard and command center design
+- Dark/light theme implementation via surface hierarchy
+- Material Design token systems with tonal layering
+- Sharp-corner (0px radius) component systems
+- Data-heavy layouts with zone-based organization
 - **Slide/presentation generation**
+
+## Andritz Key Colors
+
+### Light Theme
+- Surface: `#f8fafb` | Primary: `#0075be` / `#005c97` | On-surface: `#191c1d`
+
+### Dark Theme
+- Surface: `#10141a` | Primary: `#9bcaff` / `#0075be` | On-surface: `#dfe2eb`
 
 ## Token Architecture
 
@@ -29,30 +37,30 @@ Load: `references/token-architecture.md`
 ### Three-Layer Structure
 
 ```
-Primitive (raw values)
+Primitive (Andritz raw values)
        ↓
-Semantic (purpose aliases)
+Semantic (surface hierarchy + purpose aliases)
        ↓
-Component (component-specific)
+Component (industrial component tokens)
 ```
 
 **Example:**
 ```css
 /* Primitive */
---color-blue-600: #2563EB;
+--andritz-blue-500: #0075be;
 
 /* Semantic */
---color-primary: var(--color-blue-600);
+--color-primary: var(--andritz-blue-500);
 
 /* Component */
---button-bg: var(--color-primary);
+--button-bg: linear-gradient(135deg, var(--color-primary-text), var(--color-primary));
 ```
 
 ## Quick Start
 
 **Generate tokens:**
 ```bash
-node scripts/generate-tokens.cjs --config tokens.json -o tokens.css
+node scripts/generate-tokens.cjs --config templates/design-tokens-starter.json -o assets/design-tokens.css
 ```
 
 **Validate usage:**
@@ -60,10 +68,17 @@ node scripts/generate-tokens.cjs --config tokens.json -o tokens.css
 node scripts/validate-tokens.cjs --dir src/
 ```
 
+**Use in slides/HTML:**
+```html
+<link rel="stylesheet" href="assets/design-tokens.css">
+<link rel="stylesheet" href="assets/css/slide-animations.css">
+```
+
 ## References
 
 | Topic | File |
 |-------|------|
+| Design Philosophy | `references/design-philosophy.md` |
 | Token Architecture | `references/token-architecture.md` |
 | Primitive Tokens | `references/primitive-tokens.md` |
 | Semantic Tokens | `references/semantic-tokens.md` |
@@ -76,10 +91,11 @@ node scripts/validate-tokens.cjs --dir src/
 
 | Property | Default | Hover | Active | Disabled |
 |----------|---------|-------|--------|----------|
-| Background | primary | primary-dark | primary-darker | muted |
-| Text | white | white | white | muted-fg |
-| Border | none | none | none | muted-border |
-| Shadow | sm | md | none | none |
+| Background | gradient(primary) | tonal-shift | scale-98% | surface-muted |
+| Text | on-primary | on-primary | on-primary | on-surface-variant |
+| Border | none | none | none | ghost-border |
+| Shadow | none | none | none | none |
+| Radius | 0px | 0px | 0px | 0px |
 
 ## Scripts
 
@@ -95,12 +111,12 @@ node scripts/validate-tokens.cjs --dir src/
 
 | Template | Purpose |
 |----------|---------|
-| `design-tokens-starter.json` | Starter JSON with three-layer structure |
+| `design-tokens-starter.json` | Andritz three-layer token starter |
 
 ## Integration
 
-**With brand:** Extract primitives from brand colors/typography
-**With ui-styling:** Component tokens → Tailwind config
+**With brand:** Extract primitives from Andritz brand colors/typography
+**With ui-styling:** Component tokens → Tailwind config with 0px radius
 
 **Skill Dependencies:** brand, ui-styling
 **Primary Agents:** ui-ux-designer, frontend-developer
@@ -146,34 +162,6 @@ python scripts/search-slides.py "cta" --context --position 9 --prev-emotion frus
 | `data/slide-copy.csv` | 25 copywriting formulas (PAS, AIDA, FAB) |
 | `data/slide-charts.csv` | 25 chart types with Chart.js config |
 
-### Contextual Decision Flow
-
-```
-1. Parse goal/context
-        ↓
-2. Search slide-strategies.csv → Get strategy + emotion beats
-        ↓
-3. For each slide:
-   a. Query slide-layout-logic.csv → layout + break_pattern
-   b. Query slide-typography.csv → type scale
-   c. Query slide-color-logic.csv → color treatment
-   d. Query slide-backgrounds.csv → image if needed
-   e. Apply animation class from slide-animations.css
-        ↓
-4. Generate HTML with design tokens
-        ↓
-5. Validate with slide-token-validator.py
-```
-
-### Pattern Breaking (Duarte Sparkline)
-
-Premium decks alternate between emotions for engagement:
-```
-"What Is" (frustration) ↔ "What Could Be" (hope)
-```
-
-System calculates pattern breaks at 1/3 and 2/3 positions.
-
 ### Slide Requirements
 
 **ALL slides MUST:**
@@ -197,8 +185,8 @@ new Chart(document.getElementById('revenueChart'), {
         labels: ['Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [{
             data: [5, 12, 28, 45],
-            borderColor: '#FF6B6B',  // Use brand coral
-            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+            borderColor: 'var(--color-primary)',
+            backgroundColor: 'rgba(0, 117, 190, 0.1)',
             fill: true,
             tension: 0.4
         }]
@@ -210,35 +198,24 @@ new Chart(document.getElementById('revenueChart'), {
 ### Token Compliance
 
 ```css
-/* CORRECT - uses token */
-background: var(--slide-bg);
+/* CORRECT - uses Andritz token */
+background: var(--color-surface);
 color: var(--color-primary);
-font-family: var(--typography-font-heading);
+font-family: var(--font-family-primary);
+border-radius: 0px;
 
 /* WRONG - hardcoded */
-background: #0D0D0D;
-color: #FF6B6B;
-font-family: 'Space Grotesk';
-```
-
-### Reference Implementation
-
-Working example with all features:
-```
-assets/designs/slides/claudekit-pitch-251223.html
-```
-
-### Command
-
-```bash
-/slides:create "10-slide investor pitch for ClaudeKit Marketing"
+background: #f8fafb;
+color: #0075be;
+font-family: 'Inter';
+border-radius: 0.5rem;
 ```
 
 ## Best Practices
 
-1. Never use raw hex in components - always reference tokens
-2. Semantic layer enables theme switching (light/dark)
-3. Component tokens enable per-component customization
-4. Use HSL format for opacity control
+1. Never use border-radius — 0px is the Andritz rule, no exceptions
+2. Use tonal layering (surface hierarchy) instead of borders — No-Line Rule
+3. Semantic layer enables light/dark theme switching via surface hierarchy
+4. Component tokens enable per-component customization
 5. Document every token's purpose
 6. **Slides must import design-tokens.css and use var() exclusively**

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Andritz Industrial Portal - Operational Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb781",
+                        "inverse-on-surface": "#2d3137",
+                        "inverse-primary": "#0062a0",
+                        "primary-container": "#0075be",
+                        "surface-container-low": "#181c22",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-primary-container": "#f3f7ff",
+                        "secondary": "#b0c8ec",
+                        "tertiary-container": "#ae5b01",
+                        "on-secondary": "#19314e",
+                        "error-container": "#93000a",
+                        "surface-variant": "#31353c",
+                        "on-tertiary": "#4e2600",
+                        "on-secondary-fixed-variant": "#314866",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#a2badd",
+                        "surface-dim": "#10141a",
+                        "on-background": "#dfe2eb",
+                        "outline": "#8a919c",
+                        "on-primary-fixed": "#001d35",
+                        "background": "#10141a",
+                        "primary-fixed": "#d0e4ff",
+                        "surface-container-high": "#262a31",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "surface-container-highest": "#31353c",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "surface": "#10141a",
+                        "secondary-fixed": "#d3e4ff",
+                        "tertiary-fixed": "#ffdcc4",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "primary": "#9bcaff",
+                        "secondary-container": "#334a68",
+                        "on-tertiary-container": "#fff5f0",
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-primary": "#003256",
+                        "on-surface": "#dfe2eb",
+                        "on-surface-variant": "#c0c7d2",
+                        "inverse-surface": "#dfe2eb",
+                        "surface-tint": "#9bcaff",
+                        "outline-variant": "#404751",
+                        "surface-container": "#1c2026",
+                        "tertiary": "#ffb781",
+                        "surface-bright": "#353940"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0a0e14; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #31353c; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex overflow-hidden h-screen">
+<!-- NAVIGATION DRAWER (The "Monolith" Shell) -->
+<aside class="hidden md:flex flex-col h-full py-8 px-4 gap-2 bg-[#10141a] bg-[#181c22] shadow-[32px_0_32px_rgba(0,28,56,0.4)] w-80 shrink-0">
+<div class="flex items-center gap-4 px-2 mb-8">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+</div>
+<div>
+<p class="font-['Inter'] font-black text-[#9bcaff] text-sm tracking-tighter">OP_UNIT_72</p>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">COMMANDER_LEVEL_A</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c7d2] hover:bg-[#262a31] transition-all duration-200 font-['Inter'] font-medium text-sm tracking-normal" href="#">
+<span class="material-symbols-outlined text-lg">precision_manufacturing</span>
+<span>OPERATIONS</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c7d2] hover:bg-[#262a31] transition-all duration-200 font-['Inter'] font-medium text-sm tracking-normal" href="#">
+<span class="material-symbols-outlined text-lg">insights</span>
+<span>TELEMETRY</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c7d2] hover:bg-[#262a31] transition-all duration-200 font-['Inter'] font-medium text-sm tracking-normal" href="#">
+<span class="material-symbols-outlined text-lg">build</span>
+<span>MAINTENANCE</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c7d2] hover:bg-[#262a31] transition-all duration-200 font-['Inter'] font-medium text-sm tracking-normal" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span>LOGISTICS</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#9bcaff] bg-[#262a31] font-bold border-l-4 border-[#0075be] transition-all duration-200 font-['Inter'] text-sm tracking-normal" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+<span>SYSTEM_LOG</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-widest">SYSTEM_ONLINE</span>
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#9bcaff]"></span>
+</div>
+<p class="text-[10px] text-outline">LATENCY: 12ms</p>
+<p class="text-[10px] text-outline">UPTIME: 99.98%</p>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TOP APP BAR -->
+<header class="flex justify-between items-center px-6 h-16 w-full fixed top-0 md:relative z-50 bg-[#10141a] bg-[#181c22] border-none flat no shadows">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#9bcaff]">settings_input_component</span>
+<h1 class="text-lg font-black tracking-tighter text-[#9bcaff] font-['Inter'] font-bold tracking-tight uppercase">ENGINE_COMMAND</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-widest uppercase">ENCRYPTED_LINK_ACTIVE</span>
+<span class="material-symbols-outlined text-[#9bcaff] text-sm">sensors</span>
+</div>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-[#262a31] transition-colors rounded-sm active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[#c0c7d2]">notifications</span>
+</button>
+</div>
+</header>
+<!-- MAIN CONTENT CANVAS -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-surface-container-lowest pt-16 md:pt-0 pb-24 md:pb-8">
+<!-- METRICS HEADER (Bento Grid Style) -->
+<section class="p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-1 bg-surface-container-low p-6 flex flex-col justify-between h-32 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">analytics</span>
+</div>
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">LOG_THROUGHPUT</label>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-primary">1.2K</span>
+<span class="text-xs text-outline">REQ/S</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-surface-container-low p-6 flex flex-col justify-between h-32 relative overflow-hidden group">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">CRITICAL_ERRORS</label>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-error">04</span>
+<span class="text-xs text-outline">LAST 1H</span>
+</div>
+</div>
+<div class="md:col-span-2 bg-surface-container-low p-6 flex flex-col justify-between h-32 relative">
+<div class="flex justify-between items-center">
+<label class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">SYSTEM_PULSE</label>
+<span class="text-[10px] font-mono text-primary">LOAD: 42%</span>
+</div>
+<div class="h-8 flex items-end gap-1">
+<div class="flex-1 bg-primary/20 h-3 rounded-sm"></div>
+<div class="flex-1 bg-primary/30 h-5 rounded-sm"></div>
+<div class="flex-1 bg-primary/20 h-4 rounded-sm"></div>
+<div class="flex-1 bg-primary/40 h-6 rounded-sm"></div>
+<div class="flex-1 bg-primary/60 h-8 rounded-sm shadow-[0_0_8px_#9bcaff]"></div>
+<div class="flex-1 bg-primary/40 h-5 rounded-sm"></div>
+<div class="flex-1 bg-primary/20 h-3 rounded-sm"></div>
+<div class="flex-1 bg-primary/30 h-6 rounded-sm"></div>
+<div class="flex-1 bg-primary/20 h-4 rounded-sm"></div>
+<div class="flex-1 bg-primary/10 h-2 rounded-sm"></div>
+</div>
+</div>
+</section>
+<!-- FILTER BAR & SEARCH -->
+<section class="px-6 mb-4">
+<div class="bg-surface-container-low p-2 flex flex-col md:flex-row gap-4 justify-between items-center">
+<div class="flex bg-surface-container-lowest p-1 rounded-sm w-full md:w-auto">
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest bg-primary-container text-white rounded-sm">ALL_LOGS</button>
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest text-on-surface-variant hover:text-white transition-colors">ERRORS</button>
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest text-on-surface-variant hover:text-white transition-colors">WARNINGS</button>
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest text-on-surface-variant hover:text-white transition-colors">EVENTS</button>
+</div>
+<div class="relative w-full md:w-96 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm font-mono placeholder:text-outline-variant py-3 pl-10 pr-4 transition-all" placeholder="FILTER_BY_PID_OR_MESSAGE..." type="text"/>
+</div>
+</div>
+</section>
+<!-- HIGH-DENSITY LOG LIST -->
+<section class="px-6 space-y-[2px]">
+<!-- Header row for the list -->
+<div class="grid grid-cols-12 gap-4 px-6 py-3 bg-surface-container-high/50 text-[10px] font-bold tracking-widest text-outline uppercase">
+<div class="col-span-2">TIMESTAMP</div>
+<div class="col-span-1">STATUS</div>
+<div class="col-span-2">RESOURCE</div>
+<div class="col-span-5">MESSAGE_PACKET</div>
+<div class="col-span-2 text-right">METRICS</div>
+</div>
+<!-- Log Entry: Critical -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-error">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:22:01:004</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-error-container text-error text-[9px] font-bold">CRITICAL</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">CORE_ENG_01</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Thermal runaway detected in secondary turbine housing. Automatic venting initiated.</div>
+<div class="col-span-2 text-right font-mono text-xs text-tertiary">TEMP_FAIL: 104C</div>
+</div>
+<!-- Log Entry: Success -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-primary">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:21:58:882</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-primary-container text-white text-[9px] font-bold">SUCCESS</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">PWR_MGMT_SYS</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Redundancy switch completed successfully. Primary rail restored.</div>
+<div class="col-span-2 text-right font-mono text-xs text-on-surface-variant">PWR_STBL: 1.0</div>
+</div>
+<!-- Log Entry: Warning -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-tertiary">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:21:45:110</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-tertiary-container text-on-tertiary-container text-[9px] font-bold">WARNING</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">LOG_NODE_C</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">High latency detected in telemetry stream. Packet loss at 2.4%.</div>
+<div class="col-span-2 text-right font-mono text-xs text-tertiary">LAT_MS: 450</div>
+</div>
+<!-- Log Entry: Event -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-outline">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:21:30:221</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-surface-container-highest text-on-surface-variant text-[9px] font-bold uppercase">INFO</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">USER_OP_04</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Diagnostic handshake initiated for Maintenance Subsystem B.</div>
+<div class="col-span-2 text-right font-mono text-xs text-on-surface-variant">AUTH: LEVEL_2</div>
+</div>
+<!-- Repetitive Density -->
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-primary">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:21:12:009</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-primary-container text-white text-[9px] font-bold">SUCCESS</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">SYS_H_72</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Scheduled database optimization completed. Freed 1.2GB buffer.</div>
+<div class="col-span-2 text-right font-mono text-xs text-on-surface-variant">BUF_RLS: 1.2GB</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-error">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:20:55:414</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-error-container text-error text-[9px] font-bold">CRITICAL</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">VALVE_CTRL</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Electronic actuator failure on Valve V-091. Manual override required.</div>
+<div class="col-span-2 text-right font-mono text-xs text-tertiary">ACT_POS: FAIL</div>
+</div>
+<div class="grid grid-cols-12 gap-4 px-6 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors group cursor-pointer border-l-4 border-tertiary">
+<div class="col-span-2 font-mono text-xs text-on-surface-variant">14:20:42:110</div>
+<div class="col-span-1 flex items-center">
+<span class="px-2 py-0.5 rounded-sm bg-tertiary-container text-on-tertiary-container text-[9px] font-bold">WARNING</span>
+</div>
+<div class="col-span-2 font-mono text-xs text-primary">COOL_PMP_A</div>
+<div class="col-span-5 text-sm font-medium text-on-surface truncate">Vibration levels exceeding nominal threshold (Delta &gt; 15%).</div>
+<div class="col-span-2 text-right font-mono text-xs text-tertiary">VIB_RMS: 1.2G</div>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAV BAR (Mobile Only) -->
+<nav class="flex md:hidden justify-around items-center h-20 w-full px-2 pb-2 fixed bottom-0 z-50 bg-[#0a0e14] bg-[#181c22] border-none flat no shadows">
+<a class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl">factory</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">ASSETS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl">rss_feed</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">FEED</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#0075be] text-white rounded-sm px-4 py-1 active:translate-y-0.5 transition-all" href="#">
+<span class="material-symbols-outlined text-2xl">warning</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase">ALERTS</span>
+</a>
+</nav>
+</div>
+</body></html>

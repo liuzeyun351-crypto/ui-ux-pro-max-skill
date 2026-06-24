@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#0062a0",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e8e9",
+                    "background": "#f8fafb",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "on-secondary-fixed": "#001c38",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "on-primary-fixed-variant": "#00497a",
+                    "surface-container-low": "#f2f4f5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed": "#d4e4f6",
+                    "inverse-primary": "#9bcaff",
+                    "surface-variant": "#e1e3e4",
+                    "error": "#ba1a1a",
+                    "tertiary": "#4b5a69",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-container": "#637383",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#404751",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-surface": "#191c1d",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#49607f",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "surface-container": "#eceeef",
+                    "surface-dim": "#d8dadb",
+                    "secondary-fixed": "#d3e4ff",
+                    "surface": "#f8fafb",
+                    "on-primary-fixed": "#001d35",
+                    "on-primary-container": "#f3f7ff",
+                    "primary-container": "#0075be",
+                    "surface-container-highest": "#e1e3e4",
+                    "inverse-on-surface": "#eff1f2",
+                    "outline": "#707882",
+                    "primary": "#005c97",
+                    "on-secondary-container": "#485f7e",
+                    "surface-bright": "#f8fafb",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#c1d9fd",
+                    "primary-fixed": "#d0e4ff",
+                    "outline-variant": "#c0c7d2",
+                    "on-tertiary-container": "#f2f7ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .monolithic-gradient {
+            background: linear-gradient(135deg, #005c97 0%, #0075be 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface dark:bg-[#f8fafb] text-on-surface antialiased overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-8 py-4 h-16 bg-slate-50 dark:bg-[#f2f4f5] border-none fixed top-0 z-50">
+<div class="flex items-center gap-12">
+<span class="text-xl font-black text-[#001c38] dark:text-[#001c38] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider">ANDRITZ INDUSTRIAL PORTAL</span>
+<nav class="hidden md:flex gap-8 items-center h-16">
+<a class="text-[#404751] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm hover:bg-[#eceeef] transition-colors h-full flex items-center px-2" href="#">Dashboard</a>
+<a class="text-[#404751] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm hover:bg-[#eceeef] transition-colors h-full flex items-center px-2" href="#">Assets</a>
+<a class="text-[#005c97] border-b-2 border-[#005c97] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm h-full flex items-center px-2" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#404751] cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-[#005c97] cursor-pointer" data-icon="settings">settings</span>
+<div class="w-8 h-8 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional male engineer portrait in corporate setting with neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7M0eY7W0LtpygFVD2Ynq5bxd0RJKuTJtY0jmsYJHEBUNlVxymfJOZu3A4FHrTSyQVS4VjSo0JmT3id1TwRs67L8ZFGNIbthAa-tj1xAan-MDIYR_opSyFmK3CSHsHL5XCtF8ChiqrUHv_5Xf8QhwAUSNIgOTYd1kvR3CHztaDJgvZhfgqDpGVQ1M-GW0GVCT2U4xEXHNayS025k2cVXu1NZ2ZRfkimHRlsf1BCdDNQfooxrrMbDJe6a81fuhchO03SOYK5qf7bBA"/>
+</div>
+</div>
+</header>
+<div class="flex h-screen pt-16">
+<!-- Side Navigation Bar -->
+<aside class="flex flex-col h-full py-6 bg-[#f8fafb] dark:bg-[#f8fafb] w-64 left-0 top-0 fixed border-none">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-1">
+<span class="material-symbols-outlined text-[#005c97]" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="text-lg font-bold text-[#001c38] font-['Gilroy-Regular','Inter'] tracking-[0.1em]">OPERATIONS</span>
+</div>
+<p class="text-[10px] text-[#404751] font-mono opacity-60">Monolithic Engine v2.4</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 px-6 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150 ease-in-out font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150 ease-in-out font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span>Digital Employees</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150 ease-in-out font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span>Equipment</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150 ease-in-out font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-4 bg-[#eceeef] text-[#001c38] font-semibold border-r-4 border-[#005c97] transition-all duration-150 ease-in-out font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-surface-container pt-4">
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all font-['Gilroy-Regular','Inter'] text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all font-['Gilroy-Regular','Inter'] text-xs uppercase tracking-[0.1em]" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 bg-surface-container-low min-h-screen">
+<div class="flex h-full">
+<!-- Category Sub-Navigation (Asymmetric Layout) -->
+<div class="w-80 bg-surface-container p-10 border-r border-transparent">
+<h1 class="text-4xl font-black text-[#001c38] uppercase tracking-tighter mb-12">Settings</h1>
+<div class="flex flex-col gap-2">
+<button class="flex items-center justify-between w-full p-4 bg-surface-container-lowest text-[#005c97] font-bold uppercase tracking-widest text-xs border-l-4 border-[#005c97]">
+<span>General Settings</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex items-center justify-between w-full p-4 hover:bg-surface-container-high text-[#404751] font-medium uppercase tracking-widest text-xs transition-colors">
+<span>API Management</span>
+<span class="material-symbols-outlined text-sm" data-icon="api">api</span>
+</button>
+<button class="flex items-center justify-between w-full p-4 hover:bg-surface-container-high text-[#404751] font-medium uppercase tracking-widest text-xs transition-colors">
+<span>Security &amp; Access</span>
+<span class="material-symbols-outlined text-sm" data-icon="shield">shield</span>
+</button>
+<button class="flex items-center justify-between w-full p-4 hover:bg-surface-container-high text-[#404751] font-medium uppercase tracking-widest text-xs transition-colors">
+<span>Notifications</span>
+<span class="material-symbols-outlined text-sm" data-icon="notifications_active">notifications_active</span>
+</button>
+</div>
+<div class="mt-20 p-6 bg-surface-container-highest/50 border-t border-[#005c97]/20">
+<p class="text-[10px] text-[#404751] uppercase tracking-[0.2em] font-bold mb-4">System Integrity</p>
+<div class="flex items-center gap-2 mb-2">
+<div class="w-2 h-2 bg-green-500"></div>
+<span class="text-xs font-mono text-[#001c38]">CORE_MODULE: ACTIVE</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-green-500"></div>
+<span class="text-xs font-mono text-[#001c38]">DATABASE: STABLE</span>
+</div>
+</div>
+</div>
+<!-- Form Area -->
+<div class="flex-1 p-16 overflow-y-auto max-w-5xl">
+<div class="mb-12">
+<span class="text-[11px] font-bold text-[#005c97] uppercase tracking-[0.3em]">Module / Core</span>
+<h2 class="text-3xl font-bold text-[#001c38] mt-2 mb-4">General Configuration</h2>
+<p class="text-[#404751] text-sm max-w-xl leading-relaxed">
+                            Define the global operational parameters for the Monolithic Engine. Changes here affect cross-plant analytics and system-wide synchronization intervals.
+                        </p>
+</div>
+<div class="grid grid-cols-1 gap-12">
+<!-- Section: Identity -->
+<section>
+<h3 class="text-xs font-black text-[#001c38] uppercase tracking-widest mb-6 pb-2 border-b-2 border-surface-container-highest">System Identity</h3>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-[#404751] uppercase tracking-widest">System Name</label>
+<input class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:ring-0 focus:border-[#005c97] p-4 text-[#001c38] font-mono text-sm transition-all" type="text" value="ANDRITZ_ALPHA_PROD"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-[#404751] uppercase tracking-widest">Global Asset ID</label>
+<input class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:ring-0 focus:border-[#005c97] p-4 text-[#001c38] font-mono text-sm transition-all" type="text" value="XP-990-2442-B"/>
+</div>
+</div>
+</section>
+<!-- Section: Timing & Performance -->
+<section>
+<h3 class="text-xs font-black text-[#001c38] uppercase tracking-widest mb-6 pb-2 border-b-2 border-surface-container-highest">Operational Timing</h3>
+<div class="bg-surface-container-lowest p-8 space-y-8">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold text-[#001c38] uppercase tracking-tight">Global Session Timeout</p>
+<p class="text-xs text-[#404751]">Duration before automated logout for inactivity.</p>
+</div>
+<div class="flex items-center gap-4">
+<input class="w-32 bg-surface-container-high border-none p-3 text-[#001c38] font-mono text-right text-sm" type="number" value="3600"/>
+<span class="text-[10px] font-bold text-[#404751] uppercase tracking-widest">Seconds</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container-high">
+<div>
+<p class="text-sm font-bold text-[#001c38] uppercase tracking-tight">Telemetry Frequency</p>
+<p class="text-xs text-[#404751]">Update rate for non-critical sensor arrays.</p>
+</div>
+<div class="flex items-center gap-4">
+<input class="w-32 bg-surface-container-high border-none p-3 text-[#001c38] font-mono text-right text-sm" type="number" value="250"/>
+<span class="text-[10px] font-bold text-[#404751] uppercase tracking-widest">ms</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Advanced Switches -->
+<section>
+<h3 class="text-xs font-black text-[#001c38] uppercase tracking-widest mb-6 pb-2 border-b-2 border-surface-container-highest">Functional Toggles</h3>
+<div class="space-y-6">
+<div class="flex items-start justify-between">
+<div class="max-w-md">
+<p class="text-sm font-bold text-[#001c38] uppercase tracking-tight">Maintenance Mode Override</p>
+<p class="text-xs text-[#404751] mt-1">Allows manual override of automated safety protocols during certified inspection windows.</p>
+</div>
+<button class="relative inline-flex h-6 w-12 items-center bg-[#005c97]">
+<span class="inline-block h-4 w-4 translate-x-7 bg-white transition"></span>
+</button>
+</div>
+<div class="flex items-start justify-between">
+<div class="max-w-md">
+<p class="text-sm font-bold text-[#001c38] uppercase tracking-tight">External Data Export</p>
+<p class="text-xs text-[#404751] mt-1">Enables real-time data streaming to authorized third-party analytics partners.</p>
+</div>
+<button class="relative inline-flex h-6 w-12 items-center bg-[#c0c7d2]">
+<span class="inline-block h-4 w-4 translate-x-1 bg-white transition"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- CTA Area -->
+<div class="flex items-center justify-end gap-4 pt-12 border-t border-surface-container-highest">
+<button class="px-8 py-3 bg-surface-container-high text-[#001c38] text-[10px] font-black uppercase tracking-[0.2em] hover:bg-surface-variant transition-colors">
+                                Reset to Default
+                            </button>
+<button class="monolithic-gradient px-12 py-4 text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-[#005c97]/20 active:opacity-80 transition-all">
+                                Save Changes
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Background Industrial Detail -->
+<div class="fixed bottom-10 right-10 opacity-5 pointer-events-none select-none">
+<span class="text-[12rem] font-black leading-none text-[#001c38]">ANDRITZ</span>
+</div>
+</body></html>

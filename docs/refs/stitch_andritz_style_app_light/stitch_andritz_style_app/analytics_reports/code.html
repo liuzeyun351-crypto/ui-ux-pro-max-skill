@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Gilroy-SemiBold';
+            src: url('https://fonts.cdnfonts.com/s/16219/Gilroy-SemiBold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Gilroy-Bold';
+            src: url('https://fonts.cdnfonts.com/s/16219/Gilroy-Bold.woff') format('woff');
+        }
+        @font-face {
+            font-family: 'Gilroy-Regular';
+            src: url('https://fonts.cdnfonts.com/s/16219/Gilroy-Regular.woff') format('woff');
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafb;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-grid {
+            background-image: radial-gradient(#c0c7d2 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .industrial-gradient {
+            background: linear-gradient(135deg, #005c97 0%, #0075be 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#0062a0",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "background": "#f8fafb",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "on-primary-fixed-variant": "#00497a",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#d4e4f6",
+                        "inverse-primary": "#9bcaff",
+                        "surface-variant": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "tertiary": "#4b5a69",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#637383",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#404751",
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#314866",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#49607f",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "surface-container": "#eceeef",
+                        "surface-dim": "#d8dadb",
+                        "secondary-fixed": "#d3e4ff",
+                        "surface": "#f8fafb",
+                        "on-primary-fixed": "#001d35",
+                        "on-primary-container": "#f3f7ff",
+                        "primary-container": "#0075be",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#eff1f2",
+                        "outline": "#707882",
+                        "primary": "#005c97",
+                        "on-secondary-container": "#485f7e",
+                        "surface-bright": "#f8fafb",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#c1d9fd",
+                        "primary-fixed": "#d0e4ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-tertiary-container": "#f2f7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<nav class="fixed top-0 z-50 flex justify-between items-center w-full px-8 py-4 h-16 bg-[#f2f4f5] dark:bg-[#f2f4f5] border-none">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-[#001c38] font-['Gilroy-Bold','Inter'] tracking-wider">ANDRITZ INDUSTRIAL PORTAL</span>
+<div class="hidden md:flex gap-6 ml-8">
+<a class="text-sm font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-[#404751] hover:bg-[#eceeef] transition-colors px-3 py-1" href="#">Dashboard</a>
+<a class="text-sm font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-[#005c97] border-b-2 border-[#005c97] px-3 py-1" href="#">Analytics</a>
+<a class="text-sm font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-[#404751] hover:bg-[#eceeef] transition-colors px-3 py-1" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-[#404751] cursor-pointer hover:bg-[#eceeef] p-2 transition-colors">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-surface-container-low"></span>
+</div>
+<span class="material-symbols-outlined text-[#404751] cursor-pointer hover:bg-[#eceeef] p-2 transition-colors">settings</span>
+<div class="w-8 h-8 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional male engineer portrait in clean room environment with safety glasses on forehead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ5kwuBhCOp8tZp4uOGO_jubFS3aSnMiX8WCt9Mrvj7OJSpEL4hIBgfALy2BPXPNLajO8ZxFF3LfvRBmWwEJudIzO2oUYByqvB65e3NVQKIncjvxEqOIkl92rxIs5T68NLx4fSuZcwNretmb9yB7OrXLxKDt5WOb05Bu1TS94TecbenxK3SSLbMs4ogostmYPDIJtMmk236RKOOcr5XMbBZY_i-sokpCP2QTpRXhZbCSjpyZ9qzCuLo7QbPsQ1wkvCwj-XFYrSxJg"/>
+</div>
+</div>
+</nav>
+<aside class="flex flex-col h-screen w-64 left-0 top-0 fixed bg-[#f8fafb] py-6 pt-20 border-r border-outline-variant/15">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 bg-primary animate-pulse"></div>
+<span class="text-lg font-bold text-[#001c38] font-['Gilroy-Bold'] tracking-tight uppercase">OPERATIONS</span>
+</div>
+<span class="text-[10px] text-on-surface-variant font-['Inter'] tracking-widest opacity-60 uppercase">Monolithic Engine v2.4</span>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-['Gilroy-Regular'] uppercase tracking-[0.1em]">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
+<span class="text-sm font-['Gilroy-Regular'] uppercase tracking-[0.1em]">Digital Employees</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">construction</span>
+<span class="text-sm font-['Gilroy-Regular'] uppercase tracking-[0.1em]">Equipment</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 bg-[#eceeef] text-[#001c38] font-semibold border-r-4 border-[#005c97] transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="text-sm font-['Gilroy-Regular'] uppercase tracking-[0.1em]">Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-sm font-['Gilroy-Regular'] uppercase tracking-[0.1em]">Reports</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full industrial-gradient text-on-primary py-3 px-4 font-bold text-xs uppercase tracking-widest shadow-lg active:opacity-80 transition-opacity">
+                Add New Asset
+            </button>
+</div>
+<div class="mt-auto border-t border-outline-variant/10 py-4">
+<a class="flex items-center gap-4 px-6 py-2 text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="text-xs uppercase tracking-widest">Help Center</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-2 text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="text-xs uppercase tracking-widest">Logout</span>
+</a>
+</div>
+</aside>
+<main class="ml-64 pt-16 min-h-screen bg-surface">
+<header class="bg-surface-container-low px-10 py-8">
+<div class="flex justify-between items-end">
+<div>
+<span class="text-[10px] text-on-surface-variant font-bold uppercase tracking-[0.2em] block mb-1">Operational Overview</span>
+<h1 class="text-4xl font-black text-on-secondary-fixed tracking-tighter uppercase font-['Gilroy-Bold']">Analytics &amp; Reports</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-highest px-6 py-3 flex items-center gap-4">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">calendar_today</span>
+<span class="text-xs font-bold uppercase tracking-widest">Oct 01, 2023 - Oct 31, 2023</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer">expand_more</span>
+</div>
+<button class="bg-surface-container-high px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-surface-variant transition-colors">
+                        Export PDF
+                    </button>
+</div>
+</div>
+</header>
+<div class="px-10 py-10 flex flex-col gap-10">
+<section class="bg-surface-container-lowest border-l-4 border-primary p-8 shadow-sm">
+<div class="flex justify-between items-center mb-10">
+<div>
+<h2 class="text-xl font-bold uppercase tracking-widest mb-1">Performance Over Time</h2>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Metric: Overall Equipment Effectiveness (OEE)</span>
+</div>
+<div class="flex gap-8">
+<div class="text-right">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest block">Current Value</span>
+<span class="text-2xl font-black text-primary">94.2%</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest block">30d Variance</span>
+<span class="text-2xl font-black text-green-600">+1.4%</span>
+</div>
+</div>
+</div>
+<div class="h-80 w-full relative">
+<div class="absolute inset-0 blueprint-grid"></div>
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="5%" stop-color="#0075be" stop-opacity="0.3"></stop>
+<stop offset="95%" stop-color="#0075be" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,200 L100,180 L200,220 L300,160 L400,190 L500,120 L600,150 L700,90 L800,130 L900,110 L1000,70 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<path d="M0,200 L100,180 L200,220 L300,160 L400,190 L500,120 L600,150 L700,90 L800,130 L900,110 L1000,70" fill="none" stroke="#0075be" stroke-linecap="square" stroke-width="4"></path>
+<line opacity="0.5" stroke="#c0c7d2" stroke-dasharray="8 4" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<line opacity="0.5" stroke="#c0c7d2" stroke-dasharray="8 4" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line opacity="0.5" stroke="#c0c7d2" stroke-dasharray="8 4" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+</svg>
+<div class="flex justify-between mt-4 text-[10px] text-on-surface-variant font-bold tracking-tighter">
+<span>OCT 01</span>
+<span>OCT 05</span>
+<span>OCT 10</span>
+<span>OCT 15</span>
+<span>OCT 20</span>
+<span>OCT 25</span>
+<span>OCT 31</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-2 gap-10">
+<section class="bg-surface-container p-8">
+<div class="mb-8 border-b border-outline-variant/10 pb-4">
+<h3 class="text-sm font-black uppercase tracking-[0.2em]">Asset Distribution</h3>
+<span class="text-[9px] text-on-surface-variant uppercase">By Deployment Status</span>
+</div>
+<div class="flex items-center gap-12">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#eceeef" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#005c97" stroke-dasharray="65 35" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#0075be" stroke-dasharray="20 80" stroke-dashoffset="-65" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="15.915" stroke="#314866" stroke-dasharray="15 85" stroke-dashoffset="-85" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-on-secondary-fixed">842</span>
+<span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant">Total Assets</span>
+</div>
+</div>
+<div class="flex flex-col gap-4 flex-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-[#005c97]"></div>
+<span class="text-xs font-bold uppercase tracking-wider">Active</span>
+</div>
+<span class="text-xs font-bold">547</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-[#0075be]"></div>
+<span class="text-xs font-bold uppercase tracking-wider">Maintenance</span>
+</div>
+<span class="text-xs font-bold">168</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-[#314866]"></div>
+<span class="text-xs font-bold uppercase tracking-wider">Standby</span>
+</div>
+<span class="text-xs font-bold">127</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container p-8">
+<div class="mb-8 border-b border-outline-variant/10 pb-4">
+<h3 class="text-sm font-black uppercase tracking-[0.2em]">Efficiency by Department</h3>
+<span class="text-[9px] text-on-surface-variant uppercase">Target: 95% Yield</span>
+</div>
+<div class="flex flex-col gap-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase tracking-widest">Hydraulic Systems</span>
+<span class="text-[11px] font-bold">98.2%</span>
+</div>
+<div class="h-4 bg-surface-container-high w-full">
+<div class="h-full industrial-gradient w-[98.2%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase tracking-widest">Pulp &amp; Paper</span>
+<span class="text-[11px] font-bold">91.5%</span>
+</div>
+<div class="h-4 bg-surface-container-high w-full">
+<div class="h-full industrial-gradient w-[91.5%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase tracking-widest">Metals Processing</span>
+<span class="text-[11px] font-bold">87.8%</span>
+</div>
+<div class="h-4 bg-surface-container-high w-full">
+<div class="h-full industrial-gradient w-[87.8%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold uppercase tracking-widest">Hydro Power</span>
+<span class="text-[11px] font-bold">94.0%</span>
+</div>
+<div class="h-4 bg-surface-container-high w-full">
+<div class="h-full industrial-gradient w-[94%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<section class="grid grid-cols-4 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 border-b-2 border-outline-variant">
+<span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Active Faults</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black">04</span>
+<span class="material-symbols-outlined text-error text-lg" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 border-b-2 border-outline-variant">
+<span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Energy Usage</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black">1.2</span>
+<span class="text-xs font-bold uppercase text-on-surface-variant">MWh</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 border-b-2 border-outline-variant">
+<span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Throughput</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black">14.8</span>
+<span class="text-xs font-bold uppercase text-on-surface-variant">t/h</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 border-b-2 border-primary">
+<span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant block mb-2">Uptime</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black">99.98</span>
+<span class="text-xs font-bold uppercase text-on-surface-variant">%</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<div class="fixed bottom-0 right-0 p-8 z-40 hidden lg:block">
+<div class="bg-inverse-surface text-inverse-on-surface p-4 flex items-center gap-4 shadow-2xl">
+<span class="material-symbols-outlined text-primary">sensors</span>
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest block opacity-70">System Health</span>
+<span class="text-xs font-black uppercase">All Modules Nominal</span>
+</div>
+</div>
+</div>
+</body></html>

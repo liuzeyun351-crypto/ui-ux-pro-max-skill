@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(20px); }
+        .monolith-gradient { background: linear-gradient(180deg, #0075be 0%, #00497a 100%); }
+        .pulse-glow { filter: drop-shadow(0px 0px 8px #9bcaff); }
+        /* Custom scrollbar for industrial feel */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0e14; }
+        ::-webkit-scrollbar-thumb { background: #31353c; border-radius: 2px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2f1400",
+                        "on-surface": "#dfe2eb",
+                        "secondary-container": "#334a68",
+                        "tertiary": "#ffb781",
+                        "surface-container-highest": "#31353c",
+                        "on-primary-fixed": "#001d35",
+                        "on-surface-variant": "#c0c7d2",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ffb4ab",
+                        "secondary": "#b0c8ec",
+                        "surface-tint": "#9bcaff",
+                        "surface-container-lowest": "#0a0e14",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-secondary-container": "#a2badd",
+                        "on-primary": "#003256",
+                        "inverse-surface": "#dfe2eb",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#9bcaff",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-dim": "#10141a",
+                        "surface-container-low": "#181c22",
+                        "surface": "#10141a",
+                        "on-tertiary-container": "#fff5f0",
+                        "on-tertiary": "#4e2600",
+                        "outline-variant": "#404751",
+                        "primary-fixed": "#d0e4ff",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#dfe2eb",
+                        "on-error": "#690005",
+                        "outline": "#8a919c",
+                        "primary-container": "#0075be",
+                        "surface-container-high": "#262a31",
+                        "background": "#10141a",
+                        "surface-bright": "#353940",
+                        "on-secondary": "#19314e",
+                        "tertiary-fixed": "#ffdcc4",
+                        "on-primary-container": "#f3f7ff",
+                        "tertiary-container": "#ae5b01",
+                        "surface-variant": "#31353c",
+                        "surface-container": "#1c2026",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb781",
+                        "inverse-on-surface": "#2d3137",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#0062a0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- Sidebar Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-slate-100 dark:bg-slate-900 border-0 w-64 z-50">
+<div class="p-6 flex flex-col gap-1">
+<span class="text-lg font-black tracking-tighter text-slate-900 dark:text-white">Industrial Control</span>
+<span class="text-[11px] uppercase tracking-widest font-bold text-on-surface-variant opacity-60">Digital Employee Platform</span>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<!-- Active Tab: Agent Analytics -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="monitoring">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</a>
+</nav>
+<div class="px-4 py-6 space-y-4">
+<button class="w-full py-3 bg-primary-container text-on-primary-container text-[11px] font-bold tracking-widest rounded-lg flex items-center justify-center gap-2 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                DEPLOY AGENT
+            </button>
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant/20">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 text-[11px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 text-[11px] font-bold uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                    Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex justify-between items-center px-8 bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl z-40 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-6">
+<span class="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">MONOLITH_v1.0</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 border-b-2 border-sky-700 dark:border-sky-400 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-sky-600" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative w-64 h-8 bg-surface-container-lowest flex items-center px-3 rounded text-[10px] text-on-surface-variant font-bold tracking-wider">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="search">search</span>
+                SEARCH SYSTEM ARCHIVE...
+            </div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="lan">lan</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="account_tree">account_tree</span>
+<img alt="Operator Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="portrait of a focused system administrator in a high-tech control room environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8R0mAPbFbb0REdVGPc-sM4Cpeh9Mg4YQ0J1Gbxm-lHVSg-678RQJn5QS6_Tx4rGk5wVeNfu2WAM1DZV4s7FP1UMLY8dgJwsyH9aAkPH1qJdTRNFRBKpnAxNBLejS2W7kNO-u2rHuRYZcug9LbEz6mDuxh-WusaHuWh1XCNRwe0USRuRI03MZGVVK5HGAmLJaWzIvfiyPTa7uCoNLpRRHjsVuj1jyIUPOfY58rJAvDzLhJimwikgAJky2HlouwaNr4dlZwDH_hhbs"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen bg-surface-container-lowest">
+<!-- Header Section -->
+<section class="mb-12 flex justify-between items-end">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-black rounded uppercase">Live Instance</span>
+<span class="text-on-surface-variant text-[12px] font-mono">UUID: A-7782-X-DELTA</span>
+</div>
+<h1 class="text-5xl font-black tracking-tighter text-on-surface leading-none">AGENT_AURORA_01</h1>
+<p class="mt-4 text-on-surface-variant max-w-lg leading-relaxed">Neural deployment specialized in autonomous logistics optimization. Currently processing multi-node transit sequences in the Northern Hemisphere cluster.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 bg-surface-container-highest text-on-surface text-[11px] font-bold tracking-widest uppercase rounded flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="emergency">emergency</span>
+                    Kill Switch
+                </button>
+<button class="px-6 py-2.5 monolith-gradient text-on-primary-container text-[11px] font-bold tracking-widest uppercase rounded flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                    Re-Sync Agent
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- 3D Visualization Placeholder -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="abstract 3d wireframe of a complex digital cityscape with glowing circuit paths and neon blue highlights" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCimrFSjkiQT9vtzAOMUx2Ci_IfcUgwLCCjVoLmECj1QKnAx5qKzupkgsA5nsPXHm41v-g2bMNTIiohK-mw_hPaze5CnJA-WQqKSrUlMGDRH-Hpyj-DUsRtRrGpMazVGtZedabDh3bLYxYgcmec_EBE-4EZSxGAhh0sAS5IFu6mIe2Iv6d7pzafOZWtL5b6PjKLYzpvOI67jo_R6I9eY_jw_PMufCsmb1XQIU7RwQhQCVsjaBCKAkoRf8hWZ37dx3bZHKjsr3v6leU')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<div class="relative p-8 h-[500px] flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="space-y-1">
+<h3 class="text-[12px] font-black uppercase tracking-widest text-primary">Live Workspace Focus</h3>
+<p class="text-2xl font-bold tracking-tight">Active Matrix Simulation</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur text-[10px] font-bold uppercase rounded">FPS: 144</span>
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur text-[10px] font-bold uppercase rounded">Nodes: 14,022</span>
+</div>
+</div>
+<div class="flex justify-center items-center">
+<!-- Simulated 3D Core Icon -->
+<div class="w-48 h-48 rounded-full monolith-gradient pulse-glow flex items-center justify-center opacity-80 border-4 border-primary/20">
+<span class="material-symbols-outlined text-7xl text-white" data-icon="blur_on" style="font-variation-settings: 'FILL' 1;">blur_on</span>
+</div>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex items-center gap-4 text-[11px] font-mono text-on-surface-variant">
+<span>X: 142.002</span>
+<span>Y: -89.441</span>
+<span>Z: 12.009</span>
+</div>
+<div class="flex gap-1">
+<div class="w-1 h-8 bg-primary"></div>
+<div class="w-1 h-12 bg-primary"></div>
+<div class="w-1 h-6 bg-primary"></div>
+<div class="w-1 h-10 bg-primary opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side KPI Column -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Status Card -->
+<div class="bg-surface-container-high p-6 rounded-xl border-l-4 border-primary">
+<h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant mb-4">Neural Health</h4>
+<div class="flex items-end justify-between">
+<div class="text-4xl font-black tracking-tighter text-on-surface">99.8%</div>
+<div class="text-[10px] font-mono text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                            OPTIMAL
+                        </div>
+</div>
+<div class="mt-4 w-full h-1 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="w-[99.8%] h-full monolith-gradient"></div>
+</div>
+</div>
+<!-- Latency Graph Panel -->
+<div class="bg-surface-container-high p-6 rounded-xl flex-1">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant">Response Latency</h4>
+<p class="text-2xl font-bold tracking-tight">0.14 ms</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="h-32 flex items-end gap-1.5 overflow-hidden">
+<!-- High Contrast Pulse Line Simulated -->
+<div class="flex-1 bg-primary/20 h-12 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-16 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary h-24 rounded-t shadow-[0_0_10px_rgba(155,202,255,0.5)]"></div>
+<div class="flex-1 bg-primary/20 h-14 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-18 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-10 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-20 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-12 rounded-t hover:bg-primary/40 transition-colors"></div>
+<div class="flex-1 bg-primary/20 h-16 rounded-t hover:bg-primary/40 transition-colors"></div>
+</div>
+</div>
+</div>
+<!-- Memory Heap Allocation -->
+<div class="col-span-12 md:col-span-6 lg:col-span-4 bg-surface-container-low p-8 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-[12px] font-black uppercase tracking-widest text-on-surface">Memory Heap</h3>
+<span class="text-xs font-mono text-on-surface-variant">8.4 / 12 GB</span>
+</div>
+<div class="relative pt-8 flex justify-center">
+<!-- Donut Chart Placeholder -->
+<div class="w-32 h-32 rounded-full border-[12px] border-surface-container-highest flex items-center justify-center">
+<div class="absolute w-32 h-32 rounded-full border-[12px] border-primary border-t-transparent border-r-transparent -rotate-45"></div>
+<span class="text-xl font-bold">70%</span>
+</div>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Static Cache</span>
+<span class="text-[10px] font-mono">1.2 GB</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Active Objects</span>
+<span class="text-[10px] font-mono">6.8 GB</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Buffer Overflow</span>
+<span class="text-[10px] font-mono text-tertiary">0.4 GB</span>
+</div>
+</div>
+</div>
+<!-- Task Integrity Log -->
+<div class="col-span-12 md:col-span-6 lg:col-span-8 bg-surface-container-low p-8 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-[12px] font-black uppercase tracking-widest text-on-surface">Current Thread Execution</h3>
+<button class="text-[10px] font-bold text-primary uppercase flex items-center gap-1">
+                        View Full Trace
+                        <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="check_circle">check_circle</span>
+<div>
+<p class="text-[11px] font-bold tracking-tight">DATA_INGESTION_SEQUENCE_09</p>
+<p class="text-[10px] text-on-surface-variant">Success: 1,492 points correlated</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant">2.1s ago</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded border-l-2 border-tertiary">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary text-lg pulse-glow" data-icon="warning">warning</span>
+<div>
+<p class="text-[11px] font-bold tracking-tight">PATH_OPTIMIZATION_RETRY</p>
+<p class="text-[10px] text-on-surface-variant">Notice: Calculating alternative node routing</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant">Just now</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="cached">cached</span>
+<div>
+<p class="text-[11px] font-bold tracking-tight">MODEL_WEIGHT_ADJUSTMENT</p>
+<p class="text-[10px] text-on-surface-variant">In Progress: Gradient descent refinement...</p>
+</div>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant">Running</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Technical Metadata -->
+<footer class="mt-12 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6 opacity-60">
+<div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                    Primary Cluster: EU-WEST-1
+                </div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    API Uptime: 99.9992%
+                </div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant"></span>
+                    Last Backup: 12m ago
+                </div>
+</div>
+<div class="text-[10px] font-mono">
+                MONOLITHIC_ENGINE v1.0.42_STABLE // BUILD_HASH: 0x9f228b1
+            </div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MONOLITH_v1.0 | Agent Fleet Deployment Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-dim": "#d8dadb",
+                        "surface": "#f8fafb",
+                        "secondary-container": "#c1d9fd",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#4b5a69",
+                        "on-primary-fixed": "#001d35",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404751",
+                        "secondary": "#49607f",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "surface-tint": "#0062a0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#485f7e",
+                        "primary-container": "#0075be",
+                        "outline": "#707882",
+                        "surface-container-high": "#e6e8e9",
+                        "background": "#f8fafb",
+                        "surface-bright": "#f8fafb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "on-primary-container": "#f3f7ff",
+                        "tertiary-container": "#637383",
+                        "surface-variant": "#e1e3e4",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eceeef",
+                        "inverse-primary": "#9bcaff",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "inverse-on-surface": "#eff1f2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#191c1d",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .gilroy-semibold { font-weight: 600; }
+        .primary-gradient { background: linear-gradient(135deg, #005c97 0%, #0075be 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-slate-100 dark:bg-slate-900 w-64 border-0 z-50">
+<div class="p-6">
+<div class="text-lg font-black tracking-tighter text-slate-900 dark:text-white mb-1">Industrial Control</div>
+<div class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-8">Digital Employee Platform</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400 transition-transform scale-95 active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full primary-gradient text-white py-4 text-[11px] font-bold uppercase tracking-widest">DEPLOY AGENT</button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex justify-between items-center px-8 z-40 bg-white/85 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-slate-900 uppercase">MONOLITH_v1.0</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-700 border-b-2 border-sky-700 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-sm">search</span>
+<input class="bg-surface-container border-0 text-[10px] font-bold tracking-widest pl-10 pr-4 py-2 w-48 focus:ring-2 ring-primary" placeholder="GLOBAL_SEARCH" type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">lan</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">account_tree</span>
+<img class="w-8 h-8 object-cover border border-outline-variant grayscale" data-alt="professional male industrial operator in a clean room environment, sharp focus, technical professional headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoAJrYZOuAR38S8rJLP1LgVAV5dtIWCraVwnSz8wYWePCPOvWKU0u0w6QP-FcMSr3E-FK55mBDeeaXkJmm3rs1jelFZtVuhPCwHHtEkPCpDO1xsmQiX7y6Vl_G2QRcqVjw-VRR1GuRMXuUGiorn-V2tDNV_gDQ2K10Fmsjk0pg1XsrvkU1ajg_HHCvjxoLVRBlnt7X9MKT9473xm3qYwsu-1E3QXQVenXEksIOS6Cm7n2e-NpjgheDTUpzxMlLMjdYn9UX-EEOaJg"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="p-8 space-y-8">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-4xl gilroy-semibold tracking-tighter text-on-surface mb-2">FLEET_DEPLOYMENT_PLANNER</h1>
+<div class="flex gap-4 items-center">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] bg-primary text-white px-2 py-1">STRATEGIC_VIEW</span>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">SYSTEM_STATUS: NOMINAL</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-on-secondary-fixed-variant">SIMULATE_IMPACT</button>
+<button class="primary-gradient px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white">COMMIT_PLAN</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Resource Pool (Agent Inventory) -->
+<div class="col-span-12 lg:col-span-3 space-y-6">
+<div class="bg-surface-container p-6 space-y-6 min-h-[700px]">
+<div class="flex justify-between items-center">
+<h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">AVAILABLE_RESOURCES (14)</h2>
+<span class="material-symbols-outlined text-outline">filter_list</span>
+</div>
+<!-- Draggable Agent Cards -->
+<div class="space-y-4">
+<!-- Agent Item 1 -->
+<div class="bg-white p-4 shadow-sm cursor-move hover:ring-2 ring-primary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-xs font-black tracking-tight mb-1">AETHER-042</div>
+<div class="text-[10px] font-bold uppercase text-primary">MAINTENANCE_BOT</div>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="flex justify-between text-[10px] font-bold border-t border-surface-container pt-3">
+<span class="text-on-surface-variant">EFFICIENCY</span>
+<span class="text-on-surface">94.2%</span>
+</div>
+</div>
+<!-- Agent Item 2 -->
+<div class="bg-white p-4 shadow-sm cursor-move hover:ring-2 ring-primary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-xs font-black tracking-tight mb-1">LOGIC-901</div>
+<div class="text-[10px] font-bold uppercase text-tertiary">ANALYTICS_CORE</div>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="flex justify-between text-[10px] font-bold border-t border-surface-container pt-3">
+<span class="text-on-surface-variant">EFFICIENCY</span>
+<span class="text-on-surface">98.8%</span>
+</div>
+</div>
+<!-- Agent Item 3 -->
+<div class="bg-white p-4 shadow-sm cursor-move hover:ring-2 ring-primary transition-all group opacity-75">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-xs font-black tracking-tight mb-1">CYBER-112</div>
+<div class="text-[10px] font-bold uppercase text-primary">QC_SUPERVISOR</div>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="flex justify-between text-[10px] font-bold border-t border-surface-container pt-3">
+<span class="text-on-surface-variant">EFFICIENCY</span>
+<span class="text-on-surface">89.0%</span>
+</div>
+</div>
+<!-- Agent Item 4 -->
+<div class="bg-white p-4 shadow-sm cursor-move hover:ring-2 ring-primary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-xs font-black tracking-tight mb-1">TITAN-007</div>
+<div class="text-[10px] font-bold uppercase text-secondary">LOAD_MASTER</div>
+</div>
+<span class="material-symbols-outlined text-sm text-outline group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="flex justify-between text-[10px] font-bold border-t border-surface-container pt-3">
+<span class="text-on-surface-variant">EFFICIENCY</span>
+<span class="text-on-surface">91.5%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Center/Right Column: Deployment Map & Forecasts -->
+<div class="col-span-12 lg:col-span-9 space-y-8">
+<!-- Top: Forecasting & Gains -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-highest p-6 space-y-4">
+<div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">FORECASTED_DEMAND (Q3)</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black tracking-tighter">1,240</span>
+<span class="text-[10px] font-bold text-on-surface-variant">HRS/WK</span>
+</div>
+<div class="h-1 bg-surface-container w-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-6 space-y-4">
+<div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">EFFICIENCY_GAINS</div>
+<div class="flex items-baseline gap-2 text-primary">
+<span class="text-4xl font-black tracking-tighter">+12.4</span>
+<span class="text-[10px] font-bold">%</span>
+</div>
+<div class="text-[10px] font-medium text-on-surface-variant">ESTIMATED FROM CURRENT PLAN</div>
+</div>
+<div class="bg-surface-container-highest p-6 space-y-4">
+<div class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">RESOURCE_UTILIZATION</div>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-black tracking-tighter">82</span>
+<span class="text-[10px] font-bold">%</span>
+</div>
+<div class="flex gap-1">
+<div class="h-1 bg-primary w-1/4"></div>
+<div class="h-1 bg-primary w-1/4"></div>
+<div class="h-1 bg-primary w-1/4"></div>
+<div class="h-1 bg-surface-container w-1/4"></div>
+</div>
+</div>
+</div>
+<!-- Middle: Deployment Drop Zones -->
+<div class="bg-surface-container p-8 space-y-8">
+<div class="flex justify-between items-center">
+<h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">ACTIVE_INDUSTRIAL_UNITS</h2>
+<div class="flex gap-4">
+<span class="text-[10px] font-bold flex items-center gap-1"><span class="w-2 h-2 bg-primary"></span> CRITICAL</span>
+<span class="text-[10px] font-bold flex items-center gap-1"><span class="w-2 h-2 bg-tertiary"></span> MAINTENANCE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Unit A -->
+<div class="border-2 border-dashed border-outline-variant p-6 min-h-[300px] flex flex-col space-y-6 hover:border-primary transition-colors bg-surface-container-low">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight">UNIT_BETA_04</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">ASSEMBLY_LINE / SOUTH_WING</p>
+</div>
+<span class="bg-error text-white text-[9px] font-bold px-2 py-1 uppercase">OVER_DEMAND</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<!-- Assigned Agent -->
+<div class="bg-white p-3 border-l-4 border-primary flex items-center gap-3 shadow-sm">
+<div class="text-[10px] font-bold">
+<div class="tracking-tight">VECTOR-22</div>
+<div class="text-on-surface-variant opacity-60">QC_PRO</div>
+</div>
+<span class="material-symbols-outlined text-sm cursor-pointer text-error">close</span>
+</div>
+<!-- Placeholder -->
+<div class="flex items-center justify-center border border-dashed border-outline-variant p-3 flex-1 min-w-[120px]">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">DROP_AGENT_HERE</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
+<div class="text-[10px] font-bold uppercase text-on-surface-variant">DEMAND_FILL</div>
+<div class="text-[10px] font-black">45% <span class="text-error ml-2">(-55%)</span></div>
+</div>
+</div>
+<!-- Unit B -->
+<div class="border-2 border-dashed border-outline-variant p-6 min-h-[300px] flex flex-col space-y-6 hover:border-primary transition-colors bg-surface-container-low">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-xl font-black tracking-tight">STATION_GAMMA_11</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">PRECISION_WELDING / SECTOR_C</p>
+</div>
+<span class="bg-surface-tint text-white text-[9px] font-bold px-2 py-1 uppercase">OPTIMAL</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<!-- Assigned Agent -->
+<div class="bg-white p-3 border-l-4 border-primary flex items-center gap-3 shadow-sm">
+<div class="text-[10px] font-bold">
+<div class="tracking-tight">SPARK-09</div>
+<div class="text-on-surface-variant opacity-60">WELD_ENGINE</div>
+</div>
+<span class="material-symbols-outlined text-sm cursor-pointer text-error">close</span>
+</div>
+<div class="bg-white p-3 border-l-4 border-primary flex items-center gap-3 shadow-sm">
+<div class="text-[10px] font-bold">
+<div class="tracking-tight">VISION-44</div>
+<div class="text-on-surface-variant opacity-60">THERMAL_EYE</div>
+</div>
+<span class="material-symbols-outlined text-sm cursor-pointer text-error">close</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant/30 flex justify-between items-center">
+<div class="text-[10px] font-bold uppercase text-on-surface-variant">DEMAND_FILL</div>
+<div class="text-[10px] font-black">98% <span class="text-primary ml-2">(+2%)</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom: Efficiency Trends & Data Depth -->
+<div class="bg-surface-container-lowest p-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">OPERATIONAL_DEPTH_METRICS</h2>
+<span class="text-[10px] font-bold text-primary cursor-pointer hover:underline">DOWNLOAD_TSV_REPORT</span>
+</div>
+<div class="relative h-64 w-full flex items-end gap-1">
+<!-- Visualized Chart Bars -->
+<div class="flex-1 bg-surface-container h-[40%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[55%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[45%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[70%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-primary h-[85%]"></div>
+<div class="flex-1 bg-surface-container h-[65%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[50%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[30%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[45%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[60%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[75%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[55%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[40%] hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container h-[35%] hover:bg-primary transition-colors"></div>
+<!-- Legend / X-Axis -->
+<div class="absolute -bottom-6 left-0 w-full flex justify-between text-[8px] font-bold uppercase text-on-surface-variant tracking-widest">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>23:59</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual Details Panel (Hidden by default or shown on card select) -->
+<div class="fixed right-0 top-16 bottom-0 w-80 bg-white shadow-2xl border-l border-outline-variant/20 p-8 transform translate-x-full transition-transform z-30">
+<div class="space-y-8">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary">AGENT_PROFILE</span>
+<span class="material-symbols-outlined cursor-pointer text-outline hover:text-on-surface">close</span>
+</div>
+<div class="text-center space-y-2">
+<div class="text-4xl font-black tracking-tighter">AETHER-042</div>
+<div class="text-[10px] font-bold text-on-surface-variant tracking-[0.2em] uppercase">Deployment History: 1.2k Tasks</div>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-4">
+<div class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">CURRENT_ASSIGNMENT</div>
+<div class="text-xs font-bold uppercase">UNASSIGNED (READY)</div>
+</div>
+<div class="bg-surface-container-low p-4">
+<div class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">LATENCY_SCORE</div>
+<div class="text-xs font-bold uppercase">2.4ms (LOW)</div>
+</div>
+<div class="bg-surface-container-low p-4">
+<div class="text-[9px] font-bold uppercase text-on-surface-variant mb-1">CORE_COMPETENCIES</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="text-[8px] border border-outline-variant px-1 font-bold">HYDRAULICS</span>
+<span class="text-[8px] border border-outline-variant px-1 font-bold">SENSORS</span>
+<span class="text-[8px] border border-outline-variant px-1 font-bold">DIAGNOSTICS</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-on-surface text-white py-4 text-[10px] font-bold uppercase tracking-widest">VIEW_FULL_LOGS</button>
+</div>
+</div>
+</body></html>

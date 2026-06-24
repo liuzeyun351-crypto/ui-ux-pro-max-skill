@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Protocol Detail | ANDRITZ PRECISION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#4b5a69",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#0062a0",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline": "#707882",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#637383",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "on-primary": "#ffffff",
+                        "primary": "#005c97",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed": "#001d35",
+                        "on-secondary-container": "#485f7e",
+                        "surface-dim": "#d8dadb",
+                        "on-background": "#191c1d",
+                        "background": "#f8fafb",
+                        "surface": "#f8fafb",
+                        "surface-container": "#eceeef",
+                        "primary-container": "#0075be",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-surface-variant": "#404751",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "secondary-container": "#c1d9fd",
+                        "inverse-primary": "#9bcaff",
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-primary-container": "#f3f7ff",
+                        "surface-container-low": "#f2f4f5",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed-variant": "#314866",
+                        "tertiary-fixed": "#d4e4f6",
+                        "secondary": "#49607f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8fafb"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @font-face {
+            font-family: 'Gilroy-SemiBold';
+            src: local('Inter SemiBold');
+        }
+        @font-face {
+            font-family: 'Gilroy-Regular';
+            src: local('Inter');
+        }
+        @font-face {
+            font-family: 'Gilroy-Black';
+            src: local('Inter Black');
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white uppercase">ANDRITZ PRECISION</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] py-5" href="#">Maintenance</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] transition-colors py-5 px-2" href="#">Assets</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] transition-colors py-5 px-2" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container px-3 py-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-bold uppercase tracking-widest w-48" placeholder="SEARCH SYSTEM..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] p-2">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] p-2">settings</button>
+<div class="w-8 h-8 bg-primary-container flex items-center justify-center">
+<img alt="Operational Supervisor Profile" data-alt="close-up portrait of a professional industrial engineer in a clean white workspace with soft focused lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmwCwyRlsPVGeiAWArSuWnHQEsPJEWFVtKwE93I1Us8LP965a5xepZH8fID_679pHpUgGzduc3wdmWQhkG1AhNqh_A3WfchnZuq_yXA2rbQHo_uiyaod8kAZPnIqmulIZff_XjnCaYm9ZYxqEqx_a74S1_W5LDSYNvHcqBbTSpLZRCU16qOaTlDjSCvtfItvNQ5sa5HxrK8B1_hCrvQu3LP85-VdmMNk94DCpMiTX6GMNazpaP4T_Vr42Di4_9wREzcw6Q3OH4ICw"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low mb-4">
+<div class="w-10 h-10 bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<div>
+<p class="font-black text-[#001c38] dark:text-white text-xs tracking-tight">NODE_A1</p>
+<p class="text-[10px] text-on-surface-variant font-bold tracking-widest opacity-70">OPERATIONAL_UNIT_04</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-3">
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-xl">factory</span>
+<span>Assets</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm bg-white text-[#001c38] font-semibold transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">build</span>
+<span>Maintenance</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-xl">sensors</span>
+<span>Telemetry</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 font-['Gilroy-Regular','Inter'] text-sm text-[#404751] hover:bg-[#eceeef] transition-all" href="#">
+<span class="material-symbols-outlined text-xl">terminal</span>
+<span>System Logs</span>
+</a>
+</nav>
+<div class="px-3 mt-auto flex flex-col gap-1">
+<button class="w-full bg-primary-container text-white py-3 font-bold text-xs tracking-widest uppercase mb-4 hover:opacity-90 active:scale-[0.98] transition-all">
+                DEPLOY UPDATE
+            </button>
+<a class="flex items-center gap-4 px-4 py-2 font-['Gilroy-Regular','Inter'] text-xs text-[#404751] hover:bg-[#eceeef]" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-2 font-['Gilroy-Regular','Inter'] text-xs text-[#404751] hover:bg-[#eceeef]" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-10 min-h-screen bg-surface-container-low">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">Protocol ID: MP-X405</span>
+<span class="bg-surface-container-high text-on-surface-variant text-[10px] font-bold px-2 py-1 uppercase tracking-widest">Priority: Critical</span>
+</div>
+<h1 class="text-5xl font-black text-[#001c38] tracking-tighter leading-none mb-4">TURBINE_CORE_ALPHA CALIBRATION</h1>
+<p class="text-on-surface-variant font-['Gilroy-Regular'] text-lg">Comprehensive diagnostic and lubrication cycle for the main pressure housing and centrifugal assembly.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-[#eceeef] text-[#001c38] px-8 py-4 font-bold text-xs tracking-widest uppercase flex items-center gap-2 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">pause</span> PAUSE
+                </button>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 font-bold text-xs tracking-widest uppercase flex items-center gap-2 shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">play_arrow</span> START TASK
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Checklist & Safety -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-8">
+<!-- Safety Precautions (High Contrast) -->
+<section class="bg-[#001c38] text-white p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="font-bold text-sm tracking-widest uppercase">Safety Precautions</h2>
+</div>
+<ul class="space-y-4 font-['Gilroy-Regular'] text-sm opacity-90">
+<li class="flex gap-3">
+<span class="text-error font-bold">01</span>
+<span>Verify dual-path lockout/tagout (LOTO) on primary power rail.</span>
+</li>
+<li class="flex gap-3">
+<span class="text-error font-bold">02</span>
+<span>High-pressure ventilation required. Wear Type-R respiratory gear.</span>
+</li>
+<li class="flex gap-3">
+<span class="text-error font-bold">03</span>
+<span>Magnetic resonance risk. Remove all non-ferrous metal objects.</span>
+</li>
+</ul>
+</section>
+<!-- Technical Checklist -->
+<section class="bg-surface-container-lowest p-8 shadow-sm">
+<h2 class="font-black text-[#001c38] text-xs tracking-widest uppercase mb-8 pb-4 border-b border-outline-variant/30">Step Checklist</h2>
+<div class="space-y-6">
+<label class="flex items-start gap-4 group cursor-pointer">
+<input class="mt-1 w-5 h-5 border-2 border-outline rounded-none text-primary focus:ring-0 checked:bg-primary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm uppercase tracking-tight group-hover:text-primary transition-colors">Initial Pressure Purge</span>
+<span class="text-xs text-on-surface-variant mt-1">Release residual gas pressure to &lt; 0.05 bar.</span>
+</div>
+</label>
+<label class="flex items-start gap-4 group cursor-pointer opacity-40">
+<input class="mt-1 w-5 h-5 border-2 border-outline rounded-none" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm uppercase tracking-tight">Main Housing De-bolting</span>
+<span class="text-xs text-on-surface-variant mt-1">Remove all M24 structural bolts in cross-pattern.</span>
+</div>
+</label>
+<label class="flex items-start gap-4 group cursor-pointer opacity-40">
+<input class="mt-1 w-5 h-5 border-2 border-outline rounded-none" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm uppercase tracking-tight">Sensor Alignment Check</span>
+<span class="text-xs text-on-surface-variant mt-1">Verify optical centers on 12-point axis.</span>
+</div>
+</label>
+<label class="flex items-start gap-4 group cursor-pointer opacity-40">
+<input class="mt-1 w-5 h-5 border-2 border-outline rounded-none" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm uppercase tracking-tight">Re-lubrication Cycle</span>
+<span class="text-xs text-on-surface-variant mt-1">Apply Grade-9 Synthetic grease to bearing mounts.</span>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Middle Column: Schematic & Status -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-8">
+<!-- Main Schematic Diagram -->
+<section class="bg-surface-container-lowest p-8 shadow-sm flex flex-col h-full">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-black text-[#001c38] text-xs tracking-widest uppercase">Technical Schematic</h2>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-on-surface-variant p-1 hover:bg-surface-container">zoom_in</button>
+<button class="material-symbols-outlined text-on-surface-variant p-1 hover:bg-surface-container">fullscreen</button>
+</div>
+</div>
+<div class="relative flex-1 bg-surface-container min-h-[400px] overflow-hidden group">
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#001c38 1px, transparent 1px); background-size: 20px 20px;"></div>
+<img alt="Detailed technical schematic" class="w-full h-full object-contain mix-blend-multiply" data-alt="precise technical blueprint of a centrifugal turbine engine with clean blue lines on a light technical grid background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwVeuhBpqJtXMl1P_Gn4Sqw37oXEhUaxDaw8rMEfg7Zo6f3tvzDizsr8gyN0DcBy76aKUyT93YqDOSbtxyBRcfs8hQP6qJT9O9_yWnXNXrL0K7sqmZ2y8ULazslBRVBcPDXIFsk44c9fHcdLlaBdLqrf5SftUcwtbxl3-W08b4sUil1JFt_QUxICrVSeiH5kRoQvHsSAwIDStvP-kp0N6vzbpHsF5qSnWzMMPrnfZoc_w4zqrnbuYtGFcNEw9DNrfr8-4HWx4asVY"/>
+<!-- Interactive Labels on Schematic -->
+<div class="absolute top-[20%] left-[30%] group">
+<div class="w-4 h-4 bg-primary ring-4 ring-primary/20 animate-pulse cursor-pointer"></div>
+<div class="hidden group-hover:block absolute top-6 left-0 bg-[#001c38] text-white p-3 text-[10px] w-40 z-10 font-bold">
+                                BEARING_ASSEMBLY_04
+                                <div class="text-primary mt-1">STATUS: OVERHEATED</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-between text-[10px] font-bold text-on-surface-variant tracking-widest">
+<span>DWG_REF: 884-AX-001</span>
+<span>SCALE: 1:25</span>
+</div>
+</section>
+</div>
+<!-- Right Column: Parts & Inventory -->
+<div class="col-span-12 lg:col-span-3 flex flex-col gap-8">
+<!-- Parts List -->
+<section class="bg-surface-container-lowest p-8 shadow-sm h-full">
+<h2 class="font-black text-[#001c38] text-xs tracking-widest uppercase mb-8">Required Components</h2>
+<div class="space-y-8">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest mb-1">PART_X99_A</p>
+<p class="font-bold text-sm uppercase leading-tight">Seal Ring Gasket</p>
+</div>
+<span class="text-[10px] font-bold px-2 py-1 bg-green-100 text-green-800">IN STOCK</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest mb-1">PART_LUBE_02</p>
+<p class="font-bold text-sm uppercase leading-tight">Synthetic Grade-9 (5L)</p>
+</div>
+<span class="text-[10px] font-bold px-2 py-1 bg-green-100 text-green-800">IN STOCK</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest mb-1">PART_B_M24</p>
+<p class="font-bold text-sm uppercase leading-tight">High-Tensile Bolt M24</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold px-2 py-1 bg-amber-100 text-amber-800">LOW (2 UNITS)</span>
+<p class="text-[10px] text-primary mt-1 underline cursor-pointer">ORDER NOW</p>
+</div>
+</div>
+</div>
+<!-- Task Timer / Progress -->
+<div class="mt-12 pt-8 border-t border-outline-variant/30">
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest mb-4">ESTIMATED COMPLETION</p>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-4xl font-black text-[#001c38]">02:45</span>
+<span class="text-sm font-bold text-on-surface-variant mb-1">HOURS</span>
+</div>
+<div class="w-full h-2 bg-surface-container">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+<p class="text-[10px] font-bold text-primary mt-3 uppercase tracking-widest">Task In-Progress: Step 01/08</p>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-256px)] h-20 bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/20 flex items-center justify-between px-10 z-40">
+<div class="flex items-center gap-8">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-widest">CURRENT ASSIGNMENT</span>
+<span class="font-bold text-sm uppercase">Mark J. (Technician)</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-on-surface-variant tracking-widest">STATION</span>
+<span class="font-bold text-sm uppercase">BAY_04A</span>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-10 py-3 bg-surface-container-high text-on-surface-variant font-bold text-xs tracking-widest uppercase hover:bg-surface-variant">REPORT ISSUE</button>
+<button class="px-12 py-3 bg-primary text-white font-black text-xs tracking-widest uppercase opacity-40 cursor-not-allowed">COMPLETE TASK</button>
+</div>
+</footer>
+</main>
+</body></html>

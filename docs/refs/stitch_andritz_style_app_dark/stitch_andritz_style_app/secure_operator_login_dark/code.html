@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ Industrial Portal - Secure Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb781",
+                    "inverse-on-surface": "#2d3137",
+                    "inverse-primary": "#0062a0",
+                    "primary-container": "#0075be",
+                    "surface-container-low": "#181c22",
+                    "surface-container-lowest": "#0a0e14",
+                    "on-primary-container": "#f3f7ff",
+                    "secondary": "#b0c8ec",
+                    "tertiary-container": "#ae5b01",
+                    "on-secondary": "#19314e",
+                    "error-container": "#93000a",
+                    "surface-variant": "#31353c",
+                    "on-tertiary": "#4e2600",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-secondary-fixed": "#001c38",
+                    "on-error": "#690005",
+                    "on-secondary-container": "#a2badd",
+                    "surface-dim": "#10141a",
+                    "on-background": "#dfe2eb",
+                    "outline": "#8a919c",
+                    "on-primary-fixed": "#001d35",
+                    "background": "#10141a",
+                    "primary-fixed": "#d0e4ff",
+                    "surface-container-high": "#262a31",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-fixed-variant": "#00497a",
+                    "surface-container-highest": "#31353c",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#6f3800",
+                    "surface": "#10141a",
+                    "secondary-fixed": "#d3e4ff",
+                    "tertiary-fixed": "#ffdcc4",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "primary": "#9bcaff",
+                    "secondary-container": "#334a68",
+                    "on-tertiary-container": "#fff5f0",
+                    "on-tertiary-fixed": "#2f1400",
+                    "on-primary": "#003256",
+                    "on-surface": "#dfe2eb",
+                    "on-surface-variant": "#c0c7d2",
+                    "inverse-surface": "#dfe2eb",
+                    "surface-tint": "#9bcaff",
+                    "outline-variant": "#404751",
+                    "surface-container": "#1c2026",
+                    "tertiary": "#ffb781",
+                    "surface-bright": "#353940"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .monolith-gradient {
+            background: linear-gradient(135deg, #10141a 0%, #0a0e14 100%);
+        }
+        .auth-card-blur {
+            backdrop-filter: blur(20px);
+            background: rgba(24, 28, 34, 0.7);
+        }
+        .glow-pulse {
+            box-shadow: 0 0 15px rgba(155, 202, 255, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col overflow-hidden">
+<!-- Cinematic Background -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 monolith-gradient"></div>
+<div class="absolute inset-0 opacity-20" data-alt="ultra-detailed close up of industrial turbine blades with deep blue highlights and metallic textures in a dimly lit factory setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBE0BYrj6G-kPbAvAu6Au5z1lh9YNgwc6HCV4U5E0Nt4FoNDWXTh1kGRjB9CUGPshNnxdWqOhK5RdphYNdHT-wW9owcjAbaR-2130p-D18x-9Y0AFqmukCAhESXkH4r9z5o4D0XXHwPrFa_q6L8MB8F5NpO_2OkliM3-Z3T6azWS8vUZyKsUjV4Y6P-rs691LRR8wDqNLDA0ffkC0qMEAfRp7iCpSI2Lc5KzpqQXh2MxDKa4vwU7cSvtb1b3InVDGNjeh-u8KtiR4k'); background-size: cover; background-position: center;">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background"></div>
+</div>
+<!-- Main Content Shell -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-6">
+<div class="w-full max-w-md space-y-12">
+<!-- Branding Anchor -->
+<div class="text-center space-y-2">
+<div class="inline-flex items-center justify-center p-3 bg-surface-container-high rounded-lg mb-6 border border-outline-variant/10 glow-pulse">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<h1 class="font-headline font-black text-4xl tracking-tighter text-on-background uppercase">
+                    ANDRITZ <span class="text-primary">ACCESS</span>
+</h1>
+<p class="text-on-surface-variant font-label text-xs tracking-[0.2em] uppercase">
+                    Industrial Portal • Sec-Ops Layer 7
+                </p>
+</div>
+<!-- Monolithic Login Form -->
+<div class="auth-card-blur p-8 rounded-xl space-y-8 shadow-[32px_0_32px_rgba(0,28,56,0.4)] border border-outline-variant/5">
+<div class="space-y-6">
+<!-- Operator ID -->
+<div class="space-y-2">
+<label class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase ml-1">Operator ID</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="badge">badge</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-primary text-on-surface py-4 pl-12 pr-4 rounded-t-md transition-all placeholder:text-outline/40 font-mono text-sm tracking-widest" placeholder="OP_UNIT_XXXX" type="text"/>
+</div>
+</div>
+<!-- Authorization Key -->
+<div class="space-y-2">
+<label class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase ml-1">Authorization Key</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="key">key</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant focus:border-primary text-on-surface py-4 pl-12 pr-4 rounded-t-md transition-all placeholder:text-outline/40" placeholder="••••••••••••" type="password"/>
+</div>
+</div>
+</div>
+<!-- Primary Action -->
+<div class="space-y-4">
+<button class="w-full bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-black py-5 rounded-md tracking-[0.15em] transition-all active:scale-[0.98] flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-xl" data-icon="lock_open">lock_open</span>
+                        AUTHENTICATE
+                    </button>
+<div class="flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-outline-variant/20"></div>
+<span class="text-[10px] text-outline font-bold tracking-widest uppercase">OR</span>
+<div class="h-[1px] flex-grow bg-outline-variant/20"></div>
+</div>
+<button class="w-full bg-surface-container-highest hover:bg-surface-bright text-on-surface font-bold py-4 rounded-md tracking-wider transition-all flex items-center justify-center gap-3 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="fingerprint" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+                        BIOMETRIC SCAN
+                    </button>
+</div>
+<div class="flex justify-between items-center text-[10px] font-bold tracking-widest uppercase text-outline">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-xs" data-icon="help">help</span>
+                        Need Assistance
+                    </a>
+<a class="hover:text-primary transition-colors" href="#">Emergency Protocol</a>
+</div>
+</div>
+<!-- Terminal Info -->
+<div class="flex justify-center gap-12 opacity-50">
+<div class="text-center">
+<p class="text-[9px] text-outline tracking-widest uppercase">Node Status</p>
+<p class="text-[11px] text-primary font-mono">ENCRYPTED</p>
+</div>
+<div class="text-center">
+<p class="text-[9px] text-outline tracking-widest uppercase">Gateway</p>
+<p class="text-[11px] text-primary font-mono">192.168.0.01</p>
+</div>
+<div class="text-center">
+<p class="text-[9px] text-outline tracking-widest uppercase">Active Sync</p>
+<p class="text-[11px] text-primary font-mono">STABLE</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Status Bar -->
+<footer class="relative z-10 h-16 bg-surface-container-lowest flex items-center px-8 border-t border-outline-variant/5">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#ffb781]"></div>
+<span class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase">System Status: OPERATIONAL - ALL NODES ONLINE</span>
+</div>
+<div class="ml-auto flex items-center gap-8 text-[10px] font-bold tracking-widest text-outline uppercase">
+<span>Terminal: #TX-091-ALPHA</span>
+<span>Uptime: 432:12:08</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="sensors">sensors</span>
+</div>
+</footer>
+</body></html>

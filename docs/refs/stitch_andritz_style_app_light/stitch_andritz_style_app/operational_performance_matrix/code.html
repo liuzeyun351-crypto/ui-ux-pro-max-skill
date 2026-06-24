@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ PRECISION | Operational Performance Matrix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#4b5a69",
+                    "surface-variant": "#e1e3e4",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#0062a0",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "on-secondary-fixed": "#001c38",
+                    "on-tertiary-container": "#f2f7ff",
+                    "outline": "#707882",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-container": "#637383",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "on-primary": "#ffffff",
+                    "primary": "#005c97",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "primary-fixed": "#d0e4ff",
+                    "on-primary-fixed": "#001d35",
+                    "on-secondary-container": "#485f7e",
+                    "surface-dim": "#d8dadb",
+                    "on-background": "#191c1d",
+                    "background": "#f8fafb",
+                    "surface": "#f8fafb",
+                    "surface-container": "#eceeef",
+                    "primary-container": "#0075be",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-surface-variant": "#404751",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e6e8e9",
+                    "secondary-container": "#c1d9fd",
+                    "inverse-primary": "#9bcaff",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-container": "#f3f7ff",
+                    "surface-container-low": "#f2f4f5",
+                    "on-primary-fixed-variant": "#00497a",
+                    "on-surface": "#191c1d",
+                    "on-secondary-fixed-variant": "#314866",
+                    "tertiary-fixed": "#d4e4f6",
+                    "secondary": "#49607f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#c0c7d2",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f8fafb"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .blueprint-grid {
+            background-image: radial-gradient(#c0c7d2 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)]">
+<div class="flex justify-between items-center w-full px-8 h-16">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white">ANDRITZ PRECISION</span>
+<div class="hidden md:flex gap-6">
+<nav class="flex gap-6 font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs">
+<a class="text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] pb-1" href="#">Dashboard</a>
+<a class="text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors pb-1" href="#">Assets</a>
+<a class="text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors pb-1" href="#">Telemetry</a>
+</nav>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container border-none text-xs font-bold tracking-widest pl-10 pr-4 py-2 w-64 focus:ring-2 ring-primary" placeholder="SEARCH SYSTEM..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] p-2 transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] p-2 transition-colors">settings</button>
+<img alt="Operational Supervisor Profile" class="w-8 h-8 object-cover" data-alt="Professional portrait of a male plant manager in a clean industrial office setting, soft natural lighting, high resolution" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Qeo9a50SiHK2rsngdyyrY1iFS8riL4-qjhUlnCRf_aKrlVfjQ2l-MjHSBOSUp1WVuCmNyVmAf7OOyG_JAH3pM6RQ-KYqTuHhhJpFPxZD3y724jOOY3qFJrka2l4Fgi7p42C2SrA1byjb21nAYUmHFEAhNtb43x5s0H9U01uoblM5JvWL51VJznqMoUphd6kOk-GTQnLFC7y3PnkSz2OywvmLSSWecfWdo7o5PwRCLcBqLQyfzL5YlK2pR7QVIf0huwyA9We2zQs"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white">developer_board</span>
+</div>
+<div>
+<p class="font-black text-[#001c38] dark:text-white leading-tight">NODE_A1</p>
+<p class="text-[10px] tracking-widest text-[#404751] font-bold">OPERATIONAL_UNIT_04</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1 font-['Gilroy-Regular','Inter'] text-sm">
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#f8fafb]/10 text-[#001c38] dark:text-white font-semibold transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">factory</span> Assets
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">sensors</span> Telemetry
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span> Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">build</span> Maintenance
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span> System Logs
+            </a>
+</nav>
+<div class="px-6 mt-auto space-y-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white text-[10px] font-black tracking-widest py-3 px-4 transition-all active:opacity-80 scale-[0.99]">
+                DEPLOY UPDATE
+            </button>
+<div class="pt-4 space-y-2 border-t border-outline-variant/15 text-[11px] font-bold tracking-tight">
+<a class="flex items-center gap-2 text-[#404751] uppercase" href="#"><span class="material-symbols-outlined text-sm">description</span> Documentation</a>
+<a class="flex items-center gap-2 text-[#404751] uppercase" href="#"><span class="material-symbols-outlined text-sm">help</span> Support</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen bg-surface-container-low blueprint-grid">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<p class="text-[10px] font-black tracking-[0.3em] text-primary uppercase mb-2">Matrix Analysis</p>
+<h1 class="text-5xl font-black text-[#001c38] tracking-tighter leading-none">OPERATIONAL PERFORMANCE</h1>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-lowest p-4 min-w-[160px]">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Global OEE</p>
+<p class="text-3xl font-black text-[#001c38]">88.4<span class="text-sm font-medium ml-1 text-on-surface-variant">%</span></p>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-primary h-full w-[88.4%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 min-w-[160px]">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">MTBF Trend</p>
+<p class="text-3xl font-black text-primary">+12.2<span class="text-sm font-medium ml-1 text-on-surface-variant">H</span></p>
+<div class="flex items-center gap-1 mt-2 text-[10px] text-primary font-bold">
+<span class="material-symbols-outlined text-xs">trending_up</span> SYSTEM GAIN
+                    </div>
+</div>
+</div>
+</div>
+<!-- Asymmetric Bento Grid Performance Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Heatmap Visualization (Main Plate) -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.04)] relative overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-black text-[#001c38] tracking-tight">EFFICIENCY HEATMAP <span class="text-on-surface-variant/40 font-normal ml-2">/ SHIFT_VAR_01</span></h3>
+<div class="flex gap-2">
+<span class="text-[10px] font-bold px-2 py-1 bg-surface-container-low text-on-surface-variant">AUTO_REFRESH: ON</span>
+<span class="text-[10px] font-bold px-2 py-1 bg-[#001c38] text-white">LIVE_FEED</span>
+</div>
+</div>
+<!-- Custom Heatmap Grid -->
+<div class="grid grid-cols-24 gap-1">
+<!-- Legend/Hours Y-Axis -->
+<div class="col-span-12">
+<div class="grid grid-cols-12 gap-1 mb-4">
+<!-- Loop simulation for heatmap cells -->
+<!-- Row 1 -->
+<div class="h-10 bg-primary/10"></div>
+<div class="h-10 bg-primary/20"></div>
+<div class="h-10 bg-primary/40"></div>
+<div class="h-10 bg-primary/60"></div>
+<div class="h-10 bg-primary/80"></div>
+<div class="h-10 bg-primary"></div>
+<div class="h-10 bg-primary/90"></div>
+<div class="h-10 bg-primary/70"></div>
+<div class="h-10 bg-primary/40"></div>
+<div class="h-10 bg-primary/20"></div>
+<div class="h-10 bg-primary/10"></div>
+<div class="h-10 bg-primary/5"></div>
+<!-- Row 2 -->
+<div class="h-10 bg-primary/20"></div>
+<div class="h-10 bg-primary/40"></div>
+<div class="h-10 bg-primary/70"></div>
+<div class="h-10 bg-primary/90"></div>
+<div class="h-10 bg-primary"></div>
+<div class="h-10 bg-primary/90"></div>
+<div class="h-10 bg-primary/80"></div>
+<div class="h-10 bg-primary/60"></div>
+<div class="h-10 bg-error/40 border-l-2 border-error"></div>
+<div class="h-10 bg-error/20"></div>
+<div class="h-10 bg-primary/10"></div>
+<div class="h-10 bg-primary/10"></div>
+<!-- Row 3 -->
+<div class="h-10 bg-primary/30"></div>
+<div class="h-10 bg-primary/50"></div>
+<div class="h-10 bg-primary/80"></div>
+<div class="h-10 bg-primary"></div>
+<div class="h-10 bg-primary"></div>
+<div class="h-10 bg-primary/90"></div>
+<div class="h-10 bg-primary/70"></div>
+<div class="h-10 bg-primary/50"></div>
+<div class="h-10 bg-primary/30"></div>
+<div class="h-10 bg-primary/20"></div>
+<div class="h-10 bg-primary/10"></div>
+<div class="h-10 bg-primary/5"></div>
+<!-- Row 4 -->
+<div class="h-10 bg-primary/10"></div>
+<div class="h-10 bg-primary/20"></div>
+<div class="h-10 bg-primary/30"></div>
+<div class="h-10 bg-primary/50"></div>
+<div class="h-10 bg-primary/70"></div>
+<div class="h-10 bg-primary/80"></div>
+<div class="h-10 bg-primary/90"></div>
+<div class="h-10 bg-primary"></div>
+<div class="h-10 bg-primary/80"></div>
+<div class="h-10 bg-primary/60"></div>
+<div class="h-10 bg-primary/40"></div>
+<div class="h-10 bg-primary/20"></div>
+</div>
+<div class="flex justify-between text-[9px] font-bold text-on-surface-variant uppercase tracking-widest mt-4">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+<span>23:59</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/15 flex flex-wrap gap-8">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Optimal Range (&gt;95%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary/40"></div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Nominal (85-95%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-error/40"></div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Critical Delay (&lt;70%)</span>
+</div>
+</div>
+</section>
+<!-- Dept Metrics (Sidebar Plate) -->
+<section class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-[#001c38] p-6 text-white h-full flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary-fixed">emergency</span>
+<span class="text-[10px] font-black tracking-widest border border-primary-fixed/30 px-2 py-1">SYS_HEALTH</span>
+</div>
+<h4 class="text-2xl font-black mb-2">NODE STATUS</h4>
+<p class="text-sm text-secondary-fixed opacity-70 mb-8">All core processing units are operating within nominal thermal envelopes.</p>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary-fixed">Throughput</span>
+<span class="text-lg font-black">1.2M <span class="text-[10px] opacity-60">u/h</span></span>
+</div>
+<div class="h-1 bg-white/10 w-full">
+<div class="h-full bg-primary-fixed w-[92%]"></div>
+</div>
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary-fixed">Utilization</span>
+<span class="text-lg font-black">94.8 <span class="text-[10px] opacity-60">%</span></span>
+</div>
+<div class="h-1 bg-white/10 w-full">
+<div class="h-full bg-primary-fixed w-[94.8%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Performance Table (Wide Bottom Plate) -->
+<section class="col-span-12 bg-surface-container-lowest p-8 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.04)]">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-lg font-black text-[#001c38] tracking-tight uppercase">Comparative Performance Matrix</h3>
+<div class="flex gap-4">
+<button class="text-[10px] font-black uppercase tracking-widest border-b-2 border-primary pb-1">All Units</button>
+<button class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1">By Region</button>
+<button class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors pb-1">By Manager</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Unit identifier</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Status</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Availability</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Performance</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Quality Index</th>
+<th class="p-4 text-[10px] font-black uppercase tracking-widest text-on-surface-variant">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<p class="font-black text-[#001c38]">UNIT_OMEGA_09</p>
+<p class="text-[9px] text-on-surface-variant font-bold tracking-tight">PRECISION_STAMPING</p>
+</td>
+<td class="p-4">
+<span class="flex items-center gap-2 text-[10px] font-black text-primary uppercase">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Active
+                                    </span>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-[#001c38]">99.2%</p>
+<p class="text-[9px] text-primary font-bold">+0.4% VS LW</p>
+</td>
+<td class="p-4">
+<div class="w-32 h-6 flex items-end gap-0.5">
+<div class="flex-1 bg-primary/20 h-2"></div>
+<div class="flex-1 bg-primary/30 h-3"></div>
+<div class="flex-1 bg-primary/40 h-5"></div>
+<div class="flex-1 bg-primary/60 h-4"></div>
+<div class="flex-1 bg-primary h-6"></div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-[#001c38]">0.998</p>
+<p class="text-[9px] text-on-surface-variant font-bold uppercase">SIGMA_6_CERT</p>
+</td>
+<td class="p-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">open_in_new</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<p class="font-black text-[#001c38]">UNIT_SIGMA_04</p>
+<p class="text-[9px] text-on-surface-variant font-bold tracking-tight">THERMAL_TREATMENT</p>
+</td>
+<td class="p-4">
+<span class="flex items-center gap-2 text-[10px] font-black text-primary uppercase">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Active
+                                    </span>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-[#001c38]">84.1%</p>
+<p class="text-[9px] text-error font-bold">-2.1% VS LW</p>
+</td>
+<td class="p-4">
+<div class="w-32 h-6 flex items-end gap-0.5">
+<div class="flex-1 bg-error/20 h-5"></div>
+<div class="flex-1 bg-error/30 h-6"></div>
+<div class="flex-1 bg-error/40 h-4"></div>
+<div class="flex-1 bg-error/60 h-3"></div>
+<div class="flex-1 bg-error/40 h-2"></div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-[#001c38]">0.912</p>
+<p class="text-[9px] text-on-surface-variant font-bold uppercase">SIGMA_3_WARN</p>
+</td>
+<td class="p-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">open_in_new</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<p class="font-black text-[#001c38]">UNIT_BETA_12</p>
+<p class="text-[9px] text-on-surface-variant font-bold tracking-tight">FLUID_DYNAMICS</p>
+</td>
+<td class="p-4">
+<span class="flex items-center gap-2 text-[10px] font-black text-tertiary uppercase">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Standby
+                                    </span>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-[#001c38]">100%</p>
+<p class="text-[9px] text-on-surface-variant font-bold">STABLE</p>
+</td>
+<td class="p-4">
+<div class="w-32 h-6 flex items-end gap-0.5 opacity-20">
+<div class="flex-1 bg-surface-variant h-1"></div>
+<div class="flex-1 bg-surface-variant h-1"></div>
+<div class="flex-1 bg-surface-variant h-1"></div>
+<div class="flex-1 bg-surface-variant h-1"></div>
+<div class="flex-1 bg-surface-variant h-1"></div>
+</div>
+</td>
+<td class="p-4">
+<p class="text-lg font-black text-on-surface-variant">--</p>
+<p class="text-[9px] text-on-surface-variant font-bold uppercase">NO_DATA</p>
+</td>
+<td class="p-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">open_in_new</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Trend Comparison Chart (Bottom Plate) -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-lowest p-8 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.04)]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-lg font-black text-[#001c38] tracking-tight uppercase">Trend Analysis</h3>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest">7-DAY VOLUME COMPARISON</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">equalizer</span>
+</div>
+<div class="h-48 flex items-end gap-4">
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[60%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[40%] group-hover:h-[45%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">MON</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[65%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[55%] group-hover:h-[60%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">TUE</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[85%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[75%] group-hover:h-[80%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">WED</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[45%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[35%] group-hover:h-[40%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">THU</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[95%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[90%] group-hover:h-[95%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">FRI</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[30%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[20%] group-hover:h-[25%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">SAT</span>
+</div>
+<div class="flex-1 bg-surface-container relative group">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[25%]"></div>
+<div class="absolute bottom-0 w-full bg-primary h-[15%] group-hover:h-[20%] transition-all"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[9px] font-black">SUN</span>
+</div>
+</div>
+</section>
+<!-- Maintenance Schedule (Bottom Plate) -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-lowest p-8 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.04)]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-lg font-black text-[#001c38] tracking-tight uppercase">Service Matrix</h3>
+<p class="text-[10px] font-bold text-on-surface-variant tracking-widest">SCHEDULED INTERVENTIONS</p>
+</div>
+<button class="bg-surface-container-high px-4 py-2 text-[10px] font-black tracking-widest uppercase hover:bg-primary hover:text-white transition-colors">Calendar</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low">
+<div class="text-center min-w-[50px] border-r border-outline-variant/20 pr-4">
+<p class="text-[9px] font-bold text-on-surface-variant uppercase">Oct</p>
+<p class="text-xl font-black text-[#001c38]">12</p>
+</div>
+<div class="flex-1">
+<p class="font-black text-sm text-[#001c38] uppercase">UNIT_OMEGA_09 : HYDRAULIC PURGE</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Est. Downtime: 4.5 Hours</p>
+</div>
+<span class="material-symbols-outlined text-primary" data-weight="fill">verified</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-low border-l-4 border-error">
+<div class="text-center min-w-[50px] border-r border-outline-variant/20 pr-4">
+<p class="text-[9px] font-bold text-on-surface-variant uppercase">Oct</p>
+<p class="text-xl font-black text-[#001c38]">14</p>
+</div>
+<div class="flex-1">
+<p class="font-black text-sm text-error uppercase">UNIT_SIGMA_04 : THERMAL CALIBRATION</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">CRITICAL : OUTSIDE PARAMETERS</p>
+</div>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Global Toggle (Contextual FAB Suppression as per rules) -->
+<!-- Suppressed on Matrix detail screens -->
+</body></html>

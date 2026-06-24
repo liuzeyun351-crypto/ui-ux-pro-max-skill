@@ -46,25 +46,34 @@ Options:
 }
 
 /**
+ * Look up a single dotted path in the token tree
+ */
+function lookupPath(dotPath, tokens) {
+  const parts = dotPath.split('.');
+  let node = tokens;
+  for (const key of parts) {
+    node = node?.[key];
+  }
+  if (node?.$value !== undefined) {
+    return resolveReference(node.$value, tokens);
+  }
+  return node;
+}
+
+/**
  * Resolve token references like {primitive.color.blue.600}
+ * Handles both standalone references and inline references within strings
  */
 function resolveReference(value, tokens) {
-  if (typeof value !== 'string' || !value.startsWith('{')) {
-    return value;
-  }
+  if (typeof value !== 'string') return value;
 
-  const path = value.slice(1, -1).split('.');
-  let result = tokens;
+  // Replace all {path.to.token} references within the string
+  const resolved = value.replace(/\{([^}]+)\}/g, (match, refPath) => {
+    const result = lookupPath(refPath, tokens);
+    return result !== undefined ? result : match;
+  });
 
-  for (const key of path) {
-    result = result?.[key];
-  }
-
-  if (result?.$value) {
-    return resolveReference(result.$value, tokens);
-  }
-
-  return result || value;
+  return resolved;
 }
 
 /**
@@ -98,23 +107,42 @@ function flattenTokens(obj, tokens, prefix = [], result = {}) {
 }
 
 /**
+ * Unwrap root container if tokens are nested under a named key
+ * (e.g. "andritz-precision" in the Andritz DTCG format)
+ */
+function unwrapRoot(tokens) {
+  const keys = Object.keys(tokens).filter(k => !k.startsWith('$'));
+  if (keys.length === 1 && typeof tokens[keys[0]] === 'object' && tokens[keys[0]].primitive) {
+    return tokens[keys[0]];
+  }
+  return tokens;
+}
+
+/**
  * Generate CSS output
  */
-function generateCSS(tokens) {
+function generateCSS(rawTokens) {
+  const tokens = unwrapRoot(rawTokens);
+
   const primitive = flattenTokens(tokens.primitive || {}, tokens, ['primitive']);
   const semantic = flattenTokens(tokens.semantic || {}, tokens, []);
   const component = flattenTokens(tokens.component || {}, tokens, []);
-  const darkSemantic = flattenTokens(tokens.dark?.semantic || {}, tokens, []);
+  // Support both "dark.semantic" and "semantic-dark" layouts
+  const darkSemantic = flattenTokens(
+    tokens.dark?.semantic || tokens['semantic-dark'] || {},
+    tokens,
+    []
+  );
 
-  let css = `/* Design Tokens - Auto-generated */
-/* Do not edit directly - modify tokens.json instead */
+  let css = `/* Andritz Precision — Design Tokens (Auto-generated) */
+/* Do not edit directly — modify design-tokens-starter.json instead */
 
 /* === PRIMITIVES === */
 :root {
 ${Object.entries(primitive).map(([k, v]) => `  ${k}: ${v};`).join('\n')}
 }
 
-/* === SEMANTIC === */
+/* === SEMANTIC (Light Theme) === */
 :root {
 ${Object.entries(semantic).map(([k, v]) => `  ${k}: ${v};`).join('\n')}
 }
@@ -127,7 +155,7 @@ ${Object.entries(component).map(([k, v]) => `  ${k}: ${v};`).join('\n')}
 
   if (Object.keys(darkSemantic).length > 0) {
     css += `
-/* === DARK MODE === */
+/* === SEMANTIC (Dark Theme) === */
 .dark {
 ${Object.entries(darkSemantic).map(([k, v]) => `  ${k}: ${v};`).join('\n')}
 }
@@ -140,7 +168,8 @@ ${Object.entries(darkSemantic).map(([k, v]) => `  ${k}: ${v};`).join('\n')}
 /**
  * Generate Tailwind config output
  */
-function generateTailwind(tokens) {
+function generateTailwind(rawTokens) {
+  const tokens = unwrapRoot(rawTokens);
   const semantic = flattenTokens(tokens.semantic || {}, tokens, []);
 
   // Extract colors for Tailwind

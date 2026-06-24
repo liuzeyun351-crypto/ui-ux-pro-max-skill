@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Individual Agent Performance Detail | MONOLITH_v1.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-dim": "#d8dadb",
+                        "surface": "#f8fafb",
+                        "secondary-container": "#c1d9fd",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#4b5a69",
+                        "on-primary-fixed": "#001d35",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404751",
+                        "secondary": "#49607f",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "surface-tint": "#0062a0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#485f7e",
+                        "primary-container": "#0075be",
+                        "outline": "#707882",
+                        "surface-container-high": "#e6e8e9",
+                        "background": "#f8fafb",
+                        "surface-bright": "#f8fafb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "on-primary-container": "#f3f7ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#191c1d",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .blueprint-bg {
+            background-image: radial-gradient(circle, #c0c7d2 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-color: #f8fafb;
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-slate-100 dark:bg-slate-900 w-64 border-0 z-50">
+<div class="p-6">
+<h1 class="text-lg font-black tracking-tighter text-slate-900 dark:text-white uppercase mb-1">Industrial Control</h1>
+<p class="text-[11px] uppercase tracking-widest font-bold text-slate-500">Digital Employee Platform</p>
+</div>
+<nav class="flex-1 px-4 py-6 space-y-2">
+<div class="bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400 p-3 flex items-center gap-3 transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</div>
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</div>
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</div>
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</div>
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full bg-primary py-4 text-[11px] uppercase tracking-widest font-bold text-white transition-transform scale-95 active:scale-90">DEPLOY AGENT</button>
+<div class="mt-6 space-y-2">
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Settings</span>
+</div>
+<div class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 p-3 flex items-center gap-3 transition-colors duration-150 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Support</span>
+</div>
+</div>
+</div>
+</aside>
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 flex justify-between items-center px-8 z-40 bg-white/85 backdrop-blur-xl shadow-sm border-0">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-slate-900 uppercase tracking-tighter">MONOLITH_v1.0</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center">
+<input class="bg-surface-container border-0 border-b-2 border-transparent focus:border-primary text-[10px] font-bold uppercase tracking-wider py-1 px-4 w-48 outline-none" placeholder="SEARCH_SYSTEM..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-slate-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-sky-600 transition-opacity" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-sky-600 transition-opacity" data-icon="lan">lan</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-sky-600 transition-opacity" data-icon="account_tree">account_tree</span>
+</div>
+<div class="h-8 w-8 bg-slate-200">
+<img alt="Operator Avatar" class="h-full w-full object-cover" data-alt="professional portrait of a tech operations director in a minimal white studio with sharp focus and clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtv0PNoB7B1SgcX2CLbBQyYPcl0Eukyygo1RR3k5qMg7lJJiFuwVVJfncFdqwMaRzCaQMMElEmTGtgxrGoVAY834do2drqVeS7tP8A449mW_dTNlD6O-1RkFNMuLnH0qggzk3VXcYsugGHV0nnvXoQNJyQa7ESMPBfbLZ1qVjK6tNDsEto2B2rV0WIb1S7E0z_MKIcYZ-LDM_9D7C6T9smMLLQt-nBwzwDL7zB3LBtoknmPHJB86gqXpFexlBLly0R9YdMpdbzlEU"/>
+</div>
+</div>
+</header>
+<main class="ml-64 pt-16 min-h-screen blueprint-bg">
+<div class="max-w-[1600px] mx-auto p-8">
+<section class="mb-12 flex flex-col md:flex-row items-end justify-between gap-8 border-b-0">
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-4">
+<span class="bg-primary text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Active</span>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-widest">ID: AX-2094-OMEGA</span>
+</div>
+<h1 class="text-7xl font-black text-slate-900 tracking-tighter uppercase leading-none">Agent_Atlas</h1>
+<p class="text-lg text-on-surface-variant font-medium mt-4 max-w-2xl">High-Frequency Supply Chain Optimizer. Specialized in neural routing and predictive inventory balancing across Tier-1 logistics hubs.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container p-6 w-48">
+<span class="text-[10px] font-bold uppercase tracking-widest block mb-2 opacity-60">Status</span>
+<div class="flex items-center gap-2">
+<div class="h-2 w-2 bg-green-500 rounded-full"></div>
+<span class="text-xl font-bold uppercase">Optimal</span>
+</div>
+</div>
+<div class="bg-slate-900 p-6 w-48 text-white">
+<span class="text-[10px] font-bold uppercase tracking-widest block mb-2 opacity-60 text-slate-400">Up-time</span>
+<span class="text-xl font-bold uppercase tracking-tighter">99.98<span class="text-sm ml-1 text-slate-400">%</span></span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<div class="bg-white p-8">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-[12px] font-black uppercase tracking-[0.2em] border-l-4 border-primary pl-4">Resource Utilization History</h3>
+<div class="flex gap-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-primary"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Neural Load</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 bg-secondary-container"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Memory Usage</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end gap-1">
+<div class="flex-1 bg-surface-container-low h-[40%]"></div>
+<div class="flex-1 bg-surface-container-low h-[55%]"></div>
+<div class="flex-1 bg-primary h-[70%]"></div>
+<div class="flex-1 bg-primary h-[85%]"></div>
+<div class="flex-1 bg-primary h-[60%]"></div>
+<div class="flex-1 bg-secondary-container h-[90%]"></div>
+<div class="flex-1 bg-primary h-[75%]"></div>
+<div class="flex-1 bg-primary h-[65%]"></div>
+<div class="flex-1 bg-surface-container-low h-[45%]"></div>
+<div class="flex-1 bg-primary h-[80%]"></div>
+<div class="flex-1 bg-secondary-container h-[95%]"></div>
+<div class="flex-1 bg-primary h-[70%]"></div>
+<div class="flex-1 bg-primary h-[50%]"></div>
+<div class="flex-1 bg-surface-container-low h-[40%]"></div>
+<div class="flex-1 bg-primary h-[85%]"></div>
+<div class="flex-1 bg-primary h-[70%]"></div>
+<div class="flex-1 bg-secondary-container h-[60%]"></div>
+<div class="flex-1 bg-primary h-[75%]"></div>
+<div class="flex-1 bg-primary h-[90%]"></div>
+<div class="flex-1 bg-surface-container-low h-[55%]"></div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-bold uppercase tracking-widest text-slate-400">
+<span>00:00 HRS</span>
+<span>06:00 HRS</span>
+<span>12:00 HRS</span>
+<span>18:00 HRS</span>
+<span>CURRENT</span>
+</div>
+</div>
+<div class="bg-surface-container p-8">
+<h3 class="text-[12px] font-black uppercase tracking-[0.2em] border-l-4 border-primary pl-4 mb-8">Recent Task Execution</h3>
+<div class="space-y-4">
+<div class="bg-white p-6 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-300">
+<div class="flex items-center gap-6">
+<span class="text-sm font-black opacity-20">01</span>
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest block opacity-60">Logistics Optimization</span>
+<h4 class="text-lg font-bold">Route Re-calculation for Zone Delta</h4>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-[10px] font-bold uppercase tracking-widest opacity-60">Impact</span>
+<span class="text-lg font-black text-primary group-hover:text-white">+12.4% EFF</span>
+</div>
+</div>
+<div class="bg-white p-6 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-300">
+<div class="flex items-center gap-6">
+<span class="text-sm font-black opacity-20">02</span>
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest block opacity-60">Anomaly Detection</span>
+<h4 class="text-lg font-bold">Sensor Fusion Drift Correction</h4>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-[10px] font-bold uppercase tracking-widest opacity-60">Impact</span>
+<span class="text-lg font-black text-primary group-hover:text-white">STABLE</span>
+</div>
+</div>
+<div class="bg-white p-6 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-colors duration-300">
+<div class="flex items-center gap-6">
+<span class="text-sm font-black opacity-20">03</span>
+<div>
+<span class="text-[10px] font-bold uppercase tracking-widest block opacity-60">Market Analysis</span>
+<h4 class="text-lg font-bold">Predictive Fuel Hedging Strategy</h4>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-[10px] font-bold uppercase tracking-widest opacity-60">Impact</span>
+<span class="text-lg font-black text-primary group-hover:text-white">SAVINGS_800K</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<div class="bg-slate-950 text-white p-8 min-h-[500px] flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 bg-sky-400 animate-pulse rounded-full"></span>
+<h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-sky-400">Thought Stream (Live)</h3>
+</div>
+<span class="text-[10px] font-bold opacity-40">L-STREAM: V4.2</span>
+</div>
+<div class="flex-1 font-mono text-[11px] leading-relaxed space-y-4">
+<div class="border-l-2 border-slate-800 pl-4">
+<span class="text-slate-500">[08:42:11]</span> <span class="text-sky-300">SCAN_INPUTS:</span> Receiving latency spike from Zone B routers.
+                            </div>
+<div class="border-l-2 border-slate-800 pl-4">
+<span class="text-slate-500">[08:42:12]</span> <span class="text-sky-300">ANALYZE_PROBABILITY:</span> 0.94% chance of packet loss at hub.
+                            </div>
+<div class="border-l-2 border-primary pl-4 bg-primary/10">
+<span class="text-slate-500">[08:42:13]</span> <span class="text-white font-bold">DECISION_NODE:</span> Re-routing traffic through satellite redundant mesh.
+                            </div>
+<div class="border-l-2 border-slate-800 pl-4">
+<span class="text-slate-500">[08:42:15]</span> <span class="text-sky-300">EXECUTE:</span> Mesh protocols engaged. Latency normalized.
+                            </div>
+<div class="border-l-2 border-slate-800 pl-4">
+<span class="text-slate-500">[08:42:18]</span> <span class="text-slate-400">IDLE:</span> Awaiting next task cycle.
+                            </div>
+<div class="border-l-2 border-slate-800 pl-4 opacity-50">
+<span class="text-slate-500">[08:42:20]</span> SCANNING_SENSORS...
+                            </div>
+</div>
+<div class="mt-8 border-t border-slate-800 pt-6">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-4">
+<span>Core Confidence</span>
+<span>98.2%</span>
+</div>
+<div class="h-1 w-full bg-slate-800">
+<div class="h-full bg-sky-400 w-[98%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-white p-8">
+<h3 class="text-[10px] font-black uppercase tracking-[0.2em] mb-8 border-b border-surface-container pb-4">Performance vs Benchmarks</h3>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Cognitive Speed</span>
+<span class="text-sm font-black">+14% Over Baseline</span>
+</div>
+<div class="h-4 w-full bg-surface-container">
+<div class="h-full bg-primary w-[84%]"></div>
+</div>
+<div class="flex justify-between text-[9px] uppercase font-bold mt-1 text-slate-400">
+<span>Avg. Agent</span>
+<span>Current</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Error Resilience</span>
+<span class="text-sm font-black">Top 1% Global</span>
+</div>
+<div class="h-4 w-full bg-surface-container">
+<div class="h-full bg-primary w-[98%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-end mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Energy Efficiency</span>
+<span class="text-sm font-black">-0.4% Below Opt</span>
+</div>
+<div class="h-4 w-full bg-surface-container">
+<div class="h-full bg-secondary-container w-[65%]"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden group">
+<img alt="Hardware Microchip" class="w-full h-48 object-cover grayscale transition-transform duration-700 group-hover:scale-110" data-alt="extreme macro shot of a complex circuit board with glowing blue indicators and precise copper traces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjn-xb8wDz8HCxs07Jy_EknsBj7D7bsPRLoeo6Hb9OcrxLUkRxJdnTEHNKONbXyv7mTbJaqdKPPV16GDOHIqyJrcNqZo17tpbV2uz2aUM36spIddyNgwQGur5zmF7YMjtZaejiDG3FTfCEGHYXaX1XiA2UEHoMnXiB79h6pA3kM0L4ys25QclzJP_U0d-F6gYqdnaFjN7nqo-4DkSl73j9CZaQX31vOZCp3m8ScHbuLv9q2bFIkM5CPbVMYqPY_LHEJq-e5RKZIWU"/>
+<div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-white/70">Hardware Node</span>
+<h4 class="text-white text-xl font-black uppercase">CLUSTER_ZETA_04</h4>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-12 py-12 border-t border-surface-container flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    © 2024 MONOLITH_INDUSTRIAL_CORE. ALL SYSTEMS OPERATIONAL.
+                </div>
+<div class="flex gap-8">
+<button class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary underline decoration-2 underline-offset-4">Download Technical Brief</button>
+<button class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant hover:text-primary underline decoration-2 underline-offset-4">Re-calibrate Agent Atlas</button>
+<button class="text-[10px] font-bold uppercase tracking-widest text-error hover:opacity-70 transition-opacity">Decommission Agent</button>
+</div>
+</footer>
+</div>
+</main>
+</body></html>

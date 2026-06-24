@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ INDUSTRIAL PORTAL - Engineering Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-fixed-variant": "#00497a",
+                    "secondary-container": "#c1d9fd",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#d4e4f6",
+                    "primary": "#005c97",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eceeef",
+                    "background": "#f8fafb",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-background": "#191c1d",
+                    "secondary": "#49607f",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "on-error-container": "#93000a",
+                    "surface": "#f8fafb",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c0c7d2",
+                    "on-secondary-container": "#485f7e",
+                    "surface-container-high": "#e6e8e9",
+                    "surface-dim": "#d8dadb",
+                    "surface-container-low": "#f2f4f5",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-tertiary-container": "#f2f7ff",
+                    "on-primary-container": "#f3f7ff",
+                    "inverse-surface": "#2e3132",
+                    "primary-container": "#0075be",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "inverse-primary": "#9bcaff",
+                    "tertiary": "#4b5a69",
+                    "tertiary-container": "#637383",
+                    "surface-tint": "#0062a0",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d0e4ff",
+                    "outline": "#707882",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001c38",
+                    "on-surface-variant": "#404751",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "surface-bright": "#f8fafb",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-primary-fixed": "#001d35"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Gilroy-Bold", "Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-industrial-gradient {
+            background: linear-gradient(135deg, #005c97 0%, #0075be 100%);
+        }
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f2f4f5; }
+        ::-webkit-scrollbar-thumb { background: #c0c7d2; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex overflow-hidden h-screen">
+<!-- SideNavBar Anchor -->
+<aside class="flex flex-col h-full py-6 bg-[#f8fafb] dark:bg-[#f8fafb] h-screen w-64 left-0 top-0 fixed font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em] transition-all duration-150 ease-in-out border-r border-[#eceeef]">
+<div class="px-8 mb-10">
+<h2 class="text-lg font-bold text-[#001c38]">OPERATIONS</h2>
+<p class="text-[10px] text-on-surface-variant tracking-widest mt-1 opacity-60">Monolithic Engine v2.4</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-8 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center px-8 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span>Digital Employees</span>
+</a>
+<a class="flex items-center px-8 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="construction">construction</span>
+<span>Equipment</span>
+</a>
+<!-- Active State: Analytics -->
+<a class="flex items-center px-8 py-4 bg-[#eceeef] text-[#001c38] font-semibold border-r-4 border-[#005c97]" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center px-8 py-4 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="description">description</span>
+<span>Reports</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full bg-industrial-gradient text-white py-4 text-xs font-bold tracking-widest cursor-pointer active:opacity-80">
+                ADD NEW ASSET
+            </button>
+</div>
+<div class="mt-auto space-y-1 pt-6 border-t border-[#eceeef]">
+<a class="flex items-center px-8 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center px-8 py-3 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] transition-colors" href="#">
+<span class="material-symbols-outlined mr-4" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 ml-64 flex flex-col overflow-hidden">
+<!-- TopNavBar Anchor -->
+<header class="flex justify-between items-center w-full px-8 py-4 h-16 bg-slate-50 dark:bg-[#f2f4f5] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider docked full-width top-0 border-none">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black text-[#001c38] dark:text-[#001c38]">ANDRITZ INDUSTRIAL PORTAL</h1>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-1 bg-surface-container-high text-[10px] border-none focus:ring-0 w-64 tracking-widest placeholder:text-on-surface-variant/50" placeholder="SEARCH ASSETS..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] transition-colors p-2" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-[#eceeef] transition-colors p-2" data-icon="settings">settings</button>
+</div>
+<div class="w-8 h-8 bg-surface-container-highest overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional portrait of an industrial engineer in a clean white environment with technical lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABQyPMvRHp0EsY4c09kPgiha6ye8s-oksmadrXPOfiw53dVLCB-MbcB5zxaf2zrwLx1DrcuilZUwGnoDljcV1b6yKuOXX9-ahHCLeFc9X0pwdCncKLpt11gCMC7nE8_CA3pCFAepEZ0wnkFDQvYBjlzX_VFQ2H4GU17hzxc9w7C9m5-xHeRcX4uUaV25WlpMbN-kZJeMLmy7soc5wik1q5B15Iy9AIzsv5qm5jm_gPGSUXJvx1YKSoj1_XzCFMKesHW7vg8PZzniU"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface-container-low p-8">
+<!-- Header & Tabs -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+<div>
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary mb-2 block uppercase">Advanced Telemetry Matrix</span>
+<h2 class="text-4xl font-headline font-black text-on-secondary-fixed leading-none">ENGINEERING ANALYTICS</h2>
+</div>
+<div class="flex bg-surface-container-high p-1">
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest bg-surface-container-lowest text-on-secondary-fixed shadow-sm">UNIT PERFORMANCE</button>
+<button class="px-6 py-2 text-[10px] font-bold tracking-widest text-on-surface-variant hover:bg-surface-container transition-colors">GLOBAL FLEET ANALYTICS</button>
+</div>
+</div>
+<!-- Bento Grid Dashboard -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Multi-line Performance Trends -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 relative overflow-hidden group">
+<div class="flex justify-between items-start mb-10 relative z-10">
+<div>
+<h3 class="text-xs font-black tracking-[0.15em] text-on-secondary-fixed mb-1">REAL-TIME PERFORMANCE TRENDS</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider">THROUGHPUT VS. ENERGY CONSUMPTION (24H WINDOW)</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-primary"></span>
+<span class="text-[10px] font-bold tracking-tighter">THROUGHPUT (t/h)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 bg-tertiary"></span>
+<span class="text-[10px] font-bold tracking-tighter">THERMAL LOAD (MW)</span>
+</div>
+</div>
+</div>
+<!-- Chart Placeholder -->
+<div class="h-64 flex items-end justify-between relative border-b-2 border-outline-variant/20">
+<div class="absolute inset-0 flex flex-col justify-between py-2">
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+<div class="border-t border-outline-variant/10 w-full"></div>
+</div>
+<!-- Simulated Line Points -->
+<svg class="absolute inset-0 w-full h-full overflow-visible" preserveaspectratio="none">
+<path d="M0 180 Q 100 150 200 190 T 400 120 T 600 160 T 800 140 L 800 256 L 0 256 Z" fill="url(#grad1)" fill-opacity="0.1"></path>
+<path d="M0 180 Q 100 150 200 190 T 400 120 T 600 160 T 800 140" fill="none" stroke="#005c97" stroke-width="3"></path>
+<path d="M0 200 Q 150 210 300 180 T 600 220 T 800 190" fill="none" stroke="#4b5a69" stroke-dasharray="4 2" stroke-width="2"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#005c97;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#005c97;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="relative z-10 w-full flex justify-between px-2 text-[8px] font-bold text-on-surface-variant mb-[-20px]">
+<span>00:00</span><span>04:00</span><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span><span>23:59</span>
+</div>
+</div>
+</div>
+<!-- Radial Status Gauges -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-8 flex-1">
+<h3 class="text-xs font-black tracking-[0.15em] text-on-secondary-fixed mb-6">SYSTEM EFFICIENCY</h3>
+<div class="flex items-center justify-center relative">
+<svg class="w-40 h-40 transform -rotate-90">
+<circle cx="80" cy="80" fill="none" r="70" stroke="#eceeef" stroke-width="12"></circle>
+<circle cx="80" cy="80" fill="none" r="70" stroke="#005c97" stroke-dasharray="440" stroke-dashoffset="110" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-headline font-black text-on-secondary-fixed leading-none">75<span class="text-sm">%</span></span>
+<span class="text-[8px] font-bold tracking-widest text-primary mt-1">OPTIMIZED</span>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant">OPERATIONAL UPTIME</span>
+<span class="text-[10px] font-black text-on-secondary-fixed">99.2%</span>
+</div>
+<div class="w-full bg-surface-container h-1">
+<div class="bg-primary w-[99.2%] h-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Equipment Stress Heat Map -->
+<div class="col-span-12 lg:col-span-12 bg-surface-container-lowest p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="text-xs font-black tracking-[0.15em] text-on-secondary-fixed mb-1">EQUIPMENT STRESS TOPOGRAPHY</h3>
+<p class="text-[10px] text-on-surface-variant tracking-wider">SENSOR NODE VIBRATION &amp; THERMAL ANALYSIS</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[8px] font-bold text-on-surface-variant">LOW STRESS</span>
+<div class="flex h-3 w-32 bg-gradient-to-r from-primary to-error"></div>
+<span class="text-[8px] font-bold text-on-surface-variant">CRITICAL</span>
+</div>
+</div>
+<div class="grid grid-cols-12 md:grid-cols-24 gap-1">
+<!-- Heatmap Grid Cells (Mocked) -->
+<div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/30"></div><div class="aspect-square bg-primary/40"></div><div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/40"></div>
+<div class="aspect-square bg-primary/60"></div><div class="aspect-square bg-primary/80"></div><div class="aspect-square bg-primary/90"></div><div class="aspect-square bg-primary-container"></div><div class="aspect-square bg-primary/70"></div><div class="aspect-square bg-primary/40"></div>
+<div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/30"></div><div class="aspect-square bg-primary/40"></div><div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/40"></div>
+<div class="aspect-square bg-primary/60"></div><div class="aspect-square bg-primary/80"></div><div class="aspect-square bg-primary/90"></div><div class="aspect-square bg-primary-container"></div><div class="aspect-square bg-primary/70"></div><div class="aspect-square bg-primary/40"></div>
+<div class="aspect-square bg-primary/50"></div><div class="aspect-square bg-primary/70"></div><div class="aspect-square bg-primary/90"></div><div class="aspect-square bg-error/40"></div><div class="aspect-square bg-error/60"></div><div class="aspect-square bg-error/80"></div>
+<div class="aspect-square bg-error/90"></div><div class="aspect-square bg-error"></div><div class="aspect-square bg-error/70"></div><div class="aspect-square bg-primary-container"></div><div class="aspect-square bg-primary/80"></div><div class="aspect-square bg-primary/60"></div>
+<div class="aspect-square bg-primary/50"></div><div class="aspect-square bg-primary/70"></div><div class="aspect-square bg-primary/90"></div><div class="aspect-square bg-error/40"></div><div class="aspect-square bg-error/60"></div><div class="aspect-square bg-error/80"></div>
+<div class="aspect-square bg-error/90"></div><div class="aspect-square bg-error"></div><div class="aspect-square bg-error/70"></div><div class="aspect-square bg-primary-container"></div><div class="aspect-square bg-primary/80"></div><div class="aspect-square bg-primary/60"></div>
+<div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div>
+<div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div>
+<div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div>
+<div class="aspect-square bg-primary/20"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/10"></div><div class="aspect-square bg-primary/20"></div>
+</div>
+</div>
+<!-- KPI Mini Cards -->
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-primary">
+<span class="text-[8px] font-black tracking-widest text-on-surface-variant block mb-2">ACTIVE SENSORS</span>
+<div class="text-2xl font-black text-on-secondary-fixed">12,842</div>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+<span class="text-[8px] font-bold">+1.2% v. PREV</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-tertiary">
+<span class="text-[8px] font-black tracking-widest text-on-surface-variant block mb-2">AVERAGE TEMP</span>
+<div class="text-2xl font-black text-on-secondary-fixed">242.4 <span class="text-sm font-normal">°C</span></div>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="horizontal_rule">horizontal_rule</span>
+<span class="text-[8px] font-bold">NOMINAL</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-error">
+<span class="text-[8px] font-black tracking-widest text-on-surface-variant block mb-2">STRESS ALERTS</span>
+<div class="text-2xl font-black text-on-secondary-fixed">02</div>
+<div class="flex items-center gap-1 mt-1 text-error">
+<span class="material-symbols-outlined text-xs" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-[8px] font-bold">ACTION REQUIRED</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-3 bg-surface-container-lowest p-6 border-l-4 border-primary-container">
+<span class="text-[8px] font-black tracking-widest text-on-surface-variant block mb-2">ENERGY INDEX</span>
+<div class="text-2xl font-black text-on-secondary-fixed">0.84 <span class="text-sm font-normal">kW/t</span></div>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-xs" data-icon="trending_down">trending_down</span>
+<span class="text-[8px] font-bold">-4.5% EFFICIENCY</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

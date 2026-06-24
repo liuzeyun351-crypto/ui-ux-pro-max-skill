@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#181c22",
+                    "on-primary-fixed-variant": "#00497a",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-container": "#f3f7ff",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-surface": "#dfe2eb",
+                    "tertiary-fixed": "#ffdcc4",
+                    "secondary": "#b0c8ec",
+                    "surface-container-lowest": "#0a0e14",
+                    "on-tertiary-fixed-variant": "#6f3800",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#404751",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#353940",
+                    "surface": "#10141a",
+                    "surface-container": "#1c2026",
+                    "primary-container": "#0075be",
+                    "inverse-on-surface": "#2d3137",
+                    "on-surface-variant": "#c0c7d2",
+                    "on-secondary": "#19314e",
+                    "inverse-primary": "#0062a0",
+                    "surface-container-high": "#262a31",
+                    "secondary-container": "#334a68",
+                    "outline": "#8a919c",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#ae5b01",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "inverse-surface": "#dfe2eb",
+                    "on-primary": "#003256",
+                    "tertiary-fixed-dim": "#ffb781",
+                    "primary-fixed": "#d0e4ff",
+                    "on-primary-fixed": "#001d35",
+                    "primary": "#9bcaff",
+                    "on-secondary-container": "#a2badd",
+                    "surface-dim": "#10141a",
+                    "on-background": "#dfe2eb",
+                    "background": "#10141a",
+                    "tertiary": "#ffb781",
+                    "on-tertiary": "#4e2600",
+                    "on-error": "#690005",
+                    "surface-variant": "#31353c",
+                    "surface-tint": "#9bcaff",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#fff5f0",
+                    "surface-container-highest": "#31353c",
+                    "on-tertiary-fixed": "#2f1400",
+                    "on-secondary-fixed": "#001c38"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)] flex justify-between items-center px-8">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white">ANDRITZ PRECISION</span>
+<div class="hidden md:flex gap-6">
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] h-16 flex items-center" href="#">Telemetry</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors px-2 h-16 flex items-center" href="#">Assets</a>
+<a class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors px-2 h-16 flex items-center" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-lowest border-none text-xs tracking-widest pl-10 pr-4 py-2 w-64 rounded-lg focus:ring-1 focus:ring-primary" placeholder="SEARCH SENSOR ID..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-[#404751] dark:text-[#eceeef] cursor-pointer hover:opacity-80">notifications</span>
+<span class="material-symbols-outlined text-[#404751] dark:text-[#eceeef] cursor-pointer hover:opacity-80">settings</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="Operational Supervisor Profile" class="w-full h-full object-cover" data-alt="portrait of a professional operational supervisor in industrial setting with soft overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhPcCzZfVjQjUj6n4eYBImXLUT85kc-4wOZlC0U6tpUIUrPAmntc1qkwlu-KF5A3pp989tposlVlDp6KzNO1sPupT61CjEppZJwFVINa5tmq9g3UmGocftk-5Pz7xFb3W4etHu6SZufqzYm4J9BnXkeZ4ZVZqWyOl88wcTwvGmxk15KFeh6CytvdtiL2Js1MUBBt4rht5_WD4RXwAfVfbbgOCvc1cv79cSFDsaQQEXWgcTjn3YZK18vk_EDMjs-mrorNdA9hodCSA"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col h-full py-6 transition-all duration-300 ease-in-out">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest/50 rounded-xl">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white">memory</span>
+</div>
+<div>
+<p class="font-black text-xs text-[#001c38] dark:text-white">NODE_A1</p>
+<p class="text-[10px] tracking-tighter text-[#404751] dark:text-[#eceeef]/70">OPERATIONAL_UNIT_04</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">factory</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Assets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-[#f8fafb]/10 text-[#001c38] dark:text-white font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">sensors</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Telemetry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">build</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Maintenance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">System Logs</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-primary-container text-white text-[10px] font-bold tracking-widest rounded-lg hover:opacity-90 active:scale-[0.98] transition-all">
+                DEPLOY UPDATE
+            </button>
+<div class="mt-6 space-y-2 border-t border-outline-variant/10 pt-4">
+<a class="flex items-center gap-2 text-xs text-[#404751] dark:text-[#eceeef]/70" href="#">
+<span class="material-symbols-outlined text-base">description</span> Documentation
+                </a>
+<a class="flex items-center gap-2 text-xs text-[#404751] dark:text-[#eceeef]/70" href="#">
+<span class="material-symbols-outlined text-base">help</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-8 min-h-screen bg-surface relative">
+<div class="bg-noise absolute inset-0 pointer-events-none"></div>
+<!-- Header Section -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">System Status: Nominal</span>
+<h1 class="text-4xl font-black text-on-surface tracking-tighter mt-1">REAL-TIME SENSOR MATRIX</h1>
+</div>
+<div class="flex gap-3">
+<div class="bg-surface-container-low px-4 py-2 rounded-lg flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-mono text-on-surface-variant">SYNC_CLOCK: 14:02:29:04</span>
+</div>
+<div class="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-2 cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-xs font-bold tracking-widest">FILTER</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Hero Data Block: Aggregate Throughput -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container rounded-xl p-8 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">System Aggregate Throughput</h3>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="text-6xl font-black text-on-surface tracking-tighter">942.8</span>
+<span class="text-primary font-bold text-xl">Tb/s</span>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded text-[10px] font-bold tracking-widest">STABLE</span>
+<p class="text-on-surface-variant text-[10px] mt-2 font-mono">+12.4% FROM BASELINE</p>
+</div>
+</div>
+<!-- Main Sparkline Visualization Area -->
+<div class="flex-1 mt-4 relative h-48 w-full">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="lineGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#9bcaff" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#9bcaff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 150 Q 50 140, 100 160 T 200 130 T 300 150 T 400 100 T 500 120 T 600 80 T 700 110 T 800 60 T 900 90 T 1000 70 V 200 H 0 Z" fill="url(#lineGrad)"></path>
+<path class="drop-shadow-[0_0_8px_rgba(155,202,255,0.6)]" d="M0 150 Q 50 140, 100 160 T 200 130 T 300 150 T 400 100 T 500 120 T 600 80 T 700 110 T 800 60 T 900 90 T 1000 70" fill="none" stroke="#9bcaff" stroke-width="3"></path>
+<!-- Vertical grid markers -->
+<line stroke="#404751" stroke-opacity="0.2" x1="200" x2="200" y1="0" y2="200"></line>
+<line stroke="#404751" stroke-opacity="0.2" x1="400" x2="400" y1="0" y2="200"></line>
+<line stroke="#404751" stroke-opacity="0.2" x1="600" x2="600" y1="0" y2="200"></line>
+<line stroke="#404751" stroke-opacity="0.2" x1="800" x2="800" y1="0" y2="200"></line>
+</svg>
+</div>
+<div class="flex justify-between mt-6 text-[10px] font-mono text-on-surface-variant/60 tracking-widest">
+<span>00:00</span>
+<span>06:00</span>
+<span>12:00</span>
+<span>18:00</span>
+<span>CURRENT</span>
+</div>
+</div>
+</section>
+<!-- Diagnostic Summary -->
+<section class="col-span-12 lg:col-span-4 grid grid-rows-2 gap-6">
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">Active Nodes</h3>
+<span class="material-symbols-outlined text-primary text-xl">hub</span>
+</div>
+<div>
+<p class="text-4xl font-black text-on-surface">1,204</p>
+<p class="text-[10px] text-on-surface-variant font-mono mt-1">98.2% ONLINE CAPACITY</p>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98.2%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<h3 class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase">Thermal Variance</h3>
+<span class="material-symbols-outlined text-tertiary text-xl">thermostat</span>
+</div>
+<div>
+<p class="text-4xl font-black text-on-surface">42.5°C</p>
+<p class="text-[10px] text-tertiary font-mono mt-1">WARNING: NODE_B4 THRESHOLD</p>
+</div>
+<div class="w-full bg-surface-container-lowest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[72%]"></div>
+</div>
+</div>
+</section>
+<!-- Sensor Grid Header -->
+<div class="col-span-12 mt-4 flex items-center justify-between border-b border-outline-variant/10 pb-4">
+<h2 class="text-xl font-bold tracking-tight text-on-surface">DISTRIBUTED SENSOR ARRAY</h2>
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-on-surface-variant px-3 py-1 bg-surface-container-low rounded uppercase">Total: 48 Sensors</span>
+<span class="text-[10px] font-bold text-primary px-3 py-1 bg-primary/10 rounded uppercase">Active: 46</span>
+</div>
+</div>
+<!-- High Density Sensor Matrix -->
+<div class="col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Sensor Card 01 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X401_VIB</p>
+<h4 class="text-sm font-bold text-on-surface">VIBRATION_AXIS_Z</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">0.04<span class="text-xs font-normal text-on-surface-variant ml-1">mm/s</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 35 L10 20 L20 25 L30 10 L40 30 L50 15 L60 20 L70 5 L80 15 L90 10 L100 25" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 02 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X402_PRS</p>
+<h4 class="text-sm font-bold text-on-surface">HYDRAULIC_PRESSURE</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">184.2<span class="text-xs font-normal text-on-surface-variant ml-1">bar</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 20 L20 20 L30 15 L50 25 L70 20 L100 20" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 03 (Warning State) -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-tertiary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-tertiary">SNSR_X403_TMP</p>
+<h4 class="text-sm font-bold text-on-surface">GEARBOX_TEMP</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(255,183,129,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-tertiary">88.5<span class="text-xs font-normal text-on-surface-variant ml-1">°C</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 30 L20 25 L40 10 L60 5 L80 15 L100 8" fill="none" stroke="#ffb781" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 04 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X404_RPM</p>
+<h4 class="text-sm font-bold text-on-surface">MAIN_SHAFT_SPEED</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">1,450<span class="text-xs font-normal text-on-surface-variant ml-1">rpm</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 25 L20 23 L40 25 L60 22 L80 25 L100 24" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 05 (Critical State) -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-error/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-error">SNSR_X405_FLW</p>
+<h4 class="text-sm font-bold text-on-surface">LUBRICANT_FLOW</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-error">0.2<span class="text-xs font-normal text-on-surface-variant ml-1">l/min</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 10 L20 15 L40 30 L60 35 L80 38 L100 39" fill="none" stroke="#ffb4ab" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 06 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X406_PWR</p>
+<h4 class="text-sm font-bold text-on-surface">PHASE_VOLTAGE_A</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">400.1<span class="text-xs font-normal text-on-surface-variant ml-1">V</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 20 L10 18 L20 22 L30 20 L40 19 L50 21 L60 20 L70 18 L80 22 L90 20 L100 20" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 07 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X407_HUM</p>
+<h4 class="text-sm font-bold text-on-surface">AMBIENT_HUMIDITY</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">42<span class="text-xs font-normal text-on-surface-variant ml-1">%</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 25 L30 22 L60 25 L100 24" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+<!-- Sensor Card 08 -->
+<article class="bg-surface-container-low p-5 rounded-lg border border-transparent hover:border-primary/20 transition-all cursor-crosshair">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[9px] font-mono text-on-surface-variant">SNSR_X408_SON</p>
+<h4 class="text-sm font-bold text-on-surface">ACOUSTIC_EMISSION</h4>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(155,202,255,0.8)]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-2xl font-black text-on-surface">12<span class="text-xs font-normal text-on-surface-variant ml-1">dB</span></span>
+<div class="w-16 h-8">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0 35 L10 32 L20 38 L30 30 L40 35 L50 32 L60 38 L70 30 L80 35 L90 32 L100 38" fill="none" stroke="#9bcaff" stroke-width="1.5"></path>
+</svg>
+</div>
+</div>
+</article>
+</div>
+<!-- Asymmetric Data Block: System Log Stream -->
+<section class="col-span-12 lg:col-span-5 bg-surface-container-lowest rounded-xl p-6 h-[400px] flex flex-col">
+<div class="flex justify-between items-center mb-4 border-b border-outline-variant/10 pb-4">
+<h3 class="text-[10px] font-bold tracking-widest uppercase">REAL-TIME LOG_STREAM</h3>
+<div class="flex gap-1">
+<div class="w-1 h-1 bg-on-surface-variant/30 rounded-full"></div>
+<div class="w-1 h-1 bg-on-surface-variant/30 rounded-full"></div>
+<div class="w-1 h-1 bg-on-surface-variant/30 rounded-full"></div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-2 font-mono text-[10px] pr-2 custom-scrollbar">
+<p class="text-primary"><span class="text-on-surface-variant">[14:02:44.02]</span> INFO: NODE_A1_ACK_RECEIVED</p>
+<p class="text-on-surface-variant"><span class="text-on-surface-variant">[14:02:44.18]</span> TRACE: SENSOR_X401_VIB HEARTBEAT_OK</p>
+<p class="text-tertiary"><span class="text-on-surface-variant">[14:02:45.02]</span> WARN: GEARBOX_TEMP EXCEEDING UPPER_L1</p>
+<p class="text-on-surface-variant"><span class="text-on-surface-variant">[14:02:45.33]</span> TRACE: BUFFER_FLUSHING... 100%</p>
+<p class="text-primary"><span class="text-on-surface-variant">[14:02:45.91]</span> INFO: ANALYTICS_ENGINE_RECOMPUTING_MODEL</p>
+<p class="text-error"><span class="text-on-surface-variant">[14:02:46.10]</span> ERROR: LUBRICANT_FLOW_RATE_CRITICAL</p>
+<p class="text-on-surface-variant"><span class="text-on-surface-variant">[14:02:46.45]</span> TRACE: SENSOR_X402_PRS STABLE_STATE</p>
+<p class="text-on-surface-variant"><span class="text-on-surface-variant">[14:02:46.88]</span> TRACE: SENSOR_X404_RPM SYNCED</p>
+<p class="text-primary"><span class="text-on-surface-variant">[14:02:47.12]</span> INFO: AUTO_MAINTENANCE_TICKET_GEN_ID_8821</p>
+<p class="text-on-surface-variant"><span class="text-on-surface-variant">[14:02:47.45]</span> TRACE: SYSTEM_READY_FOR_INTERRUPT</p>
+</div>
+</section>
+<!-- Maintenance Schedule Overlay (Glassmorphism) -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container rounded-xl p-8 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-on-surface-variant/20 text-9xl -rotate-12 select-none">build_circle</span>
+</div>
+<div class="relative z-10">
+<h3 class="text-on-surface-variant text-[10px] font-bold tracking-widest uppercase mb-6">Predictive Maintenance Roadmap</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-6">
+<div class="w-20 text-right font-mono text-[10px] text-on-surface-variant">MAR 14</div>
+<div class="flex-1 bg-surface-container-high rounded-lg p-4 flex justify-between items-center">
+<div>
+<p class="font-bold text-sm">UNIT_04 Lubricant Filter Replacement</p>
+<p class="text-[10px] text-on-surface-variant">PREDICTED FAILURE IN 48 HOURS</p>
+</div>
+<button class="px-4 py-2 bg-primary-container text-white text-[10px] font-bold rounded">SCHEDULE</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 text-right font-mono text-[10px] text-on-surface-variant">MAR 18</div>
+<div class="flex-1 bg-surface-container-high rounded-lg p-4 flex justify-between items-center opacity-60">
+<div>
+<p class="font-bold text-sm">Main Shaft Calibration</p>
+<p class="text-[10px] text-on-surface-variant">ROUTINE QUARTERLY CHECK</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="w-20 text-right font-mono text-[10px] text-on-surface-variant">MAR 22</div>
+<div class="flex-1 bg-surface-container-high rounded-lg p-4 flex justify-between items-center opacity-60">
+<div>
+<p class="font-bold text-sm">Thermal Sensor Array Retrofit</p>
+<p class="text-[10px] text-on-surface-variant">SYSTEM ENHANCEMENT</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Suppressing on Details/Maintenance Pages, but active here for system override) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-error-container text-on-error-container rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</button>
+</body></html>

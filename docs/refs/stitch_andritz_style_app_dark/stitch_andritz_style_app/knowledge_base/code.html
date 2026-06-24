@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "inverse-primary": "#9bcaff",
+                        "surface-container": "#eceeef",
+                        "surface": "#f8fafb",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#f2f7ff",
+                        "on-background": "#191c1d",
+                        "on-surface-variant": "#404751",
+                        "surface-container-low": "#f2f4f5",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-secondary-container": "#485f7e",
+                        "tertiary-container": "#637383",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed": "#001d35",
+                        "on-error-container": "#93000a",
+                        "outline": "#707882",
+                        "error-container": "#ffdad6",
+                        "background": "#f8fafb",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c0c7d2",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "inverse-on-surface": "#eff1f2",
+                        "secondary-container": "#c1d9fd",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "surface-tint": "#0062a0",
+                        "secondary": "#49607f",
+                        "tertiary": "#4b5a69",
+                        "on-secondary-fixed-variant": "#314866",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "primary-container": "#0075be",
+                        "on-primary-container": "#f3f7ff",
+                        "surface-bright": "#f8fafb",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#00497a",
+                        "surface-dim": "#d8dadb",
+                        "surface-container-highest": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #001c38; /* Based on dark-mode spec for surface */
+            color: #f8fafb;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body selection:bg-primary selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#f8fafb]/85 dark:bg-[#001c38]/85 backdrop-blur-xl shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)]">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#005c97] dark:text-[#0075be]">menu</span>
+<h1 class="text-xl font-black tracking-tighter text-[#001c38] dark:text-[#f8fafb]">ANDRITZ PORTAL</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[11px] font-medium uppercase tracking-widest text-[#404751] dark:text-[#c0c7d2] hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-colors p-2" href="#">DASHBOARD</a>
+<a class="text-[11px] font-medium uppercase tracking-widest text-[#404751] dark:text-[#c0c7d2] hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-colors p-2" href="#">ASSETS</a>
+<a class="text-[11px] font-medium uppercase tracking-widest text-[#005c97] dark:text-[#0075be] font-bold p-2" href="#">FEED</a>
+<a class="text-[11px] font-medium uppercase tracking-widest text-[#404751] dark:text-[#c0c7d2] hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-colors p-2" href="#">ALERTS</a>
+</nav>
+<div class="w-8 h-8 bg-primary-container rounded-full flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional portrait of an industrial engineer in a dark suit with a focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACMp7zFq_5gMR0zWFcXXEAmiBACEd808lV3QCcrSDRkPC3ldb_aSvALxc0fOKbZhNxVOKyfVaKbBmHjZF5a0mOobmn6TGmsxvK5YEtjqiGHelTD1oTv5rk-C8gbGA_7vhsJD1S_SHXHS-8fz4RmTJl2L1jlEXwaS48QeE9ui89Rn54t-yAXUMwNW4ORZkGzYiVDHpmowVnVu02TH26dO_Qc1be5YU6KPYGfBl6UcfQyOMjshDRGjfy8PpzCZYbfGKj8Cm5J-9orWc"/>
+</div>
+</div>
+</header>
+<!-- Sidebar (NavigationDrawer) - Hidden on mobile, visible on desktop for this view -->
+<aside class="hidden lg:flex fixed inset-y-0 left-0 z-[60] flex-col pt-24 w-80 bg-[#f8fafb] dark:bg-[#001c38] shadow-[20px_0px_60px_rgba(0,0,0,0.1)]">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 bg-surface-container-highest overflow-hidden">
+<img alt="Engineer Avatar" class="w-full h-full object-cover" data-alt="industrial engineer wearing a safety helmet and reflective vest in a high-tech factory setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkdzwuxbjiH6EiWqT92DDi076LNWOsiCn5z7WUYbYIHpt4UX997kv-tAgGYtfoATJKtvWt3TUTXhTOrftVaaCd4v_s9iUz5rN52u-BGakLhsRsybV1J6EKF7pJSieIvMixWQk2bLrla8WMOsLuPbe3LX7MYWB5UyXr_F6t4NXcF-vugLafB-C5jUpl11l81vHqo9qwm8aGil1oWLjDI4SPjbc3MCVvQegAKWsfeyQh0EigxRrTh9Ia1k9a_JN3b7OvoeK_PP04R10"/>
+</div>
+<div>
+<h2 class="font-bold text-[#001c38] dark:text-white text-sm">OPERATOR_082</h2>
+<p class="text-[10px] uppercase font-semibold text-primary">Industrial Unit 4</p>
+</div>
+</div>
+<div class="text-[10px] font-semibold text-on-surface-variant uppercase tracking-widest">Verified System Access</div>
+</div>
+<nav class="flex flex-col">
+<a class="flex items-center gap-4 text-[#404751] dark:text-[#c0c7d2] px-8 py-4 hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-all" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="text-[10px] font-semibold uppercase">Operational Overview</span>
+</a>
+<a class="flex items-center gap-4 text-[#404751] dark:text-[#c0c7d2] px-8 py-4 hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-all" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span class="text-[10px] font-semibold uppercase">System Health</span>
+</a>
+<a class="flex items-center gap-4 bg-[#005c97] text-white font-bold px-8 py-4" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-semibold uppercase text-white">Technical Docs</span>
+</a>
+<a class="flex items-center gap-4 text-[#404751] dark:text-[#c0c7d2] px-8 py-4 hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="text-[10px] font-semibold uppercase">Maintenance Log</span>
+</a>
+<a class="flex items-center gap-4 text-[#404751] dark:text-[#c0c7d2] px-8 py-4 hover:bg-[#eceeef] dark:hover:bg-[#1a202c] transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-[10px] font-semibold uppercase">Support</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-32 lg:pl-80 min-h-screen">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<!-- Header Section -->
+<div class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-2 block">Knowledge Repository</span>
+<h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-[#f8fafb] uppercase">Technical <span class="text-primary">Insights</span></h2>
+</div>
+<div class="w-full md:w-96 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-[#1a202c] border-none text-[11px] tracking-widest font-bold px-12 py-4 focus:ring-0 focus:border-b-2 focus:border-primary transition-all placeholder:text-outline" placeholder="SEARCH DOCUMENTATION..." type="text"/>
+</div>
+</div>
+<!-- Category Filter -->
+<div class="mt-8 flex flex-wrap gap-2">
+<button class="bg-primary text-white px-6 py-2 text-[10px] font-bold tracking-widest uppercase">All Articles</button>
+<button class="bg-[#1a202c] text-[#c0c7d2] px-6 py-2 text-[10px] font-bold tracking-widest uppercase hover:bg-[#005c97]/20 transition-colors">Maintenance</button>
+<button class="bg-[#1a202c] text-[#c0c7d2] px-6 py-2 text-[10px] font-bold tracking-widest uppercase hover:bg-[#005c97]/20 transition-colors">Automation</button>
+<button class="bg-[#1a202c] text-[#c0c7d2] px-6 py-2 text-[10px] font-bold tracking-widest uppercase hover:bg-[#005c97]/20 transition-colors">Turbine Systems</button>
+<button class="bg-[#1a202c] text-[#c0c7d2] px-6 py-2 text-[10px] font-bold tracking-widest uppercase hover:bg-[#005c97]/20 transition-colors">Safety Protocols</button>
+<button class="bg-[#1a202c] text-[#c0c7d2] px-6 py-2 text-[10px] font-bold tracking-widest uppercase hover:bg-[#005c97]/20 transition-colors">Material Science</button>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Featured Large Card -->
+<article class="md:col-span-2 lg:col-span-2 bg-[#1a202c] group cursor-pointer overflow-hidden relative border-l-4 border-primary">
+<div class="flex flex-col lg:flex-row h-full">
+<div class="lg:w-1/2 h-64 lg:h-full overflow-hidden">
+<img alt="Article Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high-detail close-up of a massive industrial gas turbine blade with technical metallic texture and cool lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5qbSfu7QqlUbNX3c2pv7JFWiRoX34zL7BdJkj06nSKjo0yrPKI6CAUFkNJ1frU_Y5BkeyWCE5QUX0fkOrkPPjWlpIMWocD0zVTu-l-yWMhadspOCiSQNKesFlO0qO3TZ31JDDGMDVnQc2VYqmWu1mNbbiSbjhOaa0s25PyUPP6bpS_26RxfLYT1Z6OQw3ETF-FS6dBeE1hoRgm8W9wl4FlO6afeU6k83GUkte75kcTT158mmVRNrt5qzwgiPZN2EIfN1x0oQ1ezQ"/>
+</div>
+<div class="lg:w-1/2 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="bg-primary/10 text-primary px-3 py-1 text-[10px] font-black tracking-widest uppercase">Maintenance</span>
+<span class="text-outline text-[10px] font-bold tracking-tighter uppercase">12 MIN READ</span>
+</div>
+<h3 class="text-3xl font-extrabold text-white leading-tight uppercase tracking-tight group-hover:text-primary transition-colors">Optimizing Turbine Efficiency through AI-Driven Diagnostics</h3>
+<p class="mt-4 text-[#c0c7d2] text-sm leading-relaxed font-regular">An in-depth look at how machine learning models are revolutionizing preventive maintenance for heavy industrial turbines in hydropower plants.</p>
+</div>
+<div class="mt-8 flex items-center gap-4">
+<div class="w-10 h-10 bg-primary-container">
+<img alt="Author" class="w-full h-full object-cover grayscale" data-alt="professional woman engineer in a control room setting with digital displays in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAHh9WOkTpFGSAhMFSHPVLQuyhxayPQYtnoNceE2Rz7zYVoxQqccePl4KXrQ8EoTWTobn5ZKPwt1Eu0iEkKnZMfYPtOz3uvkw6d7YkgBPyAxIyhaxMfzEXwutdW3fbtNS2uHUI3GMSAs8tCLjiex3yUHRB3pK952per1WoIbdfi3nlJwuc26AFj78FFHxlG6cKJqIcD_H4sUaoFm-_fv5GryJq_-RofLd1wOGaFoXdmzp_CIk2Nh7vCWX625xgO2LUqQXE1Vh42Cs"/>
+</div>
+<div class="text-[10px] font-bold uppercase tracking-widest">
+<div class="text-white">Dr. Sarah Vance</div>
+<div class="text-outline">Senior Systems Architect</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Regular Card 1 -->
+<article class="bg-[#1a202c] group cursor-pointer flex flex-col border-t-4 border-primary">
+<div class="h-48 overflow-hidden">
+<img alt="Article Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="abstract overhead shot of complex industrial pipes and valves in a modern processing facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXzav1sOZvmVM9LSdu7bBPF9jDsaYsU_75PN8oInp6i5sDxPdRn5J4ocBRUYOrSec0qV-6jTASWe-6UpAB7VIPL-N8eExsBzagX3NeZVxUrtV2N7cHqsDJjaKk3MNHr9O9hpqNBwBfcrUfg652fO4hP8Ad4cY15L0UkO5P8Qm2wwudjkhHMDKojh2R-yi9cbCzSomzHFZsAhwHzMslfFBoOHz_6k8bco8Gsn435KOGipXohfz5rFtpKpl3TifdF8YELCV4-xxpf9U"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-[#eceeef]/10 text-[#c0c7d2] px-3 py-1 text-[9px] font-black tracking-widest uppercase">Automation</span>
+<span class="text-outline text-[9px] font-bold uppercase">8 MIN READ</span>
+</div>
+<h3 class="text-xl font-bold text-white uppercase tracking-tight group-hover:text-primary transition-colors mb-4">The Future of SCADA Systems</h3>
+<p class="text-outline text-xs leading-relaxed">Transitioning from legacy control systems to cloud-integrated industrial IoT frameworks.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-[#eceeef]/5">
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                                VIEW DOCUMENT <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- Regular Card 2 -->
+<article class="bg-[#1a202c] group cursor-pointer flex flex-col border-t-4 border-secondary">
+<div class="h-48 overflow-hidden">
+<img alt="Article Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="a professional worker welding a large metal structure with sparks flying, dramatic blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx2Noe0IHZ4jBBla6evxpNgTw0xr751do3Axq3GjweLxn2vOTQx7OU2jGr-hOFsPO69xkI1EFMbRm3GX__LU4-0eRFtHQjFQjzyxhOhiWXSxmmvvZYCfv1wd4z1ZDGdfrJZhalzmZ8KRBwRwCN1DHvuwHi7AJa_6TdWPbts1dGq8qTFFRNSX-yO-hu4U2ikTDRrnpvyVnelfHfw6UgzHbvsLpEn7tIu6WEghfqHjA_kw2677Wa_efZe6Ub2dro98OcKMfh_r3QnRU"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-[#eceeef]/10 text-[#c0c7d2] px-3 py-1 text-[9px] font-black tracking-widest uppercase">Safety</span>
+<span class="text-outline text-[9px] font-bold uppercase">15 MIN READ</span>
+</div>
+<h3 class="text-xl font-bold text-white uppercase tracking-tight group-hover:text-primary transition-colors mb-4">High-Voltage Safety Protocols</h3>
+<p class="text-outline text-xs leading-relaxed">Essential risk mitigation strategies for field operators working in substations and generation units.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-[#eceeef]/5">
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                                VIEW DOCUMENT <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- Regular Card 3 -->
+<article class="bg-[#1a202c] group cursor-pointer flex flex-col border-t-4 border-primary-container">
+<div class="h-48 overflow-hidden">
+<img alt="Article Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="macro photograph of industrial gears and cogs perfectly aligned and lubricated" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMIjDlEjiyZ05FOqWIDa-Xy5Bp8OqZp861sfFANCFB1J1G6kDxKPKUaToCntWagRjtjR4ahMp47tIZp0HcH0kKptU76kYyzXT3gThmOknCvhZNVwufmpEvd_EGVsO0dfLs8BUEIyWRQybxDAn3S-psw9X7Drq8hZ2SOvHPC3bcCwbg4WxWHp2LMNB2UOQZ5mT4dR2mZsgkt7UP_xZ-PsS4BAAG-nwKhv7CIrR96jktnqOs2-j3j0edLZaYeQ-jouUSBcnhcWmK4s4"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-[#eceeef]/10 text-[#c0c7d2] px-3 py-1 text-[9px] font-black tracking-widest uppercase">Mechanics</span>
+<span class="text-outline text-[9px] font-bold uppercase">5 MIN READ</span>
+</div>
+<h3 class="text-xl font-bold text-white uppercase tracking-tight group-hover:text-primary transition-colors mb-4">Lubrication Science</h3>
+<p class="text-outline text-xs leading-relaxed">Understanding synthetic lubricant behavior under extreme pressure and temperature conditions.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-[#eceeef]/5">
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                                VIEW DOCUMENT <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+<!-- Regular Card 4 -->
+<article class="bg-[#1a202c] group cursor-pointer flex flex-col border-t-4 border-tertiary">
+<div class="h-48 overflow-hidden">
+<img alt="Article Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="blueprints and technical drawings spread across a large wooden table with engineering tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoAMUSaaFnZrHZI9PjjG2qbkpnnyB8eCqhN6tkntTBTNdqu_FqHWfFIXWGNysP6TOozSBv7L07wf2s7gTFWebbUUb6e2e8NcESvfN_Szft8b8iJ1hi1HUgfPF_nbRyR9hcgHc17poTi9ykQpQtgeM7vGcBrGuoSrud_1eN--HAQMCj-Ay6JwNQYCeAKHOkGR5Xqds37ju8iNSIE9w98fDivUWKNqgoa5KVlbRgzvmQWz1gUjeBkcZPgbTU-1c_cu6CPeTCWfut4G8"/>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-[#eceeef]/10 text-[#c0c7d2] px-3 py-1 text-[9px] font-black tracking-widest uppercase">System Design</span>
+<span class="text-outline text-[9px] font-bold uppercase">20 MIN READ</span>
+</div>
+<h3 class="text-xl font-bold text-white uppercase tracking-tight group-hover:text-primary transition-colors mb-4">Unit 4 Retrofit Overview</h3>
+<p class="text-outline text-xs leading-relaxed">Documentation of the complete overhaul of the hydraulic control systems in Unit 4.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-[#eceeef]/5">
+<span class="text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+                                VIEW DOCUMENT <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-[#ffffff] dark:bg-[#001c38] shadow-[0px_-4px_24px_0px_rgba(0,28,56,0.04)]">
+<div class="flex flex-col items-center justify-center text-[#404751] dark:text-[#c0c7d2] w-full h-full opacity-70">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.1em]">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#404751] dark:text-[#c0c7d2] w-full h-full opacity-70">
+<span class="material-symbols-outlined">factory</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.1em]">ASSETS</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#eceeef] dark:bg-[#1a202c] text-[#005c97] dark:text-[#0075be] w-full h-full border-t-4 border-[#005c97]">
+<span class="material-symbols-outlined">rss_feed</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.1em]">FEED</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#404751] dark:text-[#c0c7d2] w-full h-full opacity-70">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="text-[9px] font-bold uppercase tracking-[0.1em]">ALERTS</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maintenance Protocol Detail | ANDRITZ PRECISION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#181c22",
+                    "on-primary-fixed-variant": "#00497a",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-container": "#f3f7ff",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-surface": "#dfe2eb",
+                    "tertiary-fixed": "#ffdcc4",
+                    "secondary": "#b0c8ec",
+                    "surface-container-lowest": "#0a0e14",
+                    "on-tertiary-fixed-variant": "#6f3800",
+                    "secondary-fixed": "#d3e4ff",
+                    "outline-variant": "#404751",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#353940",
+                    "surface": "#10141a",
+                    "surface-container": "#1c2026",
+                    "primary-container": "#0075be",
+                    "inverse-on-surface": "#2d3137",
+                    "on-surface-variant": "#c0c7d2",
+                    "on-secondary": "#19314e",
+                    "inverse-primary": "#0062a0",
+                    "surface-container-high": "#262a31",
+                    "secondary-container": "#334a68",
+                    "outline": "#8a919c",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#ae5b01",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "inverse-surface": "#dfe2eb",
+                    "on-primary": "#003256",
+                    "tertiary-fixed-dim": "#ffb781",
+                    "primary-fixed": "#d0e4ff",
+                    "on-primary-fixed": "#001d35",
+                    "primary": "#9bcaff",
+                    "on-secondary-container": "#a2badd",
+                    "surface-dim": "#10141a",
+                    "on-background": "#dfe2eb",
+                    "background": "#10141a",
+                    "tertiary": "#ffb781",
+                    "on-tertiary": "#4e2600",
+                    "on-error": "#690005",
+                    "surface-variant": "#31353c",
+                    "surface-tint": "#9bcaff",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#fff5f0",
+                    "surface-container-highest": "#31353c",
+                    "on-tertiary-fixed": "#2f1400",
+                    "on-secondary-fixed": "#001c38"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .monolith-gradient {
+            background: linear-gradient(135deg, #0075be 0%, #00497a 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 h-16 bg-[#f8fafb] dark:bg-[#001c38]/85 backdrop-blur-md border-b border-[#c0c7d2]/15 dark:bg-[#eceeef]/5 shadow-[0px_12px_32px_0px_rgba(0,28,56,0.06)]">
+<div class="flex justify-between items-center w-full px-8 h-16">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#001c38] dark:text-white uppercase">ANDRITZ PRECISION</span>
+<div class="hidden md:flex gap-6">
+<button class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs transition-colors text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 px-3 py-2 rounded">OVERVIEW</button>
+<button class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs transition-colors text-[#0075BE] dark:text-[#005c97] border-b-2 border-[#0075BE] px-3 py-2">MAINTENANCE</button>
+<button class="font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-xs transition-colors text-[#404751] dark:text-[#eceeef] hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 px-3 py-2 rounded">REPORTS</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-label uppercase tracking-widest ml-2 w-48 text-on-surface" placeholder="SEARCH PROTOCOLS..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors rounded">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/10 transition-colors rounded">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Operational Supervisor Profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="Close-up portrait of a technical supervisor wearing safety glasses and a headset, focused and professional industrial aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjFUDg-nVILKDPLzKJrGVEs9P_aSckohoLenzOtNoJBC7WKmSc44D_QdXC3FcuGzG2rmFYkEwVpDZQChAVksdtKtTD8A-H3rZFRdA1QvnoQRiM3J9CbItMAocgwShy7_uz-nrsjdIs7gL2_GEeEAAdQZk_X5JJHPwbDMvDl2hwEiTR122MH3cHFyAKQeUUSapLohO_giyP8uxcpeJ61R74CLZa4FwsuMXzmyCZIHbwuMqkDk0Q8K3GqkqtnZ3a6MMCpV5p0EQPIoE"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 bg-[#f2f4f5] dark:bg-[#001c38] flex flex-col py-6 transition-all duration-300 ease-in-out">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high rounded-xl">
+<div class="w-10 h-10 bg-primary-container flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-white">memory</span>
+</div>
+<div>
+<p class="font-black text-[#001c38] dark:text-white text-sm">NODE_A1</p>
+<p class="font-['Gilroy-Regular','Inter'] text-[10px] tracking-normal text-on-surface-variant uppercase">OPERATIONAL_UNIT_04</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Assets</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Telemetry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded bg-white dark:bg-[#f8fafb]/10 text-[#001c38] dark:text-white font-semibold shadow-sm transition-all" href="#">
+<span class="material-symbols-outlined text-[#0075BE]">build</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">Maintenance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded text-[#404751] dark:text-[#eceeef]/70 hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5 transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['Gilroy-Regular','Inter'] text-sm">System Logs</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-6 border-t border-outline-variant/10">
+<button class="w-full monolith-gradient text-white font-bold py-3 px-4 rounded mb-6 text-xs tracking-widest uppercase hover:opacity-90 active:scale-[0.98] transition-all">
+                DEPLOY UPDATE
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-[#404751] dark:text-[#eceeef]/70 text-xs hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#404751] dark:text-[#eceeef]/70 text-xs hover:bg-[#eceeef] dark:hover:bg-[#f2f4f5]/5" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12">
+<div class="max-w-7xl mx-auto">
+<!-- Protocol Header -->
+<div class="flex justify-between items-end mb-12">
+<div class="space-y-2">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 text-primary px-3 py-1 text-[10px] font-bold tracking-widest uppercase border border-primary/20">PROTOCOL ID: M-772-DELTA</span>
+<span class="flex items-center gap-1 text-tertiary text-[10px] font-bold tracking-widest uppercase">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">warning</span> HIGH PRIORITY
+                        </span>
+</div>
+<h1 class="text-5xl font-black tracking-tighter text-white leading-none">VORTEX TURBINE CORE <br/><span class="text-primary">LUBRICATION SEQUENCE</span></h1>
+<p class="text-on-surface-variant max-w-xl text-lg font-light leading-relaxed">
+                        Precision maintenance procedure for high-velocity centrifugal units. Requires strict adherence to thermal cooling intervals and pressure equalization.
+                    </p>
+</div>
+<div class="flex gap-4 pb-2">
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface text-xs font-bold tracking-widest uppercase hover:bg-surface-bright transition-colors border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">print</span> EXPORT LOG
+                    </button>
+<button class="px-8 py-3 monolith-gradient text-white text-xs font-bold tracking-widest uppercase flex items-center gap-2 rounded shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">play_arrow</span> INITIATE SEQUENCE
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Protocol Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left: Technical Schematic -->
+<div class="col-span-8 bg-surface-container-low p-1 relative overflow-hidden group">
+<div class="absolute top-6 left-6 z-10 flex gap-2">
+<div class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur text-[10px] font-bold tracking-widest text-primary border border-primary/30">SCHEMATIC ALPHA-01</div>
+<div class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur text-[10px] font-bold tracking-widest text-on-surface-variant">LIVESTREAM DATA: ACTIVE</div>
+</div>
+<div class="aspect-[16/10] bg-surface-container-lowest flex items-center justify-center relative border border-outline-variant/10">
+<!-- Simulated Schematic Visual -->
+<div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: linear-gradient(#404751 1px, transparent 1px), linear-gradient(90deg, #404751 1px, transparent 1px); background-size: 40px 40px;">
+</div>
+<img alt="Technical turbine schematic" class="w-full h-full object-cover" data-alt="High-contrast technical blueprint of a centrifugal turbine engine, glowing cyan neon lines on deep charcoal background, industrial engineering schematic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6MtS-qWzoqKNo0SwJhqMITKmeCn4ImGrvvOibBHTrFB8gZemqIPMHsSwea4n4cNgwvJQ3ei7SSn5QaCnyBDJ8-Cnz4JkD-kDECbrko0MaOGiHJkdcwMSOy2z1S_QBmdFZUINojTuZJmqKa6EOl7yu-zThr8SGwd-aAd5JGdSovq8Z3BzZsirMPaCFQpYoNN38xZSM3VDpjhPVcPCSYennUjHvbJdbPrDHST5PN1ZE6YWodaCvSA2tNKS4m6tFKFd3x0vqNdTTHDg"/>
+<!-- Floating Data Pins -->
+<div class="absolute top-1/4 left-1/3 group/pin">
+<div class="w-4 h-4 bg-primary rounded-full animate-pulse flex items-center justify-center ring-4 ring-primary/20"></div>
+<div class="absolute left-6 top-0 bg-surface-container-highest p-3 border border-primary/40 backdrop-blur-md w-48 shadow-2xl">
+<p class="text-[10px] font-bold text-primary tracking-widest">INJECTION NODE 04</p>
+<p class="text-2xl font-black text-white">45.2<span class="text-xs ml-1 text-on-surface-variant font-medium uppercase">PSI</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Status Metrics -->
+<div class="col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container-low p-8 border-l-4 border-primary">
+<p class="text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6">ENVIRONMENTAL_DIAGNOSTICS</p>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold tracking-widest text-white">CORE TEMPERATURE</span>
+<span class="text-xs font-bold text-primary">82°C / 110°C</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-1 bg-primary shadow-[0_0_8px_rgba(155,202,255,0.6)]" style="width: 74%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold tracking-widest text-white">LUBRICANT VISCOSITY</span>
+<span class="text-xs font-bold text-tertiary">OPTIMAL</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-1 bg-tertiary shadow-[0_0_8px_rgba(255,183,129,0.6)]" style="width: 92%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold tracking-widest text-white">FLOW RATE</span>
+<span class="text-xs font-bold text-on-surface-variant">4.8 L/MIN</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-1 bg-on-surface-variant" style="width: 45%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'wght' 700;">history</span>
+</div>
+<p class="text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6">LAST_SERVICE_ENTRY</p>
+<div class="space-y-4">
+<div class="border-l border-outline-variant/30 pl-4 py-1">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">OCT 12, 2023 - 14:22</p>
+<p class="text-sm font-semibold text-white">Bearing Replacement (Unit B)</p>
+</div>
+<div class="border-l border-outline-variant/30 pl-4 py-1">
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-widest">AUG 05, 2023 - 09:15</p>
+<p class="text-sm font-semibold text-white">Annual Safety Calibration</p>
+</div>
+</div>
+<button class="mt-8 text-[10px] font-black text-primary tracking-[0.2em] uppercase flex items-center gap-2 hover:translate-x-1 transition-transform">
+                            VIEW FULL HISTORY <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom Full Width: Procedural Steps -->
+<div class="col-span-12 bg-surface-container-low p-10 mt-6">
+<div class="flex items-center justify-between mb-10">
+<h2 class="text-2xl font-black tracking-tight text-white uppercase italic">Step-By-Step Protocol</h2>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">COMPLETED</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-container-highest border border-outline-variant"></span>
+<span class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant">PENDING</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="relative group">
+<div class="absolute -left-6 top-0 text-4xl font-black text-surface-container-highest opacity-50 group-hover:text-primary transition-colors">01</div>
+<h3 class="text-sm font-bold text-white tracking-widest uppercase mb-4">SYSTEM DEPRESSURIZATION</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Enguage safety relief valves at Module 4A. Monitor PSI drop until reach threshold of <span class="text-primary font-bold">5.0 PSI</span>. 
+                            </p>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-[10px] font-black tracking-widest uppercase">Verified by System</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative group">
+<div class="absolute -left-6 top-0 text-4xl font-black text-surface-container-highest opacity-50 group-hover:text-primary transition-colors">02</div>
+<h3 class="text-sm font-bold text-white tracking-widest uppercase mb-4">THERMAL EQUALIZATION</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Apply active cooling vent Protocol C. Wait for core temperature to stabilize at <span class="text-primary font-bold">45°C</span> before injection.
+                            </p>
+<button class="px-4 py-2 bg-surface-container-highest border border-primary/20 text-primary text-[10px] font-black tracking-widest uppercase hover:bg-primary hover:text-on-primary transition-all">
+                                START COOLING
+                            </button>
+</div>
+<!-- Step 3 -->
+<div class="relative group opacity-40">
+<div class="absolute -left-6 top-0 text-4xl font-black text-surface-container-highest">03</div>
+<h3 class="text-sm font-bold text-white tracking-widest uppercase mb-4">PRECISION INJECTION</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Inject Synthetic Grade-8 Lubricant via primary nozzle. Maintain flow rate of 2.2 L/min for 300 seconds exactly.
+                            </p>
+<div class="flex items-center gap-2 text-on-surface-variant/50">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span class="text-[10px] font-black tracking-widest uppercase">Awaiting Step 02</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Specification Footer -->
+<footer class="mt-16 pt-12 border-t border-outline-variant/10 flex justify-between items-start">
+<div class="flex gap-12">
+<div>
+<p class="text-[10px] font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-4">SPECIFICATION_SHEET</p>
+<ul class="text-xs space-y-2 text-on-surface">
+<li class="flex justify-between gap-8"><span class="text-on-surface-variant">SERIAL:</span> <span class="font-mono">AND-PREC-88902-X</span></li>
+<li class="flex justify-between gap-8"><span class="text-on-surface-variant">REVISION:</span> <span class="font-mono">v4.2.0-STABLE</span></li>
+<li class="flex justify-between gap-8"><span class="text-on-surface-variant">OWNER:</span> <span class="font-mono">LOGISTICS_OPS</span></li>
+</ul>
+</div>
+<div>
+<p class="text-[10px] font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-4">RELATED_PROTOCOLS</p>
+<div class="flex flex-col gap-2">
+<a class="text-xs text-primary hover:underline uppercase tracking-wider font-semibold" href="#">EMERGENCY SHUTDOWN (M-001)</a>
+<a class="text-xs text-primary hover:underline uppercase tracking-wider font-semibold" href="#">VIBRATION ANALYSIS (A-229)</a>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold tracking-[0.2em] text-on-surface-variant uppercase mb-2 italic">ENCRYPTED_DATA_STREAM</p>
+<p class="text-[8px] font-mono text-outline-variant max-w-xs uppercase">
+                        66 72 65 65 20 74 68 65 20 6d 61 63 68 69 6e 65 20 73 70 69 72 69 74 2e 20 61 6c 70 68 61 20 6f 6d 65 67 61 20 30 31 30 31 31
+                    </p>
+</div>
+</footer>
+</div>
+</main>
+<!-- FAB Suppression: This is a Detail/Transactional Task Screen, so Floating Action Buttons are suppressed per guidelines -->
+</body></html>

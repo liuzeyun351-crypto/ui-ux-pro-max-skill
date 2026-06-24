@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Knowledge Base - Andritz Industrial Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb781",
+                    "inverse-on-surface": "#2d3137",
+                    "inverse-primary": "#0062a0",
+                    "primary-container": "#0075be",
+                    "surface-container-low": "#181c22",
+                    "surface-container-lowest": "#0a0e14",
+                    "on-primary-container": "#f3f7ff",
+                    "secondary": "#b0c8ec",
+                    "tertiary-container": "#ae5b01",
+                    "on-secondary": "#19314e",
+                    "error-container": "#93000a",
+                    "surface-variant": "#31353c",
+                    "on-tertiary": "#4e2600",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-secondary-fixed": "#001c38",
+                    "on-error": "#690005",
+                    "on-secondary-container": "#a2badd",
+                    "surface-dim": "#10141a",
+                    "on-background": "#dfe2eb",
+                    "outline": "#8a919c",
+                    "on-primary-fixed": "#001d35",
+                    "background": "#10141a",
+                    "primary-fixed": "#d0e4ff",
+                    "surface-container-high": "#262a31",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-fixed-variant": "#00497a",
+                    "surface-container-highest": "#31353c",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#6f3800",
+                    "surface": "#10141a",
+                    "secondary-fixed": "#d3e4ff",
+                    "tertiary-fixed": "#ffdcc4",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "primary": "#9bcaff",
+                    "secondary-container": "#334a68",
+                    "on-tertiary-container": "#fff5f0",
+                    "on-tertiary-fixed": "#2f1400",
+                    "on-primary": "#003256",
+                    "on-surface": "#dfe2eb",
+                    "on-surface-variant": "#c0c7d2",
+                    "inverse-surface": "#dfe2eb",
+                    "surface-tint": "#9bcaff",
+                    "outline-variant": "#404751",
+                    "surface-container": "#1c2026",
+                    "tertiary": "#ffb781",
+                    "surface-bright": "#353940"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.4);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#181c22] border-none flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#9bcaff]">settings_input_component</span>
+<h1 class="font-['Inter'] font-bold tracking-tight uppercase text-[#9bcaff] text-lg font-black tracking-tighter">ENGINE_COMMAND</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-[#c0c7d2] font-['Inter'] font-bold text-xs tracking-widest hover:text-[#9bcaff] transition-colors" href="#">DASHBOARD</a>
+<a class="text-[#c0c7d2] font-['Inter'] font-bold text-xs tracking-widest hover:text-[#9bcaff] transition-colors" href="#">ASSETS</a>
+<a class="text-[#9bcaff] font-['Inter'] font-bold text-xs tracking-widest" href="#">FEED</a>
+<a class="text-[#c0c7d2] font-['Inter'] font-bold text-xs tracking-widest hover:text-[#9bcaff] transition-colors" href="#">ALERTS</a>
+</nav>
+<span class="material-symbols-outlined text-[#9bcaff]">sensors</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+<!-- Hero Search Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+<div class="max-w-2xl">
+<span class="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Central Intelligence</span>
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter text-on-surface mb-6 leading-none">TECHNICAL INSIGHTS</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+                        Access the monolithic repository of industrial protocols, maintenance logs, and automation benchmarks. Precision-engineered for operational excellence.
+                    </p>
+</div>
+<div class="w-full md:w-96">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-sm font-bold tracking-widest py-4 pl-12 pr-4 transition-all" placeholder="QUERY SYSTEM DATABASE..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Categories Chips -->
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-2 bg-primary-container text-on-primary-container text-xs font-bold tracking-widest rounded-md uppercase hover:brightness-110 transition-all">ALL_RECORDS</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant text-xs font-bold tracking-widest rounded-md uppercase hover:bg-surface-container-highest transition-all">AUTOMATION</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant text-xs font-bold tracking-widest rounded-md uppercase hover:bg-surface-container-highest transition-all">MAINTENANCE</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant text-xs font-bold tracking-widest rounded-md uppercase hover:bg-surface-container-highest transition-all">TELEMETRY</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant text-xs font-bold tracking-widest rounded-md uppercase hover:bg-surface-container-highest transition-all">HYDRAULICS</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface-variant text-xs font-bold tracking-widest rounded-md uppercase hover:bg-surface-container-highest transition-all">LOGISTICS</button>
+</div>
+</section>
+<!-- Featured Monolith Content -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+<div class="lg:col-span-8 relative overflow-hidden group rounded-xl bg-surface-container-low min-h-[500px] flex items-end">
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="industrial automation robotic arm in a high-tech facility with blue cinematic lighting and technical overlays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6o0dKCsC9Q-KfAjRdhByIwvp1yHKI3_l69qRxX-vVEM7YAbTkKrJbzDUrNXRvB2LbuLfzQz8sYR6nrl9O4gvDXR6mN9wQXHqtxDt7wcHgDyF0G6deSuPhaL2oyZb8sopkVtpbXX-X_Ep5kWkiiw6KBpPnxFGUh3ScS57kaNosD6Up_ZYW77-9RBFcq80wwHzkGcIpybSqe2wcGIpQqmkKewe_DJvPRowuyKmJfRoETfRJKGAcGLlnv2V_9aSlAYRV7d61WG1y2Wg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="relative p-10 w-full">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2 py-1 bg-tertiary text-on-tertiary text-[10px] font-black tracking-tighter uppercase rounded-sm">CRITICAL_UPDATE</span>
+<span class="text-on-surface-variant text-[10px] font-bold tracking-widest">REV_04.22</span>
+</div>
+<h3 class="text-3xl md:text-4xl font-black text-on-surface mb-4 leading-tight">PREDICTIVE MAINTENANCE: <br/>THE NEURAL ENGINE PROTOCOL</h3>
+<p class="text-on-surface-variant max-w-xl mb-8 leading-relaxed">Implementing machine learning clusters across heavy machinery to anticipate structural fatigue before system failure. An in-depth analysis of the Andritz predictive layer.</p>
+<button class="flex items-center gap-3 bg-primary-container px-8 py-4 rounded-md group/btn transition-all active:scale-95">
+<span class="text-xs font-bold tracking-[0.2em] uppercase">ACCESS DOCUMENT</span>
+<span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Side Bento Column -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="p-8 bg-surface-container-high rounded-xl flex flex-col justify-between h-full hover:bg-[#2e343d] transition-colors border-l-4 border-primary">
+<div>
+<span class="material-symbols-outlined text-primary mb-4" style="font-variation-settings: 'FILL' 1;">insights</span>
+<h4 class="text-xl font-bold mb-2">TELEMETRY_DATA_MAP</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Visualizing high-density sensor output streams across global asset clusters.</p>
+</div>
+<a class="mt-6 text-xs font-bold tracking-widest text-primary uppercase flex items-center gap-2" href="#">QUERY_MAP <span class="material-symbols-outlined text-xs">open_in_new</span></a>
+</div>
+<div class="p-8 bg-surface-container-low rounded-xl flex flex-col justify-between h-full hover:bg-surface-container-high transition-colors">
+<div>
+<span class="material-symbols-outlined text-tertiary mb-4">terminal</span>
+<h4 class="text-xl font-bold mb-2">LOGISTICS_SCRIPT_V2</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Automated supply chain triggers for spare part requisition protocols.</p>
+</div>
+<a class="mt-6 text-xs font-bold tracking-widest text-on-surface-variant uppercase flex items-center gap-2" href="#">READ_LOGS <span class="material-symbols-outlined text-xs">chevron_right</span></a>
+</div>
+</div>
+</section>
+<!-- Document Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Doc Card 1 -->
+<div class="p-6 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">build</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">TS-4091</span>
+</div>
+<h5 class="text-lg font-bold mb-3">HYDRAULIC_CALIBRATION</h5>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Step-by-step technical guide for pressure relief valve synchronization on Unit-72 series.</p>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/20">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-surface-container-low object-cover" data-alt="portrait of a male engineer in safety gear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClDO05PpCl4iRuDOvWk9spT0Heyo3osieYDuOFA9X826kSH3HF7noYZnQDs2njHVVgzVkAT0UTdvoeoV0m8Lfy9xl__BW7lvJrI2IZHuA_W7rHm2mJEeeDLYPyQfK9PNhJ4TXONq-jTTzw0h_gK7aUEFu_Wwsg4xRs96A0Bxb0tHH73b_v_j0zB9KyRsLRh_VmHK3-5RrHUkoMsst65V5U-iq3ynMbs3aaGzMdl71LuH51e6Vl5SH1ZXKwmnZz1_4k9ETR1LvgyWU"/>
+<img class="w-6 h-6 rounded-full border-2 border-surface-container-low object-cover" data-alt="portrait of a female technical director" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqv9OusaPG0iIdhew-Kujx1h0uDy4aokHVpjd-o5zTmosD05rFBwRoBMZJmOrQ0_ZF7XTIe47L9ZaIMv81keQLvC-9woM-4mw-XG2NNGkPw5Dx802QGTFfX65D25S-yeCbUqc6wnUiVov3lZkcAfYBy5PvD_taMbMCCHl4lTr5b_rRpxv0XMWkJaMzLaF3bczzrDtAphr8D8OCeMlSV0p-h7PZNjR6oafOeHm-tLDnDA3DrIeTQzqf9LsggKZJZA4jJZKjijvUlA0"/>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">24 REVIEWS</span>
+</div>
+</div>
+<!-- Doc Card 2 -->
+<div class="p-6 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">LG-8822</span>
+</div>
+<h5 class="text-lg font-bold mb-3">ROUTING_OPTIMIZATION</h5>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Heuristic algorithms for minimizing fuel consumption in heavy load logistics networks.</p>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/20">
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">UPDATED: 2H AGO</span>
+</div>
+</div>
+<!-- Doc Card 3 -->
+<div class="p-6 bg-surface-container-low rounded-xl border border-transparent hover:border-outline-variant transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
+</div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-widest">AM-1104</span>
+</div>
+<h5 class="text-lg font-bold mb-3">ARM_PRECISION_SET</h5>
+<p class="text-sm text-on-surface-variant mb-6 leading-relaxed">Micron-level calibration protocols for robotic welding stations in extreme heat environments.</p>
+<div class="flex items-center gap-4 pt-4 border-t border-outline-variant/20">
+<span class="px-2 py-1 bg-surface-container-highest text-[10px] font-bold tracking-widest rounded-sm text-primary uppercase">VERIFIED</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-[#0a0e14] flex justify-around items-center h-20 w-full px-2 pb-2">
+<button class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">DASHBOARD</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">factory</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">ASSETS</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-[#0075be] text-white rounded-sm px-4 py-1 active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">rss_feed</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">FEED</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#c0c7d2] px-4 py-1 hover:text-white active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-['Inter'] text-[10px] font-bold tracking-widest uppercase mt-1">ALERTS</span>
+</button>
+</nav>
+<!-- Contextual FAB - Search / Knowledge Addition -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary-container text-white rounded-lg shadow-[0_8px_24px_rgba(0,117,190,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">post_add</span>
+</button>
+</body></html>

@@ -98,18 +98,18 @@ def load_brand_colors():
         background = colors.get('dark', {}).get('800', {}).get('$value', '#0D0D0D')
 
         return {
-            'primary': primary_color or '#3B82F6',
-            'secondary': secondary_color or '#F59E0B',
-            'accent': accent_color or '#10B981',
+            'primary': primary_color or '#0075be',
+            'secondary': secondary_color or '#005c97',
+            'accent': accent_color or '#9bcaff',
             'background': background,
         }
     except (FileNotFoundError, KeyError, TypeError):
         # Fallback defaults
         return {
-            'primary': '#3B82F6',
-            'secondary': '#F59E0B',
-            'accent': '#10B981',
-            'background': '#0D0D0D',
+            'primary': '#0075be',
+            'secondary': '#005c97',
+            'accent': '#9bcaff',
+            'background': '#0a0e14',
         }
 
 

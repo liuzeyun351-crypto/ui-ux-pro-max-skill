@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ANDRITZ INDUSTRIAL PORTAL - Technical Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#9bcaff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "secondary-container": "#c1d9fd",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#d4e4f6",
+                        "primary": "#005c97",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceeef",
+                        "background": "#f8fafb",
+                        "on-secondary-fixed-variant": "#314866",
+                        "on-background": "#191c1d",
+                        "secondary": "#49607f",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8fafb",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "surface-variant": "#e1e3e4",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c0c7d2",
+                        "on-secondary-container": "#485f7e",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-dim": "#d8dadb",
+                        "surface-container-low": "#f2f4f5",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary-container": "#f2f7ff",
+                        "on-primary-container": "#f3f7ff",
+                        "inverse-surface": "#2e3132",
+                        "primary-container": "#0075be",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "inverse-primary": "#9bcaff",
+                        "tertiary": "#4b5a69",
+                        "tertiary-container": "#637383",
+                        "surface-tint": "#0062a0",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d0e4ff",
+                        "outline": "#707882",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-surface-variant": "#404751",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "surface-bright": "#f8fafb",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-primary-fixed": "#001d35"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafb; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .monolithic-header { letter-spacing: 0.1em; font-weight: 900; }
+        .blueprint-border { border-bottom: 2px solid #005c97; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f2f4f5; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c0c7d2; }
+    </style>
+</head>
+<body class="overflow-hidden flex flex-col h-screen">
+<!-- TopNavBar -->
+<header class="bg-slate-50 dark:bg-[#f2f4f5] border-none flex justify-between items-center w-full px-8 py-4 h-16 z-50">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black text-[#001c38] dark:text-[#001c38] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider">ANDRITZ INDUSTRIAL PORTAL</h1>
+<div class="hidden md:flex gap-6 items-center">
+<span class="text-[#404751] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm cursor-pointer hover:bg-[#eceeef] transition-colors p-2">DASHBOARD</span>
+<span class="text-[#005c97] border-b-2 border-[#005c97] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm cursor-pointer p-2">REPORTS</span>
+<span class="text-[#404751] font-['Gilroy-SemiBold','Inter'] uppercase tracking-wider text-sm cursor-pointer hover:bg-[#eceeef] transition-colors p-2">ANALYTICS</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-[#f2f4f5] flex items-center px-3 py-1 gap-2">
+<span class="material-symbols-outlined text-[#404751] text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs font-bold tracking-widest text-[#001c38] placeholder-[#404751]" placeholder="GLOBAL SEARCH..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-[#005c97] cursor-pointer hover:bg-[#eceeef] p-2 transition-colors">notifications</span>
+<span class="material-symbols-outlined text-[#005c97] cursor-pointer hover:bg-[#eceeef] p-2 transition-colors">settings</span>
+<div class="w-8 h-8 bg-[#001c38] flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional portrait of a middle-aged male industrial engineer wearing a dark suit in a clean studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEq9EX6RL-gaCgdUWbeRs8M1pbpOZjS4T1_69SViQU75tMUvOp9-Z40GuWyUd1mr2xdsj3blcC75r7HbTWcA8xpjGgqAg-gdivcKGkua9Ig_Q3EH3MhgntAUPwN-UzGRkymywlWWK4c4orgRZYVw28tI8zT8Sg4wRmELn6upwNDaGkCsjc198ygeGikRiPm6lCQ6608LDnCIk2b7y3EDPxD5Jap9JwTFH7n-juc9BUYXUgy4Q7OJfZ5Cm4e0GJksIRgGB4plkAjrI"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar / Advanced Filtering -->
+<aside class="w-64 bg-[#f8fafb] flex flex-col h-full py-6 border-none flex-shrink-0 z-40">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-bold text-[#001c38] font-['Gilroy-Regular','Inter'] uppercase tracking-[0.1em]">OPERATIONS</h2>
+<p class="text-[10px] text-[#404751] tracking-widest">MONOLITHIC ENGINE V2.4</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<div class="px-4 py-2 text-[10px] font-black text-[#404751] tracking-widest uppercase mb-2">Filters</div>
+<div class="space-y-4 px-4">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-[#001c38] tracking-widest uppercase">Date Range</label>
+<select class="bg-[#eceeef] border-none text-xs font-semibold py-2 px-3 focus:ring-2 focus:ring-[#005c97] appearance-none">
+<option>LAST 24 HOURS</option>
+<option>LAST 7 DAYS</option>
+<option>CUSTOM RANGE</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-[#001c38] tracking-widest uppercase">Unit Category</label>
+<div class="space-y-2 mt-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="w-4 h-4 border-2 border-[#005c97] flex items-center justify-center">
+<div class="w-2 h-2 bg-[#005c97]"></div>
+</div>
+<span class="text-[11px] font-medium text-[#404751] group-hover:text-[#001c38]">TURBINES</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="w-4 h-4 border-2 border-[#c0c7d2] flex items-center justify-center"></div>
+<span class="text-[11px] font-medium text-[#404751] group-hover:text-[#001c38]">PUMPS</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="w-4 h-4 border-2 border-[#c0c7d2] flex items-center justify-center"></div>
+<span class="text-[11px] font-medium text-[#404751] group-hover:text-[#001c38]">CONVEYORS</span>
+</label>
+</div>
+</div>
+<div class="flex flex-col gap-1 pt-4">
+<label class="text-[10px] font-bold text-[#001c38] tracking-widest uppercase">Minimum Severity</label>
+<input class="accent-[#005c97] bg-[#eceeef] h-1 w-full appearance-none" type="range"/>
+<div class="flex justify-between text-[9px] text-[#404751] font-bold mt-1">
+<span>INFO</span>
+<span>CRITICAL</span>
+</div>
+</div>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-[#eceeef] hover:bg-[#e1e3e4] text-[#001c38] text-[10px] font-black py-3 tracking-widest uppercase transition-all">
+                    RESET ALL FILTERS
+                </button>
+<div class="mt-6 flex flex-col gap-2">
+<div class="flex items-center gap-3 px-2 py-2 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] cursor-pointer transition-all">
+<span class="material-symbols-outlined text-lg">help</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">HELP CENTER</span>
+</div>
+<div class="flex items-center gap-3 px-2 py-2 text-[#404751] hover:bg-[#eceeef] hover:text-[#001c38] cursor-pointer transition-all">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">LOGOUT</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col bg-[#f2f4f5] p-8 overflow-hidden">
+<div class="mb-8">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-black text-[#001c38] leading-none mb-2">TECHNICAL LOGS</h2>
+<p class="text-xs text-[#404751] font-bold tracking-[0.2em] uppercase">Real-time system telemetry and event monitoring</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-[#005c97] text-white px-6 py-3 text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity">
+                            EXPORT DATA (.CSV)
+                        </button>
+</div>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="flex gap-1 mb-0 border-none">
+<button class="px-8 py-4 bg-white text-[#001c38] text-[11px] font-black tracking-widest uppercase border-b-4 border-[#005c97]">
+                    ALL LOGS
+                </button>
+<button class="px-8 py-4 bg-[#eceeef] text-[#404751] hover:bg-white text-[11px] font-black tracking-widest uppercase border-b-4 border-transparent transition-all">
+                    CRITICAL
+                </button>
+<button class="px-8 py-4 bg-[#eceeef] text-[#404751] hover:bg-white text-[11px] font-black tracking-widest uppercase border-b-4 border-transparent transition-all">
+                    SYSTEM EVENTS
+                </button>
+</div>
+<!-- Table Container -->
+<div class="flex-1 bg-white shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-[#f8fafb] z-10">
+<tr>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase">Timestamp</th>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase">Unit ID</th>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase">Status</th>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase">Event Type</th>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase">Operator</th>
+<th class="px-6 py-5 text-[10px] font-black text-[#001c38] tracking-widest uppercase text-right">Metrics</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#eceeef]">
+<!-- Row 1 -->
+<tr class="hover:bg-[#f8fafb] transition-colors group">
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">2023-10-24 14:22:01.045</div>
+<div class="text-[9px] text-[#404751] font-medium uppercase tracking-tighter">UTC -05:00</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-black text-[#005c97]">TRB-H7-400</div>
+<div class="text-[9px] text-[#404751] font-bold uppercase tracking-widest">Main Bearing Assm.</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#ffdad6] text-[#93000a] px-2 py-1 text-[9px] font-black tracking-widest uppercase">
+<span class="w-1.5 h-1.5 bg-[#93000a]"></span>
+                                        CRITICAL
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">THERMAL_OVERLOAD_E12</div>
+<div class="text-[9px] text-[#404751] font-medium truncate max-w-[200px]">Core temperature exceeded 145°C limit</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#eceeef] text-[10px] font-black flex items-center justify-center text-[#001c38]">JS</div>
+<span class="text-xs font-bold text-[#001c38]">J. SMITH</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="text-xs font-black text-[#001c38]">148.2 <span class="text-[9px] text-[#404751]">°C</span></div>
+<div class="text-[9px] font-bold text-[#ba1a1a] uppercase">+12% VARIANCE</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#f8fafb] transition-colors group">
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">2023-10-24 14:21:44.212</div>
+<div class="text-[9px] text-[#404751] font-medium uppercase tracking-tighter">UTC -05:00</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-black text-[#005c97]">PMP-V2-012</div>
+<div class="text-[9px] text-[#404751] font-bold uppercase tracking-widest">Cooling Circuit</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 text-[9px] font-black tracking-widest uppercase">
+<span class="w-1.5 h-1.5 bg-on-primary-fixed-variant"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">FLOW_STABILIZED</div>
+<div class="text-[9px] text-[#404751] font-medium truncate max-w-[200px]">Hydraulic pressure within nominal range</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#eceeef] text-[10px] font-black flex items-center justify-center text-[#001c38]">AM</div>
+<span class="text-xs font-bold text-[#001c38]">A. MILLER</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="text-xs font-black text-[#001c38]">45.2 <span class="text-[9px] text-[#404751]">BAR</span></div>
+<div class="text-[9px] font-bold text-[#005c97] uppercase">NOMINAL</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#f8fafb] transition-colors group">
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">2023-10-24 14:18:02.990</div>
+<div class="text-[9px] text-[#404751] font-medium uppercase tracking-tighter">UTC -05:00</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-black text-[#005c97]">CNV-A1-881</div>
+<div class="text-[9px] text-[#404751] font-bold uppercase tracking-widest">Feed System</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#eceeef] text-[#404751] px-2 py-1 text-[9px] font-black tracking-widest uppercase">
+<span class="w-1.5 h-1.5 bg-[#404751]"></span>
+                                        STANDBY
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">SCHEDULED_PAUSE</div>
+<div class="text-[9px] text-[#404751] font-medium truncate max-w-[200px]">Maintenance window shift transition</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#001c38] text-[10px] font-black flex items-center justify-center text-white">SYS</div>
+<span class="text-xs font-bold text-[#001c38]">SYSTEM_ROOT</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="text-xs font-black text-[#001c38]">0.0 <span class="text-[9px] text-[#404751]">M/S</span></div>
+<div class="text-[9px] font-bold text-[#404751] uppercase">IDLE</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#f8fafb] transition-colors group">
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">2023-10-24 14:15:22.561</div>
+<div class="text-[9px] text-[#404751] font-medium uppercase tracking-tighter">UTC -05:00</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-black text-[#005c97]">TRB-H7-400</div>
+<div class="text-[9px] text-[#404751] font-bold uppercase tracking-widest">Main Bearing Assm.</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-[#ffdad6] text-[#93000a] px-2 py-1 text-[9px] font-black tracking-widest uppercase">
+<span class="w-1.5 h-1.5 bg-[#93000a]"></span>
+                                        CRITICAL
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">VIBRATION_ALARM_V1</div>
+<div class="text-[9px] text-[#404751] font-medium truncate max-w-[200px]">Unscheduled resonance detected in Z-axis</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#eceeef] text-[10px] font-black flex items-center justify-center text-[#001c38]">JS</div>
+<span class="text-xs font-bold text-[#001c38]">J. SMITH</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="text-xs font-black text-[#001c38]">12.4 <span class="text-[9px] text-[#404751]">MM/S</span></div>
+<div class="text-[9px] font-bold text-[#ba1a1a] uppercase">DANGER ZONE</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-[#f8fafb] transition-colors group">
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">2023-10-24 14:12:09.112</div>
+<div class="text-[9px] text-[#404751] font-medium uppercase tracking-tighter">UTC -05:00</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-black text-[#005c97]">GEN-S4-220</div>
+<div class="text-[9px] text-[#404751] font-bold uppercase tracking-widest">Power Output</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1 bg-primary-fixed text-on-primary-fixed-variant px-2 py-1 text-[9px] font-black tracking-widest uppercase">
+<span class="w-1.5 h-1.5 bg-on-primary-fixed-variant"></span>
+                                        ACTIVE
+                                    </span>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-bold text-[#001c38]">OUTPUT_SYNC_OK</div>
+<div class="text-[9px] text-[#404751] font-medium truncate max-w-[200px]">Phase synchronization with grid successful</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-[#001c38] text-[10px] font-black flex items-center justify-center text-white">SYS</div>
+<span class="text-xs font-bold text-[#001c38]">SYSTEM_ROOT</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="text-xs font-black text-[#001c38]">60.01 <span class="text-[9px] text-[#404751]">HZ</span></div>
+<div class="text-[9px] font-bold text-[#005c97] uppercase">SYNC_LOCKED</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="mt-auto bg-[#f8fafb] px-6 py-4 flex justify-between items-center border-t border-[#eceeef]">
+<div class="text-[10px] font-bold text-[#404751] tracking-widest uppercase">
+                        SHOWING 1-5 OF 1,248 LOG ENTRIES
+                    </div>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center bg-white border border-[#c0c7d2] text-[#001c38] hover:bg-[#eceeef]">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-[#001c38] text-white text-[10px] font-black">1</button>
+<button class="w-8 h-8 flex items-center justify-center bg-white border border-[#c0c7d2] text-[#404751] text-[10px] font-black hover:bg-[#eceeef]">2</button>
+<button class="w-8 h-8 flex items-center justify-center bg-white border border-[#c0c7d2] text-[#404751] text-[10px] font-black hover:bg-[#eceeef]">3</button>
+<button class="w-8 h-8 flex items-center justify-center bg-white border border-[#c0c7d2] text-[#001c38] hover:bg-[#eceeef]">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Stats Summary (Bento-style snippet) -->
+<div class="grid grid-cols-4 gap-4 mt-6">
+<div class="bg-white p-4">
+<div class="text-[10px] font-black text-[#404751] tracking-[0.2em] uppercase mb-1">TOTAL EVENTS</div>
+<div class="text-2xl font-black text-[#001c38]">12,482</div>
+<div class="w-full h-1 bg-[#eceeef] mt-3">
+<div class="w-3/4 h-full bg-[#005c97]"></div>
+</div>
+</div>
+<div class="bg-white p-4">
+<div class="text-[10px] font-black text-[#404751] tracking-[0.2em] uppercase mb-1">CRITICAL FAULTS</div>
+<div class="text-2xl font-black text-[#ba1a1a]">42</div>
+<div class="text-[9px] font-bold text-[#ba1a1a] mt-2 uppercase tracking-widest">▲ 14% SINCE LAST SHIFT</div>
+</div>
+<div class="bg-white p-4">
+<div class="text-[10px] font-black text-[#404751] tracking-[0.2em] uppercase mb-1">ACTIVE OPERATORS</div>
+<div class="text-2xl font-black text-[#001c38]">08</div>
+<div class="flex mt-2 -space-x-2">
+<div class="w-5 h-5 bg-[#001c38] border border-white"></div>
+<div class="w-5 h-5 bg-[#005c97] border border-white"></div>
+<div class="w-5 h-5 bg-[#404751] border border-white"></div>
+<div class="w-5 h-5 bg-[#c0c7d2] border border-white flex items-center justify-center text-[8px] font-bold text-[#001c38]">+5</div>
+</div>
+</div>
+<div class="bg-white p-4 flex flex-col justify-between">
+<div class="text-[10px] font-black text-[#404751] tracking-[0.2em] uppercase">SYSTEM HEALTH</div>
+<div class="flex items-end gap-2">
+<div class="text-2xl font-black text-[#001c38]">98.2%</div>
+<span class="material-symbols-outlined text-primary mb-1">verified_user</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Action Status -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-2">
+<div class="bg-white shadow-xl border-l-4 border-[#005c97] p-4 flex items-center gap-4">
+<div class="w-2 h-2 bg-[#005c97] animate-pulse"></div>
+<div class="flex flex-col">
+<span class="text-[10px] font-black text-[#001c38] tracking-widest uppercase leading-none">LIVE TELEMETRY ACTIVE</span>
+<span class="text-[9px] text-[#404751] font-bold mt-1">LAST STREAM REFRESH: 0.2s AGO</span>
+</div>
+</div>
+</div>
+</body></html>

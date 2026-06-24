@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Employee Platform - Industrial Control</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face {
+            font-family: 'Gilroy-SemiBold';
+            src: local('Inter SemiBold'); /* Fallback to Inter for simulation */
+            font-weight: 600;
+        }
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sharp-corners { border-radius: 0px !important; }
+        .monolithic-gradient { background: linear-gradient(135deg, #005c97 0%, #0075be 100%); }
+        .glass-panel { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .blueprint-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed-variant": "#314866",
+                        "primary-fixed-dim": "#9bcaff",
+                        "primary": "#005c97",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-dim": "#d8dadb",
+                        "surface": "#f8fafb",
+                        "secondary-container": "#c1d9fd",
+                        "on-tertiary-fixed": "#0d1d2a",
+                        "on-surface": "#191c1d",
+                        "tertiary": "#4b5a69",
+                        "on-primary-fixed": "#001d35",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed": "#d3e4ff",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#404751",
+                        "secondary": "#49607f",
+                        "secondary-fixed-dim": "#b0c8ec",
+                        "surface-tint": "#0062a0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#485f7e",
+                        "primary-container": "#0075be",
+                        "outline": "#707882",
+                        "surface-container-high": "#e6e8e9",
+                        "background": "#f8fafb",
+                        "surface-bright": "#f8fafb",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#d4e4f6",
+                        "on-primary-container": "#f3f7ff",
+                        "tertiary-container": "#637383",
+                        "surface-variant": "#e1e3e4",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eceeef",
+                        "inverse-primary": "#9bcaff",
+                        "tertiary-fixed-dim": "#b8c8da",
+                        "inverse-on-surface": "#eff1f2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#f2f7ff",
+                        "outline-variant": "#c0c7d2",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#394857",
+                        "primary-fixed": "#d0e4ff",
+                        "on-primary-fixed-variant": "#00497a",
+                        "on-background": "#191c1d",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-100 dark:bg-slate-900 flex flex-col z-50 border-0">
+<div class="p-8">
+<h1 class="text-lg font-black tracking-tighter text-slate-900 dark:text-white uppercase leading-tight">Industrial Control</h1>
+<p class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1">Digital Employee Platform</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center px-4 py-3 bg-white dark:bg-slate-800 text-sky-700 dark:text-sky-400 border-r-4 border-sky-700 dark:border-sky-400 transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="dashboard">dashboard</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Dashboard</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Task Queue</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="hub">hub</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Resource Map</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="monitoring">monitoring</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">Agent Analytics</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors duration-150 group" href="#">
+<span class="material-symbols-outlined mr-3 text-xl" data-icon="terminal">terminal</span>
+<span class="text-[11px] uppercase tracking-widest font-bold">System Logs</span>
+</a>
+</nav>
+<div class="p-4 space-y-4">
+<button class="w-full monolithic-gradient text-white font-bold py-4 text-[10px] tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all">
+                DEPLOY AGENT
+            </button>
+<div class="border-t border-slate-200 dark:border-slate-800 pt-4 flex flex-col space-y-1">
+<a class="flex items-center px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-sky-700 text-[11px] uppercase tracking-widest font-bold" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="settings">settings</span> Settings
+                </a>
+<a class="flex items-center px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-sky-700 text-[11px] uppercase tracking-widest font-bold" href="#">
+<span class="material-symbols-outlined mr-3 text-lg" data-icon="help">help</span> Support
+                </a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-white/85 backdrop-blur-xl flex justify-between items-center px-8 z-40 border-0 shadow-sm">
+<div class="flex items-center space-x-8">
+<span class="text-xl font-black text-slate-900 uppercase">MONOLITH_v1.0</span>
+<nav class="hidden md:flex space-x-6">
+<a class="text-[10px] font-bold uppercase tracking-wider text-sky-700 border-b-2 border-sky-700 pb-1" href="#">Active Agents</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Maintenance</a>
+<a class="text-[10px] font-bold uppercase tracking-wider text-slate-500 hover:text-sky-600 transition-opacity" href="#">Compliance</a>
+</nav>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative flex items-center bg-surface-container rounded-none px-4 py-2">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-[10px] font-bold tracking-widest uppercase w-48" placeholder="QUERY NETWORK..." type="text"/>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-primary transition-colors" data-icon="lan">lan</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-primary transition-colors" data-icon="account_tree">account_tree</span>
+<div class="w-8 h-8 bg-slate-200">
+<img alt="Operator Avatar" class="w-full h-full object-cover grayscale" data-alt="close-up of a high-tech robotic interface with blue glowing light circuits on brushed metal surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBp6CvR4VIUVhZEZaCYxiIu8Pyyw0vmRDCAM_9hxb1lkAeY5UJYqzCsdEolZV7dDqIxdpFKib--KeFEQKceCqTE6Am4NotoLHbQ3LzLh-gIMdDzPK76ZDCClr09QytpJnkIZ-wPK1_ZaTFENUUfTT874ICU4RZsWokbfCIO3uCadQvDGU9S_Sxuer0e1iK9HPGaF29lHLMcPWS9uWQxRzb8iU20D5LkNiQUixcVPI8uGvGd5a1gdeKfqAk35hOA6a5jhtA9G7CPZo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-screen">
+<!-- Dashboard Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-black tracking-tighter text-on-surface uppercase mb-2">Fleet Telemetry</h2>
+<div class="flex items-center space-x-4">
+<div class="flex items-center">
+<div class="w-2 h-2 bg-emerald-500 mr-2"></div>
+<span class="blueprint-label text-on-surface-variant">24 Agents Online</span>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 bg-amber-500 mr-2"></div>
+<span class="blueprint-label text-on-surface-variant">2 Under Maintenance</span>
+</div>
+</div>
+</div>
+<div class="flex space-x-1">
+<div class="bg-surface-container p-4 flex flex-col items-end">
+<span class="blueprint-label text-on-surface-variant mb-1">Global Load</span>
+<span class="text-3xl font-bold tracking-tight">42.8 <span class="text-sm font-medium">TFLOPs</span></span>
+</div>
+<div class="bg-surface-container p-4 flex flex-col items-end">
+<span class="blueprint-label text-on-surface-variant mb-1">Total Throughput</span>
+<span class="text-3xl font-bold tracking-tight">12.4 <span class="text-sm font-medium">K/sec</span></span>
+</div>
+</div>
+</header>
+<!-- Category Filter -->
+<div class="flex space-x-4 mb-8">
+<button class="px-6 py-2 bg-primary text-white blueprint-label border-0">All Entities</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface-variant blueprint-label border-0">Logistics</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface-variant blueprint-label border-0">Maintenance</button>
+<button class="px-6 py-2 bg-surface-container hover:bg-surface-container-high text-on-surface-variant blueprint-label border-0">Analytics</button>
+</div>
+<!-- High-Density Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Agent Card 1: Logistics -->
+<div class="bg-surface-container-lowest p-6 border-0 group hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="blueprint-label text-primary block mb-1">Logistics / Nexus-01</span>
+<h3 class="text-xl font-bold text-on-surface leading-none uppercase">Route Optimizer A</h3>
+</div>
+<div class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[9px] font-black uppercase tracking-widest">Active</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="blueprint-label text-on-surface-variant block">CPU LOAD</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">78</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-primary h-full" style="width: 78%"></div>
+</div>
+</div>
+<div>
+<span class="blueprint-label text-on-surface-variant block">GPU CORE</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">12</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-primary h-full opacity-30" style="width: 12%"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="blueprint-label text-on-surface-variant">GOAL COMPLETION</span>
+<span class="text-xs font-bold text-primary">94.2%</span>
+</div>
+<div class="w-full bg-surface-container h-2">
+<div class="bg-primary h-full" style="width: 94.2%"></div>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container-high pt-4">
+<span class="blueprint-label text-on-surface-variant block mb-2">NETWORK HEARTBEAT</span>
+<div class="h-10 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[40%]"></div>
+<div class="flex-1 bg-primary/40 h-[60%]"></div>
+<div class="flex-1 bg-primary/30 h-[50%]"></div>
+<div class="flex-1 bg-primary h-[90%]"></div>
+<div class="flex-1 bg-primary/60 h-[70%]"></div>
+<div class="flex-1 bg-primary/40 h-[45%]"></div>
+<div class="flex-1 bg-primary/80 h-[85%]"></div>
+<div class="flex-1 bg-primary/30 h-[30%]"></div>
+<div class="flex-1 bg-primary/90 h-[95%]"></div>
+<div class="flex-1 bg-primary/50 h-[60%]"></div>
+<div class="flex-1 bg-primary/70 h-[75%]"></div>
+<div class="flex-1 bg-primary/40 h-[50%]"></div>
+</div>
+</div>
+</div>
+<!-- Agent Card 2: Analytics -->
+<div class="bg-surface-container-lowest p-6 border-0 group hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-tertiary"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="blueprint-label text-tertiary block mb-1">Analytics / Cerebro-9</span>
+<h3 class="text-xl font-bold text-on-surface leading-none uppercase">Trend Forecaster</h3>
+</div>
+<div class="px-2 py-1 bg-sky-100 text-sky-800 text-[9px] font-black uppercase tracking-widest">Processing</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="blueprint-label text-on-surface-variant block">CPU LOAD</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">45</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-tertiary h-full" style="width: 45%"></div>
+</div>
+</div>
+<div>
+<span class="blueprint-label text-on-surface-variant block">GPU CORE</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">89</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-tertiary h-full" style="width: 89%"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="blueprint-label text-on-surface-variant">GOAL COMPLETION</span>
+<span class="text-xs font-bold text-tertiary">61.0%</span>
+</div>
+<div class="w-full bg-surface-container h-2">
+<div class="bg-tertiary h-full" style="width: 61%"></div>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container-high pt-4">
+<span class="blueprint-label text-on-surface-variant block mb-2">NETWORK HEARTBEAT</span>
+<div class="h-10 flex items-end space-x-0.5">
+<div class="flex-1 bg-tertiary/20 h-[30%]"></div>
+<div class="flex-1 bg-tertiary/40 h-[40%]"></div>
+<div class="flex-1 bg-tertiary/30 h-[60%]"></div>
+<div class="flex-1 bg-tertiary h-[100%]"></div>
+<div class="flex-1 bg-tertiary/60 h-[90%]"></div>
+<div class="flex-1 bg-tertiary/40 h-[80%]"></div>
+<div class="flex-1 bg-tertiary/80 h-[45%]"></div>
+<div class="flex-1 bg-tertiary/30 h-[20%]"></div>
+<div class="flex-1 bg-tertiary/90 h-[55%]"></div>
+<div class="flex-1 bg-tertiary/50 h-[30%]"></div>
+<div class="flex-1 bg-tertiary/70 h-[45%]"></div>
+<div class="flex-1 bg-tertiary/40 h-[60%]"></div>
+</div>
+</div>
+</div>
+<!-- Agent Card 3: Maintenance -->
+<div class="bg-surface-container-lowest p-6 border-0 group hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-amber-600"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="blueprint-label text-amber-600 block mb-1">Maintenance / Iron-V</span>
+<h3 class="text-xl font-bold text-on-surface leading-none uppercase">Grid Watchdog</h3>
+</div>
+<div class="px-2 py-1 bg-amber-100 text-amber-800 text-[9px] font-black uppercase tracking-widest">Alert</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="blueprint-label text-on-surface-variant block">CPU LOAD</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold text-amber-600">92</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-amber-600 h-full" style="width: 92%"></div>
+</div>
+</div>
+<div>
+<span class="blueprint-label text-on-surface-variant block">GPU CORE</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">08</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-amber-600 h-full opacity-20" style="width: 8%"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="blueprint-label text-on-surface-variant">GOAL COMPLETION</span>
+<span class="text-xs font-bold text-amber-600">22.5%</span>
+</div>
+<div class="w-full bg-surface-container h-2">
+<div class="bg-amber-600 h-full" style="width: 22.5%"></div>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container-high pt-4">
+<span class="blueprint-label text-on-surface-variant block mb-2">NETWORK HEARTBEAT</span>
+<div class="h-10 flex items-end space-x-0.5">
+<div class="flex-1 bg-amber-600/20 h-[10%]"></div>
+<div class="flex-1 bg-amber-600/40 h-[15%]"></div>
+<div class="flex-1 bg-amber-600/30 h-[12%]"></div>
+<div class="flex-1 bg-amber-600 h-[20%]"></div>
+<div class="flex-1 bg-amber-600/60 h-[15%]"></div>
+<div class="flex-1 bg-amber-600/40 h-[18%]"></div>
+<div class="flex-1 bg-amber-600/80 h-[22%]"></div>
+<div class="flex-1 bg-amber-600/30 h-[10%]"></div>
+<div class="flex-1 bg-amber-600/90 h-[25%]"></div>
+<div class="flex-1 bg-amber-600/50 h-[20%]"></div>
+<div class="flex-1 bg-amber-600/70 h-[15%]"></div>
+<div class="flex-1 bg-amber-600/40 h-[12%]"></div>
+</div>
+</div>
+</div>
+<!-- Agent Card 4: Logistics -->
+<div class="bg-surface-container-lowest p-6 border-0 group hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="blueprint-label text-primary block mb-1">Logistics / Nexus-04</span>
+<h3 class="text-xl font-bold text-on-surface leading-none uppercase">Inventory Auditor</h3>
+</div>
+<div class="px-2 py-1 bg-emerald-100 text-emerald-800 text-[9px] font-black uppercase tracking-widest">Active</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="blueprint-label text-on-surface-variant block">CPU LOAD</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">14</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-primary h-full" style="width: 14%"></div>
+</div>
+</div>
+<div>
+<span class="blueprint-label text-on-surface-variant block">GPU CORE</span>
+<div class="flex items-baseline space-x-1">
+<span class="text-2xl font-bold">04</span><span class="text-xs font-semibold text-on-surface-variant">%</span>
+</div>
+<div class="w-full bg-surface-container h-1 mt-2">
+<div class="bg-primary h-full opacity-10" style="width: 4%"></div>
+</div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-baseline mb-1">
+<span class="blueprint-label text-on-surface-variant">GOAL COMPLETION</span>
+<span class="text-xs font-bold text-primary">100%</span>
+</div>
+<div class="w-full bg-surface-container h-2">
+<div class="bg-primary h-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<div class="border-t border-surface-container-high pt-4">
+<span class="blueprint-label text-on-surface-variant block mb-2">NETWORK HEARTBEAT</span>
+<div class="h-10 flex items-end space-x-0.5">
+<div class="flex-1 bg-primary/20 h-[5%]"></div>
+<div class="flex-1 bg-primary/40 h-[8%]"></div>
+<div class="flex-1 bg-primary/30 h-[5%]"></div>
+<div class="flex-1 bg-primary h-[10%]"></div>
+<div class="flex-1 bg-primary/60 h-[8%]"></div>
+<div class="flex-1 bg-primary/40 h-[6%]"></div>
+<div class="flex-1 bg-primary/80 h-[12%]"></div>
+<div class="flex-1 bg-primary/30 h-[5%]"></div>
+<div class="flex-1 bg-primary/90 h-[10%]"></div>
+<div class="flex-1 bg-primary/50 h-[8%]"></div>
+<div class="flex-1 bg-primary/70 h-[6%]"></div>
+<div class="flex-1 bg-primary/40 h-[4%]"></div>
+</div>
+</div>
+</div>
+<!-- System Stats Card (Asymmetric Layout) -->
+<div class="md:col-span-2 bg-surface-container p-8 relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row justify-between h-full">
+<div class="max-w-md">
+<h4 class="blueprint-label text-primary mb-4">Neural Engine Efficiency</h4>
+<p class="text-3xl font-black uppercase tracking-tighter text-on-surface leading-tight mb-6">
+                            Aggregate processing power peaking at <span class="text-primary">1.2 ExaFLOPS</span> across all active clusters.
+                        </p>
+<button class="bg-on-surface text-surface py-3 px-8 blueprint-label hover:bg-primary transition-colors">View Details</button>
+</div>
+<div class="mt-8 md:mt-0 flex-1 md:pl-12 flex flex-col justify-between">
+<div class="space-y-6">
+<div>
+<div class="flex justify-between blueprint-label mb-2">
+<span>Thermal Margin</span>
+<span>42°C</span>
+</div>
+<div class="w-full h-4 bg-white">
+<div class="h-full bg-primary" style="width: 42%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between blueprint-label mb-2">
+<span>Buffer Capacity</span>
+<span>89%</span>
+</div>
+<div class="w-full h-4 bg-white">
+<div class="h-full bg-primary" style="width: 89%"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-8 border-t border-surface-variant">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 bg-surface-container-highest border-2 border-surface"></div>
+<div class="w-8 h-8 bg-surface-container-highest border-2 border-surface"></div>
+<div class="w-8 h-8 bg-surface-container-highest border-2 border-surface"></div>
+</div>
+<span class="blueprint-label text-on-surface-variant">+8 More Nodes</span>
+</div>
+</div>
+</div>
+<!-- Background Pattern -->
+<div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]" data-icon="account_tree">account_tree</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

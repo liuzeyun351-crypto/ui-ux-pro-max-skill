@@ -42,14 +42,15 @@ FORBIDDEN_PATTERNS = [
 # Allowed rgba patterns (brand colors with transparency - CSS limitation)
 # These are derived from brand tokens but need rgba for transparency
 ALLOWED_RGBA_PATTERNS = [
-    r'rgba\(\s*59\s*,\s*130\s*,\s*246',    # --color-primary (#3B82F6)
-    r'rgba\(\s*245\s*,\s*158\s*,\s*11',    # --color-secondary (#F59E0B)
-    r'rgba\(\s*16\s*,\s*185\s*,\s*129',    # --color-accent (#10B981)
-    r'rgba\(\s*20\s*,\s*184\s*,\s*166',    # --color-accent alt (#14B8A6)
+    r'rgba\(\s*0\s*,\s*117\s*,\s*190',     # --color-primary (#0075be)
+    r'rgba\(\s*0\s*,\s*92\s*,\s*151',      # --color-primary-text (#005c97)
+    r'rgba\(\s*155\s*,\s*202\s*,\s*255',   # --primary-fixed-dim (#9bcaff)
+    r'rgba\(\s*0\s*,\s*28\s*,\s*56',       # --dialog-overlay navy tint
+    r'rgba\(\s*255\s*,\s*183\s*,\s*129',   # --color-tertiary (#ffb781)
     r'rgba\(\s*0\s*,\s*0\s*,\s*0',         # black transparency (common)
     r'rgba\(\s*255\s*,\s*255\s*,\s*255',   # white transparency (common)
-    r'rgba\(\s*15\s*,\s*23\s*,\s*42',      # --color-surface (#0F172A)
-    r'rgba\(\s*7\s*,\s*11\s*,\s*20',       # --color-background (#070B14)
+    r'rgba\(\s*16\s*,\s*20\s*,\s*26',      # --color-surface dark (#10141a)
+    r'rgba\(\s*248\s*,\s*250\s*,\s*251',   # --color-surface light (#f8fafb)
 ]
 
 # Allowed exceptions (external images, etc.)

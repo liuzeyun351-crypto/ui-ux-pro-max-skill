@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#9bcaff",
+                    "on-primary-fixed-variant": "#00497a",
+                    "secondary-container": "#c1d9fd",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#d4e4f6",
+                    "primary": "#005c97",
+                    "on-primary": "#ffffff",
+                    "surface-container": "#eceeef",
+                    "background": "#f8fafb",
+                    "on-secondary-fixed-variant": "#314866",
+                    "on-background": "#191c1d",
+                    "secondary": "#49607f",
+                    "on-tertiary-fixed": "#0d1d2a",
+                    "on-error-container": "#93000a",
+                    "surface": "#f8fafb",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed-dim": "#b0c8ec",
+                    "surface-variant": "#e1e3e4",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c0c7d2",
+                    "on-secondary-container": "#485f7e",
+                    "surface-container-high": "#e6e8e9",
+                    "surface-dim": "#d8dadb",
+                    "surface-container-low": "#f2f4f5",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-tertiary-container": "#f2f7ff",
+                    "on-primary-container": "#f3f7ff",
+                    "inverse-surface": "#2e3132",
+                    "primary-container": "#0075be",
+                    "on-tertiary-fixed-variant": "#394857",
+                    "inverse-primary": "#9bcaff",
+                    "tertiary": "#4b5a69",
+                    "tertiary-container": "#637383",
+                    "surface-tint": "#0062a0",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d0e4ff",
+                    "outline": "#707882",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001c38",
+                    "on-surface-variant": "#404751",
+                    "tertiary-fixed-dim": "#b8c8da",
+                    "surface-bright": "#f8fafb",
+                    "inverse-on-surface": "#eff1f2",
+                    "on-primary-fixed": "#001d35"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        @import url('https://fonts.cdnfonts.com/css/gilroy-bold');
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-industrial-gradient {
+            background: linear-gradient(135deg, #005c97 0%, #0075be 100%);
+        }
+        .blueprint-grid {
+            background-image: radial-gradient(#c0c7d2 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- DASHBOARD BACKGROUND (BLURRED) -->
+<div class="fixed inset-0 flex blur-md select-none pointer-events-none">
+<!-- SideNavBar -->
+<aside class="bg-[#f8fafb] flex flex-col h-full py-6 w-64 fixed left-0 top-0 font-['Gilroy-Regular','Inter'] text-sm uppercase tracking-[0.1em] z-10">
+<div class="px-8 mb-10">
+<div class="text-lg font-bold text-[#001c38]">OPERATIONS</div>
+<div class="text-[10px] text-on-surface-variant opacity-60">Monolithic Engine v2.4</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-8 py-4 bg-[#eceeef] text-[#001c38] font-semibold border-r-4 border-[#005c97]">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex items-center px-8 py-4 text-[#404751]">
+<span class="material-symbols-outlined mr-3">precision_manufacturing</span>
+<span>Digital Employees</span>
+</div>
+<div class="flex items-center px-8 py-4 text-[#404751]">
+<span class="material-symbols-outlined mr-3">construction</span>
+<span>Equipment</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area Blur Placeholder -->
+<main class="ml-64 w-full h-full p-12 space-y-12 bg-surface-container-low">
+<div class="grid grid-cols-12 gap-8 h-full">
+<div class="col-span-8 space-y-8">
+<div class="bg-surface-container-lowest h-64 w-full"></div>
+<div class="grid grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest h-48"></div>
+<div class="bg-surface-container-lowest h-48"></div>
+</div>
+</div>
+<div class="col-span-4 bg-surface-container h-full"></div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 bg-on-secondary-fixed/40 backdrop-blur-sm flex items-center justify-center z-50 p-6">
+<!-- MODAL CONTAINER (The Monolithic Engine aesthetic) -->
+<div class="bg-surface-container-lowest w-full max-w-5xl shadow-[0px_12px_32px_0px_rgba(0,28,56,0.15)] flex flex-col relative overflow-hidden">
+<!-- HEADER -->
+<header class="flex justify-between items-center px-10 py-8 bg-surface-container-low border-b border-outline-variant/10">
+<div class="space-y-1">
+<span class="text-[10px] font-bold tracking-[0.2em] text-primary uppercase">Service Protocol</span>
+<h1 class="text-3xl font-black text-on-secondary-fixed uppercase tracking-tight font-['Gilroy-Bold','Inter']">Unit Maintenance Scheduler</h1>
+</div>
+<button class="w-12 h-12 flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</header>
+<!-- MODAL CONTENT -->
+<div class="flex flex-col lg:flex-row h-[600px]">
+<!-- LEFT COLUMN: FORM & PRIORITY -->
+<div class="flex-1 p-10 overflow-y-auto space-y-8 scrollbar-hide border-r border-outline-variant/10">
+<!-- ASSET SELECTOR SECTION -->
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="bg-primary-container/10 p-3">
+<span class="material-symbols-outlined text-primary" data-weight="fill">settings_input_component</span>
+</div>
+<h2 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Component Identity</h2>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-70">Unit Serial Number</label>
+<input class="w-full bg-surface-container border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm py-4 px-4 font-mono" placeholder="TX-9400-ALPHA" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-70">System Sub-Assembly</label>
+<select class="w-full bg-surface-container border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm py-4 px-4">
+<option>Main Propulsion Core</option>
+<option>Coolant Cycle 01</option>
+<option>Hydraulic Manifold</option>
+</select>
+</div>
+</div>
+</div>
+<!-- PRIORITY TOGGLE -->
+<div class="bg-surface-container-low p-6 space-y-4">
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<h3 class="text-sm font-bold uppercase tracking-tight">Critical Priority Protocol</h3>
+<p class="text-xs text-on-surface-variant">Elevating to critical will bypass standard queue and trigger alerts.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-7 bg-surface-container-highest peer-focus:outline-none ring-0 rounded-none peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:h-6 after:w-6 after:transition-all peer-checked:bg-error"></div>
+</label>
+</div>
+<div class="flex items-center gap-2 text-error text-[10px] font-bold uppercase tracking-[0.1em]">
+<span class="material-symbols-outlined text-sm">warning</span>
+                            Status: High-Impact Shutdown Required
+                        </div>
+</div>
+<!-- MAINTENANCE DETAILS -->
+<div class="space-y-4">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-70">Technician Observations / Maintenance Scope</label>
+<textarea class="w-full bg-surface-container border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 text-sm py-4 px-4 resize-none" placeholder="Describe the mechanical deviation or required calibration parameters..." rows="4"></textarea>
+</div>
+</div>
+<!-- RIGHT COLUMN: CALENDAR WIDGET & SUMMARY -->
+<div class="w-full lg:w-[400px] bg-surface-container p-10 flex flex-col">
+<div class="flex items-center gap-4 mb-6">
+<div class="bg-primary/10 p-3">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+</div>
+<h2 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Schedule Window</h2>
+</div>
+<!-- MINI CALENDAR WIDGET -->
+<div class="bg-surface-container-lowest p-6 mb-8 blueprint-grid">
+<div class="flex justify-between items-center mb-6">
+<span class="text-xs font-bold uppercase tracking-widest">October 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm cursor-pointer">chevron_left</span>
+<span class="material-symbols-outlined text-sm cursor-pointer">chevron_right</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center mb-4">
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">M</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">T</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">W</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">T</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">F</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">S</div>
+<div class="text-[9px] font-bold text-on-surface-variant opacity-40">S</div>
+</div>
+<div class="grid grid-cols-7 gap-y-3 gap-x-2 text-center text-[11px]">
+<div class="p-1 opacity-20">26</div>
+<div class="p-1 opacity-20">27</div>
+<div class="p-1 opacity-20">28</div>
+<div class="p-1 opacity-20">29</div>
+<div class="p-1 opacity-20">30</div>
+<div class="p-1 font-bold">1</div>
+<div class="p-1 font-bold">2</div>
+<div class="p-1 font-bold">3</div>
+<div class="p-1 font-bold">4</div>
+<div class="p-1 font-bold">5</div>
+<div class="p-1 font-bold">6</div>
+<div class="p-1 font-bold">7</div>
+<div class="p-1 font-bold">8</div>
+<div class="p-1 font-bold">9</div>
+<div class="p-1 font-bold">10</div>
+<div class="p-1 font-bold">11</div>
+<div class="p-1 font-bold">12</div>
+<div class="p-1 font-bold">13</div>
+<div class="p-1 font-bold bg-error text-white">14</div>
+<div class="p-1 font-bold">15</div>
+<div class="p-1 font-bold">16</div>
+<div class="p-1 font-bold">17</div>
+<div class="p-1 font-bold">18</div>
+<div class="p-1 font-bold">19</div>
+<div class="p-1 font-bold">20</div>
+</div>
+</div>
+<!-- SELECTED TIME SLOTS -->
+<div class="space-y-4 flex-1">
+<label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant opacity-70">Available Windows (08:00 - 18:00)</label>
+<div class="space-y-2">
+<div class="flex justify-between items-center p-3 bg-surface-container-highest border-l-2 border-error">
+<span class="text-xs font-bold uppercase">08:00 AM - Slot 01</span>
+<span class="text-[10px] text-error font-bold">CRITICAL ONLY</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="text-xs font-bold uppercase">10:30 AM - Slot 02</span>
+<span class="text-[10px] text-on-surface-variant font-bold">VACANT</span>
+</div>
+<div class="flex justify-between items-center p-3 bg-surface-container-lowest hover:bg-surface-container-high transition-colors cursor-pointer">
+<span class="text-xs font-bold uppercase">02:15 PM - Slot 03</span>
+<span class="text-[10px] text-on-surface-variant font-bold">VACANT</span>
+</div>
+</div>
+</div>
+<!-- FOOTER ACTIONS (RIGHT) -->
+<div class="pt-8">
+<button class="w-full py-4 bg-industrial-gradient text-white text-xs font-bold uppercase tracking-widest shadow-lg active:opacity-90 transition-all">
+                            Initialize Protocol
+                        </button>
+</div>
+</div>
+</div>
+<!-- PROGRESS INDICATOR AT BOTTOM -->
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-error w-3/4"></div>
+</div>
+</div>
+</div>
+<!-- BACKGROUND TEXTURE (DECORATIVE) -->
+<div class="fixed top-0 right-0 p-12 opacity-5 pointer-events-none">
+<span class="text-[12rem] font-black font-['Gilroy-Bold'] leading-none">A-14</span>
+</div>
+</body></html>
