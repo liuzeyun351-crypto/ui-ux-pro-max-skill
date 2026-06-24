@@ -17,6 +17,14 @@ const pkg = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8')
 
 const program = new Command();
 
+function printInvalidAITypeError(input: string): void {
+  console.error(`Invalid AI type: ${input}`);
+  console.error(`Valid types: ${AI_TYPES.join(', ')}`);
+  console.error('Tip: your uipro-cli may be outdated. Run: uipro --version');
+  console.error('Then upgrade: npm install -g uipro-cli@latest');
+  console.error('After upgrading, retry: uipro init --ai <type>');
+}
+
 program
   .name('uipro')
   .description('CLI to install UI/UX Pro Max skill for AI coding assistants')
@@ -31,8 +39,7 @@ program
   .option('-g, --global', 'Install globally to home directory (~/) instead of current project')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
-      console.error(`Invalid AI type: ${options.ai}`);
-      console.error(`Valid types: ${AI_TYPES.join(', ')}`);
+      printInvalidAITypeError(options.ai);
       process.exit(1);
     }
     await initCommand({
@@ -54,8 +61,7 @@ program
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
-      console.error(`Invalid AI type: ${options.ai}`);
-      console.error(`Valid types: ${AI_TYPES.join(', ')}`);
+      printInvalidAITypeError(options.ai);
       process.exit(1);
     }
     await updateCommand({
@@ -70,8 +76,7 @@ program
   .option('-g, --global', 'Uninstall from home directory (~/) instead of current project')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
-      console.error(`Invalid AI type: ${options.ai}`);
-      console.error(`Valid types: ${AI_TYPES.join(', ')}`);
+      printInvalidAITypeError(options.ai);
       process.exit(1);
     }
     await uninstallCommand({

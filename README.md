@@ -311,6 +311,25 @@ uipro uninstall --ai claude # Remove specific platform
 uipro uninstall --global    # Remove from global install
 ```
 
+### CLI Troubleshooting
+
+If you see `Invalid AI type: trae` or `Invalid AI type: droid`, your global CLI is usually outdated.
+
+```bash
+uipro --version
+npm install -g uipro-cli@latest
+```
+
+If RooCode / Kiro generated `SKILL.md` appears to miss frontmatter metadata (`name`, `description`), upgrade and reinstall for those platforms:
+
+```bash
+npm install -g uipro-cli@latest
+uipro uninstall --ai roocode
+uipro uninstall --ai kiro
+uipro init --ai roocode
+uipro init --ai kiro
+```
+
 ## Prerequisites
 
 Python 3.x is required for the search script.

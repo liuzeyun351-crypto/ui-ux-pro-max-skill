@@ -36,6 +36,37 @@ uipro versions              # List available versions
 uipro update                # Update to latest version
 ```
 
+## Troubleshooting
+
+### `Invalid AI type: trae` / `Invalid AI type: droid`
+
+This usually means your global CLI is outdated.
+
+```bash
+# 1) Check installed version
+uipro --version
+
+# 2) Upgrade to latest
+npm install -g uipro-cli@latest
+
+# 3) Retry
+uipro init --ai trae
+# or
+uipro init --ai droid
+```
+
+### RooCode / Kiro generated `SKILL.md` has missing frontmatter
+
+If generated files seem to miss metadata fields (for example `name` / `description`), reinstall with the latest CLI and regenerate:
+
+```bash
+npm install -g uipro-cli@latest
+uipro uninstall --ai roocode
+uipro uninstall --ai kiro
+uipro init --ai roocode
+uipro init --ai kiro
+```
+
 ## How It Works
 
 By default, `uipro init` tries to download the latest release from GitHub to ensure you get the most up-to-date version. If the download fails (network error, rate limit), it automatically falls back to the bundled assets included in the CLI package.
