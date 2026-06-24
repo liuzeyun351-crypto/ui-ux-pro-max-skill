@@ -33,6 +33,7 @@ const AI_TO_PLATFORM: Record<string, string> = {
   windsurf: 'windsurf',
   antigravity: 'agent',
   copilot: 'copilot',
+  'copilot-cli': 'copilot-cli',
   kiro: 'kiro',
   opencode: 'opencode',
   roocode: 'roocode',

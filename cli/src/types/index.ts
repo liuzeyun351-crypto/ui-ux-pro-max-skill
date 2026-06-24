@@ -1,4 +1,4 @@
-export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'copilot' | 'kiro' | 'roocode' | 'codex' | 'qoder' | 'gemini' | 'trae' | 'opencode' | 'continue' | 'codebuddy' | 'droid' | 'kilocode' | 'warp' | 'augment' | 'all';
+export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'copilot' | 'copilot-cli' | 'kiro' | 'roocode' | 'codex' | 'qoder' | 'gemini' | 'trae' | 'opencode' | 'continue' | 'codebuddy' | 'droid' | 'kilocode' | 'warp' | 'augment' | 'all';
 
 export type InstallType = 'full' | 'reference';
 
@@ -41,7 +41,7 @@ export interface PlatformConfig {
   skillOrWorkflow: string;
 }
 
-export const AI_TYPES: AIType[] = ['claude', 'cursor', 'windsurf', 'antigravity', 'copilot', 'roocode', 'kiro', 'codex', 'qoder', 'gemini', 'trae', 'opencode', 'continue', 'codebuddy', 'droid', 'kilocode', 'warp', 'augment', 'all'];
+export const AI_TYPES: AIType[] = ['claude', 'cursor', 'windsurf', 'antigravity', 'copilot', 'copilot-cli', 'roocode', 'kiro', 'codex', 'qoder', 'gemini', 'trae', 'opencode', 'continue', 'codebuddy', 'droid', 'kilocode', 'warp', 'augment', 'all'];
 
 // Legacy folder mapping for backward compatibility with ZIP-based installs.
 // Note: .shared is included for platforms that used ZIP installs. Post-ZIP platforms
@@ -52,6 +52,7 @@ export const AI_FOLDERS: Record<Exclude<AIType, 'all'>, string[]> = {
   windsurf: ['.windsurf', '.shared'],
   antigravity: ['.agents', '.shared'],
   copilot: ['.github', '.shared'],
+  'copilot-cli': ['.github'],
   kiro: ['.kiro', '.shared'],
   codex: ['.codex'],
   roocode: ['.roo', '.shared'],

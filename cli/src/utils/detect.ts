@@ -25,6 +25,9 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.github'))) {
     detected.push('copilot');
   }
+  if (existsSync(join(cwd, '.github', 'copilot-instructions.md'))) {
+    detected.push('copilot-cli');
+  }
   if (existsSync(join(cwd, '.kiro'))) {
     detected.push('kiro');
   }
@@ -88,6 +91,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Antigravity (.agents/skills/)';
     case 'copilot':
       return 'GitHub Copilot (.github/prompts/)';
+    case 'copilot-cli':
+      return 'GitHub Copilot CLI (.github/skills/)';
     case 'kiro':
       return 'Kiro (.kiro/steering/)';
     case 'codex':

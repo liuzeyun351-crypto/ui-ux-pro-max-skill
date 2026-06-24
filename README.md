@@ -277,6 +277,7 @@ uipro init --ai cursor      # Cursor
 uipro init --ai windsurf    # Windsurf
 uipro init --ai antigravity # Antigravity
 uipro init --ai copilot     # GitHub Copilot
+uipro init --ai copilot-cli # GitHub Copilot CLI
 uipro init --ai kiro        # Kiro
 uipro init --ai codex       # Codex CLI
 uipro init --ai qoder       # Qoder
@@ -333,7 +334,7 @@ winget install Python.Python.3.12
 
 ### Skill Mode (Auto-activate)
 
-**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment
+**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, GitHub Copilot CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment
 
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
