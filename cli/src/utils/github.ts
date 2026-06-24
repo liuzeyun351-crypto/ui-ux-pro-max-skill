@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import type { Release } from '../types/index.js';
 
@@ -69,7 +70,7 @@ export async function getLatestRelease(): Promise<Release> {
   return response.json();
 }
 
-export async function downloadRelease(url: string, dest: string): Promise<void> {
+export async function downloadRelease(url: string, dest: string, expectedSha256?: string): Promise<void> {
   const response = await fetch(url, {
     headers: {
       'User-Agent': 'uipro-cli',
@@ -84,7 +85,35 @@ export async function downloadRelease(url: string, dest: string): Promise<void> 
   }
 
   const buffer = await response.arrayBuffer();
+
+  if (expectedSha256) {
+    const actual = createHash('sha256').update(Buffer.from(buffer)).digest('hex');
+    if (actual !== expectedSha256) {
+      throw new GitHubDownloadError(
+        `SHA-256 mismatch — download may be corrupted or tampered.
+Expected: ${expectedSha256}
+Actual:   ${actual}`
+      );
+    }
+  }
+
   await writeFile(dest, Buffer.from(buffer));
+}
+
+export async function findChecksumAsset(release: Release, assetName: string): Promise<string | null> {
+  const checksumNames = [`${assetName}.sha256`, 'checksums.sha256', 'SHA256SUMS'];
+  const checksumAsset = release.assets.find(a => checksumNames.includes(a.name));
+  if (!checksumAsset) return null;
+
+  const response = await fetch(checksumAsset.browser_download_url, {
+    headers: { 'User-Agent': 'uipro-cli' },
+  });
+  if (!response.ok) return null;
+
+  const text = await response.text();
+  // Format: "<hash>  <filename>" or just "<hash>"
+  const match = text.trim().match(/^([0-9a-f]{64})/m);
+  return match ? match[1] : null;
 }
 
 export function getAssetUrl(release: Release): string | null {

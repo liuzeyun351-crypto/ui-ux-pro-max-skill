@@ -13,6 +13,7 @@ import {
   getLatestRelease,
   getAssetUrl,
   downloadRelease,
+  findChecksumAsset,
   GitHubRateLimitError,
   GitHubDownloadError,
 } from '../utils/github.js';
@@ -53,7 +54,9 @@ async function tryGitHubInstall(
     tempDir = await createTempDir();
     const zipPath = join(tempDir, 'release.zip');
 
-    await downloadRelease(assetUrl, zipPath);
+    const assetFileName = assetUrl.split('/').pop() ?? 'release.zip';
+    const expectedSha256 = await findChecksumAsset(release, assetFileName);
+    await downloadRelease(assetUrl, zipPath, expectedSha256 ?? undefined);
 
     spinner.text = 'Extracting and installing files...';
     const { copiedFolders, tempDir: extractedTempDir } = await installFromZip(
