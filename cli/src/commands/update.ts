@@ -12,6 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 interface UpdateOptions {
   ai?: AIType;
+  token?: string;
 }
 
 async function getPackageVersion(): Promise<string> {
@@ -30,7 +31,7 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
   const spinner = ora('Checking for updates...').start();
 
   try {
-    const release = await getLatestRelease();
+    const release = await getLatestRelease(options.token);
     const currentVersion = await getPackageVersion();
     const latestVersion = normalizeTagVersion(release.tag_name);
     spinner.succeed(`Latest version: ${chalk.cyan(release.tag_name)}`);
@@ -50,6 +51,7 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
     await initCommand({
       ai: options.ai,
       force: true,
+      token: options.token,
     });
   } catch (error) {
     spinner.fail('Update check failed');
