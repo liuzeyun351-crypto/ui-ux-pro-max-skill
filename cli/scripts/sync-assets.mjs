@@ -96,7 +96,7 @@ async function checkAssets() {
     }
 
     const sourceFiles = (await listFiles(sourceDir)).filter((f) => !isExcludedAssetFile(f));
-    const targetFiles = await listFiles(targetDir);
+    const targetFiles = (await listFiles(targetDir)).filter((f) => !isExcludedAssetFile(f));
     const allFiles = [...new Set([...sourceFiles, ...targetFiles])].sort();
 
     for (const file of allFiles) {
@@ -128,7 +128,7 @@ async function checkAssets() {
     }
 
     const sourceFiles = (await listFiles(sourceDir)).filter((f) => !isExcludedAssetFile(f));
-    const targetFiles = await listFiles(targetDir);
+    const targetFiles = (await listFiles(targetDir)).filter((f) => !isExcludedAssetFile(f));
     const allFiles = [...new Set([...sourceFiles, ...targetFiles])].sort();
 
     for (const file of allFiles) {
