@@ -7,6 +7,7 @@ import prompts from 'prompts';
 import type { AIType, ConcreteAIType } from '../types/index.js';
 import { AI_TYPES, AI_FOLDERS } from '../types/index.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
+import { listBundledSubSkills } from '../utils/template.js';
 import { logger } from '../utils/logger.js';
 
 interface UninstallOptions {
@@ -21,15 +22,20 @@ async function removeSkillDir(baseDir: string, aiType: ConcreteAIType): Promise<
   const folders = AI_FOLDERS[aiType];
   const removed: string[] = [];
 
+  // The orchestrator plus the bundled sibling sub-skills installed by init.
+  const skillNames = ['ui-ux-pro-max', ...(await listBundledSubSkills())];
+
   for (const folder of folders) {
-    const skillDir = join(baseDir, folder, 'skills', 'ui-ux-pro-max');
-    try {
-      await stat(skillDir);
-      await rm(skillDir, { recursive: true, force: true });
-      removed.push(`${folder}/skills/ui-ux-pro-max`);
-    } catch (err: unknown) {
-      // Skip non-existent dirs; re-throw permission or other errors
-      if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
+    for (const name of skillNames) {
+      const skillDir = join(baseDir, folder, 'skills', name);
+      try {
+        await stat(skillDir);
+        await rm(skillDir, { recursive: true, force: true });
+        removed.push(`${folder}/skills/${name}`);
+      } catch (err: unknown) {
+        // Skip non-existent dirs; re-throw permission or other errors
+        if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
+      }
     }
   }
 

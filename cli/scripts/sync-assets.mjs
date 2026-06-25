@@ -19,6 +19,22 @@ const assetRoot = join(repoRoot, 'cli', 'assets');
 const dirsToSync = ['data', 'scripts', 'templates'];
 const checkOnly = process.argv.includes('--check');
 
+// The 6 sibling sub-skills are bundled (as static copies) so `uipro init`
+// installs all 7 skills, not just the template-rendered orchestrator. Source
+// of truth is .claude/skills/ (the orchestrator ui-ux-pro-max is rendered from
+// templates at install time, so it is not mirrored here).
+const skillsSourceRoot = join(repoRoot, '.claude', 'skills');
+const skillsAssetRoot = join(assetRoot, 'skills');
+const subSkills = ['banner-design', 'brand', 'design', 'design-system', 'slides', 'ui-styling'];
+
+// ponytail: only text is bundled. Excludes (a) heavy binary assets — the
+// canvas fonts are ~5.8MB and a skill registers from its SKILL.md, not its
+// fonts — and (b) Python build cruft (__pycache__/*.pyc, .coverage) that would
+// otherwise be picked up from a local run.
+const isExcludedAssetFile = (rel) =>
+  rel.split('/').some((seg) => seg === 'canvas-fonts' || seg === '__pycache__') ||
+  /\.(ttf|otf|woff2?|png|jpe?g|gif|ico|coverage|pyc)$/i.test(rel);
+
 // ponytail: all synced assets are text (csv/json/md/py); normalize CRLF->LF so
 // the byte hash and the on-disk copy don't drift with git autocrlf across platforms.
 const toLF = (text) => text.replace(/\r\n/g, '\n');
@@ -79,7 +95,7 @@ async function checkAssets() {
       continue;
     }
 
-    const sourceFiles = await listFiles(sourceDir);
+    const sourceFiles = (await listFiles(sourceDir)).filter((f) => !isExcludedAssetFile(f));
     const targetFiles = await listFiles(targetDir);
     const allFiles = [...new Set([...sourceFiles, ...targetFiles])].sort();
 
@@ -93,6 +109,38 @@ async function checkAssets() {
         drift.push(`missing asset file: ${dir}/${file}`);
       } else if ((await fileHash(sourcePath)) !== (await fileHash(targetPath))) {
         drift.push(`stale asset file: ${dir}/${file}`);
+      }
+    }
+  }
+
+  // Sub-skills (text content only; fonts/binaries intentionally excluded)
+  for (const name of subSkills) {
+    const sourceDir = join(skillsSourceRoot, name);
+    const targetDir = join(skillsAssetRoot, name);
+
+    if (!(await exists(sourceDir))) {
+      drift.push(`missing source sub-skill: ${relative(repoRoot, sourceDir)}`);
+      continue;
+    }
+    if (!(await exists(targetDir))) {
+      drift.push(`missing asset sub-skill: skills/${name}`);
+      continue;
+    }
+
+    const sourceFiles = (await listFiles(sourceDir)).filter((f) => !isExcludedAssetFile(f));
+    const targetFiles = await listFiles(targetDir);
+    const allFiles = [...new Set([...sourceFiles, ...targetFiles])].sort();
+
+    for (const file of allFiles) {
+      const sourcePath = join(sourceDir, file);
+      const targetPath = join(targetDir, file);
+
+      if (!sourceFiles.includes(file)) {
+        drift.push(`extra asset file: skills/${name}/${file}`);
+      } else if (!targetFiles.includes(file)) {
+        drift.push(`missing asset file: skills/${name}/${file}`);
+      } else if ((await fileHash(sourcePath)) !== (await fileHash(targetPath))) {
+        drift.push(`stale asset file: skills/${name}/${file}`);
       }
     }
   }
@@ -126,13 +174,33 @@ async function syncAssets() {
     }
 
     for (const file of await listFiles(sourceDir)) {
+      if (isExcludedAssetFile(file)) continue;
       const targetPath = assertInsideRepo(join(targetDir, file));
       await mkdir(dirname(targetPath), { recursive: true });
       await writeFile(targetPath, toLF(await readFile(join(sourceDir, file), 'utf8')));
     }
   }
 
-  console.log('Synced CLI assets from src/ui-ux-pro-max (normalized to LF).');
+  // Sub-skills: copy text content only (fonts/binaries excluded) so all 7
+  // skills ship in the package without bloating it with ~5.8MB of fonts.
+  const skillsTarget = assertInsideRepo(skillsAssetRoot);
+  if (await exists(skillsTarget)) {
+    await rm(skillsTarget, { recursive: true, force: true });
+  }
+  for (const name of subSkills) {
+    const sourceDir = join(skillsSourceRoot, name);
+    if (!(await exists(sourceDir))) {
+      throw new Error(`Source sub-skill does not exist: ${sourceDir}`);
+    }
+    for (const file of await listFiles(sourceDir)) {
+      if (isExcludedAssetFile(file)) continue;
+      const targetPath = assertInsideRepo(join(skillsTarget, name, file));
+      await mkdir(dirname(targetPath), { recursive: true });
+      await writeFile(targetPath, toLF(await readFile(join(sourceDir, file), 'utf8')));
+    }
+  }
+
+  console.log('Synced CLI assets from src/ui-ux-pro-max + 6 sub-skills (normalized to LF).');
 }
 
 if (checkOnly) {

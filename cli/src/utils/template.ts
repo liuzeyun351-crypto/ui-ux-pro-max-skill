@@ -180,6 +180,33 @@ async function copyDataAndScripts(targetSkillDir: string): Promise<void> {
 }
 
 /**
+ * List the static sub-skills bundled under assets/skills/ (everything except
+ * the template-rendered orchestrator). Empty if the package predates bundling.
+ */
+export async function listBundledSubSkills(): Promise<string[]> {
+  const skillsSource = join(ASSETS_DIR, 'skills');
+  if (!(await exists(skillsSource))) return [];
+  const entries = await readdir(skillsSource, { withFileTypes: true });
+  return entries.filter(e => e.isDirectory()).map(e => e.name).sort();
+}
+
+/**
+ * Install the bundled sub-skills as siblings of the orchestrator skill, so a
+ * single `uipro init` delivers all 7 skills instead of only ui-ux-pro-max.
+ */
+async function copySubSkills(skillsParentDir: string, force: boolean): Promise<void> {
+  const skillsSource = join(ASSETS_DIR, 'skills');
+  if (!(await exists(skillsSource))) return;
+
+  for (const name of await listBundledSubSkills()) {
+    const target = join(skillsParentDir, name);
+    if (await exists(target) && !force) continue;
+    await mkdir(target, { recursive: true });
+    await cp(join(skillsSource, name), target, { recursive: true });
+  }
+}
+
+/**
  * Generate platform files for a specific AI type
  * All platforms use self-contained installation with data and scripts
  * When isGlobal=true, installs to ~/home directory with absolute script paths
@@ -221,6 +248,17 @@ export async function generatePlatformFiles(
 
   // Copy data and scripts into the skill directory (self-contained)
   await copyDataAndScripts(skillDir);
+
+  // Install the sibling sub-skills (banner-design, brand, design, ...) next to
+  // the orchestrator so all 7 skills are delivered. The skills parent is the
+  // orchestrator's parent dir (skills/ for most platforms, prompts/ for
+  // copilot, steering/ for kiro) — derived, not hardcoded.
+  const skillsParentDir = join(
+    effectiveDir,
+    config.folderStructure.root,
+    dirname(config.folderStructure.skillPath)
+  );
+  await copySubSkills(skillsParentDir, force);
 
   return createdFolders;
 }
