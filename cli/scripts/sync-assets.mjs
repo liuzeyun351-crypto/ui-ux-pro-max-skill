@@ -3,11 +3,11 @@
 import { createHash } from 'node:crypto';
 import {
   access,
-  cp,
   mkdir,
   readdir,
   readFile,
   rm,
+  writeFile,
 } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -18,6 +18,10 @@ const sourceRoot = join(repoRoot, 'src', 'ui-ux-pro-max');
 const assetRoot = join(repoRoot, 'cli', 'assets');
 const dirsToSync = ['data', 'scripts', 'templates'];
 const checkOnly = process.argv.includes('--check');
+
+// ponytail: all synced assets are text (csv/json/md/py); normalize CRLF->LF so
+// the byte hash and the on-disk copy don't drift with git autocrlf across platforms.
+const toLF = (text) => text.replace(/\r\n/g, '\n');
 
 async function exists(path) {
   try {
@@ -55,7 +59,7 @@ async function listFiles(root) {
 }
 
 async function fileHash(path) {
-  const content = await readFile(path);
+  const content = toLF(await readFile(path, 'utf8'));
   return createHash('sha256').update(content).digest('hex');
 }
 
@@ -120,10 +124,15 @@ async function syncAssets() {
     if (await exists(targetDir)) {
       await rm(targetDir, { recursive: true, force: true });
     }
-    await cp(sourceDir, targetDir, { recursive: true });
+
+    for (const file of await listFiles(sourceDir)) {
+      const targetPath = assertInsideRepo(join(targetDir, file));
+      await mkdir(dirname(targetPath), { recursive: true });
+      await writeFile(targetPath, toLF(await readFile(join(sourceDir, file), 'utf8')));
+    }
   }
 
-  console.log('Synced CLI assets from src/ui-ux-pro-max.');
+  console.log('Synced CLI assets from src/ui-ux-pro-max (normalized to LF).');
 }
 
 if (checkOnly) {
