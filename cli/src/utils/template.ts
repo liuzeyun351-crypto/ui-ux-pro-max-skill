@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile, cp, access, readdir } from 'node:fs/promises';
+import { readFile, mkdir, writeFile, cp, access, readdir, lstat, rm } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { homedir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -157,6 +157,23 @@ export async function renderSkillFile(config: PlatformConfig, isGlobal = false):
 }
 
 /**
+ * Replace a pre-existing non-directory at `path` so a real directory can be
+ * created there. Older CLI installs (and Windows checkouts of the repo's
+ * symlinked data/scripts) can leave plain "pointer" files at these paths;
+ * mkdir then throws EEXIST and the install silently leaves stale files.
+ */
+async function ensureCleanDir(path: string): Promise<void> {
+  try {
+    const stat = await lstat(path);
+    if (!stat.isDirectory()) {
+      await rm(path, { recursive: true, force: true });
+    }
+  } catch {
+    // Nothing exists at the path yet — mkdir will create it.
+  }
+}
+
+/**
  * Copy data and scripts to target directory
  */
 async function copyDataAndScripts(targetSkillDir: string): Promise<void> {
@@ -168,12 +185,14 @@ async function copyDataAndScripts(targetSkillDir: string): Promise<void> {
 
   // Copy data
   if (await exists(dataSource)) {
+    await ensureCleanDir(dataTarget);
     await mkdir(dataTarget, { recursive: true });
     await cp(dataSource, dataTarget, { recursive: true });
   }
 
   // Copy scripts
   if (await exists(scriptsSource)) {
+    await ensureCleanDir(scriptsTarget);
     await mkdir(scriptsTarget, { recursive: true });
     await cp(scriptsSource, scriptsTarget, { recursive: true });
   }
