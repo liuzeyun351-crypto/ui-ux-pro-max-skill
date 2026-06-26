@@ -38,5 +38,5 @@
     "antigravity",
     "openclaw"
   ],
-  "install": "npx uipro-cli init --ai {{platform}}"
+  "install": "npx ui-ux-pro-max-cli init --ai {{platform}}"
 }

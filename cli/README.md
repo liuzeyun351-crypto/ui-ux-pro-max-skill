@@ -1,11 +1,11 @@
-# uipro-cli
+# ui-ux-pro-max-cli
 
 CLI to install UI/UX Pro Max skill for AI coding assistants.
 
 ## Installation
 
 ```bash
-npm install -g uipro-cli
+npm install -g ui-ux-pro-max-cli
 ```
 
 ## Usage
@@ -70,7 +70,7 @@ uipro update                   # updates the global CLI to the latest release
 uipro init --ai codex --force  # regenerate skill files from the new package
 ```
 
-`uipro update` runs `npm install -g uipro-cli@latest` for you (it shells out to `npm` only on Windows, where `npm` is a `.cmd`). You can still run that command manually if you prefer. When the CLI is already current, `uipro update` just refreshes the installed skill files.
+`uipro update` runs `npm install -g ui-ux-pro-max-cli@latest` for you (it shells out to `npm` only on Windows, where `npm` is a `.cmd`). You can still run that command manually if you prefer. When the CLI is already current, `uipro update` just refreshes the installed skill files.
 
 ## Development
 

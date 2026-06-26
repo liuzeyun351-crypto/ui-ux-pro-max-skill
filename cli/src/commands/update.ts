@@ -10,6 +10,7 @@ import { initCommand } from './init.js';
 import type { AIType } from '../types/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const CLI_PACKAGE_NAME = 'ui-ux-pro-max-cli';
 
 interface UpdateOptions {
   ai?: AIType;
@@ -44,7 +45,7 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
       // reach the shell that npm.cmd requires on Windows.
       if (!/^\d+\.\d+\.\d+([.-][0-9A-Za-z.-]+)?$/.test(latestVersion)) {
         logger.warn(`Installed CLI is ${chalk.cyan(currentVersion)}; latest release is ${chalk.cyan(release.tag_name)}.`);
-        logger.info(`Update the CLI package: ${chalk.cyan(`npm install -g uipro-cli@${latestVersion}`)}`);
+        logger.info(`Update the CLI package: ${chalk.cyan(`npm install -g ${CLI_PACKAGE_NAME}@${latestVersion}`)}`);
         logger.info('Then rerun: uipro init --ai <platform> --force');
         return;
       }
@@ -58,13 +59,13 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
         // On Windows npm is npm.cmd, which Node only spawns via a shell.
         execFileSync(
           isWindows ? 'npm.cmd' : 'npm',
-          ['install', '-g', `uipro-cli@${latestVersion}`],
+          ['install', '-g', `${CLI_PACKAGE_NAME}@${latestVersion}`],
           { stdio: 'inherit', shell: isWindows }
         );
       } catch {
         console.log();
         logger.error('Automatic update failed (you may need elevated/admin permissions).');
-        logger.info(`Update manually: ${chalk.cyan(`npm install -g uipro-cli@${latestVersion}`)}`);
+        logger.info(`Update manually: ${chalk.cyan(`npm install -g ${CLI_PACKAGE_NAME}@${latestVersion}`)}`);
         process.exit(1);
       }
 

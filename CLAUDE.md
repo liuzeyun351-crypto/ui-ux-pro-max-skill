@@ -42,7 +42,7 @@ src/ui-ux-pro-max/                # Source of Truth
     ├── base/                     # Base templates (skill-content.md, quick-reference.md)
     └── platforms/                # Platform configs (claude.json, cursor.json, ...)
 
-cli/                              # CLI installer (uipro-cli on npm)
+cli/                              # CLI installer (ui-ux-pro-max-cli on npm)
 ├── src/
 │   ├── commands/init.ts          # Install command with template generation
 │   └── utils/template.ts         # Template rendering engine

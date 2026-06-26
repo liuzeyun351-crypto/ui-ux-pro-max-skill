@@ -4,6 +4,7 @@ import type { Release } from '../types/index.js';
 const REPO_OWNER = 'nextlevelbuilder';
 const REPO_NAME = 'ui-ux-pro-max-skill';
 const API_BASE = 'https://api.github.com';
+const USER_AGENT = 'ui-ux-pro-max-cli';
 
 export class GitHubRateLimitError extends Error {
   constructor(message: string) {
@@ -56,7 +57,7 @@ export async function fetchReleases(token?: string): Promise<Release[]> {
   const response = await fetch(url, {
     headers: {
       'Accept': 'application/vnd.github.v3+json',
-      'User-Agent': 'uipro-cli',
+      'User-Agent': USER_AGENT,
       ...getAuthHeaders(token),
     },
   });
@@ -76,7 +77,7 @@ export async function getLatestRelease(token?: string): Promise<Release> {
   const response = await fetch(url, {
     headers: {
       'Accept': 'application/vnd.github.v3+json',
-      'User-Agent': 'uipro-cli',
+      'User-Agent': USER_AGENT,
       ...getAuthHeaders(token),
     },
   });
@@ -93,7 +94,7 @@ export async function getLatestRelease(token?: string): Promise<Release> {
 export async function downloadRelease(url: string, dest: string, token?: string): Promise<void> {
   const response = await fetch(url, {
     headers: {
-      'User-Agent': 'uipro-cli',
+      'User-Agent': USER_AGENT,
       'Accept': 'application/octet-stream',
       ...getAuthHeaders(token),
     },

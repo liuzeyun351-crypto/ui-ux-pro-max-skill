@@ -51,7 +51,7 @@ ui-ux-pro-max-skill/
 │   ├── data/                   # CSV databases (styles, colors, typography, rules)
 │   ├── scripts/                # Python search engine & design system generator
 │   └── templates/              # Platform-specific skill templates
-├── cli/                        # npm CLI installer (uipro-cli)
+├── cli/                        # npm CLI installer (ui-ux-pro-max-cli)
 ├── .claude/                    # Local dev/test files for Claude Code
 ├── .factory/                   # Local dev/test files for Droid (Factory)
 ├── docs/                       # Documentation
@@ -140,7 +140,7 @@ Types:
 feat: add Skeuomorphism 2.0 style to general styles
 fix: correct color palette for fintech industry rule
 docs: translate README to Spanish
-chore: update uipro-cli to v2.6.0
+chore: update ui-ux-pro-max-cli to v2.6.0
 ```
 
 ---
