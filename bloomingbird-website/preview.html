@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloomingbird Real Estate — Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#070707;--surface:#0e0e0e;--surface-elevated:#141414;
+  --cream:#F5F2EA;--accent:#C9905B;
+  --text-secondary:rgba(245,242,234,0.6);--text-muted:rgba(245,242,234,0.35);
+  --border-subtle:rgba(245,242,234,0.08);--charcoal:#1a1a1a;
+  --font-playfair:'Playfair Display',serif;--font-inter:'Inter',sans-serif;--font-space-mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-inter);background:var(--bg);color:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* Utility */
+.container-x{padding-left:clamp(20px,5vw,80px);padding-right:clamp(20px,5vw,80px)}
+.section-padding{padding:clamp(60px,10vw,120px) clamp(20px,5vw,80px)}
+.py-section{padding-top:clamp(60px,10vw,120px);padding-bottom:clamp(60px,10vw,120px)}
+.mt-section{margin-top:clamp(60px,10vw,120px)}
+.pb-section{padding-bottom:clamp(60px,10vw,120px)}
+.eyebrow{font-family:var(--font-space-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted)}
+.text-hero{font-size:clamp(48px,12vw,180px)}
+.text-h1{font-size:clamp(36px,7vw,96px)}
+.text-h2{font-size:clamp(28px,5vw,64px)}
+.text-h3{font-size:clamp(22px,3vw,40px)}
+.divider{height:1px;background:var(--border-subtle)}
+
+/* Fade-in on scroll */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1),transform 0.8s cubic-bezier(0.22,1,0.36,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Photo placeholder */
+.photo-placeholder{background:var(--surface);border:1px solid var(--border-subtle);border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:transform 0.3s ease}
+.photo-placeholder:hover{transform:scale(1.02)}
+.photo-placeholder span{color:var(--text-muted);font-size:13px}
+
+/* Card */
+.card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:16px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;min-height:220px}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,80px);mix-blend-mode:difference">
+  <div style="display:flex;gap:24px;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,242,234,0.7)">
+    <a href="#">WA</a><a href="#">X</a><a href="#">IG</a><a href="#">LI</a><a href="#">EMAIL</a>
+  </div>
+  <div style="position:absolute;left:50%;transform:translateX(-50%)">
+    <span style="font-family:var(--font-playfair);color:var(--accent);font-size:18px;letter-spacing:0.05em;font-style:italic">Bloomingbird</span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:6px;cursor:pointer">
+    <span style="width:32px;height:2px;background:var(--cream)"></span>
+    <span style="width:32px;height:2px;background:var(--cream)"></span>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="home" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:var(--bg)">
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,26,26,0.4),rgba(7,7,7,0.9));z-index:10"></div>
+  <div style="position:absolute;inset:0;background:#111;opacity:0.6"></div>
+  <div class="container-x" style="position:relative;z-index:20;flex:1;display:flex;flex-direction:column;justify-content:center;padding-top:128px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px">
+      <div style="max-width:640px">
+        <h1 class="fade-in" style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:clamp(32px,5vw,64px);line-height:1.1;margin-bottom:24px">Property. Strategy. Legacy.</h1>
+        <p class="fade-in eyebrow" style="color:var(--accent)">A PRIVATE REAL ESTATE ADVISORY BUILT ON TRUST AND INSIGHT.</p>
+      </div>
+      <div style="text-align:right">
+        <p class="fade-in" style="font-family:var(--font-playfair);font-style:italic;color:rgba(245,242,234,0.8);font-size:clamp(24px,3.5vw,48px);line-height:1.1">Company<br>Profile</p>
+      </div>
+    </div>
+  </div>
+  <div class="container-x" style="position:relative;z-index:20;padding-bottom:32px">
+    <h2 class="fade-in" style="font-size:clamp(48px,12vw,180px);font-family:var(--font-playfair);color:var(--accent);font-weight:400;letter-spacing:-0.06em;line-height:0.88">Bloomingbird<span style="font-size:0.3em;vertical-align:super;margin-left:8px">&reg;</span></h2>
+  </div>
+</section>
+
+<!-- ==================== WHY BLOOMINGBIRD ==================== -->
+<section style="background:var(--bg)">
+  <!-- Advice Before Commission -->
+  <div style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to bottom,#1a3a4a,#0d2633)">
+    <div class="container-x" style="padding-bottom:48px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+        <div>
+          <h3 class="fade-in" style="font-size:clamp(28px,5vw,64px);font-family:var(--font-playfair);color:var(--cream);font-weight:400;margin-bottom:12px">&ldquo;Advice Should Come<br>Before Commission&rdquo;</h3>
+          <p class="fade-in" style="color:var(--text-secondary);font-size:14px">Bloomingbird was founded on a simple belief:</p>
+          <p class="fade-in" style="color:var(--accent);font-size:12px;margin-top:4px;letter-spacing:0.1em">Advice Before Commission.</p>
+        </div>
+        <p class="fade-in eyebrow" style="text-align:right">WHY BLOOMINGBIRD</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-x py-section">
+    <div class="fade-in" style="max-width:800px;margin:0 auto;color:var(--text-secondary);font-size:16px;line-height:1.7">
+      <p style="margin-bottom:24px">Every property decision deserves thoughtful advice, not a sales pitch. Every recommendation begins with understanding your ambitions, analysing the market, and identifying opportunities that create genuine long-term value rather than simply another transaction.</p>
+      <p style="margin-bottom:24px">Whether you are purchasing your first home, building an international portfolio, or investing for the next generation, our responsibility remains the same: to guide every decision with clarity, integrity, and conviction.</p>
+      <p style="color:var(--accent);font-style:italic;font-family:var(--font-playfair);font-size:18px">We work for your outcome, not our commission.</p>
+    </div>
+  </div>
+
+  <!-- Every Property Has A Price -->
+  <div style="position:relative;min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(135deg,#0a1520,#141414)">
+    <div class="container-x" style="padding-bottom:48px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+        <h3 class="fade-in" style="font-size:clamp(28px,5vw,64px);font-family:var(--font-playfair);color:var(--cream);font-weight:400;margin-bottom:12px">Every Property Has A Price.<br>Only A Few Create Legacy.</h3>
+        <p class="fade-in eyebrow" style="text-align:right">OUR BELIEF</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-x py-section">
+    <div class="fade-in" style="max-width:800px;margin:0 auto;color:var(--text-secondary);font-size:16px;line-height:1.7">
+      <p style="margin-bottom:24px">The strongest portfolios are never built by following the market. They are built by understanding it.</p>
+      <p style="margin-bottom:24px">At Bloomingbird, we believe real estate is more than an asset on a balance sheet. It is a decision that shapes lifestyles, protects wealth, and creates opportunities that extend far beyond a single generation.</p>
+      <p style="margin-bottom:24px">Every recommendation begins with understanding your ambitions, not simply your budget. Successful investing is not about owning more property. It is about owning the right property at the right time, for the right reason.</p>
+      <p style="color:var(--accent);font-style:italic;font-family:var(--font-playfair);font-size:18px;text-align:center;padding:16px 0">&ldquo;Create lasting value... not momentary excitement.&rdquo;</p>
+      <p>Rather than chasing trends, we focus on identifying opportunities backed by research, market intelligence, and a deep understanding of Dubai&apos;s evolving landscape. Every conversation, every recommendation, and every acquisition is guided by one principle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== APPROACH ==================== -->
+<section style="background:var(--bg)">
+  <div style="position:relative;min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(135deg,#0f1f2e,#070707)">
+    <div class="container-x" style="padding-bottom:48px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+        <h3 class="fade-in" style="font-size:clamp(28px,5vw,64px);font-family:var(--font-playfair);color:var(--cream);font-weight:400">The Bloomingbird Method</h3>
+        <p class="fade-in eyebrow" style="text-align:right">OUR APPROACH</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-x py-section">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:48px;max-width:1000px;margin:0 auto">
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">DISCOVER</p>
+        <p style="color:var(--cream)">Understand your goals and timeline</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">ANALYSE</p>
+        <p style="color:var(--cream)">Deep market intelligence and research</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">CURATE</p>
+        <p style="color:var(--cream)">Handpicked opportunities aligned to you</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">ACQUIRE</p>
+        <p style="color:var(--cream)">Confident negotiations and execution</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">MANAGE</p>
+        <p style="color:var(--cream)">Long-term asset support and oversight</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:12px">GROW</p>
+        <p style="color:var(--cream)">Building lasting, generational wealth</p>
+      </div>
+    </div>
+    <blockquote class="fade-in" style="max-width:720px;margin:0 auto;text-align:center;margin-top:clamp(60px,10vw,120px)">
+      <p style="font-family:var(--font-playfair);font-style:italic;color:rgba(245,242,234,0.9);font-size:clamp(18px,2.5vw,28px);line-height:1.4">Every client enters the market with different ambitions.<br>Some are searching for a family home. Others are building international portfolios.<br>Many are investing for future generations.<br><br>Our role is to transform those ambitions into carefully considered property strategies.</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ==================== MILESTONES ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">Our Milestones</h3>
+      <span style="color:var(--text-muted);font-size:14px;margin-left:8px">our track record</span>
+    </div>
+    <div class="divider" style="margin-bottom:48px"></div>
+
+    <h2 class="fade-in" style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);max-width:720px;margin-bottom:16px">Numbers that reflect the trust our clients place in Bloomingbird.</h2>
+
+    <blockquote class="fade-in" style="margin:48px 0;padding:32px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+      <p style="font-family:var(--font-playfair);font-style:italic;color:var(--accent);font-size:clamp(16px,2vw,22px);text-align:center">&ldquo;The greatest compliment we receive is not another transaction.<br>It is when a client introduces us to their family.&rdquo;</p>
+    </blockquote>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px">
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Sales Facilitated</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--accent)">AED 1B+</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Properties Sold</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--cream)">500+</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Happy Investors</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--cream)">1000+</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Experience in Years</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--cream)">13+</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Clients Satisfied</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--cream)">95%+</p>
+      </div>
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+        <p style="color:var(--text-muted);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:12px">Repeated Referral</p>
+        <p style="font-size:clamp(36px,5vw,56px);font-weight:300;letter-spacing:-0.02em;color:var(--cream)">80%</p>
+      </div>
+    </div>
+
+    <p class="fade-in" style="text-align:center;color:var(--text-secondary);font-style:italic;font-family:var(--font-playfair);font-size:18px;margin-top:64px">&ldquo;Connecting people with places they&apos;ll call home.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ==================== PRINCIPLES ==================== -->
+<section style="background:var(--bg)">
+  <div class="section-padding" style="text-align:center">
+    <h2 class="fade-in" style="font-size:clamp(36px,7vw,96px);font-weight:700;color:rgba(245,242,234,0.95);letter-spacing:-0.02em">our principles</h2>
+    <p class="fade-in" style="font-family:var(--font-playfair);font-style:italic;color:var(--text-secondary);font-size:clamp(18px,2.5vw,32px);max-width:720px;margin:32px auto 0;line-height:1.6">&ldquo;Real estate isn&apos;t about selling property.<br>It&apos;s about helping people make decisions they&apos;ll be proud of for years to come.&rdquo;</p>
+  </div>
+
+  <div class="container-x pb-section">
+    <div style="max-width:1000px;margin:0 auto">
+      <!-- Vision -->
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding:48px 0">
+        <div style="display:flex;gap:32px;flex-wrap:wrap">
+          <h3 style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);min-width:200px">Our Vision</h3>
+          <p style="color:var(--text-secondary);line-height:1.7;max-width:640px">To set the benchmark for trusted real estate advisory in Dubai by delivering intelligent investment strategies, exceptional client experiences, and lasting value for clients worldwide.</p>
+        </div>
+      </div>
+      <!-- Mission -->
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding:48px 0">
+        <div style="display:flex;gap:32px;flex-wrap:wrap">
+          <h3 style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);min-width:200px">Our Mission</h3>
+          <p style="color:var(--text-secondary);line-height:1.7;max-width:640px">To provide personalised real estate solutions driven by market expertise, integrity, and strategic guidance, empowering every client to make confident decisions with a long-term perspective.</p>
+        </div>
+      </div>
+      <!-- Values -->
+      <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding:48px 0">
+        <div style="display:flex;gap:32px;flex-wrap:wrap">
+          <h3 style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);min-width:200px">Our Values</h3>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:640px">
+            <div>
+              <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:8px">TRUST</p>
+              <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Honesty, consistency and accountability in every relationship we build.</p>
+            </div>
+            <div>
+              <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:8px">TRANSPARENCY</p>
+              <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Clear communication and objective advice at every stage of the journey.</p>
+            </div>
+            <div>
+              <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:8px">EXPERTISE</p>
+              <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Deep market knowledge and strategic insight delivering informed solutions.</p>
+            </div>
+            <div>
+              <p style="color:var(--accent);font-size:12px;letter-spacing:0.3em;margin-bottom:8px">EXCELLENCE</p>
+              <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Exceptional service through professionalism, precision and attention to detail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHAT WE DO ==================== -->
+<section style="background:var(--bg)">
+  <div class="section-padding" style="text-align:center">
+    <p class="fade-in eyebrow" style="color:var(--accent);margin-bottom:16px">WHAT WE DO</p>
+    <h2 class="fade-in" style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);max-width:720px;margin:0 auto 24px">Creating long-term value</h2>
+    <p class="fade-in" style="font-family:var(--font-playfair);font-style:italic;color:var(--text-secondary);font-size:clamp(16px,2vw,22px);max-width:640px;margin:0 auto">&ldquo;The greatest compliment we receive is not another transaction.<br>It is when a client introduces us to their family.&rdquo;</p>
+  </div>
+
+  <div class="container-x pb-section">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1152px;margin:0 auto">
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">INVESTMENT ADVISORY</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Helping investors identify opportunities aligned with their financial objectives, risk profile, and long-term vision.</p></div>
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">OFF-PLAN OPPORTUNITIES</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Exclusive access to carefully selected developments positioned for future growth and capital appreciation.</p></div>
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">LUXURY RESIDENTIAL</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Curated homes in Dubai&apos;s most sought-after communities for end-users and discerning investors.</p></div>
+
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">PORTFOLIO DIVERSIFICATION</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Building balanced property portfolios designed to generate sustainable long-term returns.</p></div>
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">PROPERTY MANAGEMENT</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Protecting and enhancing the value of your assets through seamless end-to-end management.</p></div>
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">EXIT STRATEGY</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Knowing when to invest is important. Knowing when to exit is equally valuable.</p></div>
+
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">RENTAL YIELD OPTIMISATION</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Maximising recurring income through market analysis, pricing strategy, and tenant placement.</p></div>
+      <div class="fade-in card"><p style="color:var(--accent);font-size:12px;letter-spacing:0.2em;margin-bottom:8px">DEVELOPER ACCESS</p><p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Priority access to Dubai&apos;s leading developers and carefully curated investment opportunities.</p></div>
+      <div class="fade-in" style="background:var(--surface-elevated);border:1px solid var(--border-subtle);border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;min-height:220px;text-align:center"><p style="font-family:var(--font-playfair);font-style:italic;color:rgba(245,242,234,0.8);font-size:14px;line-height:1.6">&ldquo;Every extraordinary property holds the potential to transform lives and becomes the backdrop to cherished moments. It builds the foundation for future aspirations, and a place where every new chapter begins with confidence, comfort, and a sense of belonging.&rdquo;</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BENEFITS (10-frame grid) ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">The Experience</h3>
+    </div>
+    <div class="divider" style="margin-bottom:48px"></div>
+
+    <!-- Top: 3 cols — tall | 2 stacked | tall -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px">
+      <!-- Col 1: Tall photo -->
+      <div class="fade-in photo-placeholder" style="aspect-ratio:3/4"><span>Photo 1</span></div>
+      <!-- Col 2: Two stacked -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="fade-in" style="aspect-ratio:1.45/1;background:var(--surface);border:1px solid var(--border-subtle);border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;padding:24px;position:relative">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.8),transparent)"></div>
+          <div style="position:relative;z-index:1">
+            <p style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px;line-height:1.2">Your Vision</p>
+            <p style="font-family:var(--font-playfair);font-style:italic;color:var(--accent);font-size:18px">Our Creativity</p>
+          </div>
+        </div>
+        <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Design Dashboard</span></div>
+      </div>
+      <!-- Col 3: Tall photo -->
+      <div class="fade-in photo-placeholder" style="aspect-ratio:3/4"><span>Photo 2</span></div>
+    </div>
+
+    <!-- Bottom: 3×2, 6 equal cells at 1.45:1 -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 3</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 4</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 5</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 6</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 7</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:1.45/1"><span>Photo 8</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES (replaces Pricing) ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">Why Bloomingbird</h3>
+    </div>
+    <div class="divider" style="margin-bottom:48px"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:start">
+      <!-- Left: 3 points -->
+      <div class="fade-in">
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px;margin-bottom:32px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">MARKET INTELLIGENCE</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Deep knowledge of Dubai&apos;s real estate landscape, pricing trends, and emerging opportunities.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px;margin-bottom:32px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">CURATED SELECTION</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Access to handpicked properties from Tier-1 developers and select boutique partners.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">END-TO-END SUPPORT</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">From discovery to acquisition to management — we handle every step with precision.</p>
+        </div>
+      </div>
+
+      <!-- Center: Photo -->
+      <div class="fade-in photo-placeholder" style="aspect-ratio:3/4"><span>Feature Photo</span></div>
+
+      <!-- Right: 3 points -->
+      <div class="fade-in">
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px;margin-bottom:32px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">TRANSPARENT ADVISORY</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Honest guidance with no hidden agendas — your interests always come first.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px;margin-bottom:32px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">LONG-TERM RELATIONSHIPS</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">We don&apos;t close deals, we build partnerships that grow with your portfolio.</p>
+        </div>
+        <div style="border-top:1px solid var(--border-subtle);padding-top:20px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:8px">PROVEN TRACK RECORD</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">AED 1B+ in transactions, 500+ properties, and a 95%+ client satisfaction rate.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY DUBAI ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <p class="fade-in eyebrow" style="color:var(--accent);margin-bottom:16px">WHY DUBAI WHY NOW</p>
+    <h2 class="fade-in" style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);margin-bottom:12px">The world&apos;s most ambitious investment destination</h2>
+    <p class="fade-in" style="color:var(--text-secondary);font-size:18px;margin-bottom:64px">Discover why investors choose Dubai</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
+      <div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px;margin-bottom:40px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">0% INCOME TAX</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Tax-efficient ownership with no personal income tax on property investments anywhere in Dubai.</p>
+        </div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px;margin-bottom:40px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">200+ NATIONALITIES</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">A truly global city with world-class infrastructure, a diverse community, and unmatched connectivity.</p>
+        </div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">HIGH RENTAL DEMAND</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Strong rental yields supported by long-term capital appreciation and consistent population growth.</p>
+        </div>
+      </div>
+      <div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px;margin-bottom:40px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">GOLDEN VISA</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Long-term UAE residency available through qualifying property investment, offering stability and freedom.</p>
+        </div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px;margin-bottom:40px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">POLITICAL STABILITY</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">Government-backed economic growth within one of the world&apos;s most secure, business-friendly environments.</p>
+        </div>
+        <div class="fade-in" style="border-top:1px solid var(--border-subtle);padding-top:24px">
+          <p style="color:var(--accent);font-size:12px;letter-spacing:0.25em;margin-bottom:12px">GLOBAL CONNECTIVITY</p>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6">A gateway linking East and West, served by one of the world&apos;s busiest international airports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOUNDER ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">A Word From Our Founder</h3>
+    </div>
+    <div class="divider" style="margin-bottom:48px"></div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <!-- Photo -->
+      <div class="fade-in photo-placeholder" style="aspect-ratio:3/4"><span>Founder Photo</span></div>
+
+      <!-- Quote and letter -->
+      <div class="fade-in">
+        <blockquote style="border-left:2px solid var(--accent);padding-left:24px;margin-bottom:24px">
+          <p style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:clamp(18px,2.2vw,24px);line-height:1.5">Our vision extends beyond transactions. We strive to build meaningful relationships, deliver exceptional experiences, and create lasting value for every client we serve.</p>
+        </blockquote>
+
+        <div style="color:var(--text-secondary);font-size:14px;line-height:1.7;padding-top:16px">
+          <p style="margin-bottom:16px">When I started Bloomingbird, I wasn&apos;t focused on building the biggest real estate company in Dubai. I simply wanted to build one that people could genuinely trust.</p>
+          <p style="margin-bottom:16px">Having spent years understanding the market and working closely with clients, I realised that what people needed wasn&apos;t another salesperson. They needed honest advice, thoughtful guidance, and someone who genuinely understood their goals before recommending a property. That belief became the foundation of Bloomingbird.</p>
+          <p style="margin-bottom:16px">As the company grew, I knew I couldn&apos;t build this vision alone. My brother, Harssh Guptaa, joined me, bringing the same values, commitment, and client-first mindset that Bloomingbird was built upon. Together, we&apos;ve worked to create a company where every decision is driven by integrity, transparency, and long-term relationships rather than short-term transactions.</p>
+          <p style="margin-bottom:16px">Today, I&apos;m incredibly proud of what we&apos;ve built. Not just a real estate company, but a team that shares a common purpose: helping people make confident property decisions that create lasting value.</p>
+          <p>To every client, partner, and team member who has been part of this journey, thank you for your trust. It is a responsibility we never take for granted.</p>
+        </div>
+
+        <div style="padding-top:24px;border-top:1px solid var(--border-subtle);margin-top:24px">
+          <p style="color:var(--accent);font-weight:500">Ankit Goyal</p>
+          <p style="color:var(--text-muted);font-size:14px">Founder and CEO</p>
+          <p style="color:var(--text-muted);font-size:14px">Bloomingbird Real Estate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEAM ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">The People</h3>
+    </div>
+    <div class="divider" style="margin-bottom:16px"></div>
+
+    <h2 class="fade-in" style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);margin-bottom:12px">Our Team</h2>
+    <p class="fade-in" style="color:var(--text-secondary);margin-bottom:64px">Behind every recommendation is a relationship.</p>
+
+    <!-- Top 2 large cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">
+      <div class="fade-in" style="aspect-ratio:4/5;background:var(--surface);border-radius:16px;border:1px solid var(--border-subtle);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.9),rgba(7,7,7,0.3),transparent);z-index:1"></div>
+        <div style="position:relative;z-index:2">
+          <p style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Founder &amp; CEO</p>
+          <p style="color:var(--cream);font-size:20px;font-family:var(--font-playfair);margin-bottom:8px">Ankith Goyal</p>
+          <p style="color:var(--text-secondary);font-size:12px;line-height:1.5">The visionary behind Bloomingbird Real Estate, Ankith leads the company with a strong focus on trust, transparency, and long-term client relationships.</p>
+        </div>
+      </div>
+      <div class="fade-in" style="aspect-ratio:4/5;background:var(--surface);border-radius:16px;border:1px solid var(--border-subtle);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.9),rgba(7,7,7,0.3),transparent);z-index:1"></div>
+        <div style="position:relative;z-index:2">
+          <p style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Associate Director</p>
+          <p style="color:var(--cream);font-size:20px;font-family:var(--font-playfair);margin-bottom:8px">Harssh Guptaa</p>
+          <p style="color:var(--text-secondary);font-size:12px;line-height:1.5">Harssh supports business development and client relations with a practical, results-driven approach.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom 3 cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="fade-in" style="aspect-ratio:3/4;background:var(--surface);border-radius:16px;border:1px solid var(--border-subtle);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.9),rgba(7,7,7,0.3),transparent);z-index:1"></div>
+        <div style="position:relative;z-index:2">
+          <p style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Creative Head &amp; Marketing Head</p>
+          <p style="color:var(--cream);font-size:18px;font-family:var(--font-playfair);margin-bottom:8px">Soumya Suzzane</p>
+          <p style="color:var(--text-secondary);font-size:12px;line-height:1.5">Soumya leads Bloomingbird&apos;s creative direction and marketing strategy.</p>
+        </div>
+      </div>
+      <div class="fade-in" style="aspect-ratio:3/4;background:var(--surface);border-radius:16px;border:1px solid var(--border-subtle);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.9),rgba(7,7,7,0.3),transparent);z-index:1"></div>
+        <div style="position:relative;z-index:2">
+          <p style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Co-Founder</p>
+          <p style="color:var(--cream);font-size:18px;font-family:var(--font-playfair);margin-bottom:8px">Murti Purohit</p>
+          <p style="color:var(--text-secondary);font-size:12px;line-height:1.5">Murti has contributed to the foundation and growth of Bloomingbird through strategic support.</p>
+        </div>
+      </div>
+      <div class="fade-in" style="aspect-ratio:3/4;background:var(--surface);border-radius:16px;border:1px solid var(--border-subtle);display:flex;align-items:flex-end;padding:24px;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,0.9),rgba(7,7,7,0.3),transparent);z-index:1"></div>
+        <div style="position:relative;z-index:2">
+          <p style="color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:4px">Director</p>
+          <p style="color:var(--cream);font-size:18px;font-family:var(--font-playfair);margin-bottom:8px">Sudha Gupta</p>
+          <p style="color:var(--text-secondary);font-size:12px;line-height:1.5">Sudha supports the company with her understanding of client relations and operational coordination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== NETWORK ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1152px;margin:0 auto">
+    <div class="fade-in" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <span style="color:var(--accent);font-size:18px">&#9679;</span>
+      <h3 style="font-family:var(--font-playfair);font-style:italic;color:var(--cream);font-size:20px">Our Network</h3>
+    </div>
+    <div class="divider" style="margin-bottom:16px"></div>
+
+    <h2 class="fade-in" style="font-size:clamp(22px,3vw,40px);font-family:var(--font-playfair);color:var(--cream);margin-bottom:12px">&ldquo;Access matters. Relationships matter more.&rdquo;</h2>
+    <p class="fade-in" style="color:var(--text-secondary);font-size:16px;line-height:1.7;max-width:720px;margin-bottom:64px">Despite Dubai having thousands of developers, we intentionally partner only with reputed Tier-1 developers. We also collaborate with a select few boutique developers based on strong personal trust and long-term relationships.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="fade-in photo-placeholder" style="aspect-ratio:16/9"><span>Developer Partner 1</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:16/9"><span>Developer Partner 2</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:16/9"><span>Developer Partner 3</span></div>
+      <div class="fade-in photo-placeholder" style="aspect-ratio:16/9"><span>Developer Partner 4</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LEGACY ==================== -->
+<section class="section-padding" style="background:var(--bg)">
+  <div style="max-width:1000px;margin:0 auto;text-align:center">
+    <h2 class="fade-in" style="font-size:clamp(28px,5vw,64px);font-family:var(--font-playfair);color:var(--cream);margin-bottom:48px">Let&apos;s build your legacy</h2>
+
+    <div class="fade-in" style="margin-bottom:64px">
+      <p style="font-size:clamp(28px,4vw,52px);font-family:var(--font-playfair);color:var(--cream);line-height:1.2">The right property</p>
+      <p style="font-size:clamp(18px,2.5vw,32px);color:var(--text-secondary);font-family:var(--font-playfair);font-style:italic">can change your portfolio</p>
+      <p style="font-size:clamp(28px,4vw,52px);font-family:var(--font-playfair);color:var(--cream);line-height:1.2;margin-top:24px">The right advisor</p>
+      <p style="font-size:clamp(18px,2.5vw,32px);color:var(--text-secondary);font-family:var(--font-playfair);font-style:italic">can change your future.</p>
+    </div>
+
+    <p class="fade-in" style="color:var(--text-secondary);font-size:16px;line-height:1.7;max-width:640px;margin:0 auto 48px">Whether you&apos;re making your first investment, expanding your portfolio, or searching for a place to call home, we are here to guide every decision with clarity, confidence and long-term perspective.</p>
+
+    <p class="fade-in" style="font-family:var(--font-playfair);font-style:italic;color:var(--accent);font-size:18px">&ldquo;Let&apos;s build something that lasts.&rdquo;</p>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer style="background:var(--bg);border-top:1px solid var(--border-subtle)">
+  <div class="section-padding" style="max-width:1152px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px">
+      <div>
+        <p style="font-family:var(--font-playfair);color:var(--accent);font-size:24px;margin-bottom:8px">Bloomingbird</p>
+        <p style="color:var(--text-muted);font-size:14px">Real Estate</p>
+      </div>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:2">
+        <p>Dubai, UAE</p>
+        <a href="https://www.bloomingbirdrealestate.ae" style="display:block">www.bloomingbirdrealestate.ae</a>
+        <a href="mailto:admin@bloomingbirdre.ae" style="display:block">admin@bloomingbirdre.ae</a>
+      </div>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:2;text-align:right">
+        <a href="tel:+971565599600" style="display:block">+971 56 559 9600</a>
+        <a href="tel:+971504256348" style="display:block">+971 50 425 6348</a>
+      </div>
+    </div>
+
+    <div class="divider" style="margin:48px 0"></div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;color:var(--text-muted);font-size:12px">
+      <p>&copy; 2026 Bloomingbird Real Estate. All rights reserved.</p>
+      <p style="font-family:var(--font-space-mono)">Dubai, United Arab Emirates</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll animation script -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
