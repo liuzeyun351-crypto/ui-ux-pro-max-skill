@@ -69,6 +69,11 @@ CSV_CONFIG = {
         "file": "google-fonts.csv",
         "search_cols": ["Family", "Category", "Stroke", "Classifications", "Keywords", "Subsets", "Designers"],
         "output_cols": ["Family", "Category", "Stroke", "Classifications", "Styles", "Variable Axes", "Subsets", "Designers", "Popularity Rank", "Google Fonts URL"]
+    },
+    "video": {
+        "file": "video.csv",
+        "search_cols": ["Category", "Keywords", "Component", "Best For", "Library Recommendation"],
+        "output_cols": ["Category", "Component", "Best For", "Implementation", "Do", "Don't", "Library Recommendation", "Accessibility Notes"]
     }
 }
 
