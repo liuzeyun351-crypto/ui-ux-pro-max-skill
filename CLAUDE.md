@@ -19,6 +19,7 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain <domain> [-n <max
 - `color` - Color palettes by product type
 - `landing` - Page structure and CTA strategies
 - `chart` - Chart types and library recommendations
+- `video` - Video UI components, players, and accessibility patterns
 - `ux` - Best practices and anti-patterns
 
 **Stack search:**

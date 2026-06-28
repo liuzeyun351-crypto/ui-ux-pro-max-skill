@@ -52,6 +52,7 @@
 | 8 | Forms & Feedback | MEDIUM | `ux` | Visible labels, Error near field, Helper text, Progressive disclosure | Placeholder-only label, Errors only at top, Overwhelm upfront |
 | 9 | Navigation Patterns | HIGH | `ux` | Predictable back, Bottom nav ≤5, Deep linking | Overloaded nav, Broken back behavior, No deep links |
 | 10 | Charts & Data | LOW | `chart` | Legends, Tooltips, Accessible colors | Relying on color alone to convey meaning |
+| 11 | Video & Media | MEDIUM | `video` | Captions, Keyboard controls, No autoplay with sound | Autoplay with sound, Hidden controls on mobile, Flash-based players |
 
 ## Quick Reference
 

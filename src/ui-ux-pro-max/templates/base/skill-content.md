@@ -45,6 +45,7 @@ Use this skill when the user requests any of the following:
 | **Improve / optimize** | "Make this faster"、"Improve mobile experience" | Step 3 (domain search: ux, react) |
 | **Implement dark mode** | "Add dark mode support" | Step 3 (domain: style "dark mode") |
 | **Add charts / data viz** | "Add an analytics dashboard chart" | Step 3 (domain: chart) |
+| **Add video components** | "Add a video player"、"Background video hero" | Step 3 (domain: video) |
 | **Stack best practices** | "React performance tips"、"SwiftUI navigation" | Step 4 (stack search) |
 
 Follow this workflow:
@@ -127,6 +128,7 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n
 | Color palettes | `color` | `--domain color "entertainment vibrant"` |
 | Font pairings | `typography` | `--domain typography "playful modern"` |
 | Chart recommendations | `chart` | `--domain chart "real-time dashboard"` |
+| Video components | `video` | `--domain video "video player background"` |
 | UX best practices | `ux` | `--domain ux "animation accessibility"` |
 | Landing structure | `landing` | `--domain landing "hero social-proof"` |
 | React Native perf | `react` | `--domain react "rerender memo list"` |
@@ -155,6 +157,7 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack <stack>
 | `color` | Color palettes by product type | saas, ecommerce, healthcare, beauty, fintech, service |
 | `landing` | Page structure, CTA strategies | hero, hero-centric, testimonial, pricing, social-proof |
 | `chart` | Chart types, library recommendations | trend, comparison, timeline, funnel, pie |
+| `video` | Video UI components, players | video player, background video, captions, streaming, PiP |
 | `ux` | Best practices, anti-patterns | animation, accessibility, z-index, loading |
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
 | `web` | App interface guidelines (iOS/Android/React Native) | accessibilityLabel, touch targets, safe areas, Dynamic Type |
