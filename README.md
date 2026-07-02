@@ -273,7 +273,7 @@ Many users ask about the differences between the open-source and premium version
 * **Enterprise Architecture:** A more comprehensive and scalable Design Token architecture, built for large-scale team deployments.
 * **Priority Support:** Dedicated technical assistance for teams and professionals who need an uninterrupted full design workflow.
 
-👉 *For more details on upgrading to the Premium tier, visit [uipm.cc](https://uipm.cc).*
+👉 *For more details on upgrading to the Premium tier, visit [uupm.cc](https://uupm.cc).*
 
 ## Installation
 
