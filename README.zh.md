@@ -413,7 +413,7 @@ winget install Python.Python.3.12
 | **Angular** | Angular |
 | **PHP** | Laravel (Blade、Livewire、Inertia.js) |
 | **其他 Web** | Svelte、Astro、Three.js |
-| **桌面端** | JavaFX |
+| **桌面端** | JavaFX、WPF、WinUI 3、Avalonia、Uno Platform、UWP |
 | **iOS** | SwiftUI |
 | **Android** | Jetpack Compose |
 | **跨平台** | React Native、Flutter |
@@ -614,11 +614,10 @@ winget install Python.Python.3.12  # Windows
 
 ### 设计系统输出被截断 / 字段不完整
 
-使用 `--max-length` 标志增加（或取消）截断限制：
+人类可读输出会将超过 300 字符的长字段截断。使用 `--json` 获取完整、未截断的数据：
 
 ```bash
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS" --domain style --max-length 0
-#                                                                               ^ 0 = 不限制
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS" --domain style --json
 ```
 
 ---
