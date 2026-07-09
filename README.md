@@ -441,6 +441,13 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain char
 # RTL-aware design-system generation
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "Arabic e-commerce dashboard" --design-system --rtl -p "Ops Console"
 
+The `--rtl` mode now uses the `rtl_level` field for product/style/color entries.
+Supported levels:
+
+- `full` – native RTL-friendly
+- `partial` – needs minor RTL adjustments
+- `caveats` – usable with additional checks
+
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind

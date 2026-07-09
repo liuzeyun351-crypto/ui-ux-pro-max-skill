@@ -130,7 +130,8 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --varia
 
 ### RTL Design Support
 
-Use `--rtl` to prioritize RTL-compatible recommendations. You can combine it with
+Use `--rtl` to prioritize RTL-aware recommendations (`full`, `partial`, and
+`caveats`) from `styles`, `products`, and `colors`. You can combine it with
 `--design-system`.
 
 ```bash

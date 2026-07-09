@@ -18,12 +18,12 @@ CSV_CONFIG = {
     "style": {
         "file": "styles.csv",
         "search_cols": ["Style Category", "Keywords", "Best For", "Type", "AI Prompt Keywords"],
-        "output_cols": ["Style Category", "Type", "Keywords", "Primary Colors", "Effects & Animation", "Best For", "Light Mode ✓", "Dark Mode ✓", "Performance", "Accessibility", "Framework Compatibility", "Complexity", "AI Prompt Keywords", "CSS/Technical Keywords", "Implementation Checklist", "Design System Variables", "rtl_compatible"]
+        "output_cols": ["Style Category", "Type", "Keywords", "Primary Colors", "Effects & Animation", "Best For", "Light Mode ✓", "Dark Mode ✓", "Performance", "Accessibility", "Framework Compatibility", "Complexity", "AI Prompt Keywords", "CSS/Technical Keywords", "Implementation Checklist", "Design System Variables", "rtl_level", "rtl_compatible"]
     },
     "color": {
         "file": "colors.csv",
         "search_cols": ["Product Type", "Notes"],
-        "output_cols": ["Product Type", "Primary", "On Primary", "Secondary", "On Secondary", "Accent", "On Accent", "Background", "Foreground", "Card", "Card Foreground", "Muted", "Muted Foreground", "Border", "Destructive", "On Destructive", "Ring", "Notes", "rtl_compatible"]
+        "output_cols": ["Product Type", "Primary", "On Primary", "Secondary", "On Secondary", "Accent", "On Accent", "Background", "Foreground", "Card", "Card Foreground", "Muted", "Muted Foreground", "Border", "Destructive", "On Destructive", "Ring", "Notes", "rtl_level", "rtl_compatible"]
     },
     "chart": {
         "file": "charts.csv",
@@ -38,7 +38,7 @@ CSV_CONFIG = {
     "product": {
         "file": "products.csv",
         "search_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Key Considerations"],
-        "output_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Secondary Styles", "Landing Page Pattern", "Dashboard Style (if applicable)", "Color Palette Focus", "rtl_compatible"]
+        "output_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Secondary Styles", "Landing Page Pattern", "Dashboard Style (if applicable)", "Color Palette Focus", "rtl_level", "rtl_compatible"]
     },
     "ux": {
         "file": "ux-guidelines.csv",
@@ -109,6 +109,27 @@ _STACK_COLS = {
 }
 
 AVAILABLE_STACKS = list(STACK_CONFIG.keys())
+
+_RTL_LEVEL_LABELS = {"full", "partial", "caveats"}
+_RTL_LEVEL_ALIASES = {
+    "full": "full",
+    "partial": "partial",
+    "caveats": "caveats",
+    "caveat": "caveats",
+    "true": "full",
+    "t": "full",
+    "1": "full",
+    "yes": "full",
+    "y": "full",
+    "partial-support": "partial",
+    "partial support": "partial",
+    "warn": "caveats",
+    "false": "none",
+    "f": "none",
+    "0": "none",
+    "no": "none",
+    "n": "none",
+}
 
 
 # ============ BM25 IMPLEMENTATION ============
@@ -181,12 +202,42 @@ def _load_csv(filepath):
         return list(csv.DictReader(f))
 
 
+def _normalize_rtl_level(value) -> str:
+    """Normalize legacy or modern RTL metadata into a known level."""
+    if value is None:
+        return ""
+
+    raw = str(value).strip().lower()
+    if not raw:
+        return ""
+
+    return _RTL_LEVEL_ALIASES.get(raw, "")
+
+
+def _resolve_rtl_level(row: dict) -> str:
+    """Return rtl_level with backward-compatible fallback."""
+    level = _normalize_rtl_level(row.get("rtl_level"))
+    if level in _RTL_LEVEL_LABELS:
+        return level
+
+    legacy = _normalize_rtl_level(row.get("rtl_compatible"))
+    if legacy in _RTL_LEVEL_LABELS:
+        return legacy
+
+    # Keep old behavior where missing value defaults to true/compatible.
+    if not row.get("rtl_compatible") and not row.get("rtl_level"):
+        return "full"
+
+    if legacy == "none":
+        return ""
+
+    return "full"
+
+
 def _is_rtl_compatible(row: dict) -> bool:
     """Return True when a dataset row supports RTL-compatible rendering."""
-    raw = (row.get("rtl_compatible") or "").strip().lower()
-    if not raw:
-        return True
-    return raw in {"true", "1", "yes", "y", "t"}
+    level = _resolve_rtl_level(row)
+    return level in {"full", "partial", "caveats"}
 
 
 def _search_csv(filepath, search_cols, output_cols, query, max_results, rtl_only=False):
@@ -211,7 +262,10 @@ def _search_csv(filepath, search_cols, output_cols, query, max_results, rtl_only
             row = data[idx]
             if rtl_only and not _is_rtl_compatible(row):
                 continue
-            results.append({col: row.get(col, "") for col in output_cols if col in row})
+            result = {col: row.get(col, "") for col in output_cols if col in row}
+            if "rtl_level" in output_cols and "rtl_level" not in result:
+                result["rtl_level"] = _resolve_rtl_level(row)
+            results.append(result)
 
     return results
 
