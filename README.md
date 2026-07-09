@@ -438,6 +438,9 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain 
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
 
+# RTL-aware design-system generation
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "Arabic e-commerce dashboard" --design-system --rtl -p "Ops Console"
+
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
