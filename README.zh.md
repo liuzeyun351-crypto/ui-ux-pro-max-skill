@@ -339,21 +339,14 @@ uipro uninstall --global    # 移除全局安装
 
 ## 前置要求
 
-搜索脚本需要 Python 3.x。
+搜索脚本需要 Python 3.x（仅使用标准库 — 脚本不安装任何东西，也不进行网络请求）。
 
 ```bash
 # 检查是否已安装 Python
 python3 --version
-
-# macOS
-brew install python3
-
-# Ubuntu/Debian
-sudo apt update && sudo apt install python3
-
-# Windows
-winget install Python.Python.3.12
 ```
+
+如果未安装，请**你自己**从 [python.org](https://www.python.org/downloads/) 或通过系统包管理器（Homebrew、apt、winget）安装。这些安装步骤面向人类用户 — 使用此技能的 AI 代理不应在你的机器上安装软件，而应请你自行安装。
 
 ## 使用方式
 
@@ -594,23 +587,16 @@ uipro init --ai claude
 
 ### `npm install -g ui-ux-pro-max-cli` 失败，提示权限错误
 
-```bash
-# macOS/Linux — 使用 Node 版本管理器（推荐）或 sudo
-sudo npm install -g ui-ux-pro-max-cli
+使用 Node 版本管理器（推荐），或直接跳过全局安装：
 
-# 或使用 npx 而不全局安装
+```bash
+# 使用 npx 而不全局安装
 npx ui-ux-pro-max-cli init --ai claude
 ```
 
 ### 运行设计系统命令时找不到 Python
 
-搜索脚本需要 Python 3.x。请根据你的操作系统安装：
-
-```bash
-brew install python3        # macOS
-sudo apt install python3    # Ubuntu/Debian
-winget install Python.Python.3.12  # Windows
-```
+搜索脚本需要 Python 3.x。请从 [python.org](https://www.python.org/downloads/) 或通过系统包管理器（Homebrew、apt、winget）自行安装。AI 代理不应替你安装 — 它们被要求先征求你的意见。
 
 ### 设计系统输出被截断 / 字段不完整
 
