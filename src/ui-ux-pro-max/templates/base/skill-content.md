@@ -115,6 +115,19 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --varia
 - `--density` overrides the `--space-*` CSS variable table in the ASCII/markdown/MASTER.md output — use it for dashboards (high) vs. marketing pages (low) without hand-editing tokens.
 - Leaving a dial unset keeps that part of the output exactly as it was before (no behavior change).
 
+### RTL Design Support
+
+Use `--rtl` to prioritize RTL-aware recommendations (`full`, `partial`, and
+`caveats`) from `styles`, `products`, and `colors`. You can combine it with
+`--design-system`.
+
+```bash
+python3 skills/ui-ux-pro-max/scripts/search.py "arabic fintech dashboard" --design-system --rtl -p "Ops Console"
+```
+
+When `--rtl` is enabled with `--design-system`, the output includes an explicit
+"RTL Guidelines" section with direction, spacing, icon mirroring, and anti-patterns.
+
 **Example:**
 ```bash
 python3 skills/ui-ux-pro-max/scripts/search.py "internal analytics dashboard" --design-system --variance 8 --motion 7 --density 8 -p "Ops Console"

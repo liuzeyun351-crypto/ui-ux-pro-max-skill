@@ -75,6 +75,27 @@ def _resolve_dial(dial_name: str, value) -> dict:
     return None
 
 
+def _build_rtl_guidelines(enabled: bool) -> dict:
+    """Build RTL recommendations for design-system output."""
+    if not enabled:
+        return {"enabled": False}
+
+    return {
+        "enabled": True,
+        "direction": "rtl",
+        "text_align": "right",
+        "layout": "Use row-reverse / column-aware ordering where needed",
+        "spacing": "Swap left/right spacing tokens (padding-right/margin-right become left counterparts)",
+        "icon_mirroring": "Mirror directional icons (arrows, chevrons, progress bars, carousels)",
+        "anti_patterns": [
+            "Left-aligned timelines/charts without mirrored axis labels",
+            "Hardcoded left/right CSS (`left`, `margin-left`, `padding-left`) for layout",
+            "Left-to-right transitions or slides without direction awareness",
+            "Icon-only directional cues without mirrored variants",
+        ],
+    }
+
+
 # ============ DESIGN SYSTEM GENERATOR ============
 class DesignSystemGenerator:
     """Generates design system recommendations from aggregated searches."""
@@ -90,7 +111,7 @@ class DesignSystemGenerator:
         with open(filepath, 'r', encoding='utf-8') as f:
             return list(csv.DictReader(f))
 
-    def _multi_domain_search(self, query: str, style_priority: list = None) -> dict:
+    def _multi_domain_search(self, query: str, style_priority: list = None, rtl_only: bool = False) -> dict:
         """Execute searches across multiple domains."""
         results = {}
         for domain, config in SEARCH_CONFIG.items():
@@ -98,9 +119,9 @@ class DesignSystemGenerator:
                 # For style, also search with priority keywords
                 priority_query = " ".join(style_priority[:2]) if style_priority else query
                 combined_query = f"{query} {priority_query}"
-                results[domain] = search(combined_query, domain, config["max_results"])
+                results[domain] = search(combined_query, domain, config["max_results"], rtl_only=rtl_only)
             else:
-                results[domain] = search(query, domain, config["max_results"])
+                results[domain] = search(query, domain, config["max_results"], rtl_only=rtl_only)
         return results
 
     def _find_reasoning_rule(self, category: str) -> dict:
@@ -203,7 +224,8 @@ class DesignSystemGenerator:
         return search_result.get("results", [])
 
     def generate(self, query: str, project_name: str = None,
-                 variance: int = None, motion: int = None, density: int = None) -> dict:
+                 variance: int = None, motion: int = None, density: int = None,
+                 rtl: bool = False) -> dict:
         """Generate complete design system recommendation.
 
         variance/motion/density are optional 1-10 dials (see DIAL_TIERS) that bias
@@ -215,7 +237,7 @@ class DesignSystemGenerator:
         density_info = _resolve_dial("density", density)
 
         # Step 1: First search product to get category
-        product_result = search(query, "product", 1)
+        product_result = search(query, "product", 1, rtl_only=rtl)
         product_results = product_result.get("results", [])
         category = "General"
         if product_results:
@@ -232,7 +254,7 @@ class DesignSystemGenerator:
             effective_style_priority = variance_info["style_keywords"] + style_priority
 
         # Step 3: Multi-domain search with style priority hints
-        search_results = self._multi_domain_search(query, effective_style_priority)
+        search_results = self._multi_domain_search(query, effective_style_priority, rtl_only=rtl)
         search_results["product"] = product_result  # Reuse product search
 
         # Step 4: Select best matches from each domain using priority
@@ -314,14 +336,15 @@ class DesignSystemGenerator:
             "anti_patterns": reasoning.get("anti_patterns", ""),
             "decision_rules": reasoning.get("decision_rules", {}),
             "severity": reasoning.get("severity", "MEDIUM"),
-            "dials": {
+                "dials": {
                 "variance": variance_info["value"] if variance_info else None,
                 "variance_label": variance_info["label"] if variance_info else None,
                 "motion": motion_info["value"] if motion_info else None,
                 "motion_label": motion_info["label"] if motion_info else None,
                 "density": density_info["value"] if density_info else None,
                 "density_label": density_info["label"] if density_info else None,
-            },
+                },
+            "rtl": _build_rtl_guidelines(rtl),
             "motion_snippet": motion_snippet,
             "spacing_scale": density_info["spacing"] if density_info else None,
         }
@@ -371,6 +394,7 @@ def format_ascii_box(design_system: dict) -> str:
     anti_patterns = design_system.get("anti_patterns", "")
     dials = design_system.get("dials", {})
     motion_snippet = design_system.get("motion_snippet", {})
+    rtl = design_system.get("rtl", {})
 
     def wrap_text(text: str, prefix: str, width: int) -> list:
         """Wrap long text into multiple lines."""
@@ -413,6 +437,21 @@ def format_ascii_box(design_system: dict) -> str:
             lines.append(f"│  Motion:   {dials['motion']}/10 — {dials['motion_label']}".ljust(BOX_WIDTH) + "│")
         if dials.get("density") is not None:
             lines.append(f"│  Density:  {dials['density']}/10 — {dials['density_label']}".ljust(BOX_WIDTH) + "│")
+
+    # RTL section
+    if rtl.get("enabled"):
+        lines.append(section_header("RTL GUIDELINES", BOX_WIDTH + 1))
+        lines.append(f"│  Direction: {rtl.get('direction', 'rtl')}".ljust(BOX_WIDTH) + "│")
+        lines.append(f"│  Text align: {rtl.get('text_align', 'right')}".ljust(BOX_WIDTH) + "│")
+        lines.append(f"│  Layout: {rtl.get('layout', '')}".ljust(BOX_WIDTH) + "│")
+        lines.append(f"│  Spacing: {rtl.get('spacing', '')}".ljust(BOX_WIDTH) + "│")
+        lines.append(f"│  Icons: {rtl.get('icon_mirroring', '')}".ljust(BOX_WIDTH) + "│")
+        anti_items = rtl.get("anti_patterns", [])
+        if anti_items:
+            lines.append(f"│  Anti-patterns:".ljust(BOX_WIDTH) + "│")
+            for item in anti_items:
+                for line in wrap_text(f" - {item}", "│      ", BOX_WIDTH):
+                    lines.append(line.ljust(BOX_WIDTH) + "│")
 
     # Pattern section
     lines.append(section_header("PATTERN", BOX_WIDTH + 1))
@@ -534,6 +573,7 @@ def format_markdown(design_system: dict) -> str:
     anti_patterns = design_system.get("anti_patterns", "")
     dials = design_system.get("dials", {})
     motion_snippet = design_system.get("motion_snippet", {})
+    rtl = design_system.get("rtl", {})
 
     lines = []
     lines.append(f"## Design System: {project}")
@@ -548,6 +588,21 @@ def format_markdown(design_system: dict) -> str:
             lines.append(f"- **Motion:** {dials['motion']}/10 — {dials['motion_label']}")
         if dials.get("density") is not None:
             lines.append(f"- **Density:** {dials['density']}/10 — {dials['density_label']}")
+        lines.append("")
+
+    # RTL section
+    if rtl.get("enabled"):
+        lines.append("### RTL Guidelines")
+        lines.append(f"- **Direction:** {rtl.get('direction', 'rtl')}")
+        lines.append(f"- **Text align:** {rtl.get('text_align', 'right')}")
+        lines.append(f"- **Layout:** {rtl.get('layout', '')}")
+        lines.append(f"- **Spacing:** {rtl.get('spacing', '')}")
+        lines.append(f"- **Icons:** {rtl.get('icon_mirroring', '')}")
+        anti_patterns = rtl.get("anti_patterns", [])
+        if anti_patterns:
+            lines.append("- **Avoid:**")
+            for anti_pattern in anti_patterns:
+                lines.append(f"  - {anti_pattern}")
         lines.append("")
 
     # Pattern section
@@ -644,8 +699,13 @@ def format_markdown(design_system: dict) -> str:
     # Anti-patterns section
     if anti_patterns:
         lines.append("### Avoid (Anti-patterns)")
-        newline_bullet = '\n- '
-        lines.append(f"- {anti_patterns.replace(' + ', newline_bullet)}")
+        if isinstance(anti_patterns, list):
+            for anti_pattern in anti_patterns:
+                if anti_pattern:
+                    lines.append(f"- {anti_pattern}")
+        else:
+            newline_bullet = '\n- '
+            lines.append(f"- {str(anti_patterns).replace(' + ', newline_bullet)}")
         lines.append("")
 
     # Pre-Delivery Checklist section
@@ -665,7 +725,8 @@ def format_markdown(design_system: dict) -> str:
 # ============ MAIN ENTRY POINT ============
 def generate_design_system(query: str, project_name: str = None, output_format: str = "ascii",
                            persist: bool = False, page: str = None, output_dir: str = None,
-                           variance: int = None, motion: int = None, density: int = None) -> str:
+                           variance: int = None, motion: int = None, density: int = None,
+                           rtl: bool = False) -> str:
     """
     Main entry point for design system generation.
 
@@ -679,12 +740,20 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         variance: Optional 1-10 DESIGN_VARIANCE dial (1=centered/minimal, 10=bold/asymmetric)
         motion: Optional 1-10 MOTION_INTENSITY dial, pulls a matching GSAP snippet from motion.csv
         density: Optional 1-10 VISUAL_DENSITY dial, overrides the spacing scale (1=spacious, 10=dense)
+        rtl: Filter search to RTL-compatible recommendations only
 
     Returns:
         Formatted design system string
     """
     generator = DesignSystemGenerator()
-    design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density)
+    design_system = generator.generate(
+        query,
+        project_name,
+        variance=variance,
+        motion=motion,
+        density=density,
+        rtl=rtl,
+    )
 
     # Persist to files if requested
     if persist:
@@ -770,6 +839,7 @@ def format_master_md(design_system: dict) -> str:
     dials = design_system.get("dials", {})
     motion_snippet = design_system.get("motion_snippet", {})
     spacing_scale = design_system.get("spacing_scale")
+    rtl = design_system.get("rtl", {})
 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -845,6 +915,19 @@ def format_master_md(design_system: dict) -> str:
         lines.append("```css")
         lines.append(typography.get("css_import", ""))
         lines.append("```")
+        lines.append("")
+
+    # RTL section
+    if rtl.get("enabled"):
+        lines.append("### RTL Guidelines")
+        lines.append("")
+        lines.append(f"- **Direction:** {rtl.get('direction', 'rtl')}")
+        lines.append(f"- **Text align:** {rtl.get('text_align', 'right')}")
+        lines.append(f"- **Layout:** {rtl.get('layout', '')}")
+        lines.append(f"- **Spacing:** {rtl.get('spacing', '')}")
+        lines.append(f"- **Icons:** {rtl.get('icon_mirroring', '')}")
+        for anti_pattern in rtl.get("anti_patterns", []):
+            lines.append(f"- ⚠️ {anti_pattern}")
         lines.append("")
     
     # Spacing Variables (overridden by the VISUAL_DENSITY dial when set)

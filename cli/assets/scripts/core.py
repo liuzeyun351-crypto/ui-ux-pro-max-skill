@@ -18,12 +18,12 @@ CSV_CONFIG = {
     "style": {
         "file": "styles.csv",
         "search_cols": ["Style Category", "Keywords", "Best For", "Type", "AI Prompt Keywords"],
-        "output_cols": ["Style Category", "Type", "Keywords", "Primary Colors", "Effects & Animation", "Best For", "Light Mode ✓", "Dark Mode ✓", "Performance", "Accessibility", "Framework Compatibility", "Complexity", "AI Prompt Keywords", "CSS/Technical Keywords", "Implementation Checklist", "Design System Variables"]
+        "output_cols": ["Style Category", "Type", "Keywords", "Primary Colors", "Effects & Animation", "Best For", "Light Mode ✓", "Dark Mode ✓", "Performance", "Accessibility", "Framework Compatibility", "Complexity", "AI Prompt Keywords", "CSS/Technical Keywords", "Implementation Checklist", "Design System Variables", "rtl_compatible"]
     },
     "color": {
         "file": "colors.csv",
         "search_cols": ["Product Type", "Notes"],
-        "output_cols": ["Product Type", "Primary", "On Primary", "Secondary", "On Secondary", "Accent", "On Accent", "Background", "Foreground", "Card", "Card Foreground", "Muted", "Muted Foreground", "Border", "Destructive", "On Destructive", "Ring", "Notes"]
+        "output_cols": ["Product Type", "Primary", "On Primary", "Secondary", "On Secondary", "Accent", "On Accent", "Background", "Foreground", "Card", "Card Foreground", "Muted", "Muted Foreground", "Border", "Destructive", "On Destructive", "Ring", "Notes", "rtl_compatible"]
     },
     "chart": {
         "file": "charts.csv",
@@ -38,7 +38,7 @@ CSV_CONFIG = {
     "product": {
         "file": "products.csv",
         "search_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Key Considerations"],
-        "output_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Secondary Styles", "Landing Page Pattern", "Dashboard Style (if applicable)", "Color Palette Focus"]
+        "output_cols": ["Product Type", "Keywords", "Primary Style Recommendation", "Secondary Styles", "Landing Page Pattern", "Dashboard Style (if applicable)", "Color Palette Focus", "rtl_compatible"]
     },
     "ux": {
         "file": "ux-guidelines.csv",
@@ -181,7 +181,15 @@ def _load_csv(filepath):
         return list(csv.DictReader(f))
 
 
-def _search_csv(filepath, search_cols, output_cols, query, max_results):
+def _is_rtl_compatible(row: dict) -> bool:
+    """Return True when a dataset row supports RTL-compatible rendering."""
+    raw = (row.get("rtl_compatible") or "").strip().lower()
+    if not raw:
+        return True
+    return raw in {"true", "1", "yes", "y", "t"}
+
+
+def _search_csv(filepath, search_cols, output_cols, query, max_results, rtl_only=False):
     """Core search function using BM25"""
     if not filepath.exists():
         return []
@@ -201,6 +209,8 @@ def _search_csv(filepath, search_cols, output_cols, query, max_results):
     for idx, score in ranked[:max_results]:
         if score > 0:
             row = data[idx]
+            if rtl_only and not _is_rtl_compatible(row):
+                continue
             results.append({col: row.get(col, "") for col in output_cols if col in row})
 
     return results
@@ -230,7 +240,7 @@ def detect_domain(query):
     return best if scores[best] > 0 else "style"
 
 
-def search(query, domain=None, max_results=MAX_RESULTS):
+def search(query, domain=None, max_results=MAX_RESULTS, rtl_only=False):
     """Main search function with auto-domain detection"""
     if domain is None:
         domain = detect_domain(query)
@@ -241,7 +251,14 @@ def search(query, domain=None, max_results=MAX_RESULTS):
     if not filepath.exists():
         return {"error": f"File not found: {filepath}", "domain": domain}
 
-    results = _search_csv(filepath, config["search_cols"], config["output_cols"], query, max_results)
+    results = _search_csv(
+        filepath,
+        config["search_cols"],
+        config["output_cols"],
+        query,
+        max_results,
+        rtl_only=rtl_only,
+    )
 
     return {
         "domain": domain,
