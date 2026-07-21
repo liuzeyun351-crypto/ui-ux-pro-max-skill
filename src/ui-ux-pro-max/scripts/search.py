@@ -6,7 +6,7 @@ Usage: python search.py "<query>" [--domain <domain>] [--stack <stack>] [--max-r
        python search.py "<query>" --design-system [-p "Project Name"]
        python search.py "<query>" --design-system --persist [-p "Project Name"] [--page "dashboard"]
        python search.py "<query>" --design-system --variance 8 --motion 9 --density 7
-       python search.py "<query>" --rtl [--design-system]
+       python search.py "<query>" --rtl [full|partial|caveats|all] [--design-system]
 
 Domains: style, prompt, color, chart, landing, product, ux, typography, google-fonts, gsap
 Stacks: react, nextjs, vue, svelte, astro, swiftui, react-native, flutter, nuxtjs, nuxt-ui, html-tailwind, shadcn, jetpack-compose, threejs, angular, laravel, javafx, wpf, winui, avalonia, uno, uwp
@@ -71,7 +71,14 @@ if __name__ == "__main__":
     parser.add_argument("--design-system", "-ds", action="store_true", help="Generate complete design system recommendation")
     parser.add_argument("--project-name", "-p", type=str, default=None, help="Project name for design system output")
     parser.add_argument("--format", "-f", choices=["ascii", "markdown"], default="ascii", help="Output format for design system")
-    parser.add_argument("--rtl", action="store_true", help="Filter results to RTL-friendly entries in style/color/product")
+    parser.add_argument(
+        "--rtl",
+        nargs="?",
+        const="all",
+        default=None,
+        choices=["full", "partial", "caveats", "all"],
+        help="Filter results to RTL-aware entries in style/color/product. Use `--rtl full|partial|caveats|all` or `--rtl` (equivalent to `--rtl all`)."
+    )
     # Persistence (Master + Overrides pattern)
     parser.add_argument("--persist", action="store_true", help="Save design system to design-system/MASTER.md (creates hierarchical structure)")
     parser.add_argument("--page", type=str, default=None, help="Create page-specific override file in design-system/pages/")

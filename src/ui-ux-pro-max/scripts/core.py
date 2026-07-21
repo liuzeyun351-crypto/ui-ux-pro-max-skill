@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 from math import log
 from collections import defaultdict
+from typing import Optional
 
 # ============ CONFIGURATION ============
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -234,6 +235,53 @@ def _resolve_rtl_level(row: dict) -> str:
     return "full"
 
 
+def _normalize_rtl_filter(value) -> Optional[str]:
+    """Normalize CLI/API RTL filter into one of supported modes.
+
+    Supports both old boolean behavior and explicit values:
+    - None/False: no RTL filtering
+    - True: include all RTL-capable entries (equivalent to "all")
+    - "all": include all RTL-capable entries
+    - "full" / "partial" / "caveats": level-aware filter
+    """
+    if isinstance(value, bool):
+        return "all" if value else None
+
+    if value is None:
+        return None
+
+    raw = str(value).strip().lower()
+    if not raw:
+        return None
+
+    if raw == "all":
+        return "all"
+
+    return _normalize_rtl_level(raw)
+
+
+def _is_rtl_level_allowed(row: dict, rtl_filter: Optional[str]) -> bool:
+    """Return True when the row passes the requested RTL level filter."""
+    level = _resolve_rtl_level(row)
+
+    if not rtl_filter:
+        return True
+
+    if rtl_filter == "all":
+        return _is_rtl_compatible(row)
+
+    # Level-aware filters:
+    # full   -> only entries explicitly marked as full
+    # partial-> full + partial
+    # caveats-> full + partial + caveats
+    if rtl_filter == "full":
+        return level == "full"
+    if rtl_filter == "partial":
+        return level in {"full", "partial"}
+
+    return level in {"full", "partial", "caveats"}
+
+
 def _is_rtl_compatible(row: dict) -> bool:
     """Return True when a dataset row supports RTL-compatible rendering."""
     level = _resolve_rtl_level(row)
@@ -257,10 +305,11 @@ def _search_csv(filepath, search_cols, output_cols, query, max_results, rtl_only
 
     # Get top results with score > 0
     results = []
+    rtl_filter = _normalize_rtl_filter(rtl_only)
     for idx, score in ranked[:max_results]:
         if score > 0:
             row = data[idx]
-            if rtl_only and not _is_rtl_compatible(row):
+            if not _is_rtl_level_allowed(row, rtl_filter):
                 continue
             result = {col: row.get(col, "") for col in output_cols if col in row}
             if "rtl_level" in output_cols and "rtl_level" not in result:

@@ -439,14 +439,15 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain 
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
 
 # RTL-aware design-system generation
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "Arabic e-commerce dashboard" --design-system --rtl -p "Ops Console"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "Arabic e-commerce dashboard" --design-system --rtl partial -p "Ops Console"
 
 The `--rtl` mode now uses the `rtl_level` field for product/style/color entries.
 Supported levels:
 
 - `full` – native RTL-friendly
-- `partial` – needs minor RTL adjustments
+- `partial` – native or partially native with minor RTL adjustments
 - `caveats` – usable with additional checks
+- `all` – any row marked RTL-capable (includes full/partial/caveats)
 
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react

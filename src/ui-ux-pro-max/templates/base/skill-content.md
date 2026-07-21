@@ -130,12 +130,12 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --varia
 
 ### RTL Design Support
 
-Use `--rtl` to prioritize RTL-aware recommendations (`full`, `partial`, and
-`caveats`) from `styles`, `products`, and `colors`. You can combine it with
-`--design-system`.
+Use `--rtl` to prioritize RTL-aware recommendations from `styles`, `products`, and `colors`. You can pass:
+`--rtl full`, `--rtl partial`, `--rtl caveats`, `--rtl all`, or `--rtl` (equivalent to `--rtl all`).
+You can combine it with `--design-system`.
 
 ```bash
-python3 skills/ui-ux-pro-max/scripts/search.py "arabic fintech dashboard" --design-system --rtl -p "Ops Console"
+python3 skills/ui-ux-pro-max/scripts/search.py "arabic fintech dashboard" --design-system --rtl partial -p "Ops Console"
 ```
 
 When `--rtl` is enabled with `--design-system`, the output includes an explicit
