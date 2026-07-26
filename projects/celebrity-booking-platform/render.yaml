@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: aurum
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # paste your Postgres URL in the Render dashboard
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: AUTH_TRUST_HOST
+        value: "true"
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false

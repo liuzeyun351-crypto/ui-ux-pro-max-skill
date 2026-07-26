@@ -12,16 +12,32 @@ Prisma and Auth.js.
 
 ---
 
-## Quick start
+## Run it locally
 
 ```bash
 npm install
-npx prisma db push        # creates prisma/dev.db (SQLite)
-npx prisma db seed        # 27 talent profiles, bookings, invoices, messages, articles
-npm run dev               # http://localhost:3000
+npm run setup     # creates + seeds the database
+npm run dev       # http://localhost:3000
 ```
 
-No external services are required — the demo boots on SQLite with zero configuration.
+That's it. No external services — it boots on SQLite with zero configuration.
+(`npm run build` also self-provisions the database, so a host needs no extra steps.)
+
+## Put it online
+
+**→ [`docs/HOSTING.md`](docs/HOSTING.md) has click-by-click steps for Vercel,
+Netlify, Render, Docker and cPanel.**
+
+Two things trip up every first deploy, so they're worth stating here:
+
+1. **This is a full-stack app, not a static site.** Uploading files to a plain
+   web host serves nothing. It needs Node.js and a database.
+2. **Push this folder as its own repository.** If you point a host at the parent
+   monorepo it looks in the wrong directory, builds nothing, and you get a 404.
+
+On Vercel you need exactly four environment variables — `DATABASE_URL` (a free
+Neon Postgres), `AUTH_SECRET`, `AUTH_TRUST_HOST=true` and `NEXT_PUBLIC_APP_URL`.
+The build creates the schema and seeds the roster by itself.
 
 ### Demo accounts
 
@@ -148,7 +164,8 @@ npm run fetch:images # download freely-licensed talent photography
 |---|---|
 | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Folder map, data model, booking state machine, payments, real-time, security |
 | [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md) | Tokens, type scale, colour, motion, component inventory |
-| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Vercel, Docker, Postgres/Redis migration, environment variables |
+| [`docs/HOSTING.md`](docs/HOSTING.md) | **Step-by-step deploy guide + troubleshooting table** |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Environment variables, Postgres/Redis migration, go-live checklist |
 
 ## Licence
 

@@ -123,6 +123,43 @@ async function wikipediaLeadFile(name: string): Promise<string | null> {
   return `File:${page.pageimage}`;
 }
 
+/**
+ * Wikidata's P18 ("image") claim. For public figures this is the most reliable
+ * structured pointer to a Commons portrait, and it catches names whose
+ * Wikipedia article has no pageimage.
+ */
+async function wikidataImageFile(name: string): Promise<string | null> {
+  const search =
+    "https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json" +
+    `&language=en&type=item&limit=1&search=${encodeURIComponent(name)}`;
+  const found = await getJson<{ search?: { id: string }[] }>(search);
+  const id = found.search?.[0]?.id;
+  if (!id) return null;
+
+  const entity =
+    "https://www.wikidata.org/w/api.php?action=wbgetclaims&format=json" +
+    `&property=P18&entity=${id}`;
+  const data = await getJson<{
+    claims?: { P18?: { mainsnak?: { datavalue?: { value?: string } } }[] };
+  }>(entity);
+  const file = data.claims?.P18?.[0]?.mainsnak?.datavalue?.value;
+  return file ? `File:${file}` : null;
+}
+
+/** Files in the person's Commons category — a rich source for gallery shots. */
+async function commonsCategoryFiles(name: string, limit: number): Promise<string[]> {
+  const url =
+    "https://commons.wikimedia.org/w/api.php?action=query&format=json&formatversion=2" +
+    `&list=categorymembers&cmtype=file&cmlimit=${limit * 3}` +
+    `&cmtitle=${encodeURIComponent(`Category:${name}`)}`;
+  try {
+    const data = await getJson<{ query?: { categorymembers?: { title: string }[] } }>(url);
+    return (data.query?.categorymembers ?? []).map((m) => m.title);
+  } catch {
+    return [];
+  }
+}
+
 /** Free-licence image candidates from a Commons full-text search. */
 async function commonsSearchFiles(name: string, limit: number): Promise<string[]> {
   const url =
@@ -243,7 +280,8 @@ type Outcome =
 async function processCelebrity(
   c: SeedCelebrity,
   manifest: Manifest,
-  tmdbKey: string | undefined
+  tmdbKey: string | undefined,
+  overrides: Record<string, Override>
 ): Promise<Outcome> {
   if (!FORCE && manifest[c.slug]) {
     return { slug: c.slug, status: "kept", reason: "already fetched (use --force)" };
@@ -251,8 +289,27 @@ async function processCelebrity(
 
   let primary: { buffer: Buffer; credit: Credit } | null = null;
 
+  // 0. An explicit override wins over every discovered source
+  const override = overrides[c.slug];
+  if (override?.url) {
+    try {
+      primary = {
+        buffer: await download(override.url),
+        credit: {
+          credit: override.credit ?? "Supplied by site owner",
+          licence: override.licence ?? "Supplied — rights asserted by site owner",
+          licenceUrl: override.licenceUrl,
+          sourceUrl: override.sourceUrl ?? override.url,
+          source: "local",
+        },
+      };
+    } catch {
+      /* fall through to discovery */
+    }
+  }
+
   // 1. TMDB for screen talent
-  if (tmdbKey && TMDB_CATEGORIES.has(c.category)) {
+  if (!primary && tmdbKey && TMDB_CATEGORIES.has(c.category)) {
     try {
       const hit = await tmdbProfile(c.name, tmdbKey);
       if (hit) primary = { buffer: await download(hit.url), credit: hit.credit };
@@ -276,17 +333,36 @@ async function processCelebrity(
     }
   }
 
-  // 3. Commons search as a last resort for the portrait
+  // 3. Wikidata P18 — structured, and catches articles without a pageimage
   if (!primary) {
     try {
-      for (const title of await commonsSearchFiles(c.name, 1)) {
+      const fileTitle = await wikidataImageFile(c.name);
+      if (fileTitle) {
+        const resolved = await resolveCommonsFile(fileTitle);
+        if (resolved) {
+          primary = { buffer: await download(resolved.url), credit: resolved.credit };
+        }
+      }
+    } catch {
+      /* fall through */
+    }
+  }
+
+  // 4. The person's Commons category, then a full-text search
+  if (!primary) {
+    const candidates = [
+      ...(await commonsCategoryFiles(c.name, 4)),
+      ...(await commonsSearchFiles(c.name, 4).catch(() => [])),
+    ];
+    for (const title of candidates) {
+      try {
         const resolved = await resolveCommonsFile(title);
         if (!resolved) continue;
         primary = { buffer: await download(resolved.url), credit: resolved.credit };
         break;
+      } catch {
+        /* try the next candidate */
       }
-    } catch {
-      /* nothing usable */
     }
   }
 
@@ -304,7 +380,10 @@ async function processCelebrity(
   const gallery: NonNullable<ManifestEntry["gallery"]> = [];
   if (GALLERY_COUNT > 0) {
     try {
-      const titles = await commonsSearchFiles(c.name, GALLERY_COUNT);
+      const titles = [
+        ...(await commonsCategoryFiles(c.name, GALLERY_COUNT)),
+        ...(await commonsSearchFiles(c.name, GALLERY_COUNT).catch(() => [])),
+      ];
       for (const title of titles) {
         if (gallery.length >= GALLERY_COUNT) break;
         const resolved = await resolveCommonsFile(title);
@@ -340,6 +419,31 @@ async function processCelebrity(
 
 // ─────────────────────────── runner ───────────────────────────
 
+/**
+ * scripts/image-overrides.json lets you pin a specific image per slug:
+ *
+ *   { "adele": { "url": "https://…/photo.jpg", "credit": "…", "licence": "…" } }
+ *
+ * An override always wins and skips the licence gate — you are asserting you
+ * hold the rights to that file, so sourcing and licensing it is your call.
+ */
+interface Override {
+  url: string;
+  credit?: string;
+  licence?: string;
+  licenceUrl?: string;
+  sourceUrl?: string;
+}
+
+async function readOverrides(): Promise<Record<string, Override>> {
+  try {
+    const raw = await fs.readFile(path.join(process.cwd(), "scripts", "image-overrides.json"), "utf8");
+    return JSON.parse(raw) as Record<string, Override>;
+  } catch {
+    return {};
+  }
+}
+
 async function readManifest(): Promise<Manifest> {
   try {
     return JSON.parse(await fs.readFile(MANIFEST, "utf8")) as Manifest;
@@ -350,6 +454,7 @@ async function readManifest(): Promise<Manifest> {
 
 async function main() {
   const tmdbKey = process.env.TMDB_API_KEY?.trim() || undefined;
+  const overrides = await readOverrides();
   const roster = ONLY ? CELEBRITIES.filter((c) => c.slug === ONLY) : CELEBRITIES;
 
   if (roster.length === 0) {
@@ -373,7 +478,7 @@ async function main() {
         const c = queue.shift();
         if (!c) return;
         try {
-          const outcome = await processCelebrity(c, manifest, tmdbKey);
+          const outcome = await processCelebrity(c, manifest, tmdbKey, overrides);
           outcomes.push(outcome);
           const mark =
             outcome.status === "ok" ? "✓" : outcome.status === "kept" ? "·" : "○";
@@ -398,10 +503,22 @@ async function main() {
   const kept = outcomes.filter((o) => o.status === "kept").length;
   const skipped = outcomes.filter((o) => o.status === "skipped").length;
 
-  console.log(`\n${ok} fetched · ${kept} already present · ${skipped} using generated art`);
-  if (skipped > 0) {
+  // Coverage report — the number that matters is "with a photograph"
+  const covered = CELEBRITIES.filter((c) => manifest[c.slug]).length;
+  const missing = CELEBRITIES.filter((c) => !manifest[c.slug]);
+  console.log(`\n${ok} fetched · ${kept} already present · ${skipped} not resolved`);
+  console.log(
+    `Coverage: ${covered}/${CELEBRITIES.length} celebrities have a photograph` +
+      (covered === CELEBRITIES.length ? " ✓" : "")
+  );
+  if (missing.length > 0) {
+    console.log("\nNo freely-licensed image found for:");
+    for (const m of missing) console.log(`  · ${m.name} (${m.slug})`);
     console.log(
-      "Skipped names keep their generated portrait — the app renders correctly either way."
+      "\nThese keep their generated portrait, so no image is ever blank. To pin a\n" +
+        "specific photo, add it to scripts/image-overrides.json:\n" +
+        '  { "<slug>": { "url": "https://…/photo.jpg", "credit": "…", "licence": "…" } }\n' +
+        "then re-run with --force. Rights for supplied files are yours to hold."
     );
   }
   console.log(`Manifest: ${path.relative(process.cwd(), MANIFEST)}`);

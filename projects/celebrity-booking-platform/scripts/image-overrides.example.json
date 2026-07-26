@@ -1,0 +1,14 @@
+{
+  "_comment": [
+    "Copy to image-overrides.json to pin a specific photo for any celebrity.",
+    "An override always wins and skips the licence gate, so you are asserting",
+    "you hold the rights to that file. Then run: npm run fetch:images -- --force",
+    "Keys are the slugs from prisma/seed-data.ts (e.g. adele, burna-boy)."
+  ],
+  "adele": {
+    "url": "https://example.com/path/to/adele.jpg",
+    "credit": "Photographer name",
+    "licence": "Licensed press asset",
+    "sourceUrl": "https://example.com/press-kit"
+  }
+}

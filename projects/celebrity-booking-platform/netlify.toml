@@ -1,0 +1,11 @@
+# Netlify: set "Base directory" to this folder if you connected the whole
+# monorepo. The Next.js plugin is required — Next apps are not static sites.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

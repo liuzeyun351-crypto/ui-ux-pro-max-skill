@@ -15,7 +15,9 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "postinstall": "prisma generate",
-    "fetch:images": "tsx scripts/fetch-talent-images.ts"
+    "fetch:images": "tsx scripts/fetch-talent-images.ts",
+    "prebuild": "node scripts/ensure-db.mjs",
+    "setup": "npm install && node scripts/ensure-db.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
