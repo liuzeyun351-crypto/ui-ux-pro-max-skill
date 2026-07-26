@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { VerifiedSeal } from "@/components/ui/badge";
 import { AvailabilityDot } from "@/components/ui/rating";
 import { formatCount, formatMoneyCompact } from "@/lib/utils";
@@ -22,10 +22,10 @@ export function CelebrityCard({
       className="group relative block overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface outline-offset-4 transition-all duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-lift"
     >
       <div className="relative aspect-[3/4] overflow-hidden">
-        <PortraitArt
-          name={c.name}
-          hue={c.accentHue}
-          className="absolute inset-0 h-full w-full transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
+        <TalentImage
+          celebrity={c}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.05]"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           priority={eager}
         />
         {/* scrim for legibility */}

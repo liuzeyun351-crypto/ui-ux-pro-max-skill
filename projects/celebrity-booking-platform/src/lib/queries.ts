@@ -92,6 +92,7 @@ export function getCelebrityBySlug(slug: string) {
       },
       events: { where: { date: { gte: new Date() } }, orderBy: { date: "asc" }, take: 4 },
       availability_: { orderBy: { date: "asc" } },
+      media: { where: { kind: "gallery" }, orderBy: { createdAt: "asc" }, take: 3 },
     },
   });
 }

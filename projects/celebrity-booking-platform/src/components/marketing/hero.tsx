@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { TextReveal } from "@/components/motion/reveal";
 import { SearchBar } from "./search-bar";
 import { formatMoneyCompact } from "@/lib/utils";
@@ -13,6 +13,8 @@ export interface HeroCeleb {
   hue: number;
   category: string;
   feeFromCents: number;
+  /** JSON photo record from Celebrity.photo, when imagery has been fetched */
+  photo?: string | null;
 }
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -157,12 +159,14 @@ function CollageCard({
       style={{ animationDelay: floatDelay }}
     >
       <Link href={`/celebrities/${celeb.slug}`} tabIndex={-1}>
-        <PortraitArt
-          name={celeb.name}
-          hue={celeb.hue}
-          variant={variant}
-          className={`block w-full ${tall ? "h-72" : "h-48"}`}
-        />
+        <span className={`relative block w-full overflow-hidden ${tall ? "h-72" : "h-48"}`}>
+          <TalentImage
+            celebrity={{ name: celeb.name, accentHue: celeb.hue, photo: celeb.photo }}
+            variant={variant}
+            className="absolute inset-0 h-full w-full object-cover"
+            sizes="(max-width: 1024px) 0px, 220px"
+          />
+        </span>
         <CollageCaption {...celeb} />
       </Link>
     </motion.div>

@@ -26,6 +26,7 @@ const COLUMNS: { title: string; links: [string, string][] }[] = [
     links: [
       ["For managers", "/signin"],
       ["Client dashboard", "/dashboard"],
+      ["Image credits", "/credits"],
       ["Terms", "/legal/terms"],
       ["Privacy", "/legal/privacy"],
     ],
@@ -75,8 +76,12 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-4 border-t border-border pt-8 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Aurum Talent Group. A design & engineering demonstration.</p>
           <p className="max-w-xl leading-relaxed">
-            Demo platform: talent profiles use publicly known career facts with fictional fees and
-            generated placeholder artwork. No endorsement or affiliation is implied.
+            Demo platform: talent profiles pair publicly known career facts with fictional fees
+            and freely-licensed photography (see{" "}
+            <Link href="/credits" className="underline underline-offset-2 hover:text-gold">
+              image credits
+            </Link>
+            ). No endorsement or affiliation is implied.
           </p>
         </div>
       </div>

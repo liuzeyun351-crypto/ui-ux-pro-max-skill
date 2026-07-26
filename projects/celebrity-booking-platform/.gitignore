@@ -9,6 +9,9 @@ next-env.d.ts
 # production
 build/
 
+# fetched talent photography is intentionally NOT ignored — `npm run fetch:images`
+# output is committed so it travels with the repo and the deployment archive.
+
 # database
 prisma/dev.db
 prisma/dev.db-journal

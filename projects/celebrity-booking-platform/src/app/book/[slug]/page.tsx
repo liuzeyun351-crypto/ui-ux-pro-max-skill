@@ -47,6 +47,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             category: c.category.name,
             country: `${c.country.flag} ${c.country.name}`,
             verified: c.verified,
+            photo: c.photo,
             feeFromCents: c.feeFromCents,
             feeToCents: c.feeToCents,
             managerName: c.manager.user.name,

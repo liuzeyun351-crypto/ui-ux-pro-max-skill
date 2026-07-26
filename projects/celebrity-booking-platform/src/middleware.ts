@@ -7,8 +7,17 @@ import { rateLimit } from "@/lib/security/rate-limit";
  * Route guards (RBAC) + basic rate limiting on API surface.
  * Roles: USER < TALENT/MANAGER < ADMIN. See src/lib/types.ts.
  */
+/** Anything with a file extension is a static asset, never a guarded route. */
+const STATIC_ASSET = /\.[a-z0-9]{2,5}$/i;
+
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  // A guarded prefix must never swallow files served from public/. Talent
+  // photography lives at /media/talent/** precisely to stay clear of the
+  // /talent console namespace, but this guard makes the rule structural: an
+  // asset can never be redirected to /signin, which would break it silently.
+  if (STATIC_ASSET.test(pathname)) return NextResponse.next();
 
   // Rate-limit API + auth endpoints per IP
   if (pathname.startsWith("/api/")) {

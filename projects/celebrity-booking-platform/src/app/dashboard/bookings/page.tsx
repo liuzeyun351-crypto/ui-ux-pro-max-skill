@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/dashboard/shell";
 import { StatusBadge, BOOKING_PIPELINE } from "@/components/dashboard/status-badge";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { ButtonLink, ArrowGlyph } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -47,10 +47,10 @@ export default async function BookingsPage() {
             >
               <summary className="flex cursor-pointer list-none items-center gap-5 p-5 transition-colors hover:bg-surface-raised/50 [&::-webkit-details-marker]:hidden">
                 <div className="relative hidden size-16 shrink-0 overflow-hidden rounded-[var(--radius-md)] border border-border sm:block">
-                  <PortraitArt
-                    name={b.celebrity.name}
-                    hue={b.celebrity.accentHue}
-                    className="absolute inset-0 h-full w-full"
+                  <TalentImage
+                    celebrity={b.celebrity}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    sizes="64px"
                   />
                 </div>
                 <div className="min-w-0 flex-1">

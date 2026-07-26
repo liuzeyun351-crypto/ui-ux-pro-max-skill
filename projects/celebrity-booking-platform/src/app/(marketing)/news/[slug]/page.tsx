@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BannerArt } from "@/components/art/PortraitArt";
+import { ArticleImage } from "@/components/art/TalentImage";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
 import { Reveal } from "@/components/motion/reveal";
 import { db } from "@/lib/db";
@@ -65,7 +65,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <Reveal className="mx-auto mt-10 max-w-5xl px-5 sm:px-8">
         <div className="relative aspect-[21/9] overflow-hidden rounded-[var(--radius-xl)] border border-border">
-          <BannerArt title={article.title} hue={article.heroHue} className="absolute inset-0 h-full w-full" />
+          <ArticleImage
+            title={article.title}
+            hue={article.heroHue}
+            celebrity={article.celebrity}
+            priority
+            sizes="100vw"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
       </Reveal>
 

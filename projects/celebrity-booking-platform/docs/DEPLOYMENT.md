@@ -11,11 +11,26 @@
 | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | no | Unset ⇒ the mock payment rail |
 | `PAYPAL_CLIENT_ID` / `PAYPAL_CLIENT_SECRET` | no | Same |
 | `REDIS_URL` | no | Unset ⇒ in-memory rate limiting (single instance only) |
+| `TMDB_API_KEY` | no | Enables TMDB headshots for screen talent in `fetch:images` |
 
 `.env` in the repo holds safe demo defaults. Never put production secrets there — use
 `.env.production` (gitignored) or your platform's secret store.
 
 ---
+
+## Talent photography (run before building)
+
+The repository ships with generated artwork. To deploy with real photographs,
+run this once and commit the result — the files are intentionally not gitignored
+so they travel with the repo, the Docker `COPY public` step and any archive:
+
+```bash
+npm run fetch:images
+npx prisma db seed
+```
+
+Optional: set `TMDB_API_KEY` in `.env` first for better screen-talent headshots.
+Skipping this step is safe; every surface falls back to generated art.
 
 ## Option 1 — Vercel (fastest)
 
@@ -100,8 +115,9 @@ changes. Redis is also the natural home for search caching and session storage a
 
 **Before launch**
 
-- [ ] Replace generated `PortraitArt` with licensed photography via `next/image`, and
-      remove the demo disclaimers in the footer and profile gallery.
+- [ ] Run `npm run fetch:images`, or replace `public/media/talent/` with licensed
+      press photography and update `manifest.json`. Verify `/credits` lists every
+      image with a correct author and licence.
 - [ ] Replace demo booking fees, availability and reviews with real management data.
 - [ ] Wire real payment providers (`src/lib/payments/index.ts`) and register webhooks.
 - [ ] Connect an email provider to `src/emails/templates.ts` (Resend, SES or Postmark).

@@ -36,13 +36,15 @@ src/
 │   ├── ui/                       # design-system primitives
 │   ├── motion/                   # Reveal, Stagger, TextReveal, Magnetic, Tilt, Parallax, CountUp
 │   ├── marketing/, celebrity/, booking/, dashboard/, layout/, auth/
-│   └── art/PortraitArt.tsx       # generated placeholder artwork
+│   └── art/                      # TalentImage.tsx (photo-or-art decision point)
+│                                 #   + PortraitArt.tsx (generated fallback)
 ├── lib/
 │   ├── db.ts, auth.ts, queries.ts, talent.ts, types.ts, utils.ts
 │   ├── actions/                  # server actions (booking, messages, availability, account)
 │   ├── payments/                 # provider interface, registry, escrow rules
 │   ├── security/rate-limit.ts
 │   └── content/faq.ts
+│   └── photo.ts                  # getPhoto/formatCredit helpers
 ├── emails/templates.ts           # seven transactional templates
 ├── styles/globals.css            # tokens, utilities, keyframes
 └── middleware.ts                 # RBAC guards + API rate limiting
@@ -124,6 +126,32 @@ The payload contract is deliberately transport-agnostic, so production swaps the
 indicators, voice notes and video calls are modelled in the schema (`Message.kind`
 supports `text | file | voice | system`) and left as documented architecture rather than
 half-built features.
+
+## Imagery
+
+Talent imagery has two states and one decision point.
+
+`src/components/art/TalentImage.tsx` is the only component that chooses: it
+renders `next/image` when `Celebrity.photo` holds a record, and the generated
+`PortraitArt` when it does not. Every celebrity image in the app routes through
+it, so adding or removing photography never touches a page.
+
+`scripts/fetch-talent-images.ts` populates `public/media/talent/` from Wikipedia,
+Wikimedia Commons and (optionally) TMDB, cropping a 3:4 portrait, a 16:9 banner
+and gallery tiles with `sharp`, plus a 20px LQIP used as the blur placeholder. It
+writes `manifest.json`, which the seed reads into `Celebrity.photo` (denormalised
+JSON, so the directory needs no join) and `Media` rows (full provenance for
+`/credits` and the admin media manager).
+
+`scripts/licence.ts` is the gate: public domain, CC0, CC BY and CC BY-SA pass;
+non-commercial, no-derivatives, fair-use and unidentifiable licences are
+rejected, and the celebrity keeps generated art. Rejection is never an error.
+
+**Assets live under `/media/**`, never `/talent/**`.** `/talent` is the
+authenticated console namespace — middleware would redirect image requests to
+`/signin` and the optimizer would fail with `received null`. `middleware.ts`
+additionally short-circuits any path with a file extension so the collision
+cannot recur.
 
 ## Security
 

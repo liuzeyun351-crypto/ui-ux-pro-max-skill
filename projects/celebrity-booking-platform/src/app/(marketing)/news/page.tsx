@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BannerArt } from "@/components/art/PortraitArt";
+import { ArticleImage } from "@/components/art/TalentImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { getArticles } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
@@ -34,10 +34,13 @@ export default async function NewsIndex() {
             className="group mb-14 grid grid-cols-1 gap-8 overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface transition-all duration-500 hover:border-gold/40 hover:shadow-lift lg:grid-cols-2"
           >
             <div className="relative aspect-[16/9] overflow-hidden lg:aspect-auto">
-              <BannerArt
+              <ArticleImage
                 title={lead.title}
                 hue={lead.heroHue}
-                className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105"
+                celebrity={lead.celebrity}
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="flex flex-col justify-center p-8 lg:p-12">
@@ -64,10 +67,12 @@ export default async function NewsIndex() {
               className="group block h-full overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift"
             >
               <div className="relative aspect-[16/9] overflow-hidden">
-                <BannerArt
+                <ArticleImage
                   title={a.title}
                   hue={a.heroHue}
-                  className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105"
+                  celebrity={a.celebrity}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">

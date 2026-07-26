@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { AvailabilityCalendar } from "@/components/celebrity/availability-calendar";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
@@ -16,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getCelebrityBySlug, getRelatedCelebrities } from "@/lib/queries";
+import { getPhoto, formatCredit } from "@/lib/photo";
 import { formatCount, formatDate, formatMoney, formatMoneyCompact } from "@/lib/utils";
 import { parseJson, type Award, type FaqItem, type Social, type Work } from "@/lib/types";
 import { db } from "@/lib/db";
@@ -57,6 +60,23 @@ export default async function CelebrityProfile({
   if (!c) notFound();
 
   const related = await getRelatedCelebrities(c.categoryId, c.id);
+  const photo = getPhoto(c);
+
+  // Gallery: real photographs first, padded with generated art to a full grid
+  const galleryTiles: (
+    | { kind: "photo"; url: string; alt: string; credit?: string | null; licence?: string | null }
+    | { kind: "art" }
+  )[] = [
+    ...(photo ? [{ kind: "photo" as const, url: photo.portrait, alt: `Photograph of ${c.name}`, credit: photo.credit, licence: photo.licence }] : []),
+    ...c.media.map((m) => ({
+      kind: "photo" as const,
+      url: m.url,
+      alt: m.alt,
+      credit: m.credit,
+      licence: m.licence,
+    })),
+  ];
+  while (galleryTiles.length < 4) galleryTiles.push({ kind: "art" as const });
   const achievements = parseJson<string[]>(c.achievements, []);
   const awards = parseJson<Award[]>(c.awards, []);
   const works = parseJson<Work[]>(c.works, []);
@@ -95,7 +115,14 @@ export default async function CelebrityProfile({
       {/* ── Cinematic hero ── */}
       <section className="grain relative isolate overflow-hidden bg-background-deep">
         <div aria-hidden className="absolute inset-0">
-          <PortraitArt name={c.name} hue={c.accentHue} variant={9} className="h-full w-full opacity-80" />
+          <TalentImage
+            celebrity={c}
+            variant={9}
+            wide
+            priority
+            sizes="100vw"
+            className="h-full w-full object-cover opacity-80"
+          />
           {/* legibility scrims: vertical fade to page, then a left wash under the copy */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[color-mix(in_oklch,var(--bg)_55%,transparent)] to-[color-mix(in_oklch,var(--bg)_20%,transparent)]" />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-[color-mix(in_oklch,var(--bg)_35%,transparent)] to-transparent" />
@@ -142,6 +169,39 @@ export default async function CelebrityProfile({
                 </Badge>
               ))}
             </Reveal>
+
+            {/* Attribution for the hero photograph — a CC BY / CC BY-SA obligation */}
+            {photo?.credit && (
+              <p className="mt-8 text-[11px] leading-relaxed text-faint">
+                Photo: {formatCredit(photo)}
+                {photo.sourceUrl && (
+                  <>
+                    {" · "}
+                    <a
+                      href={photo.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 hover:text-gold"
+                    >
+                      source
+                    </a>
+                  </>
+                )}
+                {photo.licenceUrl && (
+                  <>
+                    {" · "}
+                    <a
+                      href={photo.licenceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 hover:text-gold"
+                    >
+                      licence
+                    </a>
+                  </>
+                )}
+              </p>
+            )}
           </div>
 
           {/* Sticky booking rail */}
@@ -284,21 +344,50 @@ export default async function CelebrityProfile({
             </h2>
           </Reveal>
           <Stagger className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {[1, 2, 3, 4].map((v) => (
-              <StaggerItem key={v} className={v === 1 ? "col-span-2 row-span-2" : ""}>
-                <div className="group relative h-full min-h-40 overflow-hidden rounded-[var(--radius-lg)] border border-border">
-                  <PortraitArt
-                    name={c.name}
-                    hue={(c.accentHue + v * 25) % 360}
-                    variant={v + 2}
-                    className="absolute inset-0 h-full w-full transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
-                  />
-                </div>
+            {galleryTiles.map((tile, i) => (
+              <StaggerItem key={i} className={i === 0 ? "col-span-2 row-span-2" : ""}>
+                <figure className="group relative h-full min-h-40 overflow-hidden rounded-[var(--radius-lg)] border border-border">
+                  {tile.kind === "photo" ? (
+                    <Image
+                      src={tile.url}
+                      alt={tile.alt}
+                      fill
+                      sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
+                      className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
+                    />
+                  ) : (
+                    <PortraitArt
+                      name={c.name}
+                      hue={(c.accentHue + i * 25) % 360}
+                      variant={i + 2}
+                      className="absolute inset-0 h-full w-full transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
+                    />
+                  )}
+                  {tile.kind === "photo" && tile.credit && (
+                    <figcaption className="absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-3 py-2 text-[10px] text-white/70">
+                      {tile.credit}
+                      {tile.licence ? ` · ${tile.licence}` : ""}
+                    </figcaption>
+                  )}
+                </figure>
               </StaggerItem>
             ))}
           </Stagger>
           <p className="mt-4 text-xs text-faint">
-            Generated placeholder artwork — the production platform renders licensed photography here.
+            {photo ? (
+              <>
+                Freely-licensed photography — see{" "}
+                <Link href="/credits" className="underline underline-offset-4 hover:text-gold">
+                  image credits
+                </Link>
+                . Tiles without a photograph use generated artwork.
+              </>
+            ) : (
+              <>
+                Generated artwork — run <code className="text-gold">npm run fetch:images</code> to
+                populate licensed photography.
+              </>
+            )}
           </p>
         </section>
 

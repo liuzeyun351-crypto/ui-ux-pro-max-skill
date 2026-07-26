@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/dashboard/shell";
 import { AreaChart, BarList, StatTile } from "@/components/dashboard/charts";
 import { StatusBadge } from "@/components/dashboard/status-badge";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { resolveTalentContext, revenueSeries } from "@/lib/talent";
@@ -139,11 +139,12 @@ export default async function TalentOverview() {
       <section aria-label="Profile artwork" className="mt-8 grid grid-cols-4 gap-3">
         {[0, 3, 4, 5].map((v) => (
           <div key={v} className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-md)] border border-border">
-            <PortraitArt
-              name={celebrity.name}
-              hue={(celebrity.accentHue + v * 20) % 360}
+            <TalentImage
+              celebrity={{ ...celebrity, accentHue: (celebrity.accentHue + v * 20) % 360 }}
               variant={v}
-              className="absolute inset-0 h-full w-full"
+              wide
+              className="absolute inset-0 h-full w-full object-cover"
+              sizes="(max-width: 640px) 25vw, 200px"
             />
           </div>
         ))}

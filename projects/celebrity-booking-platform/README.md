@@ -76,17 +76,53 @@ buttons for each persona.
 
 ---
 
+## Real talent photography
+
+Profiles ship with generated artwork. To replace it with **real photographs of
+the real people**, run one command:
+
+```bash
+npm run fetch:images     # pulls freely-licensed photos into public/media/talent/
+npx prisma db seed       # loads them (and their credits) into the database
+```
+
+That is the whole step. Everything else — cropping, blur placeholders, responsive
+`next/image` sizes, attribution UI — is already wired.
+
+| Flag | Effect |
+|---|---|
+| `--only=<slug>` | Fetch a single celebrity |
+| `--force` | Re-fetch names that already have images |
+| `--gallery=0` | Portraits only, skip gallery tiles |
+
+**Sources.** Wikipedia's article lead image and Wikimedia Commons for everyone;
+optionally The Movie Database for screen talent when `TMDB_API_KEY` is set in
+`.env` (better, more consistent headshots for actors — note TMDB's terms are
+non-commercial and need review before a real launch).
+
+**Only free licences are accepted** — public domain, CC0, CC BY and CC BY-SA.
+`scripts/licence.ts` rejects non-commercial, no-derivatives, fair-use and
+anything it cannot positively identify; rejected names simply keep their
+generated portrait. Photographer and licence are captured for every file and
+displayed on the profile and at `/credits`, which is what CC BY-SA requires.
+
+**Supplying your own press assets** works too — drop files into
+`public/media/talent/` and add manifest entries. See that folder's README.
+
+If you never run the fetch, nothing breaks: every surface falls back to the
+generated artwork it ships with.
+
 ## Demo data — important
 
 Talent profiles use **real public figures** with factual, publicly known career
 information (awards, works, achievements). Everything commercial is **fictional**:
 booking fees, availability, ratings, reviews, bookings, invoices and messages.
 
-**All imagery is generated placeholder artwork.** Rather than use photographs the demo
-has no licence for, `src/components/art/PortraitArt.tsx` renders a deterministic
-cinematic composition per person — a lit stage, spotlight beams, contour lines and a
-serif monogram — each labelled `AURUM · DEMO ARTWORK` along its edge. Swap this component
-for `next/image` with licensed assets in production.
+**Imagery** is either a freely-licensed photograph (after `npm run fetch:images`, with
+the photographer and licence credited on the profile and at `/credits`) or, when no
+free photograph is available, a deterministic generated composition from
+`src/components/art/PortraitArt.tsx` — a lit stage, spotlight beams and a serif
+monogram, labelled `AURUM · DEMO ARTWORK` along its edge.
 
 **No endorsement or affiliation by any individual is implied.**
 
@@ -103,6 +139,7 @@ npm run lint         # eslint
 npm test             # vitest unit tests
 npm run test:e2e     # playwright smoke suite
 npm run db:reset     # drop, push and reseed the demo database
+npm run fetch:images # download freely-licensed talent photography
 ```
 
 ## Documentation

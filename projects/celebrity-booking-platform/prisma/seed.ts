@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import {
@@ -8,6 +10,34 @@ import {
 } from "./seed-data";
 
 const db = new PrismaClient();
+
+/**
+ * Real photography written by `npm run fetch:images`. Absent on a fresh clone,
+ * in which case every celebrity keeps its generated portrait — the seed and the
+ * UI both treat imagery as optional.
+ */
+interface PhotoManifestEntry {
+  portrait: string;
+  wide?: string;
+  blur?: string;
+  width?: number;
+  height?: number;
+  credit?: string;
+  licence?: string;
+  licenceUrl?: string;
+  sourceUrl?: string;
+  source?: string;
+  gallery?: { url: string; credit?: string; licence?: string; sourceUrl?: string }[];
+}
+
+function loadPhotoManifest(): Record<string, PhotoManifestEntry> {
+  const file = path.join(process.cwd(), "public", "media", "talent", "manifest.json");
+  try {
+    return JSON.parse(fs.readFileSync(file, "utf8")) as Record<string, PhotoManifestEntry>;
+  } catch {
+    return {};
+  }
+}
 
 // Deterministic PRNG so every seed run produces the same demo world
 function mulberry32(seed: number) {
@@ -119,6 +149,13 @@ async function main() {
   await db.user.deleteMany();
 
   const password = await bcrypt.hash("aurum-demo", 10);
+  const photos = loadPhotoManifest();
+  const photoCount = Object.keys(photos).length;
+  console.log(
+    photoCount > 0
+      ? `Photography: ${photoCount} freely-licensed portraits found`
+      : "Photography: none yet — run `npm run fetch:images` (generated art in use)"
+  );
 
   // ── Demo accounts, one per role ──
   const [client, admin] = await Promise.all([
@@ -211,10 +248,23 @@ async function main() {
 
   const celebs: Record<string, { id: string; name: string; slug: string }> = {};
   for (const c of CELEBRITIES) {
+    const photo = photos[c.slug];
     const created = await db.celebrity.create({
       data: {
         slug: c.slug,
         name: c.name,
+        photo: photo
+          ? JSON.stringify({
+              portrait: photo.portrait,
+              wide: photo.wide,
+              blur: photo.blur,
+              credit: photo.credit,
+              licence: photo.licence,
+              licenceUrl: photo.licenceUrl,
+              sourceUrl: photo.sourceUrl,
+              source: photo.source,
+            })
+          : null,
         userId: c.slug === "burna-boy" ? talentUser.id : undefined,
         tagline: c.tagline,
         bio: c.bio,
@@ -241,6 +291,40 @@ async function main() {
       },
     });
     celebs[c.slug] = created;
+
+    // Media rows carry provenance for the /credits page and admin media manager
+    if (photo) {
+      await db.media.create({
+        data: {
+          celebrityId: created.id,
+          kind: "portrait",
+          url: photo.portrait,
+          alt: `Photograph of ${c.name}`,
+          width: photo.width,
+          height: photo.height,
+          credit: photo.credit,
+          licence: photo.licence,
+          licenceUrl: photo.licenceUrl,
+          sourceUrl: photo.sourceUrl,
+          source: photo.source,
+          blurDataUrl: photo.blur,
+        },
+      });
+      for (const g of photo.gallery ?? []) {
+        await db.media.create({
+          data: {
+            celebrityId: created.id,
+            kind: "gallery",
+            url: g.url,
+            alt: `Photograph of ${c.name}`,
+            credit: g.credit,
+            licence: g.licence,
+            sourceUrl: g.sourceUrl,
+            source: photo.source,
+          },
+        });
+      }
+    }
 
     // 90 days of availability, character depends on headline availability state
     const openBias = c.availability === "available" ? 0.72 : c.availability === "limited" ? 0.4 : 0.12;

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { AvailabilityCalendar, type DaySlot } from "@/components/celebrity/availability-calendar";
 import { Button, ButtonLink, ArrowGlyph } from "@/components/ui/button";
 import { Input, Label, Textarea, FieldError, FieldHint } from "@/components/ui/input";
@@ -21,6 +21,7 @@ export interface WizardCelebrity {
   category: string;
   country: string;
   verified: boolean;
+  photo?: string | null;
   feeFromCents: number;
   feeToCents: number;
   managerName: string;
@@ -468,7 +469,11 @@ function StepTalent({ celebrity: c }: { celebrity: WizardCelebrity }) {
     >
       <div className="flex max-w-2xl flex-col gap-6 rounded-[var(--radius-xl)] border border-border bg-surface p-6 sm:flex-row">
         <div className="relative h-48 w-36 shrink-0 overflow-hidden rounded-[var(--radius-lg)] border border-border">
-          <PortraitArt name={c.name} hue={c.hue} className="absolute inset-0 h-full w-full" />
+          <TalentImage
+            celebrity={{ name: c.name, accentHue: c.hue, photo: c.photo }}
+            className="absolute inset-0 h-full w-full object-cover"
+            sizes="144px"
+          />
         </div>
         <div className="min-w-0">
           <p className="flex items-center gap-2 font-display text-3xl font-medium text-foreground">

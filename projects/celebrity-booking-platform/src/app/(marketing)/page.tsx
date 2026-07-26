@@ -9,7 +9,7 @@ import { Testimonials } from "@/components/marketing/testimonials";
 import { FaqSection } from "@/components/marketing/faq-section";
 import { NewsletterForm } from "@/components/marketing/newsletter-form";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
-import { BannerArt } from "@/components/art/PortraitArt";
+import { ArticleImage } from "@/components/art/TalentImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink, ArrowGlyph } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
@@ -45,6 +45,7 @@ export default async function HomePage() {
     hue: c.accentHue,
     category: c.category.name,
     feeFromCents: c.feeFromCents,
+    photo: c.photo,
   }));
 
   return (
@@ -141,10 +142,12 @@ export default async function HomePage() {
                 className="group flex items-stretch gap-5 overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface transition-all duration-400 hover:border-gold/40 hover:shadow-lift"
               >
                 <div className="relative w-28 shrink-0 overflow-hidden sm:w-36">
-                  <BannerArt
+                  <ArticleImage
                     title={e.title}
                     hue={e.celebrity.accentHue}
-                    className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105"
+                    celebrity={e.celebrity}
+                    sizes="(max-width: 640px) 112px, 144px"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col justify-center py-5 pr-5">
@@ -233,10 +236,12 @@ export default async function HomePage() {
                 className="group block overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
-                  <BannerArt
+                  <ArticleImage
                     title={a.title}
                     hue={a.heroHue}
-                    className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105"
+                    celebrity={a.celebrity}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">

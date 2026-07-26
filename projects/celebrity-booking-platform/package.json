@@ -2,7 +2,7 @@
   "name": "aurum-platform",
   "version": "1.0.0",
   "private": true,
-  "description": "Aurum — luxury celebrity booking & talent management platform (demo)",
+  "description": "Aurum \u2014 luxury celebrity booking & talent management platform (demo)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +14,8 @@
     "db:reset": "rm -f prisma/dev.db && prisma db push && prisma db seed",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "fetch:images": "tsx scripts/fetch-talent-images.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -47,6 +48,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
+    "sharp": "^0.34.0",
     "tailwind-merge": "^2.6.0",
     "zod": "^3.24.1"
   },

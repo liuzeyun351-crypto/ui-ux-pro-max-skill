@@ -130,6 +130,11 @@ model Celebrity {
   yearsActive    Int      @default(10)
   // Accent hue 0-360 used to art-direct this talent's generated portrait & gradients
   accentHue      Int      @default(41)
+  // Freely-licensed photography fetched by scripts/fetch-talent-images.ts, as
+  // JSON {portrait, wide, blur, credit, licence, licenceUrl, sourceUrl, source}.
+  // Null until `npm run fetch:images` has run — the UI falls back to generated
+  // art. Denormalised here so the directory listing needs no join.
+  photo          String?
   achievements   String // JSON string[]
   awards         String // JSON {name, year, work?}[]
   works          String // JSON {title, year, kind: film|album|book|show|event, meta?}[]
@@ -296,7 +301,18 @@ model Media {
   alt         String
   width       Int?
   height      Int?
+  // Provenance. CC BY and CC BY-SA oblige us to name the author and licence
+  // wherever the image appears, so it travels with the file, not in a comment.
+  credit      String?
+  licence     String?
+  licenceUrl  String?
+  sourceUrl   String?
+  // Source: wikimedia | tmdb | local
+  source      String?
+  blurDataUrl String?
   createdAt   DateTime  @default(now())
+
+  @@index([celebrityId, kind])
 }
 
 model Event {

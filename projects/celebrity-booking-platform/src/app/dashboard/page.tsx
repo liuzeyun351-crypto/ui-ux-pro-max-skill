@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/dashboard/shell";
 import { StatTile } from "@/components/dashboard/charts";
 import { StatusBadge } from "@/components/dashboard/status-badge";
-import { PortraitArt } from "@/components/art/PortraitArt";
+import { TalentImage } from "@/components/art/TalentImage";
 import { ButtonLink, ArrowGlyph } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -85,10 +85,10 @@ export default async function DashboardOverview() {
           {next ? (
             <div className="flex h-full flex-col sm:flex-row">
               <div className="relative h-44 w-full shrink-0 sm:h-auto sm:min-h-56 sm:w-52">
-                <PortraitArt
-                  name={next.celebrity.name}
-                  hue={next.celebrity.accentHue}
-                  className="absolute inset-0 h-full w-full"
+                <TalentImage
+                  celebrity={next.celebrity}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  sizes="(max-width: 640px) 100vw, 208px"
                 />
               </div>
               <div className="flex min-w-0 flex-1 flex-col justify-center p-7">

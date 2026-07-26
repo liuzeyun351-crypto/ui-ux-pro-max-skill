@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/dashboard/shell";
-import { BannerArt } from "@/components/art/PortraitArt";
+import { ArticleImage } from "@/components/art/TalentImage";
 import { Badge } from "@/components/ui/badge";
 import { db } from "@/lib/db";
 import { formatDate } from "@/lib/utils";
@@ -27,7 +27,13 @@ export default async function AdminArticles() {
             className="group overflow-hidden rounded-[var(--radius-xl)] border border-border bg-surface transition-all duration-300 hover:border-gold/40"
           >
             <div className="relative aspect-[16/8] overflow-hidden">
-              <BannerArt title={a.title} hue={a.heroHue} className="absolute inset-0 h-full w-full" />
+              <ArticleImage
+                title={a.title}
+                hue={a.heroHue}
+                celebrity={a.celebrity}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
             <div className="p-5">
               <div className="flex items-center gap-2">
