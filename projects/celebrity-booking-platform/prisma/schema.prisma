@@ -1,0 +1,410 @@
+// Aurum — celebrity booking & talent management platform.
+//
+// The demo runs on SQLite so it boots with zero external services.
+// For production, change `provider` to "postgresql" and point DATABASE_URL
+// at Postgres (see docs/DEPLOYMENT.md). To stay portable across both engines
+// this schema avoids engine-specific features:
+//   - status/role/type fields are strings validated by the TS unions in
+//     src/lib/types.ts (SQLite has no native enums)
+//   - money is stored as integer cents
+//   - structured payloads (wizard drafts, line items) are JSON-encoded strings
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────────────────── Identity & access ─────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  // Role: USER | TALENT | MANAGER | ADMIN (src/lib/types.ts)
+  role          String    @default("USER")
+  phone         String?
+  company       String?
+  bio           String?
+  twoFactorEnabled Boolean @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  bookings      Booking[]        @relation("ClientBookings")
+  reviews       Review[]
+  notifications Notification[]
+  saved         SavedCelebrity[]
+  sentMessages  Message[]        @relation("SentMessages")
+  conversations ConversationParticipant[]
+  managerProfile Manager?
+  celebrity     Celebrity?       @relation("CelebrityUser")
+  auditLogs     AuditLog[]
+  invoices      Invoice[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────── Talent ─────────────────────────
+
+model Manager {
+  id          String      @id @default(cuid())
+  userId      String      @unique
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  agencyName  String
+  title       String
+  yearsActive Int         @default(10)
+  verified    Boolean     @default(true)
+  celebrities Celebrity[]
+}
+
+model Category {
+  id          String      @id @default(cuid())
+  slug        String      @unique
+  name        String
+  tagline     String
+  celebrities Celebrity[]
+}
+
+model Country {
+  id          String      @id @default(cuid())
+  code        String      @unique // ISO 3166-1 alpha-2
+  name        String
+  flag        String // emoji
+  celebrities Celebrity[]
+}
+
+model Celebrity {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  // Optional linked login for the talent dashboard
+  userId         String?  @unique
+  user           User?    @relation("CelebrityUser", fields: [userId], references: [id])
+  tagline        String
+  bio            String
+  // Gender: female | male | nonbinary (filter facet)
+  gender         String
+  verified       Boolean  @default(true)
+  featured       Boolean  @default(false)
+  trendingScore  Int      @default(0)
+  popularity     Int      @default(0) // 0-100 composite
+  rating         Float    @default(4.8)
+  reviewCount    Int      @default(0)
+  followers      Int      @default(0) // combined social reach
+  feeFromCents   Int // starting booking fee, USD cents
+  feeToCents     Int
+  // Availability: available | limited | booked (directory facet)
+  availability   String   @default("available")
+  yearsActive    Int      @default(10)
+  // Accent hue 0-360 used to art-direct this talent's generated portrait & gradients
+  accentHue      Int      @default(41)
+  achievements   String // JSON string[]
+  awards         String // JSON {name, year, work?}[]
+  works          String // JSON {title, year, kind: film|album|book|show|event, meta?}[]
+  socials        String // JSON {platform, handle, followers}[]
+  faq            String // JSON {q, a}[]
+  categoryId     String
+  category       Category @relation(fields: [categoryId], references: [id])
+  countryId      String
+  country        Country  @relation(fields: [countryId], references: [id])
+  managerId      String
+  manager        Manager  @relation(fields: [managerId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  bookings     Booking[]
+  reviews      Review[]
+  media        Media[]
+  availability_ Availability[]
+  savedBy      SavedCelebrity[]
+  events       Event[]
+  articles     Article[]
+
+  @@index([categoryId])
+  @@index([countryId])
+  @@index([popularity])
+  @@index([feeFromCents])
+}
+
+model Availability {
+  id          String    @id @default(cuid())
+  celebrityId String
+  celebrity   Celebrity @relation(fields: [celebrityId], references: [id], onDelete: Cascade)
+  date        DateTime
+  // Status: open | held | booked | blocked
+  status      String    @default("open")
+
+  @@unique([celebrityId, date])
+}
+
+// ───────────────────────── Booking pipeline ─────────────────────────
+
+model Booking {
+  id             String    @id @default(cuid())
+  reference      String    @unique // e.g. AUR-2026-000123
+  clientId       String
+  client         User      @relation("ClientBookings", fields: [clientId], references: [id])
+  celebrityId    String
+  celebrity      Celebrity @relation(fields: [celebrityId], references: [id])
+  // Status machine (src/lib/booking/status.ts):
+  // DRAFT → SUBMITTED → UNDER_REVIEW → CONTRACT_SENT → DEPOSIT_PAID →
+  // CONFIRMED → COMPLETED | CANCELLED | REFUNDED
+  status         String    @default("DRAFT")
+  // EventType: concert | wedding | corporate | speaking | tv-appearance |
+  // endorsement | meet-greet | birthday | festival | award-show |
+  // product-launch | charity | influencer-campaign
+  eventType      String
+  eventDate      DateTime?
+  city           String?
+  countryName    String?
+  venue          String?
+  guestCount     Int?
+  budgetCents    Int?
+  currency       String    @default("USD")
+  requests       String? // free-text special requests
+  wizardDraft    String? // JSON snapshot of in-progress wizard state
+  quoteCents     Int?
+  depositCents   Int?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  payments  Payment[]
+  invoices  Invoice[]
+  contract  Contract?
+  events    BookingEvent[]
+  conversation Conversation?
+
+  @@index([clientId])
+  @@index([celebrityId])
+  @@index([status])
+}
+
+// Immutable audit trail of a booking's lifecycle (drives status timelines)
+model BookingEvent {
+  id        String   @id @default(cuid())
+  bookingId String
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  status    String
+  note      String?
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id           String   @id @default(cuid())
+  bookingId    String
+  booking      Booking  @relation(fields: [bookingId], references: [id])
+  // Kind: deposit | milestone | balance | refund
+  kind         String
+  // Status: pending | held_in_escrow | released | refunded | failed
+  status       String   @default("pending")
+  amountCents  Int
+  currency     String   @default("USD")
+  // Provider: stripe | paypal | apple-pay | google-pay | mock
+  provider     String   @default("mock")
+  providerRef  String?
+  escrowUntil  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Invoice {
+  id          String   @id @default(cuid())
+  number      String   @unique // e.g. INV-2026-0001
+  bookingId   String
+  booking     Booking  @relation(fields: [bookingId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  // Status: draft | issued | paid | void | refunded
+  status      String   @default("issued")
+  lineItems   String // JSON {label, amountCents}[]
+  totalCents  Int
+  currency    String   @default("USD")
+  dueDate     DateTime
+  paidAt      DateTime?
+  createdAt   DateTime @default(now())
+}
+
+model Contract {
+  id          String   @id @default(cuid())
+  bookingId   String   @unique
+  booking     Booking  @relation(fields: [bookingId], references: [id])
+  // Status: draft | sent | signed_client | signed_talent | executed | void
+  status      String   @default("draft")
+  title       String
+  body        String // rendered contract text (demo)
+  sentAt      DateTime?
+  signedAt    DateTime?
+  createdAt   DateTime @default(now())
+}
+
+// ───────────────────────── Social proof & content ─────────────────────────
+
+model Review {
+  id          String    @id @default(cuid())
+  celebrityId String
+  celebrity   Celebrity @relation(fields: [celebrityId], references: [id])
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id])
+  rating      Int // 1-5
+  title       String
+  body        String
+  eventType   String
+  // Status: pending | published | rejected (admin moderation)
+  status      String    @default("published")
+  createdAt   DateTime  @default(now())
+}
+
+model Media {
+  id          String    @id @default(cuid())
+  celebrityId String?
+  celebrity   Celebrity? @relation(fields: [celebrityId], references: [id])
+  // Kind: portrait | gallery | video | press
+  kind        String
+  url         String
+  alt         String
+  width       Int?
+  height      Int?
+  createdAt   DateTime  @default(now())
+}
+
+model Event {
+  id          String    @id @default(cuid())
+  celebrityId String
+  celebrity   Celebrity @relation(fields: [celebrityId], references: [id])
+  title       String
+  eventType   String
+  city        String
+  venue       String
+  date        DateTime
+  isPublic    Boolean   @default(true)
+}
+
+model Article {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  title       String
+  excerpt     String
+  body        String // markdown
+  // Kind: news | guide | interview | press
+  kind        String     @default("news")
+  heroHue     Int        @default(41)
+  readMinutes Int        @default(5)
+  publishedAt DateTime   @default(now())
+  celebrityId String?
+  celebrity   Celebrity? @relation(fields: [celebrityId], references: [id])
+}
+
+// ───────────────────────── Messaging & notifications ─────────────────────────
+
+model Conversation {
+  id           String    @id @default(cuid())
+  bookingId    String?   @unique
+  booking      Booking?  @relation(fields: [bookingId], references: [id])
+  subject      String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  participants ConversationParticipant[]
+  messages     Message[]
+}
+
+model ConversationParticipant {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lastReadAt     DateTime?
+
+  @@unique([conversationId, userId])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       String
+  sender         User         @relation("SentMessages", fields: [senderId], references: [id])
+  body           String
+  // Kind: text | file | voice | system
+  kind           String       @default("text")
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // Kind: booking | payment | message | contract | system
+  kind      String
+  title     String
+  body      String
+  href      String?
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model SavedCelebrity {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  celebrityId String
+  celebrity   Celebrity @relation(fields: [celebrityId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, celebrityId])
+}
+
+// ───────────────────────── Platform ─────────────────────────
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id])
+  action    String // e.g. booking.status_changed
+  entity    String // e.g. Booking:ckx...
+  detail    String? // JSON context
+  ip        String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

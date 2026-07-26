@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+/* ────────────────────────────────────────────────────────────────
+   Aurum design tokens
+   Dark is the default register (cinematic); light is a full theme,
+   not an afterthought. All component styles consume semantic tokens
+   so the theme switch is a pure custom-property swap.
+   ──────────────────────────────────────────────────────────────── */
+
+:root {
+  /* stage — warm near-blacks, never pure black */
+  --bg: oklch(0.145 0.008 75);
+  --bg-deep: oklch(0.115 0.007 75);
+  --surface: oklch(0.185 0.009 75);
+  --surface-raised: oklch(0.225 0.011 75);
+  --surface-overlay: oklch(0.185 0.009 75 / 0.72);
+
+  --foreground: oklch(0.955 0.012 85);
+  --muted: oklch(0.74 0.02 80);
+  --faint: oklch(0.56 0.018 78);
+
+  --border: oklch(0.32 0.015 78 / 0.55);
+  --border-strong: oklch(0.42 0.02 80 / 0.7);
+
+  /* the single accent — champagne gold */
+  --gold: oklch(0.8 0.115 88);
+  --gold-bright: oklch(0.88 0.09 92);
+  --gold-deep: oklch(0.64 0.12 80);
+  --on-gold: oklch(0.17 0.02 75);
+
+  --success: oklch(0.78 0.14 155);
+  --warning: oklch(0.8 0.13 75);
+  --danger: oklch(0.68 0.19 25);
+  --info: oklch(0.75 0.1 240);
+
+  --ring: var(--gold);
+
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.25), 0 8px 24px -8px oklch(0 0 0 / 0.45);
+  --shadow-lift: 0 2px 6px oklch(0 0 0 / 0.3), 0 20px 48px -16px oklch(0 0 0 / 0.55);
+  --shadow-glow: 0 0 0 1px oklch(0.8 0.115 88 / 0.25), 0 8px 40px -8px oklch(0.8 0.115 88 / 0.28);
+
+  --grain-opacity: 0.05;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: oklch(0.972 0.006 85);
+  --bg-deep: oklch(0.945 0.008 85);
+  --surface: oklch(0.99 0.004 90);
+  --surface-raised: oklch(1 0 0);
+  --surface-overlay: oklch(0.99 0.004 90 / 0.78);
+
+  --foreground: oklch(0.21 0.012 70);
+  --muted: oklch(0.45 0.015 72);
+  --faint: oklch(0.6 0.014 75);
+
+  --border: oklch(0.86 0.012 80 / 0.9);
+  --border-strong: oklch(0.78 0.015 80);
+
+  --gold: oklch(0.58 0.125 78);
+  --gold-bright: oklch(0.68 0.125 84);
+  --gold-deep: oklch(0.5 0.115 74);
+  --on-gold: oklch(0.98 0.008 90);
+
+  --success: oklch(0.55 0.14 152);
+  --warning: oklch(0.6 0.13 70);
+  --danger: oklch(0.55 0.2 25);
+  --info: oklch(0.55 0.12 245);
+
+  --shadow-soft: 0 1px 2px oklch(0.3 0.02 70 / 0.06), 0 8px 24px -8px oklch(0.3 0.02 70 / 0.12);
+  --shadow-lift: 0 2px 6px oklch(0.3 0.02 70 / 0.07), 0 20px 48px -16px oklch(0.3 0.02 70 / 0.2);
+  --shadow-glow: 0 0 0 1px oklch(0.58 0.125 78 / 0.28), 0 8px 40px -8px oklch(0.58 0.125 78 / 0.3);
+
+  --grain-opacity: 0.03;
+
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-background-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
+  --color-on-gold: var(--on-gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-ring: var(--ring);
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display Variable", Georgia, serif;
+
+  /* fluid editorial type scale */
+  --text-display-xl: clamp(2.75rem, 1.4rem + 6vw, 6.5rem);
+  --text-display: clamp(2.25rem, 1.3rem + 4vw, 4.5rem);
+  --text-headline: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+  --text-title: clamp(1.35rem, 1.1rem + 1vw, 1.875rem);
+
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-glow: var(--shadow-glow);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-marquee-slow: marquee 64s linear infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-spotlight: spotlight-sweep 14s ease-in-out infinite alternate;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-dot: pulse-dot 2.2s ease-in-out infinite;
+}
+
+/* ── base ── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--on-gold);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* thin elegant scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* ── signature surfaces ── */
+
+@utility glass {
+  background: var(--surface-overlay);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--border);
+}
+
+@utility gold-text {
+  background: linear-gradient(
+    100deg,
+    var(--gold-deep) 0%,
+    var(--gold) 38%,
+    var(--gold-bright) 52%,
+    var(--gold) 66%,
+    var(--gold-deep) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility hairline-gold {
+  position: relative;
+}
+.hairline-gold::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  opacity: 0.5;
+}
+
+/* film-grain overlay for cinematic sections */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  mix-blend-mode: overlay;
+}
+
+/* editorial kicker label */
+@utility kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── keyframes ── */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% center;
+  }
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes spotlight-sweep {
+  0% {
+    transform: translateX(-12%) rotate(-6deg);
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(12%) rotate(5deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.78 0.14 155 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px oklch(0.78 0.14 155 / 0);
+  }
+}
+
+/* ── motion discipline ── */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
