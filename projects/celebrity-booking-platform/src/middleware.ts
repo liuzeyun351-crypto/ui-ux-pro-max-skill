@@ -40,13 +40,19 @@ export async function middleware(req: NextRequest) {
 
   if (!needsAuth) return NextResponse.next();
 
+  // Auth.js prefixes the session cookie with `__Secure-` only on HTTPS, which is
+  // a property of the request, not of NODE_ENV. Keying it off NODE_ENV locks
+  // every signed-in user out of every console on any production deployment
+  // served over plain HTTP — Docker behind a proxy, a VPS before TLS, cPanel
+  // Node — because the cookie is there but read under the wrong name. Derive it
+  // from the actual scheme, honouring the proxy header.
+  const forwardedProto = req.headers.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const secureCookie = (forwardedProto ?? req.nextUrl.protocol.replace(":", "")) === "https";
+
   const token = await getToken({
     req,
     secret: process.env.AUTH_SECRET,
-    // next-auth v5 cookie names
-    cookieName: process.env.NODE_ENV === "production"
-      ? "__Secure-authjs.session-token"
-      : "authjs.session-token",
+    secureCookie,
   });
 
   if (!token) {
