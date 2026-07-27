@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PortraitArt } from "@/components/art/PortraitArt";
 import { TalentImage } from "@/components/art/TalentImage";
 import { AvailabilityCalendar } from "@/components/celebrity/availability-calendar";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
@@ -62,21 +61,21 @@ export default async function CelebrityProfile({
   const related = await getRelatedCelebrities(c.categoryId, c.id);
   const photo = getPhoto(c);
 
-  // Gallery: real photographs first, padded with generated art to a full grid
-  const galleryTiles: (
-    | { kind: "photo"; url: string; alt: string; credit?: string | null; licence?: string | null }
-    | { kind: "art" }
-  )[] = [
-    ...(photo ? [{ kind: "photo" as const, url: photo.portrait, alt: `Photograph of ${c.name}`, credit: photo.credit, licence: photo.licence }] : []),
-    ...c.media.map((m) => ({
-      kind: "photo" as const,
-      url: m.url,
-      alt: m.alt,
-      credit: m.credit,
-      licence: m.licence,
-    })),
+  // Gallery: the lead portrait plus every distinct gallery photograph we hold.
+  // The grid is sized to what exists rather than padded out to a fixed count —
+  // padding meant repeating the portrait and filling the rest with generated
+  // artwork, which read as missing images next to the real ones.
+  const galleryTiles: {
+    url: string;
+    alt: string;
+    credit?: string | null;
+    licence?: string | null;
+  }[] = [
+    ...(photo
+      ? [{ url: photo.portrait, alt: `Photograph of ${c.name}`, credit: photo.credit, licence: photo.licence }]
+      : []),
+    ...c.media.map((m) => ({ url: m.url, alt: m.alt, credit: m.credit, licence: m.licence })),
   ];
-  while (galleryTiles.length < 4) galleryTiles.push({ kind: "art" as const });
   const achievements = parseJson<string[]>(c.achievements, []);
   const awards = parseJson<Award[]>(c.awards, []);
   const works = parseJson<Work[]>(c.works, []);
@@ -343,27 +342,21 @@ export default async function CelebrityProfile({
               Gallery
             </h2>
           </Reveal>
-          <Stagger className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {galleryTiles.map((tile, i) => (
-              <StaggerItem key={i} className={i === 0 ? "col-span-2 row-span-2" : ""}>
-                <figure className="group relative h-full min-h-40 overflow-hidden rounded-[var(--radius-lg)] border border-border">
-                  {tile.kind === "photo" ? (
-                    <Image
-                      src={tile.url}
-                      alt={tile.alt}
-                      fill
-                      sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-                      className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
-                    />
-                  ) : (
-                    <PortraitArt
-                      name={c.name}
-                      hue={(c.accentHue + i * 25) % 360}
-                      variant={i + 2}
-                      className="absolute inset-0 h-full w-full transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
-                    />
-                  )}
-                  {tile.kind === "photo" && tile.credit && (
+          {/* Equal 3:4 tiles. An earlier layout gave the lead photograph a
+              double-width box, but every source here is a portrait, so a
+              landscape box cropped hard into the middle of a face. */}
+          <Stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {galleryTiles.map((tile) => (
+              <StaggerItem key={tile.url}>
+                <figure className="group relative aspect-[3/4] overflow-hidden rounded-[var(--radius-lg)] border border-border">
+                  <Image
+                    src={tile.url}
+                    alt={tile.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, 30vw"
+                    className="object-cover object-top transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
+                  />
+                  {tile.credit && (
                     <figcaption className="absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-3 py-2 text-[10px] text-white/70">
                       {tile.credit}
                       {tile.licence ? ` · ${tile.licence}` : ""}
@@ -380,7 +373,8 @@ export default async function CelebrityProfile({
                 <Link href="/credits" className="underline underline-offset-4 hover:text-gold">
                   image credits
                 </Link>
-                . Tiles without a photograph use generated artwork.
+                . Every photograph here is used under a free licence, with the
+                photographer credited.
               </>
             ) : (
               <>

@@ -15,6 +15,11 @@ const FREE_PATTERNS: { test: RegExp; attribution: boolean; label: string }[] = [
   { test: /^cc[-\s]?by[-\s]?sa/i, attribution: true, label: "CC BY-SA" },
   { test: /^cc[-\s]?by(?![-\s]?(nc|nd))/i, attribution: true, label: "CC BY" },
   { test: /^attribution$/i, attribution: true, label: "Attribution" },
+  // GFDL and the UK Open Government Licence are both free content licences
+  // that permit commercial reuse with attribution. Commons carries images
+  // under each (e.g. GFDL on older photographs, OGL on UK government work).
+  { test: /^gfdl|gnu\s+free\s+documentation/i, attribution: true, label: "GFDL" },
+  { test: /^ogl|open\s+government\s+licence/i, attribution: true, label: "OGL" },
 ];
 
 /** Explicit blocks — checked first, so "CC BY-NC" can never match the CC BY rule. */

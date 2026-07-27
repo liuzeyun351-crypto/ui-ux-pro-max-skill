@@ -94,16 +94,28 @@ buttons for each persona.
 
 ## Real talent photography
 
-Profiles ship with generated artwork. To replace it with **real photographs of
-the real people**, run one command:
+**Every one of the 27 people on the roster ships with real photographs** — 77
+images in all (a portrait and a wide banner each, plus one or two gallery
+photographs), committed under `public/media/talent/`. Clone, seed, run: real
+faces on every card, hero, dashboard, booking step and profile gallery. No
+placeholders, no fetch step, no API key.
+
+Each image is used under a free licence — public domain, CC0, CC BY, CC BY-SA,
+GFDL or OGL — with the photographer named on the profile, under each gallery
+tile and on [`/credits`](http://localhost:3000/credits).
+
+### Sharper images, one command
+
+The committed images top out around 450x600 because of how they were captured
+(see `public/media/talent/README.md`). On any machine with ordinary internet
+access you can replace them with full-resolution originals:
 
 ```bash
-npm run fetch:images     # pulls freely-licensed photos into public/media/talent/
-npx prisma db seed       # loads them (and their credits) into the database
+npm run fetch:images     # 900x1200 portraits + 1600x900 banners
+npx prisma db seed       # reload the manifest and its credits
 ```
 
-That is the whole step. Everything else — cropping, blur placeholders, responsive
-`next/image` sizes, attribution UI — is already wired.
+Same roster, same manifest, same attribution — only bigger files.
 
 | Flag | Effect |
 |---|---|
@@ -116,17 +128,17 @@ optionally The Movie Database for screen talent when `TMDB_API_KEY` is set in
 `.env` (better, more consistent headshots for actors — note TMDB's terms are
 non-commercial and need review before a real launch).
 
-**Only free licences are accepted** — public domain, CC0, CC BY and CC BY-SA.
-`scripts/licence.ts` rejects non-commercial, no-derivatives, fair-use and
-anything it cannot positively identify; rejected names simply keep their
-generated portrait. Photographer and licence are captured for every file and
-displayed on the profile and at `/credits`, which is what CC BY-SA requires.
+**Only free licences are accepted** — public domain, CC0, CC BY, CC BY-SA, GFDL
+and OGL. `scripts/licence.ts` rejects non-commercial, no-derivatives, fair-use
+and anything it cannot positively identify. Photographer and licence are
+captured for every file and displayed on the profile, under each gallery tile
+and at `/credits`, which is what CC BY-SA requires.
 
 **Supplying your own press assets** works too — drop files into
 `public/media/talent/` and add manifest entries. See that folder's README.
 
-If you never run the fetch, nothing breaks: every surface falls back to the
-generated artwork it ships with.
+Nothing here can break into a blank space: any surface without a photograph
+falls back to generated artwork from `src/components/art/PortraitArt.tsx`.
 
 ## Demo data — important
 
@@ -134,11 +146,12 @@ Talent profiles use **real public figures** with factual, publicly known career
 information (awards, works, achievements). Everything commercial is **fictional**:
 booking fees, availability, ratings, reviews, bookings, invoices and messages.
 
-**Imagery** is either a freely-licensed photograph (after `npm run fetch:images`, with
-the photographer and licence credited on the profile and at `/credits`) or, when no
-free photograph is available, a deterministic generated composition from
-`src/components/art/PortraitArt.tsx` — a lit stage, spotlight beams and a serif
-monogram, labelled `AURUM · DEMO ARTWORK` along its edge.
+**Imagery** is real, freely-licensed photography of the real people, with the
+photographer and licence credited on the profile, under each gallery tile and at
+`/credits`. Where a surface has no photograph it falls back to a deterministic
+generated composition from `src/components/art/PortraitArt.tsx` — a lit stage,
+spotlight beams and a serif monogram, labelled `AURUM · DEMO ARTWORK` along its
+edge — so nothing is ever a blank box.
 
 **No endorsement or affiliation by any individual is implied.**
 

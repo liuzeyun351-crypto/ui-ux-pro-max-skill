@@ -1,0 +1,798 @@
+{
+  "adele": {
+    "portrait": "/media/talent/adele.jpg",
+    "wide": "/media/talent/adele-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMCBAUG/8QAJBAAAgEDBAEFAQAAAAAAAAAAAQIEAAMRBRIhMRMUI0FhgdH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgMA/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAEREv/aAAwDAQACEQMRAD8A5aBF9VeAY4QHmtyXpGmiCXsX182CV54OOwKo6VcFnxEDgnLtjO0VqalLtLGYpKs3dy7VQKDgn5A+KS26pJMcmRg4NFPm2/FKuL95op016HOeOqe2rBCCw6zilzL0e9IF2LaNjLbmTIYA/X8qM1FSVtUYUgcfgquvZo8wdqc5xekFgR0AeKKW4G78FFbMB//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Marc E.",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adele_2016.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.187Z",
+    "gallery": [
+      {
+        "url": "/media/talent/adele-g1.jpg",
+        "credit": "Lady Lotus",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adele_Feb_24_23_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/adele-g2.jpg",
+        "credit": "Niko D from Sammamish, WA, USA",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Adele_-_Seattle%2C_WA_-_8.12.2011_(cropped).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "naomi-campbell": {
+    "portrait": "/media/talent/naomi-campbell.jpg",
+    "wide": "/media/talent/naomi-campbell-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAABAABAwUG/8QAJxAAAgEDBAECBwAAAAAAAAAAAQIDAAQREhMhMUFRgQUiMjNxcrH/xAAXAQEBAQEAAAAAAAAAAAAAAAACAwQF/8QAGREBAQEBAQEAAAAAAAAAAAAAAQACERIh/9oADAMBAAIRAxEAPwDN2u5aCOFybhnXWOCv5otwgVIw7OsRXTJuDg8UiW7tBBItraCBz9LRnPj0ozWMl5ZlZJNL5GMDxQTiDVzr0LCmlWNglvdZQDwCMVUa+sZLO42tYlGMhlGM+xqphmHdWwTFSqkkMO8eDS1+IOoXJz6svZFc2fi4f2/lEZiH4J57pPNHaQOdcvQuu6EfJ+Zc891VR/Yi/QVVkuh8v//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Georges Biard",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Naomi_Campbell_Cannes_2018.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.445Z",
+    "gallery": [
+      {
+        "url": "/media/talent/naomi-campbell-g1.jpg",
+        "credit": "Kingkongphoto & www.celebrity-photos.com from Laurel Maryland, USA",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Naomi_Campbell_1997.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/naomi-campbell-g2.jpg",
+        "credit": "Georges Biard",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Naomi_Campbell_Cannes_cropped.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "barack-obama": {
+    "portrait": "/media/talent/barack-obama.jpg",
+    "wide": "/media/talent/barack-obama-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAwH/xAApEAACAQMDAgQHAAAAAAAAAAABAgMABBEhMVESEwUicYEUQUJhodHw/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwEC/8QAHREBAAEEAwEAAAAAAAAAAAAAAQACEyFhAxESQf/aAAwDAQACEQMRAD8AwtZem5Yq3RrvxTF/OVgMeSAXDYLE++tSruYRXzJFlVJGQ268g1lf+ISTXGpAVcgKBodd/wC4rPhckarkCo7+RlrqRHYI4Aztg8elFM2M1pBap8QMvJ59Fzv7UVJGtWR5pIy9y1x3e+Wyhzkb/P8AdYx3CIsoMau7jALfT6CqF/GjzqWGdOfvSQgjDDy/k0hkhOGdmDK+ICGTA1JI1xrsaKsKoRelcgcA0UdzUS3uf//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Official White House Photo by Pete Souza",
+    "licence": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:President_Barack_Obama.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.454Z",
+    "gallery": [
+      {
+        "url": "/media/talent/barack-obama-g1.jpg",
+        "credit": "Pete Souza",
+        "licence": "CC BY 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Obama_portrait_crop.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/barack-obama-g2.jpg",
+        "credit": "United States Senate",
+        "licence": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BarackObamaportrait.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "taylor-swift": {
+    "portrait": "/media/talent/taylor-swift.jpg",
+    "wide": "/media/talent/taylor-swift-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFBgP/xAAmEAACAQMDAwQDAAAAAAAAAAABAgQAAxEFEiEiMUETUWFxMkRz/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIDAf/EABoRAAIDAQEAAAAAAAAAAAAAAAABAhFREiH/2gAMAwEAAhEDEQA/AMlirMEnaGtlmPCn2H3Si6ZJEcSXQJa3AZZsHk+1VY1uZZiXUuKQoG34IzzSyeFYR0Ztx5FoMqOe/PA70VOs62YyehNj77tvpyxKnHiirqYtLBPUdTaYAgJFkNuwR8eapQddtJAFqSrO69IwOWHis2PyFdWUAj6BqPKqg7d2P6tJWResXMd7K9+/milp36/8EopkvDG/T//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "iHeartRadioCA",
+    "licence": "CC BY 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_(3).png",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:07.042Z",
+    "gallery": [
+      {
+        "url": "/media/talent/taylor-swift-g1.jpg",
+        "credit": "Raph_PH",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taylor_Swift_2022_infobox.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/taylor-swift-g2.jpg",
+        "credit": "Eva Rinaldi",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taylor_Swift_Sydney.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "the-weeknd": {
+    "portrait": "/media/talent/the-weeknd.jpg",
+    "wide": "/media/talent/the-weeknd-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAUGAwT/xAAmEAACAQMBCAMBAAAAAAAAAAABAgMABBEFBhITITEyUXEVQUKB/8QAFwEBAQEBAAAAAAAAAAAAAAAAAgQDBf/EAB0RAAICAgMBAAAAAAAAAAAAAAABAhEDEiEjUWH/2gAMAwEAAhEDEQA/ANNrOKtrAFJ4LNhwDjJ+s0s0OOWHU7cxBkV2KuucgjHWnO072/x+7LOI5VYMi9Sx9eKRaDqdvZXm9cIzlh3r+f5UGNdVIrTWpbkUVhHqFrKgdZRg+QRRUjh8BT8ILVJRNeyyHv4rKfQosbYSMDnPOuBnZ2JYkksST5p1poAtyQOddKS1ikPHUmNFmjjXdyBiip+7lcTsAxooKDfJq50f/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "Brian Ziff",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Weeknd_Portrait_by_Brian_Ziff.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:07.145Z",
+    "gallery": [
+      {
+        "url": "/media/talent/the-weeknd-g1.jpg",
+        "credit": "Nicolas Padovani",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:FEQ_July_2018_The_Weeknd_(44778856382)_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/the-weeknd-g2.jpg",
+        "credit": "The Tonight Show Starring Jimmy Fallon",
+        "licence": "CC BY 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Weeknd_Jimmy_Fallon_2025_(cropped).png",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "burna-boy": {
+    "portrait": "/media/talent/burna-boy.jpg",
+    "wide": "/media/talent/burna-boy-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAEDBAUG/8QAJhAAAgEEAQMDBQAAAAAAAAAAAQIDAAQRIQUSEzEyYZFBUXGhsf/EABYBAQEBAAAAAAAAAAAAAAAAAAMCBf/EABoRAAMBAQEBAAAAAAAAAAAAAAABAhEDEyH/2gAMAwEAAhEDEQA/AIeK4aKTjY7y6uWjQ7AUDQzj5rXjsuLnuIlCuGQ+l1YB9eN/Nc3x8t5cWBtIwWgR+snOPcjP7qzJdCxuIGSSSRkAboMhK6B8++6SuvVViopTLWtC5bt2N/JA2D04IwPodiisyad7qZ5pnBkc5JNFac28WgYT2fIyW9jPChAVB1L9yxOKo93JYgEHByM0rQBpkJGdD+0pji4cDx3CKycG0ej5NFT2aK8OWAJBxv8AAopPWkT8P//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Nuță Lucian from Cluj-Napoca, Romania",
+    "licence": "CC BY-SA 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Untold_2024_-Burna_Boy_(53926047977)_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.908Z",
+    "gallery": [
+      {
+        "url": "/media/talent/burna-boy-g1.jpg",
+        "credit": "Nuță Lucian from Cluj-Napoca, Romania",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Untold_2024_-Burna_Boy_(53927188333).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/burna-boy-g2.jpg",
+        "credit": "Nuță Lucian from Cluj-Napoca, Romania",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Untold_2024_-Burna_Boy_(53927293629)_(cropped).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "denzel-washington": {
+    "portrait": "/media/talent/denzel-washington.jpg",
+    "wide": "/media/talent/denzel-washington-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAABQAEAwb/xAAmEAACAQQBAgYDAAAAAAAAAAABAgMABBEhEgUxIkFRYXGBFZHR/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwEA/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAEREgL/2gAMAwEAAhEDEQA/ACuiwwzc7i6y6KQqr6n3pqeWGKxka3QRlRyAUa/VBWIMNt49o3i16VoaW3W1JEGCqthsnOx50XTdH5SlOizMI0OC/JeWfmqgHuHYjZAAwMGqrgm0LxXaQShWXnbEcHjJ7r/R3pH8XamY2huklFxFyhGDkHuuSPvdefz2pdJpE6X02RWw8d4yo3mBjOPjdJEHphj2MAY4aRfbRxVWzqYC9TulXQErYH3VWIf/2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "Gabriel Hutchinson",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Denzel_Washington_at_the_2025_Cannes_Film_Festival.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.278Z",
+    "gallery": [
+      {
+        "url": "/media/talent/denzel-washington-g1.jpg",
+        "credit": "Adam Chitayat",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Denzel_Washington_at_the_2024_Toronto_International_Film_Festival_04_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/denzel-washington-g2.jpg",
+        "credit": "Paul Rudman",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:DenzelWashingtonMay05.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "zendaya": {
+    "portrait": "/media/talent/zendaya.jpg",
+    "wide": "/media/talent/zendaya-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAIDBQEEBv/EACgQAAICAQIFAgcAAAAAAAAAAAECAxEABCEFEhMxUSJyIzJBYXGxwf/EABUBAQEAAAAAAAAAAAAAAAAAAAMC/8QAGhEAAgMBAQAAAAAAAAAAAAAAAAECESIxQf/aAAwDAQACEQMRAD8A1mEvTRISVLtTOBZVfqQMr9XK3DtaDBOzhTYZvPg5cAMIQ6XaG9vHY5T8TimmcNItAUos33OReqFSxZ0kjmVhIRRcBiPFi8MaaPlkKIPSvpFfbDBXBHRHoVPS9/bMajpqTE6AirphkmiPwoPaf3kPETTitsSS9JhLiGWZiuwArb5bwxICeU/n+YZYbP/Z",
+    "width": 450,
+    "height": 600,
+    "credit": "PhilipRomano",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zendaya-byPhilipRomano.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:07.538Z",
+    "gallery": [
+      {
+        "url": "/media/talent/zendaya-g1.jpg",
+        "credit": "Toglenn",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zendaya_2019_by_Glenn_Francis.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/zendaya-g2.jpg",
+        "credit": "Gage Skidmore",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zendaya_by_Gage_Skidmore.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "ryan-reynolds": {
+    "portrait": "/media/talent/ryan-reynolds.jpg",
+    "wide": "/media/talent/ryan-reynolds-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUBAgYE/8QAJBAAAgICAQQBBQAAAAAAAAAAAQIAAwQhEQUSIlEyQmFxgeH/xAAXAQADAQAAAAAAAAAAAAAAAAAAAgMB/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERAlH/2gAMAwEAAhEDEQA/AG/WgGorR3KoX8+G45HB1+IgzMKnDsW3BtKWoQfE8zQ5wZcdiSCU8gTsERJk5KqyV2OChYOxC/FeRz+oatK4jyaqs9yKdHkA6hOFs0VELWQV40RsGEpGTi6YvL6vlZtyG1gK1YFa10v9k9QzVsQV0oqK4DOQNsfR+wi76pZ9vB5TdMTaUL15OTUnbVfYi+lbUJSEaCn/2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "Dick Thomas Johnson from Tokyo, Japan",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.701Z",
+    "gallery": [
+      {
+        "url": "/media/talent/ryan-reynolds-g1.jpg",
+        "credit": "Gage Skidmore",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ryan_Reynolds_by_Gage_Skidmore_4.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/ryan-reynolds-g2.jpg",
+        "credit": "dtstuff9",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ryan_Reynolds_2014_TIFF_The_Voices_Premiere.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "lupita-nyongo": {
+    "portrait": "/media/talent/lupita-nyongo.jpg",
+    "wide": "/media/talent/lupita-nyongo-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFBAL/xAAmEAACAQMEAQMFAAAAAAAAAAABAgMABBEFEiExQRQiIzJRYXGR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDAP/EABgRAQEBAQEAAAAAAAAAAAAAAAEAERIh/9oADAMBAAIRAxEAPwCzqkTSaZIikgMVDYOCVyMj+VK06ygTVYJbaMw7VbeN2Qwx1+6qS30LxtFsLqwIJPWKy2W2wd2Pyu4A4Xbhe/NTHPKvO1Nl5orP62J+Q2KKGNrNa2UdqSkk7yBhlcgd+adNBGYmRCySMOD3j81yxPBzyKXPK4uI1De1l5FTN6mVSQdGhUACeXIHJz9R+9FOkkZSMHxRT4Q6b//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "PhilipRomano",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:LupitaNyongo-byPhilipRomano3.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.910Z",
+    "gallery": [
+      {
+        "url": "/media/talent/lupita-nyongo-g1.jpg",
+        "credit": "PhilipRomano",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:LupitaNyongo-byPhilipRomano2.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/lupita-nyongo-g2.jpg",
+        "credit": "PhilipRomano",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:LupitaNyongo-byPhilipRomano5.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "beyonce": {
+    "portrait": "/media/talent/beyonce.jpg",
+    "wide": "/media/talent/beyonce-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAwUC/8QAJxAAAgEDBAECBwAAAAAAAAAAAQIDAAQREiExQRNRkQUiJGGhsdH/xAAXAQADAQAAAAAAAAAAAAAAAAAAAgME/8QAGxEAAwACAwAAAAAAAAAAAAAAAAERAgMhIkH/2gAMAwEAAhEDEQA/AKEuCIh9RMrDrOR+ab+dY45GYiRlJYPghT1WI4kkugELaFwWUDO3JOKvHxRbq4EzAoAmggtsR9qfa3evgYScj5ugeRbn3/tFZpaNSQNxnbJorSTonHceGObRks6Yyeqm3iY2qqylcvkMV5OOKX5Bz6j90+CWWFCTpEqgDNQagWwX879uvsKK4u1CXc6qMKsjAD03op0xaf/Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Raph_PH",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(10_of_118)_(52946364598)_(best_crop).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.617Z",
+    "gallery": [
+      {
+        "url": "/media/talent/beyonce-g1.jpg",
+        "credit": "Raph_PH",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(104_of_118)_(52946039919)_(face_cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/beyonce-g2.jpg",
+        "credit": "Sassy",
+        "licence": "CC BY 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_at_The_Lion_King_European_Premiere_2019.png",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "serena-williams": {
+    "portrait": "/media/talent/serena-williams.jpg",
+    "wide": "/media/talent/serena-williams-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFBAb/xAAnEAACAAUEAQMFAAAAAAAAAAABAgADBAUREhMhQTEUIiNRYXGx8P/EABcBAQEBAQAAAAAAAAAAAAAAAAMEAAL/xAAZEQADAQEBAAAAAAAAAAAAAAAAARECEiH/2gAMAwEAAhEDEQA/ALN4UTaPAI1Z4JHgdxHlvLVGl6vZtgMNIOfrFiuZDN0sMMADz1EisoU2i9K5y5Kvk8DjAzEi9cKV5mibBXCmopkvXgbpI/GBBENdyRqluCjKSGB8gwQ7yBTs7gG3zN05l4BVh3xC7WF9IqlFYNy2ez94ZLJayyS3Pwj9CC2qBTYxxjxBpRiPVUM12sz3CrE+UspRoCnLEZx/CCLKO2gc9QRu2c8n/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "SWinxy",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guests_at_the_2026_Met_Gala_209_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.823Z",
+    "gallery": [
+      {
+        "url": "/media/talent/serena-williams-g1.jpg",
+        "credit": "Edwin Martinez from The Bronx",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Serena_Williams_US_Open_2013.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/serena-williams-g2.jpg",
+        "credit": "Sascha Wenninger, Melbourne, Australia",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Serena_Williams_Australian_Open_2009_5.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "lionel-messi": {
+    "portrait": "/media/talent/lionel-messi.jpg",
+    "wide": "/media/talent/lionel-messi-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMEAgX/xAAnEAACAQMDAwMFAAAAAAAAAAABAgMABBESIUEFEzEiYaEjJDJRcf/EABYBAQEBAAAAAAAAAAAAAAAAAAIBA//EABsRAQADAAMBAAAAAAAAAAAAAAEAAhEDEjFh/9oADAMBAAIRAxEAPwDZKXMQ7yKuXH5Diky9tfXEkShchljBXI5zV8dhLNGpdRjSraSdzipo+lPcGSPGlHGrUTnC8VGquxVsAjCBle3jMMOpAuB7UVbFYpFEi4DgDZkbY0VUhH5KY5gbycBsYXBIH64+amt5S8TurMojRSffY7UnpI+ofJ9J8nNbQCO0uCmx7an4p4WNme9XJyJOp3cMjRoq6V2Bbydv7RSbw/dOOAcCii8hvkRRz2f/2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "Bryan Berlin",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leo_Messi_Argentina_v_Egypt_7_July_2026-1.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.792Z",
+    "gallery": [
+      {
+        "url": "/media/talent/lionel-messi-g1.jpg",
+        "credit": "Hayden Schiff",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:CINvMIA_2023-08-23_-_Lionel_Messi%2C_Tata_Martino_(PXL_20230824_010525464)_(Messi_crop).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/lionel-messi-g2.jpg",
+        "credit": "Hossein Zohrevand",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "usain-bolt": {
+    "portrait": "/media/talent/usain-bolt.jpg",
+    "wide": "/media/talent/usain-bolt-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAQP/xAAmEAACAQMDBAIDAQAAAAAAAAABAgMABBEFEiExQVFxImGBkaHw/8QAGAEAAwEBAAAAAAAAAAAAAAAAAQIEAwX/xAAbEQADAQEAAwAAAAAAAAAAAAAAAQIRAxIhMf/aAAwDAQACEQMRAD8AZvpDFB8X2E5OepwBk4/n7pHTbiPJYo6yuAR1w3ODnNM6s0EdoTKQWXlQDz15pHTJDPblIyxxk4Pf69UBlhdoqM9xdqxATP5opQaZBYpewsrvgE/Bge/jHmm7PS5bOQBW3Buh3Ywf97rrpUaPaIGUHaoIyO9VAisoDKCPuuXXelTS+FHh6JTmeNissO49iUB49jrRT127CXA8eKK3no2tI7TVPD//2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "Augustas Didžgalvis",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Usain_Bolt_by_Augustas_Didzgalvis_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:07.415Z",
+    "gallery": [
+      {
+        "url": "/media/talent/usain-bolt-g1.jpg",
+        "credit": "Doha Stadium Plus Qatar from Doha, Qatar",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Usain_Bolt_2011_World_Athletics_Gala.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/usain-bolt-g2.jpg",
+        "credit": "Brunel University",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Usain_Bolt_Lightning_pose.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "lewis-hamilton": {
+    "portrait": "/media/talent/lewis-hamilton.jpg",
+    "wide": "/media/talent/lewis-hamilton-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAwABBAb/xAAmEAACAgEDAwMFAAAAAAAAAAABAgMRAAQhMQUSQSMywVFhc7Hw/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwDykSGeeOK672C3zWdnWOnQaExnTTPKh2JdKo4MKOTG3s7TasOScbWmTVH1Hbklbvf++ubbTkh+jGtK/wCQ/oZZnTQYoXVue/4GWKRmQEyAUvkKPH2wHclO8kkkBRfgZpAESsOaG+HCSxa96Fi8FO/SShYiAfO9jLC0zEoxJvf4GWIf/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "Number 10",
+    "licence": "OGL 3",
+    "licenceUrl": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prime_Minister_Keir_Starmer_meets_Sir_Lewis_Hamilton_(54566928382)_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.655Z",
+    "gallery": [
+      {
+        "url": "/media/talent/lewis-hamilton-g2.jpg",
+        "credit": "Jen_ross83",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lewis_Hamilton_Silverstone_2018.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "kevin-hart": {
+    "portrait": "/media/talent/kevin-hart.jpg",
+    "wide": "/media/talent/kevin-hart-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAEDBAUC/8QAJBAAAgIBAwMFAQAAAAAAAAAAAQIAAxEEITESQVETFDIzcZH/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAEREv/aAAwDAQACEQMRAD8Aw7epQoXljjPiMpbp2XqtLK2Ae2Jo6ynQpSXovZ2QqcMPkDnP82lTUemqUhWDF8Hg7SOrauSYTM7HLOxPknMJ2RvCaIZvurbLQeF7DtGbg5AWpULHBIMrDmTD7x+gxYehdRcg6VsOB53hIjCBP//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Eva Rinaldi",
+    "licence": "CC BY-SA 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kevin_Hart_2014_(cropped_2).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.532Z",
+    "gallery": [
+      {
+        "url": "/media/talent/kevin-hart-g1.jpg",
+        "credit": "Eva Rinaldi",
+        "licence": "CC BY-SA 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kevin_Hart_2014.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/kevin-hart-g2.jpg",
+        "credit": "Adam Bielawski",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kevin-Hart_Chicago_2012-04-11_photoby_Adam-Bielawski.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "ali-wong": {
+    "portrait": "/media/talent/ali-wong.jpg",
+    "wide": "/media/talent/ali-wong-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAQUBAAAAAAAAAAAAAAAAAAIDBAUGAf/EACcQAAIBBAECBQUAAAAAAAAAAAECAwAEBRESIVEGFDFBgRNhkbHB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKJMxdQ3LzBoyCugjDkv4/tMy34uLjzUttAZF6EAEBj3I3Sp8a0GOhupG00p6Jr0HtVrJ4dtVxLXKXfKRV36jiT2oODO45htsWpPueQXfwNCioFjiGvLZZuYXlvoaKBpsmZMalpMvP6Tho2+3Y1qZr+3TFeYEcJhKaGlGiddOnfdYdACG37KSKWBsxg+hoJ8GUuIII4reFQqjRJG9nvRUCcak+B+qKD/2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "CleftClips",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ali_Wong_2012.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.318Z",
+    "gallery": [
+      {
+        "url": "/media/talent/ali-wong-g1.jpg",
+        "credit": "Greg Harries",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ali_Wong%2C_2013_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/ali-wong-g2.jpg",
+        "credit": "CleftClips",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ali_Wong_June_2012.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "trevor-noah": {
+    "portrait": "/media/talent/trevor-noah.jpg",
+    "wide": "/media/talent/trevor-noah-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAwADAAAAAAAAAAAAAAAAAAUGAgME/8QAJhAAAgEDBAEDBQAAAAAAAAAAAQIDAAQRBRITIRQVQVEiMWGBsf/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAGREAAgMBAAAAAAAAAAAAAAAAAAECERIx/9oADAMBAAIRAxEAPwA1rULzy10/TwwcLltowf0fYUle81SwnU3Mk2c52u5Iaqm7slgma/E/GzhY5CwzkA/00nuYU1AcPkNJI8gCh1wVpyb0NRWbHcDm5t4p45TtkUMMgGisooTawRQRldkahRkUVeiJpvtTXgMMeHf77sdA/IqV9ReG6ErM/LEfoBUYFdaMT3mlmqgc6n3K91OVdEm+FD63M3bxrn8UUsj7jUn4FFO2A//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Web Summit Qatar",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trevor_Noah_(53554114243)_(portrait_crop).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:07.283Z",
+    "gallery": [
+      {
+        "url": "/media/talent/trevor-noah-g1.jpg",
+        "credit": "Hayden Schiff from Cincinnati, USA",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trevor_Noah_2019-02-01_-_Trevor_Noah_(46151353405).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "brene-brown": {
+    "portrait": "/media/talent/brene-brown.jpg",
+    "wide": "/media/talent/brene-brown-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMEBQYC/8QAIhAAAQQBBAIDAAAAAAAAAAAAAQACAxEhBBIxQQUTkaGx/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAECA//EABcRAQEBAQAAAAAAAAAAAAAAAAABEQL/2gAMAwEAAhEDEQA/AMttvgLp8EjBb43NF1ZFKZonenUNkABIOFfeTcJfHEPAAkF3trI7RespznZrI7UJ5jI6QrZkvnOawmv1r3w7C95BwW3jHf7hAhjLjbfsqe7R6cQtAjGX82b4PaharL92cIThDHXB+ShBP//Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Bea Phi",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bren%C3%A9_Brown_and_Malcolm_Gladwell_at_SXSW_2025_06_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:04.759Z",
+    "gallery": [
+      {
+        "url": "/media/talent/brene-brown-g1.jpg",
+        "credit": "BBeargTeam",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bren%C3%A9_Brown_Wikipedia.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/brene-brown-g2.jpg",
+        "credit": "Bea Phi",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bren%C3%A9_Brown_and_Malcolm_Gladwell_at_SXSW_2025_04.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "simon-sinek": {
+    "portrait": "/media/talent/simon-sinek.jpg",
+    "wide": "/media/talent/simon-sinek-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMFBgT/xAAkEAACAgIBAwQDAAAAAAAAAAABAgMEABFBBSEiEhMxUYGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAID/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAERAiH/2gAMAwEAAhEDEQA/AMjViM1hIwoYk/BOt5W6zSqQVw9VWUhgDtwd519L6dWo1Vs3irTTL4IRtUB5P0f1k65RskFSEAU7ADb2ODvnDd05mVKwwwxA0fuR26MEKzRRN6FUmQn+YxZK9WJRLMLUi9goTx/P3mdWRxHoN2x8fcA84evVObIVecSXJXWMRhm2FHGGJdizEk7OGKBX/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "Lance Cpl. Brendan Mullin",
+    "licence": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Sinek_speaks_to_I_MIG_Marines_(2)_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.938Z",
+    "gallery": [
+      {
+        "url": "/media/talent/simon-sinek-g1.jpg",
+        "credit": "Shannon Smith",
+        "licence": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Simon_Sinek_speaks_at_Camp_H.M._Smith_in_Hawaii_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/simon-sinek-g2.jpg",
+        "credit": "Airman 1st Class Kevin Tanenbaum",
+        "licence": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:57th_WG_hosts_Simon_Sinek_(6).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "mrbeast": {
+    "portrait": "/media/talent/mrbeast.jpg",
+    "wide": "/media/talent/mrbeast-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgH/xAAkEAACAgECBQUAAAAAAAAAAAABAgADEQQSBSExMkETFSVCYf/EABcBAQEBAQAAAAAAAAAAAAAAAAMAAQL/xAAZEQEBAAMBAAAAAAAAAAAAAAABAAISIRH/2gAMAwEAAhEDEQA/AHbl1D7a9KgLNkkk4wJO+Q4frKq9XYl1dz7doOShlpHSvJdFcdACcc/ElOwv1dNLKqXJYXZ16sOZkrtdYg4zxEJ0wiRRuDkoU3L9gfMW9v0tVvqUK6tnPNozX2Z8knM03bCeynJZntViNqt+5xCbhLZs8L//2Q==",
+    "width": 450,
+    "height": 600,
+    "credit": "Tyren Redd",
+    "licence": "CC BY 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:MrBeast_in_2026_(cropped_4).png",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.296Z",
+    "gallery": [
+      {
+        "url": "/media/talent/mrbeast-g1.jpg",
+        "credit": "Steven Khan",
+        "licence": "CC BY 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:MrBeast_2023_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/mrbeast-g2.jpg",
+        "credit": "Tyren Redd",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:MrBeast_in_2026_(cropped_2).png",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "charli-damelio": {
+    "portrait": "/media/talent/charli-damelio.jpg",
+    "wide": "/media/talent/charli-damelio-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAQL/xAApEAACAQMDAgQHAAAAAAAAAAABAgMABBEFEiETMSJRYZEGMkFSgbHR/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDBP/EABwRAAIDAAMBAAAAAAAAAAAAAAABAgMREhQhQf/aAAwDAQACEQMRAD8AT06R4LfUJUJDrCNp9ScUxpFhFNexZdyyJ1eD3II/tK3QNtBNGgO+UomPPgH91lq7Wt5EUI6uCrbTTci01sm19D4iG3VXA+0UVzrr9S+V/q0Sk+1FF+la1kEizq+ntCJ7lmDKWGxF+Y9hj04zUy0jhkubfo5ibcdpOeR5H3q3rDEtCpPHJqHbEmKMk8jPP5oxgmtMqteDd9oj3EytHMoVUC+IHPFFVk8SgnvRTYiHZsR//9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "NickRewind",
+    "licence": "CC BY 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charli_D'Amelio_at_KCA_2022.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.024Z",
+    "gallery": [
+      {
+        "url": "/media/talent/charli-damelio-g1.jpg",
+        "credit": "NickRewind",
+        "licence": "CC BY 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charli_D'Amelio_at_KCAs_2023_01.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/charli-damelio-g2.jpg",
+        "credit": "Brad Mondo",
+        "licence": "CC BY 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Charli_D'Amelio_in_2020.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "oprah-winfrey": {
+    "portrait": "/media/talent/oprah-winfrey.jpg",
+    "wide": "/media/talent/oprah-winfrey-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMCBAYF/8QAJhAAAgIBAwMDBQAAAAAAAAAAAQIAAxEEBRIhImEGMUETMlGBof/EABcBAAMBAAAAAAAAAAAAAAAAAAEDBAX/xAAcEQEAAgIDAQAAAAAAAAAAAAABAAIDMRESEyH/2gAMAwEAAhEDEQA/AOLqFexq6azxNhOT4lmraDXQ1tNjc1GeJP3eIl1FlwQll7CQQcfMfptK1lY5XOQp6L9TGB+oc90v8dRmKo11IjDAEex6wkyvA8R7DpCXjySVlyz01uIvDI1ViD5D4/hlhNh3Ba3ARVZhjtcTTBj+YwEzNTs8sqLJqYxtp19Z42UAHw2YTZE5hHe14voT/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "US Embassy South Africa",
+    "licence": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oprah_Winfrey_2016.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.564Z",
+    "gallery": [
+      {
+        "url": "/media/talent/oprah-winfrey-g1.jpg",
+        "credit": "aphrodite-in-nyc",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oprah_in_2014.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/oprah-winfrey-g2.jpg",
+        "credit": "U.S. federal government",
+        "licence": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oprah_Winfrey_2010.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "gordon-ramsay": {
+    "portrait": "/media/talent/gordon-ramsay.jpg",
+    "wide": "/media/talent/gordon-ramsay-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUEBwEDBv/EACYQAAIBAwMDBAMAAAAAAAAAAAECAwAEEQUhQRITMSNCYXFR0fD/xAAWAQEBAQAAAAAAAAAAAAAAAAACAwT/xAAZEQEBAQADAAAAAAAAAAAAAAAAARECEjL/2gAMAwEAAhEDEQA/AOb05Wd+gHpXkjyadmCGxijuJemdo3DbHf4pXo8TPmTtMUXYtjbemWoP29MMRABaQdI5x5/vuo8vTRJOmlF1MLm6lmwR3GJweKK1jn7opMyz4LWGCFYoo1SNfCgbVDv9Dtr23aM5RskoR7T+qZDisnZSfiqWQtVTLGYZpIpCQ6MVbH5BoqTr4A1y9A29Umihgv/Z",
+    "width": 450,
+    "height": 600,
+    "credit": "Dave Pullig",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gordon_Ramsay_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.396Z",
+    "gallery": [
+      {
+        "url": "/media/talent/gordon-ramsay-g2.jpg",
+        "credit": "Allan Warren",
+        "licence": "CC BY-SA 3.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gordon_Ramsay_colour_Allan_Warren.jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "malcolm-gladwell": {
+    "portrait": "/media/talent/malcolm-gladwell.jpg",
+    "wide": "/media/talent/malcolm-gladwell-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAAAAUBAwIEBv/EACIQAAICAgICAgMAAAAAAAAAAAECAxEABBIhEzJBUSIx8v/EABYBAQEBAAAAAAAAAAAAAAAAAAQDBf/EAB0RAAMAAgIDAAAAAAAAAAAAAAABAgMRBFESE0H/2gAMAwEAAhEDEQA/AEcUvhgkDxlnk/GiPvMWM+svGWEx8vUnG20sT6ERLgFXDfvv6yJUG5Hrh5C1NfEgYzJVrKpklES8bqinTkgEAEnEtfzhjPx6euAjQpZF9KMMZ7F0G8H2cl53vk1MK+c3ZNsDZVljMZjWiC191iwehy897LX3/OZSensb80NNfbjmQtNLwa6q8MTr6jDErkVoi8Un/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "Bea Phi",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Malcolm_Gladwell%2C_author%2C_at_SXSW_2025_02_(cropped).jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.048Z",
+    "gallery": [
+      {
+        "url": "/media/talent/malcolm-gladwell-g1.jpg",
+        "credit": "Kris Krüg",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Malcolm_Gladwell%2C_2008_(cropped).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "chimamanda-ngozi-adichie": {
+    "portrait": "/media/talent/chimamanda-ngozi-adichie.jpg",
+    "wide": "/media/talent/chimamanda-ngozi-adichie-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUDBAYC/8QAJBAAAgEDAwQDAQAAAAAAAAAAAQIDAAQRBSFREiIxQTJh0RT/xAAWAQEBAQAAAAAAAAAAAAAAAAACAQP/xAAZEQEAAwEBAAAAAAAAAAAAAAAAARESAiH/2gAMAwEAAhEDEQA/AKWt6s9u5toO1/LPx9Ckw1K9DIWnk7TkZ9/tPdWtY/6o5yvU5GDxt7qKVYJUaNl8Lnf1WUdQ1nk0ikSaJJUOVcZFFc2kQhtIYwfigFFUFbVZIxcxqZB1qO5QfA+6qwzo85VnHQdgT7PGaX2sSG43BOfOSd6kvokyq424yamfaPXltAuMfE0VmFLKMLJIBwHP7RSyFv/Z",
+    "width": 450,
+    "height": 600,
+    "credit": "librairie mollat",
+    "licence": "CC BY 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chimamanda_Ngozi_Adichie_(2015).png",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:05.149Z",
+    "gallery": [
+      {
+        "url": "/media/talent/chimamanda-ngozi-adichie-g1.jpg",
+        "credit": "Islahaddow",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chimamanda_Ngozi_Adichie_2020_(cropped).jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/chimamanda-ngozi-adichie-g2.jpg",
+        "credit": "kellywritershouse",
+        "licence": "CC BY 2.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chimamanda_Adichie_11.09.10_(5248097626).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  },
+  "michelle-obama": {
+    "portrait": "/media/talent/michelle-obama.jpg",
+    "wide": "/media/talent/michelle-obama-wide.jpg",
+    "blur": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIEAQX/xAAmEAACAgICAQEJAAAAAAAAAAABAgMRAAQSIUFxBRMyQlFhgbHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgEA/8QAGBEAAwEBAAAAAAAAAAAAAAAAAAERIQL/2gAMAwEAAhEDEQA/AJNw8VYigaA78WayVoDpbiR8gVcHz9ryefbaZQvhhXffWbtSrIUkFqyCixPZwLliyM6XvUjRARdrfXrhkcG2xhUE9r1hhkNRBoM8atryqzMtcPh/uTbWjtw8EkAYkWeJuvXG1WZdcMrFWs9g1me1JXkSIs1kiyfxlTdgsaH1woVhIkhYN8rAD9HDJ4ZXWJQpoV9MMrAf/9k=",
+    "width": 450,
+    "height": 600,
+    "credit": "Official White House Photo by Chuck Kennedy",
+    "licence": "Public domain",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelle_Obama_2013_official_portrait.jpg",
+    "source": "wikimedia",
+    "fetchedAt": "2026-07-27T09:59:06.169Z",
+    "gallery": [
+      {
+        "url": "/media/talent/michelle-obama-g1.jpg",
+        "credit": "Tim Pierce",
+        "licence": "CC BY-SA 4.0",
+        "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelle_Obama_at_SNHU_October_2016.jpg",
+        "source": "wikimedia"
+      },
+      {
+        "url": "/media/talent/michelle-obama-g2.jpg",
+        "credit": "Princeton University",
+        "licence": "Public domain",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michelle_LaVaughn_Robinson_1985_(cropped).jpg",
+        "source": "wikimedia"
+      }
+    ]
+  }
+}
