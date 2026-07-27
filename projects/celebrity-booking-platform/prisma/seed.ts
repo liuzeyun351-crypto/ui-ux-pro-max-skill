@@ -340,15 +340,20 @@ async function main() {
     }
     await db.availability.createMany({ data: days });
 
-    // Reviews from the pool, offset per celebrity for variety
+    // Reviews from the pool, rotated per celebrity for variety.
+    //
+    // Drawn without replacement: sampling randomly put the same review, by the
+    // same reviewer, twice side by side on a profile, which reads as a bug.
     const reviewers = [client, ...extraClients];
     const n = 2 + Math.floor(rand() * 3);
+    const offset = Math.floor(rand() * REVIEW_POOL.length);
+    const reviewerOffset = Math.floor(rand() * reviewers.length);
     for (let i = 0; i < n; i++) {
-      const r = REVIEW_POOL[(i + Math.floor(rand() * REVIEW_POOL.length)) % REVIEW_POOL.length];
+      const r = REVIEW_POOL[(offset + i) % REVIEW_POOL.length];
       await db.review.create({
         data: {
           celebrityId: created.id,
-          authorId: reviewers[Math.floor(rand() * reviewers.length)].id,
+          authorId: reviewers[(reviewerOffset + i) % reviewers.length].id,
           rating: r.rating,
           title: r.title,
           body: r.body,
