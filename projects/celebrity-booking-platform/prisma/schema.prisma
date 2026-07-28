@@ -155,7 +155,8 @@ model Celebrity {
   availability_ Availability[]
   savedBy      SavedCelebrity[]
   events       Event[]
-  articles     Article[]
+  articles     Article[] @relation("ArticleSubject")
+  heroArticles Article[] @relation("ArticleHeroImage")
 
   @@index([categoryId])
   @@index([countryId])
@@ -338,8 +339,18 @@ model Article {
   heroHue     Int        @default(41)
   readMinutes Int        @default(5)
   publishedAt DateTime   @default(now())
+  // Who the story is actually about. Drives the "Featured in this story" card.
   celebrityId String?
-  celebrity   Celebrity? @relation(fields: [celebrityId], references: [id])
+  celebrity   Celebrity? @relation("ArticleSubject", fields: [celebrityId], references: [id])
+  // Whose photograph illustrates the story. Deliberately separate from the
+  // subject: an editorial hero is chosen for what it depicts, and tagging
+  // someone as the subject just to borrow their picture would assert on the
+  // page that the story features them. Always shown with a caption naming
+  // the person and crediting the photographer.
+  heroTalentId String?
+  heroTalent   Celebrity? @relation("ArticleHeroImage", fields: [heroTalentId], references: [id])
+  // Says what the hero photograph depicts and why it sits with this story.
+  heroCaption  String?
 }
 
 // ───────────────────────── Messaging & notifications ─────────────────────────

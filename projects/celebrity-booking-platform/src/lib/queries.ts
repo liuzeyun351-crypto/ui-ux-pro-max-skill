@@ -108,7 +108,15 @@ export function getRelatedCelebrities(categoryId: string, excludeId: string, tak
 
 export function getCategoriesWithCounts() {
   return db.category.findMany({
-    include: { _count: { select: { celebrities: true } } },
+    include: {
+      _count: { select: { celebrities: true } },
+      // The best-known name in the category, whose photograph fronts the tile.
+      celebrities: {
+        orderBy: { popularity: "desc" },
+        take: 1,
+        select: { name: true, accentHue: true, photo: true },
+      },
+    },
     orderBy: { name: "asc" },
   });
 }
@@ -130,7 +138,7 @@ export function getArticles(take?: number) {
   return db.article.findMany({
     orderBy: { publishedAt: "desc" },
     ...(take ? { take } : {}),
-    include: { celebrity: true },
+    include: { celebrity: true, heroTalent: true },
   });
 }
 

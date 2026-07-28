@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArticleImage } from "@/components/art/TalentImage";
+import { ArticleImage, articleCredit } from "@/components/art/TalentImage";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
 import { Reveal } from "@/components/motion/reveal";
 import { db } from "@/lib/db";
@@ -28,11 +28,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const article = await db.article.findUnique({
     where: { slug },
-    include: { celebrity: { include: celebrityInclude } },
+    include: { celebrity: { include: celebrityInclude }, heroTalent: true },
   });
   if (!article) notFound();
 
   const paragraphs = article.body.split("\n\n");
+  const heroCredit = articleCredit(article.heroTalent);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,16 +65,27 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </div>
 
       <Reveal className="mx-auto mt-10 max-w-5xl px-5 sm:px-8">
-        <div className="relative aspect-[21/9] overflow-hidden rounded-[var(--radius-xl)] border border-border">
-          <ArticleImage
-            title={article.title}
-            hue={article.heroHue}
-            celebrity={article.celebrity}
-            priority
-            sizes="100vw"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
+        <figure>
+          <div className="relative aspect-[21/9] overflow-hidden rounded-[var(--radius-xl)] border border-border">
+            <ArticleImage
+              title={article.title}
+              hue={article.heroHue}
+              celebrity={article.heroTalent}
+              priority
+              sizes="100vw"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+          {/* Names who is pictured, so an illustrative photograph is never
+              mistaken for a claim that the story is about them — and credits
+              the photographer, which CC BY and CC BY-SA both require. */}
+          {article.heroCaption && (
+            <figcaption className="mt-3 text-xs leading-relaxed text-faint">
+              {article.heroCaption}
+              {heroCredit && <span className="text-faint/70"> — photo: {heroCredit}</span>}
+            </figcaption>
+          )}
+        </figure>
       </Reveal>
 
       <div className="mx-auto mt-12 max-w-3xl px-5 sm:px-8">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArticleImage } from "@/components/art/TalentImage";
+import { ArticleImage, articleCredit } from "@/components/art/TalentImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { getArticles } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
@@ -37,11 +37,16 @@ export default async function NewsIndex() {
               <ArticleImage
                 title={lead.title}
                 hue={lead.heroHue}
-                celebrity={lead.celebrity}
+                celebrity={lead.heroTalent}
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+              {articleCredit(lead.heroTalent) && (
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-3 py-1.5 text-[10px] text-white/70">
+                  {articleCredit(lead.heroTalent)}
+                </span>
+              )}
             </div>
             <div className="flex flex-col justify-center p-8 lg:p-12">
               <p className="kicker mb-4">
@@ -70,10 +75,15 @@ export default async function NewsIndex() {
                 <ArticleImage
                   title={a.title}
                   hue={a.heroHue}
-                  celebrity={a.celebrity}
+                  celebrity={a.heroTalent}
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
+              {articleCredit(a.heroTalent) && (
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-3 py-1.5 text-[10px] text-white/70">
+                  {articleCredit(a.heroTalent)}
+                </span>
+              )}
               </div>
               <div className="p-6">
                 <p className="text-xs uppercase tracking-[0.16em] text-gold">

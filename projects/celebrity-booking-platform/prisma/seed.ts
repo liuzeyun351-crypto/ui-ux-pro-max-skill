@@ -63,6 +63,9 @@ const REVIEW_POOL: { title: string; body: string; eventType: string; rating: num
 const ARTICLES = [
   {
     slug: "art-of-the-private-performance",
+    heroTalentSlug: "adele",
+    heroCaption:
+      "Adele performing. The closeness a private booking is built to recreate — one room, one voice, no stadium.",
     title: "The Art of the Private Performance",
     excerpt: "What separates a good private show from a legendary one? Production advance, room design, and the courage to ask for the unexpected.",
     kind: "guide",
@@ -72,6 +75,9 @@ const ARTICLES = [
   },
   {
     slug: "how-escrow-changed-talent-booking",
+    heroTalentSlug: "beyonce",
+    heroCaption:
+      "Beyoncé at Tottenham Hotspur Stadium. Engagements on this scale are what milestone escrow exists to protect.",
     title: "How Escrow Changed Talent Booking",
     excerpt: "Milestone-based payments ended the era of wire-and-hope. Here is how the modern booking pipeline protects both sides.",
     kind: "news",
@@ -81,6 +87,9 @@ const ARTICLES = [
   },
   {
     slug: "booking-keynotes-that-move-markets",
+    heroTalentSlug: "simon-sinek",
+    heroCaption:
+      "Simon Sinek mid-keynote. The speaker anchors ticket pricing and press long before the agenda is announced.",
     title: "Booking Keynotes That Move Markets",
     excerpt: "The right speaker changes what a summit is worth. A former conference director on how the best programmers think.",
     kind: "guide",
@@ -90,6 +99,9 @@ const ARTICLES = [
   },
   {
     slug: "afrobeats-global-takeover",
+    heroTalentSlug: "burna-boy",
+    heroCaption:
+      "Burna Boy headlining Untold, 2024. Afrobeats now programmes main stages rather than side tents.",
     title: "Afrobeats and the New Global Stage",
     excerpt: "From Lagos to London Stadium: why the world's fastest-growing sound is reshaping event lineups everywhere.",
     kind: "news",
@@ -100,6 +112,9 @@ const ARTICLES = [
   },
   {
     slug: "what-a-booking-fee-actually-buys",
+    heroTalentSlug: "taylor-swift",
+    heroCaption:
+      "Taylor Swift on tour. A headline fee pays for the band, crew, production advance and insurance behind one night.",
     title: "What a Booking Fee Actually Buys",
     excerpt: "Inside the anatomy of a seven-figure appearance fee: production, team, insurance, and the hours you never see.",
     kind: "guide",
@@ -109,6 +124,9 @@ const ARTICLES = [
   },
   {
     slug: "rise-of-the-creator-headliner",
+    heroTalentSlug: "mrbeast",
+    heroCaption:
+      "MrBeast in 2026. Creator audiences now outsize broadcast, and booking contracts have had to follow.",
     title: "The Rise of the Creator Headliner",
     excerpt: "Creators now command audiences larger than networks. What that means for brands planning their next flagship moment.",
     kind: "news",
@@ -397,6 +415,8 @@ async function main() {
         readMinutes: a.readMinutes,
         publishedAt,
         celebrityId: a.celebritySlug ? celebs[a.celebritySlug].id : undefined,
+        heroTalentId: celebs[a.heroTalentSlug].id,
+        heroCaption: a.heroCaption,
       },
     });
   }

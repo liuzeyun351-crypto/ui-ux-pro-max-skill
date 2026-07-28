@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PortraitArt, BannerArt } from "./PortraitArt";
-import { getPhoto } from "@/lib/photo";
+import { getPhoto, formatCredit } from "@/lib/photo";
 
 /**
  * The single decision point for talent imagery.
@@ -65,8 +65,16 @@ export function TalentImage({
 }
 
 /**
- * Article hero art. Uses the tagged celebrity's wide photograph when one exists,
- * otherwise the generated banner keyed to the article's hue.
+ * Article and event hero art.
+ *
+ * `celebrity` is whoever's photograph should illustrate the piece. For articles
+ * that is `heroTalent` — chosen for what the picture depicts — which is not the
+ * same as the article's subject: borrowing a person's face for an unrelated
+ * story would read as a claim they are in it. Every article hero therefore
+ * ships with a caption naming who is pictured (see `articleCredit`).
+ *
+ * Falls back to the generated banner keyed to the article's hue when no
+ * photograph is available, so the layout is never broken by a missing asset.
  */
 export function ArticleImage({
   title,
@@ -99,4 +107,15 @@ export function ArticleImage({
       {...(photo.blur ? { placeholder: "blur" as const, blurDataURL: photo.blur } : {})}
     />
   );
+}
+
+/**
+ * "Photo: <photographer> · <licence> (Wikimedia Commons)" for an article hero,
+ * or null when the piece is running on generated artwork. CC BY and CC BY-SA
+ * both require the photographer to be named wherever the image appears.
+ */
+export function articleCredit(celebrity?: TalentImageSubject | null): string | null {
+  const photo = celebrity ? getPhoto(celebrity) : null;
+  if (!photo?.wide || !photo.credit) return null;
+  return formatCredit(photo);
 }

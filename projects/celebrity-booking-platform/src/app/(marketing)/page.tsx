@@ -9,7 +9,7 @@ import { Testimonials } from "@/components/marketing/testimonials";
 import { FaqSection } from "@/components/marketing/faq-section";
 import { NewsletterForm } from "@/components/marketing/newsletter-form";
 import { CelebrityCard } from "@/components/celebrity/celebrity-card";
-import { ArticleImage } from "@/components/art/TalentImage";
+import { ArticleImage, TalentImage, articleCredit } from "@/components/art/TalentImage";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/reveal";
 import { ButtonLink, ArrowGlyph } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
@@ -100,19 +100,27 @@ export default async function HomePage() {
                     i === 0 ? "min-h-64" : "min-h-36"
                   }`}
                 >
-                  <span
-                    aria-hidden
-                    className="absolute -right-8 -top-8 size-32 rounded-full opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
-                    style={{ background: `oklch(0.6 0.13 ${(i * 47 + 40) % 360})` }}
-                  />
-                  <span className="font-display text-xl font-medium text-foreground transition-colors group-hover:text-gold md:text-2xl">
+                  {/* The category's best-known name fronts the tile. A scrim
+                      carries the type: these are real photographs of varying
+                      exposure, so the text cannot rely on the image being dark. */}
+                  <span aria-hidden className="absolute inset-0">
+                    <TalentImage
+                      celebrity={cat.celebrities[0]}
+                      wide
+                      variant={i}
+                      sizes="(max-width: 768px) 50vw, 20vw"
+                      className="h-full w-full scale-105 object-cover opacity-85 transition-all duration-700 ease-[var(--ease-out-expo)] group-hover:scale-110 group-hover:opacity-100"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/15" />
+                  </span>
+                  <span className="relative font-display text-xl font-medium text-foreground transition-colors group-hover:text-gold md:text-2xl">
                     {cat.name}
                   </span>
-                  <span className="mt-1 text-xs text-faint">
+                  <span className="relative mt-1 text-xs text-faint">
                     {cat._count.celebrities} on the roster
                   </span>
                   {i === 0 && (
-                    <span className="mt-3 max-w-56 text-sm leading-relaxed text-muted">
+                    <span className="relative mt-3 max-w-56 text-sm leading-relaxed text-muted">
                       {cat.tagline}
                     </span>
                   )}
@@ -239,10 +247,15 @@ export default async function HomePage() {
                   <ArticleImage
                     title={a.title}
                     hue={a.heroHue}
-                    celebrity={a.celebrity}
+                    celebrity={a.heroTalent}
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  {articleCredit(a.heroTalent) && (
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/70 to-transparent px-3 py-1.5 text-[10px] text-white/70">
+                      {articleCredit(a.heroTalent)}
+                    </span>
+                  )}
                 </div>
                 <div className="p-6">
                   <p className="text-xs uppercase tracking-[0.16em] text-gold">
