@@ -22,6 +22,7 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.agents'))) {
     detected.push('antigravity');
     detected.push('codex');
+    detected.push('universal');
   } else if (existsSync(join(cwd, '.agent'))) {
     detected.push('antigravity');
   }
@@ -76,11 +77,11 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (detected.length === 1) {
     suggested = detected[0];
   } else if (
-    detected.length === 2 &&
+    (detected.length === 2 || detected.length === 3) &&
     detected.includes('antigravity') &&
     detected.includes('codex')
   ) {
-    // Both platforms share `.agents`; avoid suggesting an install for every AI.
+    // Platforms share `.agents`; avoid suggesting an install for every AI.
     suggested = 'codex';
   } else if (detected.length > 1) {
     suggested = 'all';
@@ -129,6 +130,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Augment (.augment/skills/)';
     case 'codewhale':
       return 'CodeWhale (.codewhale/skills/)';
+    case 'universal':
+      return 'Universal (.agents/skills/)';
     case 'all':
       return 'All AI assistants';
   }

@@ -54,6 +54,7 @@ const AI_TO_PLATFORM: Record<string, string> = {
   warp: 'warp',
   augment: 'augment',
   codewhale: 'codewhale',
+  universal: 'universal',
 };
 
 async function exists(path: string): Promise<boolean> {
