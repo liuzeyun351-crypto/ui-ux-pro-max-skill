@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,7 +20,13 @@ interface UpdateOptions {
 }
 
 async function getPackageVersion(): Promise<string> {
-  const packagePath = join(__dirname, '..', 'package.json');
+  const packageCandidates = [
+    // Bun bundle or root: dist/index.js -> ../package.json
+    join(__dirname, '..', 'package.json'),
+    // TypeScript fallback: dist/commands/update.js -> ../../package.json
+    join(__dirname, '..', '..', 'package.json'),
+  ];
+  const packagePath = packageCandidates.find(path => existsSync(path)) ?? packageCandidates[0];
   const pkg = JSON.parse(await readFile(packagePath, 'utf-8')) as { version: string };
   return pkg.version;
 }
