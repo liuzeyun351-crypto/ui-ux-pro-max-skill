@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en-AU" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field status &amp; weather — North Star Football Club</title>
+<meta name="description" content="Live field status for every North Star FC ground, plus the four-day forecast and the club's wet weather and heat policy.">
+<meta name="theme-color" content="#2a458c">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css?v=20260807">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" data-nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="North Star Football Club — home">
+      <svg viewBox="0 0 48 56" aria-hidden="true">
+        <path d="M2 2h44v30c0 12-11 19-22 22C13 51 2 44 2 32V2z" fill="#2a458c"/>
+        <path d="M24 9l4.4 9 9.9 1.4-7.2 7 1.7 9.8L24 31.5 15.2 36.2l1.7-9.8-7.2-7L19.6 18z" fill="#fff85a"/>
+        <rect x="9" y="41" width="30" height="4" fill="#fff85a"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">North Star FC</span>
+        <span class="brand-sub">Est. 1974 · Brisbane</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Club</a>
+      <a href="fields.html" aria-current="page">Field status</a>
+      <a href="register.html">Register</a>
+      <a href="schedules.html">Schedules</a>
+      <a href="documents.html">Documents</a>
+      <a href="partners.html">Partners</a>
+    </nav>
+    <div class="nav-cta"><a class="btn" href="register.html">Register now</a></div>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-mobile">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      Menu
+    </button>
+  </div>
+  <nav class="nav-mobile" id="nav-mobile" data-nav-mobile aria-label="Primary, mobile">
+    <a href="index.html">Club</a>
+    <a href="fields.html" aria-current="page">Field status &amp; weather</a>
+    <a href="register.html">Register</a>
+    <a href="schedules.html">Training &amp; games</a>
+    <a href="documents.html">Documents</a>
+    <a href="partners.html">Partners</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="page-head">
+  <div class="hero-pitch" aria-hidden="true"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <p class="breadcrumb"><a href="index.html">Club</a> <span aria-hidden="true">/</span> Field status</p>
+    <h1><span class="live-dot" aria-hidden="true"></span>Field status<br>&amp; weather</h1>
+    <p class="lead">
+      Updated after every ground inspection and every heavy shower. If it says closed here,
+      it is closed — including for training, warm-ups and kick-arounds.
+    </p>
+    <p class="muted" style="margin-top:1.25rem">Last inspection: <strong data-fields-updated>Thursday 6 Aug, 4:15pm</strong></p>
+  </div>
+</section>
+
+<!-- ============================================================== STATUS -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker reveal">01 — Ground by ground</p>
+    <h2 class="h-lg reveal" style="margin-bottom:2.5rem">Today's status</h2>
+
+    <div class="grid grid-4 reveal-group">
+      <div class="field-card" data-state="open">
+        <div class="field-head">
+          <div><h3 class="h-sm">Field 1</h3><p class="field-use">FQPL &amp; senior fixtures</p></div>
+          <span class="status status-open">Open</span>
+        </div>
+        <div class="field-bar" aria-hidden="true"><i></i></div>
+        <p class="field-note">Full surface open. Lights on until 9:30pm. Sprinklers run 5:00–5:30am, so early sessions should start on the eastern half.</p>
+      </div>
+
+      <div class="field-card" data-state="caution">
+        <div class="field-head">
+          <div><h3 class="h-sm">Field 2</h3><p class="field-use">Junior community 12–17</p></div>
+          <span class="status status-caution">Caution</span>
+        </div>
+        <div class="field-bar" aria-hidden="true"><i></i></div>
+        <p class="field-note">Southern goalmouth is soft after Tuesday's rain. Playable, but move shooting and finishing drills to the halfway line.</p>
+      </div>
+
+      <div class="field-card" data-state="closed">
+        <div class="field-head">
+          <div><h3 class="h-sm">Field 3</h3><p class="field-use">MiniRoos &amp; training grids</p></div>
+          <span class="status status-closed">Closed</span>
+        </div>
+        <div class="field-bar" aria-hidden="true"><i></i></div>
+        <p class="field-note">Closed for scheduled turf renovation — cored, sanded and re-seeded. Reopens Monday 11 August. Affected teams move to the Training Grid.</p>
+      </div>
+
+      <div class="field-card" data-state="open">
+        <div class="field-head">
+          <div><h3 class="h-sm">Training Grid</h3><p class="field-use">Small-sided &amp; goalkeeper work</p></div>
+          <span class="status status-open">Open</span>
+        </div>
+        <div class="field-bar" aria-hidden="true"><i></i></div>
+        <p class="field-note">Open. Portable goals must go back in the shed after the last session — they sink into the surface overnight.</p>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:1.5rem">
+      Something not right? Ground closures are called by the ground manager, not by coaches.
+      Report a hazard to <a class="link" href="mailto:admin@northstarfc.com.au">admin@northstarfc.com.au</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================= WEATHER -->
+<section class="section on-paper" data-weather>
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <p class="kicker">02 — Four-day forecast</p>
+        <h2 class="h-lg">What the sky is doing.</h2>
+        <p class="lead" style="margin-top:1rem">
+          Fields close because of rain that has already fallen, not rain that might.
+          The advisory below adds up the last 48 hours and tells you what that
+          usually means for the surface.
+        </p>
+
+        <div style="margin-top:1.75rem;padding:1.25rem;border:2px solid var(--line-strong);background:var(--white)">
+          <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem">
+            <span class="tag">Ground advisory</span>
+            <span class="status status-caution" data-weather-advisory-chip>18mm / 48h</span>
+          </div>
+          <p class="field-note" data-weather-advisory>
+            18mm of rain in the last 48 hours. Surfaces may be soft; goalmouths and
+            training grids are inspected each afternoon.
+          </p>
+        </div>
+
+        <p class="muted" style="margin-top:1rem" data-weather-note>
+          Forecast for Brisbane, QLD. Live data loads automatically when you open this page.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="weather-grid">
+          <div data-weather-day>
+            <p class="weather-day" data-weather-label>Today</p>
+            <p class="weather-temp" data-weather-temp>23° / 12°</p>
+            <p class="weather-desc" data-weather-desc>Partly cloudy</p>
+            <p class="weather-rain" data-weather-rain>20% chance of rain</p>
+          </div>
+          <div data-weather-day>
+            <p class="weather-day" data-weather-label>Tomorrow</p>
+            <p class="weather-temp" data-weather-temp>25° / 13°</p>
+            <p class="weather-desc" data-weather-desc>Mostly clear</p>
+            <p class="weather-rain" data-weather-rain>10% chance of rain</p>
+          </div>
+          <div data-weather-day>
+            <p class="weather-day" data-weather-label>Saturday</p>
+            <p class="weather-temp" data-weather-temp>26° / 14°</p>
+            <p class="weather-desc" data-weather-desc>Clear</p>
+            <p class="weather-rain" data-weather-rain>5% chance of rain</p>
+          </div>
+          <div data-weather-day>
+            <p class="weather-day" data-weather-label>Sunday</p>
+            <p class="weather-temp" data-weather-temp>24° / 15°</p>
+            <p class="weather-desc" data-weather-desc>Showers</p>
+            <p class="weather-rain" data-weather-rain>55% chance of rain</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3" style="margin-top:1.5rem">
+          <div><p class="weather-day">Heat rule</p><p class="field-note" style="margin-top:.4rem">Play is modified above 31°C and suspended above 36°C.</p></div>
+          <div><p class="weather-day">Lightning rule</p><p class="field-note" style="margin-top:.4rem">Grounds clear for 30 minutes after the last strike within 10km.</p></div>
+          <div><p class="weather-day">Call time</p><p class="field-note" style="margin-top:.4rem">Weekend calls are published by 6:30am Saturday.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================== POLICY -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker reveal">03 — How the call gets made</p>
+    <div class="split">
+      <div class="reveal">
+        <h2 class="h-lg">Nobody enjoys<br>cancelling <span class="mark">football</span>.</h2>
+        <p class="lead" style="margin-top:1.5rem">
+          But a field played on when it is saturated takes six weeks to recover, and the
+          teams who lose those six weeks are the MiniRoos. So the rule is boring and
+          it does not bend.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-ghost" href="documents.html">Read the wet weather policy</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <ol class="timeline">
+          <li><span class="year">1</span><p><strong>3:30pm weekdays.</strong> The ground manager walks all four surfaces and checks goalmouths, centre circles and the training grid.</p></li>
+          <li><span class="year">2</span><p><strong>4:30pm weekdays.</strong> Status is published on this page and sent to coaches. No status change means no change.</p></li>
+          <li><span class="year">3</span><p><strong>6:30am Saturday.</strong> Weekend call is published here and on the club's social accounts before anyone leaves home.</p></li>
+          <li><span class="year">4</span><p><strong>Council override.</strong> Brisbane City Council can close a ground independently. If they do, we cannot overrule it.</p></li>
+          <li><span class="year">5</span><p><strong>Referee override.</strong> Once a match starts, the referee owns the decision to stop or abandon it.</p></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="split" style="align-items:center">
+      <h2>Get the closure alert instead of refreshing this page.</h2>
+      <div>
+        <p style="font-size:1.05rem;max-width:52ch">
+          Every closure goes out by email to registered players and coaches within
+          five minutes of the call. Make sure your contact details are current in
+          PlayFootball, or email the registrar to update them.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="mailto:admin@northstarfc.com.au?subject=Update%20my%20contact%20details">Update my details</a>
+          <a class="btn btn-ghost" href="schedules.html">See this week's schedule</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:1rem">
+          <svg viewBox="0 0 48 56" aria-hidden="true" style="width:34px;height:40px">
+            <path d="M2 2h44v30c0 12-11 19-22 22C13 51 2 44 2 32V2z" fill="#2a458c"/>
+            <path d="M24 9l4.4 9 9.9 1.4-7.2 7 1.7 9.8L24 31.5 15.2 36.2l1.7-9.8-7.2-7L19.6 18z" fill="#fff85a"/>
+            <rect x="9" y="41" width="30" height="4" fill="#fff85a"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name">North Star FC</span>
+            <span class="brand-sub">Est. 1974 · Brisbane</span>
+          </span>
+        </div>
+        <p style="color:rgba(255,255,255,.72);font-size:.92rem;max-width:34ch">
+          A not-for-profit community football club. Registered players from age four
+          through to over-35s, plus an FQPL pathway.
+        </p>
+      </div>
+      <div>
+        <h4>The club</h4>
+        <ul>
+          <li><a href="index.html#programs">Programs</a></li>
+          <li><a href="index.html#history">Our history</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="documents.html">Committee &amp; governance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Play</h4>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="schedules.html">Training times</a></li>
+          <li><a href="schedules.html#fixtures">Fixtures</a></li>
+          <li><a href="fields.html">Field status</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:admin@northstarfc.com.au">admin@northstarfc.com.au</a></li>
+          <li><a href="tel:+61700000000">07 0000 0000</a></li>
+          <li>North Star Sports Complex</li>
+          <li>Club Road, Brisbane QLD 4000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 North Star Football Club Inc. A not-for-profit association.</span>
+      <span>We play and train on the land of the Turrbal and Yuggera peoples.</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/manifest.js?v=20260807"></script>
+<script defer src="main.js?v=20260807"></script>
+</body>
+</html>
