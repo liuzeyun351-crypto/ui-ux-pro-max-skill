@@ -578,6 +578,23 @@ rm -rf .windsurf/skills/ui-ux-pro-max # Windsurf
 rm -rf .agents/skills/ui-ux-pro-max   # Antigravity / Codex
 ```
 
+### Claude.ai 的“上传技能”对话框提示 "Zip contains too many files (maximum 200)"
+
+请勿上传完整的 GitHub 仓库 ZIP。该 ZIP 是开发用的代码仓库，包含源代码、CLI 资源、文档、预览以及多个打包的技能，因此会超出 Claude 的 200 个文件上传限制。它不是用于上传到 Claude 的技能安装包，并且本项目目前不提供用于手动上传到 Claude.ai 的单独 ZIP。
+
+对于 Claude Code，请通过 Marketplace 安装：
+
+```bash
+/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+```
+
+也可以使用 CLI 安装器：
+
+```bash
+npx ui-ux-pro-max-cli init --ai claude
+```
+
 ### Claude Marketplace 安装失败，提示 "Zip file contains a symbolic link"
 
 这是 v2.5.1 之前版本的已知问题。仓库内部使用了符号链接，某些安装工具无法处理。**解决办法：** 改用 CLI 安装器：
