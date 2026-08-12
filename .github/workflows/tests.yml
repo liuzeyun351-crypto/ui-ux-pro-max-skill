@@ -5,6 +5,10 @@ on:
     paths:
       - '.claude/skills/**'
       - 'cli/assets/skills/**'
+      - 'cli/assets/templates/**'
+      - 'cli/src/**'
+      - 'cli/tests/**'
+      - 'src/ui-ux-pro-max/templates/**'
       - '.github/workflows/tests.yml'
   push:
     branches: [main]
