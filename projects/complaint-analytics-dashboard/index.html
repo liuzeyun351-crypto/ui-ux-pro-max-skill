@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投诉时间分析平台 · 洞察分析</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF', secondary: '#3B82F6', accent: '#D97706',
+            surface: '#F8FAFC', ink: '#0F172A', muted: '#64748B', border: '#DBEAFE',
+            danger: '#DC2626', success: '#16A34A', warning: '#D97706'
+          },
+          fontFamily: { heading: ['Fira Code', 'monospace'], body: ['Fira Sans', 'sans-serif'] },
+          boxShadow: { card: '0 10px 30px rgba(15, 23, 42, 0.07)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Fira Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+    .focus-ring:focus-visible { outline: 3px solid #93C5FD; outline-offset: 3px; }
+    .chart-panel canvas { max-height: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="bg-surface text-ink antialiased">
+  <div class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 lg:px-6">
+        <div class="flex items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-primary to-secondary text-white shadow-card" aria-hidden="true">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3v18m-4-4h10M5 7h14"/></svg>
+          </div>
+          <div>
+            <p class="font-heading text-lg font-bold tracking-tight">投诉时间分析平台</p>
+            <p class="text-xs text-muted">洞察分析 · 运营风险工作台</p>
+          </div>
+        </div>
+        <nav class="hidden items-center gap-2 md:flex" aria-label="主导航">
+          <a href="#overview" class="focus-ring rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">洞察分析</a>
+          <a href="#actions" class="focus-ring rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">处置建议</a>
+          <a href="#details" class="focus-ring rounded-full px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">投诉明细</a>
+        </nav>
+        <div class="flex items-center gap-3 text-sm text-slate-600">
+          <span class="hidden sm:inline">欢迎您，张三/123456</span>
+          <button class="focus-ring rounded-full border border-slate-200 p-2 hover:bg-slate-50" aria-label="退出登录">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3-3H9m9.75 0l-3-3m3 3l-3 3"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl space-y-6 px-4 py-6 lg:px-6">
+      <section class="rounded-3xl border border-slate-200 bg-white p-4 shadow-card" aria-labelledby="filter-title">
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 id="filter-title" class="text-xl font-bold">全局筛选</h1>
+            <p class="text-sm text-muted">筛选条件会同步影响 KPI、图表、AI 建议与明细表。</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button class="focus-ring rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">查询</button>
+            <button class="focus-ring rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">重置</button>
+            <button class="focus-ring rounded-full border border-border bg-blue-50 px-4 py-2 text-sm font-semibold text-primary hover:bg-blue-100">保存视图</button>
+          </div>
+        </div>
+        <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+          <label class="text-sm font-semibold text-slate-700">日期范围<input class="focus-ring mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm" value="2026-06-01 至 2026-06-30" /></label>
+          <label class="text-sm font-semibold text-slate-700">渠道<select class="focus-ring mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"><option>全部渠道</option><option>12378呼转</option><option>监管转办投诉</option></select></label>
+          <label class="text-sm font-semibold text-slate-700">部门<select class="focus-ring mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"><option>交易及资产风险部</option><option>客服部</option><option>技术部</option></select></label>
+          <label class="text-sm font-semibold text-slate-700">场景<select class="focus-ring mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"><option>全部场景</option><option>催收业务</option><option>饭票业务</option></select></label>
+          <label class="text-sm font-semibold text-slate-700">问题细项<select class="focus-ring mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-sm"><option>全部类型</option><option>频繁联系、骚扰</option><option>停催或缓催</option></select></label>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2" aria-label="已应用筛选条件">
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">2026-06-01 至 2026-06-30</span>
+          <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primary">交易及资产风险部</span>
+          <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-warning">已保存视图：月度风险复盘</span>
+        </div>
+      </section>
+
+      <section id="overview" class="grid gap-4 md:grid-cols-2 xl:grid-cols-4" aria-label="关键指标">
+        <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><p class="text-sm text-muted">当年投诉总量</p><div class="mt-2 flex items-end justify-between"><strong class="font-heading text-3xl">57,542</strong><span class="rounded-full bg-red-50 px-2 py-1 text-xs font-bold text-danger">风险上升 10.5% ↑</span></div></article>
+        <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><p class="text-sm text-muted">当月投诉总量</p><div class="mt-2 flex items-end justify-between"><strong class="font-heading text-3xl">4,142</strong><span class="rounded-full bg-red-50 px-2 py-1 text-xs font-bold text-danger">较上月 +10.5%</span></div></article>
+        <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><p class="text-sm text-muted">日均投诉量</p><div class="mt-2 flex items-end justify-between"><strong class="font-heading text-3xl">198</strong><span class="rounded-full bg-red-50 px-2 py-1 text-xs font-bold text-danger">需关注 +5.1%</span></div></article>
+        <article class="rounded-3xl border border-amber-200 bg-amber-50 p-5 shadow-card"><p class="text-sm text-amber-800">最高增长类型</p><div class="mt-2 flex items-end justify-between"><strong class="text-2xl font-bold text-amber-900">停催或缓催</strong><span class="rounded-full bg-white px-2 py-1 text-xs font-bold text-danger">+30%</span></div></article>
+      </section>
+
+      <section id="actions" class="rounded-3xl border border-amber-200 bg-gradient-to-r from-amber-50 to-white p-5 shadow-card" aria-labelledby="ai-title">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div class="flex gap-4">
+            <div class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-warning" aria-hidden="true"><svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0 3.75h.008v.008H12v-.008zM10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
+            <div>
+              <div class="flex flex-wrap items-center gap-2"><h2 id="ai-title" class="text-lg font-bold">AI 异常处置建议</h2><span class="rounded-full bg-red-100 px-2 py-1 text-xs font-bold text-danger">紧急</span><span class="rounded-full bg-white px-2 py-1 text-xs font-semibold text-slate-600">置信度 92%</span></div>
+              <p class="mt-1 max-w-3xl text-sm leading-6 text-slate-700">检测到 <strong>停催或缓催</strong> 类投诉增长过快（近 7 天 +30%，样本 58 件），主要集中在 12378 呼转渠道与客服部，建议立即筛选相关明细并分派负责人。</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button class="focus-ring rounded-full bg-danger px-4 py-2 text-sm font-bold text-white hover:bg-red-700">查看 58 条相关投诉</button>
+            <button class="focus-ring rounded-full border border-amber-300 bg-white px-4 py-2 text-sm font-bold text-amber-800 hover:bg-amber-100">分派客服部</button>
+            <button class="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">生成报告</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid gap-6 xl:grid-cols-[1.45fr_.85fr]">
+        <article class="chart-panel rounded-3xl border border-slate-200 bg-white p-5 shadow-card" aria-labelledby="trend-title">
+          <div class="mb-4 flex flex-wrap items-center justify-between gap-3"><div><h2 id="trend-title" class="text-lg font-bold">投诉量趋势与渠道贡献</h2><p class="text-sm text-muted">点击图例可切换系列，柱状点击后联动明细。</p></div><div class="flex rounded-full bg-slate-100 p-1"><button class="rounded-full bg-primary px-4 py-2 text-sm font-bold text-white">日线</button><button class="rounded-full px-4 py-2 text-sm font-bold text-slate-600">周线</button><button class="rounded-full px-4 py-2 text-sm font-bold text-slate-600">月线</button></div></div>
+          <div class="h-80"><canvas id="stackedChart" aria-label="六月投诉量堆叠柱状图"></canvas></div>
+        </article>
+        <aside class="space-y-4">
+          <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><h2 class="text-lg font-bold">风险摘要</h2><ul class="mt-4 space-y-3 text-sm"><li class="flex justify-between gap-4"><span>12378 呼转渠道贡献</span><strong class="text-danger">42%</strong></li><li class="flex justify-between gap-4"><span>待处理超 SLA</span><strong class="text-warning">17 件</strong></li><li class="flex justify-between gap-4"><span>主要责任部门</span><strong>客服部</strong></li></ul></article>
+          <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><h2 class="text-lg font-bold">TOP 增长类型</h2><div class="mt-4 space-y-4"><div><div class="mb-1 flex justify-between text-sm"><span>频繁联系、骚扰</span><b class="text-danger">+18.5%</b></div><div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[86%] rounded-full bg-danger"></div></div></div><div><div class="mb-1 flex justify-between text-sm"><span>停催或缓催</span><b class="text-danger">+15.0%</b></div><div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[72%] rounded-full bg-warning"></div></div></div><div><div class="mb-1 flex justify-between text-sm"><span>态度恶劣</span><b class="text-danger">+7.2%</b></div><div class="h-2 rounded-full bg-slate-100"><div class="h-2 w-[48%] rounded-full bg-secondary"></div></div></div></div></article>
+        </aside>
+      </section>
+
+      <section class="grid gap-6 xl:grid-cols-3">
+        <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card xl:col-span-2"><div class="mb-4 flex items-center justify-between"><div><h2 class="text-lg font-bold">投诉类型趋势对比</h2><p class="text-sm text-muted">默认展示 TOP 4，避免多线噪声；支持导出数据表。</p></div><button class="focus-ring rounded-full border border-slate-200 px-3 py-2 text-sm font-bold">近 7 天</button></div><div class="h-80"><canvas id="lineChart" aria-label="投诉类型趋势折线图"></canvas></div></article>
+        <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card"><h2 class="text-lg font-bold">分类表现</h2><div class="mt-4 h-60"><canvas id="donutChart" aria-label="投诉分类占比环图"></canvas></div><div class="mt-4 grid grid-cols-2 gap-2 text-sm"><span class="rounded-xl bg-red-50 p-3 text-danger">上升项 4 个</span><span class="rounded-xl bg-green-50 p-3 text-success">下降项 3 个</span><span class="rounded-xl bg-blue-50 p-3 text-primary">当月 4,142</span><span class="rounded-xl bg-amber-50 p-3 text-warning">需复核 58</span></div></article>
+      </section>
+
+      <section id="details" class="rounded-3xl border border-slate-200 bg-white p-5 shadow-card" aria-labelledby="details-title">
+        <div class="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between"><div><h2 id="details-title" class="text-lg font-bold">联动投诉明细队列</h2><p class="text-sm text-muted">当前筛选：停催或缓催 · 12378呼转 · 待处理 / 超 SLA 优先。</p></div><div class="flex flex-wrap gap-2"><button class="focus-ring rounded-full bg-primary px-4 py-2 text-sm font-bold text-white">批量分派</button><button class="focus-ring rounded-full border border-slate-200 px-4 py-2 text-sm font-bold">导出 CSV</button></div></div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full border-separate border-spacing-0 text-left text-sm">
+            <thead class="bg-slate-50 text-xs uppercase tracking-wide text-slate-500"><tr><th class="rounded-l-xl p-3"><input aria-label="全选投诉" type="checkbox"></th><th class="p-3">投诉编号</th><th class="p-3">投诉时间</th><th class="p-3">责任部门</th><th class="p-3">问题类型</th><th class="p-3">内容摘要</th><th class="p-3">状态 / SLA</th><th class="rounded-r-xl p-3">操作</th></tr></thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-blue-50/60"><td class="p-3"><input aria-label="选择投诉 546242" type="checkbox"></td><td class="p-3 font-mono">546242</td><td class="p-3">2026-06-11 10:33</td><td class="p-3">客服部</td><td class="p-3">服务态度问题</td><td class="p-3">客服沟通不顺畅，客户反馈多次未得到回复</td><td class="p-3"><span class="rounded-full bg-red-50 px-2 py-1 font-bold text-danger">超时风险</span></td><td class="p-3"><button class="focus-ring rounded-full bg-blue-50 px-3 py-1 font-bold text-primary">溯源详情</button></td></tr>
+              <tr class="hover:bg-blue-50/60"><td class="p-3"><input aria-label="选择投诉 546825" type="checkbox"></td><td class="p-3 font-mono">546825</td><td class="p-3">2026-06-11 10:33</td><td class="p-3">技术部</td><td class="p-3">处理时效慢</td><td class="p-3">饭票转销系统响应缓慢</td><td class="p-3"><span class="rounded-full bg-amber-50 px-2 py-1 font-bold text-warning">待处理</span></td><td class="p-3"><button class="focus-ring rounded-full bg-blue-50 px-3 py-1 font-bold text-primary">分派</button></td></tr>
+              <tr class="hover:bg-blue-50/60"><td class="p-3"><input aria-label="选择投诉 546858" type="checkbox"></td><td class="p-3 font-mono">546858</td><td class="p-3">2026-06-11 10:33</td><td class="p-3">数据部</td><td class="p-3">信息不准确</td><td class="p-3">客户信息更新不及时导致沟通错误</td><td class="p-3"><span class="rounded-full bg-green-50 px-2 py-1 font-bold text-success">处理中</span></td><td class="p-3"><button class="focus-ring rounded-full bg-blue-50 px-3 py-1 font-bold text-primary">查看</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const labels = ['06-01','06-02','06-03','06-04','06-05','06-06','06-07','06-08','06-09','06-10','06-11','06-12','06-13','06-14'];
+    new Chart(document.getElementById('stackedChart'), { type: 'bar', data: { labels, datasets: [
+      { label: '12378呼转', data: [96,88,94,86,82,32,21,87,94,78,84,98,104,92], backgroundColor: '#1E40AF' },
+      { label: '12378小程序', data: [66,58,54,49,45,0,0,48,54,45,39,52,60,55], backgroundColor: '#93C5FD' },
+      { label: '监管转办投诉', data: [25,22,20,24,18,0,0,21,23,26,20,24,28,20], backgroundColor: '#A855F7' },
+      { label: '其他外部渠道', data: [12,20,18,26,12,0,0,10,0,12,10,20,16,14], backgroundColor: '#CBD5E1' }
+    ]}, options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index' }, scales: { x: { stacked: true, grid: { display:false }}, y: { stacked: true, beginAtZero: true, grid: { color: '#E2E8F0' }}}, plugins: { legend: { labels: { usePointStyle: true }}} }});
+    new Chart(document.getElementById('lineChart'), { type: 'line', data: { labels: ['06-01','06-02','06-03','06-04','06-05','06-06','06-07'], datasets: [
+      { label: '服务态度问题', data: [26,24,26,25,28,29,25], borderColor: '#DC2626', tension: .35, pointRadius: 4 },
+      { label: '处理时效慢', data: [22,23,21,20,23,20,24], borderColor: '#D97706', tension: .35, borderDash: [6,4] },
+      { label: '信息不准确', data: [19,21,24,23,22,22,23], borderColor: '#3B82F6', tension: .35 },
+      { label: '费用争议', data: [9,8,8,8,9,8,9], borderColor: '#16A34A', tension: .35, borderDash: [2,4] }
+    ]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { usePointStyle: true }}}, scales: { y: { beginAtZero: true, suggestedMax: 36, grid: { color: '#E2E8F0' }}, x: { grid: { display:false }}} }});
+    new Chart(document.getElementById('donutChart'), { type: 'doughnut', data: { labels: ['频繁联系、骚扰','提及协商还款','第三方催收','其他'], datasets: [{ data: [34,26,21,19], backgroundColor: ['#DC2626','#D97706','#3B82F6','#CBD5E1'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '68%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true }}} }});
+  </script>
+</body>
+</html>
